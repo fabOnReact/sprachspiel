@@ -12,6 +12,7 @@
  *
  */
 
-@import "bootstrap";
+@import "bootstrap.min";
+@import "bootstrap-theme";
 @import "jquery-ui";
 @import "font-awesome";

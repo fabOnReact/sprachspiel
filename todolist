@@ -1,0 +1,6 @@
+model room
+	description
+
+	has_many :messages
+
+model message
