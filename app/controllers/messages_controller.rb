@@ -8,9 +8,10 @@ class MessagesController < ApplicationController
   	if message.save
   		ActionCable.server.broadcast 'messages',
         message: message.content,
-        user: message.user.username
+        user: message.user.email
       head :ok
   	end
+    #binding.pry
   end
 
   def edit
@@ -25,7 +26,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-  	params.require(:message).permit(:content, :chatroom_id)
+  	params.require(:message).permit(:content, :room_id)
   end
 
 end
