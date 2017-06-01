@@ -1,4 +1,8 @@
 class RoomsController < ApplicationController
+  def index
+    @rooms = Room.all
+  end
+
   def new
   end
 
@@ -6,7 +10,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-  	@room = Room.find(params[:id])     #(slug: params[:slug])
+  	@room = Room.find(params[:id])
   	@message = Message.new
   end
 
