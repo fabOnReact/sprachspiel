@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
+//= require_tree ./channels
 //= require turbolinks

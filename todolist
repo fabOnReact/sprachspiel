@@ -1,6 +1,19 @@
-model room
-	description
-
+room description title
+	#has_and_belongs_to_many :users
 	has_many :messages
+	has_many :users, through: :messages
 
-model message
+message 
+	belongs_to :room
+	belongs_to :user	
+
+user 
+	#has_and_belongs_to_many :rooms
+	has_many :messages
+	has_many :rooms, through: :messages
+
+set the navbar for devise
+
+room_user
+	belongs_to :room
+	belongs_to :user

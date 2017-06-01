@@ -55,4 +55,7 @@ Rails.application.configure do
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Action Cable
+  config.action_cable.url = "ws://localhost:3000/cable"
+
 end

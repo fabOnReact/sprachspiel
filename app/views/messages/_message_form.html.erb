@@ -1,0 +1,9 @@
+# app/views/messages/_message_form.html.erb
+
+<%= form_for message, remote: true, authenticity_token: true do |f| %>
+  <%= f.label :your_message %>:
+  <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
+
+  <%= f.hidden_field :room_id, value: room.id %>
+  <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"} %>
+<% end %>
