@@ -13,21 +13,21 @@
      <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user.present? %>        
+        <% if user_signed_in? %>        
     	    
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Abmelden", destroy_user_session_path, method: :delete %></li>
 	        <li class="dropdown" id="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
+	            <li><%= link_to "Profil bearbeiten", edit_user_registration_path(current_user) %></li>
 	            <li><a href="#">Somethings</a></li>
 	            <li><a href="#">Something else here</a></li>
 	            <li><a href="#">Separated link</a></li>
 	          </ul>
 	        </li>
 	    <% else %>
-    	<li><%= link_to "Login", new_user_session_path %></li>
-      <li><%= link_to "Signup", new_user_registration_path %></li>
+    	<li><%#= link_to "Login", new_user_session_path %></li>
+      <li><%#= link_to "Registrieren", new_user_registration_path %></li>
       <% end %>
       </ul>      
     </div>  <!-- div collapse navbar-collapse -->
