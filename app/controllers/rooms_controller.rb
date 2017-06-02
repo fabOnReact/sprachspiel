@@ -1,5 +1,17 @@
 class RoomsController < ApplicationController
   def welcome
+    @subscription = Subscription.new
+  end
+
+  def createSubscription 
+    @subscription = Subscription.new(input_params)
+    if @subscription.save
+      flash[:notice] = "Your Subscription was saved"
+      redirect_to action: "welcome"
+    else
+      flash[:error] = "An error occurred, the subscription was not saved"
+      render "welcome"
+    end       
   end
 
   def index
@@ -19,4 +31,10 @@ class RoomsController < ApplicationController
 
   def delete
   end
+
+  private
+  def input_params
+    params.require(:subscription).permit(:email)
+  end
+
 end

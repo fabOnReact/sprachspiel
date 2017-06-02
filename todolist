@@ -1,3 +1,6 @@
+http://localhost:3000/users/sign_up
+
+pubblicare app su betalist
 
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
