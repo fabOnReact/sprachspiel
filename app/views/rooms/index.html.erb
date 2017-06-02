@@ -7,7 +7,7 @@
 		<%= image_tag "muehle.svg", class: "roomsImages" %>
 	</div>
 	<div class="col-sm-3">
-		<% @rooms.where(building_id: ).each do |room| %>
+		<% @rooms.where(building_id: 1).each do |room| %>
 			<%= link_to room.title, room_path(room) %>
 		<% end %>
 	</div>
