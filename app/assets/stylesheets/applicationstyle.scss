@@ -32,6 +32,15 @@ p {
 	font-size: 17px;
 	}
 
+/* Images */ 
+
+img {
+	background-color: white;
+	width: 100%;
+	webkit-filter: inverst(100%);
+	filter: invert(100%);
+}
+
 /* Forms */ 
 
 input:-webkit-autofill {
@@ -102,6 +111,10 @@ input:-webkit-autofill {
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
 	background-image: initial;
 }
+
+/* GET rooms#index */
+
+
 
 /* GET Registration#edit */
 
