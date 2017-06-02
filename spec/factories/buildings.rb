@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :bulding do
+  factory :building do
     name "MyString"
     price_id 1
   end

@@ -1,6 +1,6 @@
-class CreateBuldings < ActiveRecord::Migration[5.0]
+class CreateBuildings < ActiveRecord::Migration[5.0]
   def change
-    create_table :buldings do |t|
+    create_table :buildings do |t|
       t.string :name
       t.integer :price_id
 
