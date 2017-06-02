@@ -44,6 +44,16 @@ strong {
 	color: black;
 }
 
+h3 {
+	font-size: 20px;
+}
+
+/* Bootstrap */ 
+
+.row {
+	margin-bottom: 25px;
+}
+
 /* Alerts */
 
 .alert {
@@ -56,8 +66,13 @@ strong {
 img {
 	background-color: white;
 	width: 100%;
-	webkit-filter: inverst(100%);
+	webkit-filter: invert(100%);
 	filter: invert(100%);
+}
+
+img:hover.roomsImages {
+	webkit-filter: invert(100%) opacity(50%);	
+	filter: invert(100%) opacity(50%);	
 }
 
 /* Forms */ 
@@ -147,6 +162,23 @@ input:-webkit-autofill {
 
 /* GET rooms#index */
 
+.roomsImages {
+	/*width: 26%;*/
+}
+
+.roomsImages img:hover {
+	
+}
+
+/* GET rooms#show */
+
+.panel strong {
+	color: white;
+}
+
+.panel p {
+	font-size: initial;
+}
 
 
 /* GET Registration#edit */

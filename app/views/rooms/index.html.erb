@@ -1,0 +1,41 @@
+<h1>Spiel Karte</h1>
+<p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
+
+<div class="row">
+	<div class="col-sm-3">
+		<h3>Landwirtschaft</h3> 
+		<%= image_tag "muehle.svg", class: "roomsImages" %>
+	</div>
+	<div class="col-sm-3">
+		<% @rooms.where(building_id: ).each do |room| %>
+			<%= link_to room.title, room_path(room) %>
+		<% end %>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-3">
+	<h3>Religion</h3>
+	<%= image_tag "kirche.svg", class: "roomsImages  pull-right" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+	<h3>Armee</h3>
+	<%= image_tag "kaserne.svg", class: "roomsImages" %>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-3">
+	<h3>Palast</h3>
+	<%= image_tag "palast.svg", class: "roomsImages pull-right" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+	<h3>Dorf</h3>
+	<%= image_tag "dorf.svg", class: "roomsImages" %>
+	</div>
+</div>
+
+<%#= image_tag "haus.svg", class: "roomsImages" %>

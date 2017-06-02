@@ -1,0 +1,2 @@
+class Bulding < ApplicationRecord
+end

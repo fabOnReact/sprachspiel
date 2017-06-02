@@ -1,6 +1,17 @@
-http://localhost:3000/users/sign_up
+room
+	building_id:integer
 
-pubblicare app su betalist
+building
+	name price_id:integer
+	has_many :rooms
+
+price
+	gold wood food stone metal
+	has_many :buildings
+
+message
+
+user
 
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
