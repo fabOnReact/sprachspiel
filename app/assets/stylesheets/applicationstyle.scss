@@ -51,13 +51,13 @@ h3 {
 /* Bootstrap */ 
 
 .row {
-	margin-bottom: 25px;
+	margin-top: 35px;
 }
+
 
 /* Alerts */
 
-.alert {
-	background-color: white;
+.alert {	background-color: white;
 	background-image: initial;
 }
 
@@ -190,5 +190,11 @@ input:-webkit-autofill {
 	.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
 		color: white;
 		background-color: black;
+	}
+}
+
+@media (max-width: 360px) {
+	div.col-xs-7 > p {
+		display: none;
 	}
 }

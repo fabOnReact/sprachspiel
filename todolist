@@ -1,3 +1,5 @@
+create the buildings and some rooms ... display them in the room index the go to the room and fix the chat
+
 room
 	building_id:integer
 

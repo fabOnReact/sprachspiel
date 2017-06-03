@@ -1,0 +1,23 @@
+<% if building.id.odd? %>
+<div class="row">
+	<div class="col-sm-3">
+		<h3><%= building.name %></h3> 
+	</div>
+	<div class="col-sm-3">
+		<h4>Rooms Available</h4>
+	</div>
+
+<% if building == @buildings.last %>
+</div>
+<% end %>
+
+<% else %>	
+	<div class="col-sm-3">
+		<h4>Rooms Available</h4>
+	</div>
+	<div class="col-sm-3">
+		<h3><%= building.name %></h3> 
+	</div>
+</div>
+<% end %>	
+
