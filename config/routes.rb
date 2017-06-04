@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
-  mount ActionCable.server => '/cable'
-  devise_for :users
-  resources :rooms, :messages
+	mount ActionCable.server => '/cable'
+	devise_for :users
+	resources :messages
 
-  # landing page
-  post "subscription", to: 'rooms#createSubscription'
+	resources :buildings do 
+		resources :rooms
+	end
 
-  root to: "rooms#welcome"
+	# landing page
+	post "subscription", to: 'rooms#createSubscription'
+
+	# rooms
+	get "rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'
+
+	root to: "rooms#welcome"
 
 end

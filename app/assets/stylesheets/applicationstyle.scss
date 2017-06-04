@@ -33,6 +33,19 @@
 	width: 30%;
 }
 
+/* Buttons GET buildings#index */ 
+
+.options {
+	text-align: center;
+}
+
+/*
+.tooltip.fade.right.in {
+	backgorund-color: white !important;
+	color: black !important;
+}
+*/
+
 /* Styles */ 
 
 p { 
@@ -51,7 +64,8 @@ h3 {
 /* Bootstrap */ 
 
 .row {
-	margin-top: 35px;
+	margin-top: 17px;
+	margin-bottom: 17px;
 }
 
 
@@ -193,8 +207,31 @@ input:-webkit-autofill {
 	}
 }
 
-@media (max-width: 360px) {
-	div.col-xs-7 > p {
-		display: none;
+@media (max-width: 425px) {
+	.roomsIndex .col-xs-12 {
+		margin-top: 25px;
 	}
+
+	.row {
+		margin-top: initial;
+	}
+
+	.form-horizontal .form-group {
+		margin-left: initial;
+		margin-right: initial;
+	}
+
 }
+
+@media (max-width: 414px) {
+	/* GET rooms#new description height */
+	textarea.form-control {
+		height: 350px;
+	}
+}	
+
+@media (max-width: 320px) {
+	textarea.form-control {
+		height: 250px;
+	}
+}	

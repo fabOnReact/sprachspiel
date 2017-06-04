@@ -1,5 +1,12 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: [:new, :edit]
+
+  def index
+    @rooms = Room.all
+    @images = ["muehle.svg","kirche.svg","kaserne.svg","palast.svg","dorf.svg"]
+    @buildings = Building.all
+  end
+  
   # GET /buildings/new
   def new
   end
@@ -12,13 +19,13 @@ class BuildingsController < ApplicationController
   # POST /buildings.json
   def create
     @building = Building.new(building_params)  
-	if @building.save
-		flash[:notice] = "Your Building was saved, now you can print your fliers by selecting the print button"
-		redirect_to rooms_path
-	else
-		flash[:error] = "An error occurred, the Building was not saved"
-		render "new"
-	end	    
+  	if @building.save
+  		flash[:notice] = "Your Building was saved, now you can print your fliers by selecting the print button"
+  		redirect_to rooms_path
+  	else
+  		flash[:error] = "An error occurred, the Building was not saved"
+  		render "new"
+  	end	    
   end
 
   # PATCH/PUT /buildings/1

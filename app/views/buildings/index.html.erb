@@ -1,0 +1,54 @@
+<h1>Spiel Karte</h1>
+<p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
+
+<% @buildings.each do |building| %>
+
+<% if building.id.odd? %>	
+<div class="row roomsIndex">
+	<div class="col-sm-3 hidden-xs">
+		<%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+	</div>
+	<div class="col-sm-3 col-xs-12">
+		<p><%= building.name %></p> 
+		<p>Rooms Available:</p>
+		<% rooms = @rooms.where(building_id: building.id) %>
+		<% rooms.each do |room| %>
+			<div class="row">
+				<div class="col-md-9">
+					<%= link_to room.title, building_room_path(building, room) %>
+				</div>
+				<div class="col-md-3 options">
+
+					<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+					<% end %>				
+					<%= link_to delete_room_path(room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+					<i class="fa fa-trash" aria-hidden="true"></i>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+		<%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary"  %>
+	</div>
+
+<% if building == @buildings.last %>
+</div>
+<% end %>
+
+<% else %>	
+	<div class="col-sm-3 col-xs-12">
+		<p><%= building.name %></p> 
+		<p>Rooms Available:</p>
+		<% rooms = @rooms.where(building_id: building.id) %>
+		<% rooms.each do |room| %>
+			<%= link_to room.title, building_room_path(building, room) %>
+		<% end %>
+		<%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary"  %>		
+	</div>
+	<div class="col-sm-3 hidden-xs">
+		<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+	</div>
+</div>
+<% end %>
+
+<% end %>

@@ -1,23 +1,31 @@
-<% if building.id.odd? %>
-<div class="row">
-	<div class="col-sm-3">
-		<h3><%= building.name %></h3> 
-	</div>
-	<div class="col-sm-3">
-		<h4>Rooms Available</h4>
-	</div>
+<% header("campaigns","New Campaign") %>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
 
-<% if building == @buildings.last %>
-</div>
-<% end %>
+        <div class="header">
+            <h4 class="title"><%= yield(:campaigns) %></h4>
+        </div>              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>       
 
-<% else %>	
-	<div class="col-sm-3">
-		<h4>Rooms Available</h4>
-	</div>
-	<div class="col-sm-3">
-		<h3><%= building.name %></h3> 
-	</div>
-</div>
-<% end %>	
+        <div class="content">
+            <%= simple_form_for @campaign do |f| %>
+              <% if @campaign.errors['base'].present? %>
+                <span class="help-block error"><%= @campaign.errors['base'][0] %></span>
+              <% end %>            
+              <%= render 'partials/error_messages', object: @campaign %>
+              <%= f.input :name %>
+              <%= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
 
+
+              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
+              <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
+              <div class="clearfix"></div>
+            <% end %>
+        </div>

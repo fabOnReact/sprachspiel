@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require cable
 //= require rooms
+//= require applicationscript
 //= require turbolinks
