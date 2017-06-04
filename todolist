@@ -1,19 +1,37 @@
 create the buildings and some rooms ... display them in the room index the go to the room and fix the chat
 
-room
+user
+	has_many :rooms
+	has_many :messages
+	has_many :chatrooms, through: :messages
+
+room 
 	building_id:integer
+	user_id:integer
+
+	belongs_to :user
+	belongs_to :building
 
 building
 	name price_id:integer
+
 	has_many :rooms
 
 price
 	gold wood food stone metal
+
 	has_many :buildings
 
-message
+chatroom 
+	has_many :messages
+	has_many :users, through: :messages
 
-user
+message
+	user_id:integer
+	chatroom_id:integer
+
+	belongs_to :user
+	belongs_to :chatroom
 
 ---------------- SHORTCUTS --------------------------------
 heroku run rails console
