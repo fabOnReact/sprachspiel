@@ -11,6 +11,7 @@ room
 
 	belongs_to :user
 	belongs_to :building
+	has_one :chatroom
 
 building
 	name price_id:integer
@@ -23,9 +24,11 @@ price
 	has_many :buildings
 
 chatroom 
+	room_id:integer
+
 	has_many :messages
 	has_many :users, through: :messages
-
+	
 message
 	user_id:integer
 	chatroom_id:integer

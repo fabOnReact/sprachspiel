@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 	post "subscription", to: 'rooms#createSubscription'
 
 	# rooms
-	get "rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'
+	get "/buildings/:building_id/rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'
 
-	root to: "rooms#welcome"
+	root to: "buildings#welcome"
 
 end

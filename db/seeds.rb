@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#Price.create(gold: 10, wood: 10, food: 10, stone: 10, metal: 10)
-#Building.create(name: "Landwirtschaft", price_id: 1)
+Price.create(gold: 10, wood: 10, food: 10, stone: 10, metal: 10)
+Building.create(name: "Landwirtschaft", price_id: 1)
 
 Price.create(gold: 20, wood: 0, food: 10, stone: 40, metal: 20)
 Building.create(name: "Religion", price_id: 2)

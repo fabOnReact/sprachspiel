@@ -1,3 +1,9 @@
+/* Container */
+
+.container-links {
+	margin-top: 15px	;
+}
+
 /* Buttons */ 
 
 .btn-primary {
@@ -39,13 +45,6 @@
 	text-align: center;
 }
 
-/*
-.tooltip.fade.right.in {
-	backgorund-color: white !important;
-	color: black !important;
-}
-*/
-
 /* Styles */ 
 
 p { 
@@ -60,6 +59,10 @@ strong {
 h3 {
 	font-size: 20px;
 }
+
+i:hover {
+	color: red;
+} 
 
 /* Bootstrap */ 
 
@@ -150,6 +153,11 @@ input:-webkit-autofill {
 	text-decoration: underline;
 }
 
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+	text-decoration: underline;
+	color: red;
+}
+
 /* Dropdown Menu */
 
 .dropdown-menu a {
@@ -221,6 +229,14 @@ input:-webkit-autofill {
 		margin-right: initial;
 	}
 
+}
+
+@media (min-width: 414px) {
+
+	/* Buttons GET buildings#new/edit */
+	.form-horizontal a {
+		margin-left: -15px;
+	}
 }
 
 @media (max-width: 414px) {

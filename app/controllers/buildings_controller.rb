@@ -1,6 +1,10 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: [:new, :edit]
 
+  def welcome
+    @subscription = Subscription.new
+  end
+
   def index
     @rooms = Room.all
     @images = ["muehle.svg","kirche.svg","kaserne.svg","palast.svg","dorf.svg"]

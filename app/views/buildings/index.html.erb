@@ -12,23 +12,24 @@
 		<p><%= building.name %></p> 
 		<p>Rooms Available:</p>
 		<% rooms = @rooms.where(building_id: building.id) %>
-		<% rooms.each do |room| %>
-			<div class="row">
-				<div class="col-md-9">
-					<%= link_to room.title, building_room_path(building, room) %>
+			<% rooms.each do |room| %>
+				<div class="row">
+					<div class="col-md-12">
+						<%= link_to room.title, building_room_path(building, room) %>
+						<% if user_signed_in? %>
+							<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+							<% end %>				
+							<%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+							<i class="fa fa-trash" aria-hidden="true"></i>
+							<% end %>
+						<% end %> <!-- if user_signed_in? -->
+					</div>
 				</div>
-				<div class="col-md-3 options">
-
-					<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
-					<i class="fa fa-pencil" aria-hidden="true"></i>
-					<% end %>				
-					<%= link_to delete_room_path(room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
-					<i class="fa fa-trash" aria-hidden="true"></i>
-					<% end %>
-				</div>
-			</div>
+			<% end %><!-- rooms.each do |room| -->
+		<% if user_signed_in? %>
+			<%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary"  %>
 		<% end %>
-		<%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary"  %>
 	</div>
 
 <% if building == @buildings.last %>
@@ -40,10 +41,20 @@
 		<p><%= building.name %></p> 
 		<p>Rooms Available:</p>
 		<% rooms = @rooms.where(building_id: building.id) %>
-		<% rooms.each do |room| %>
-			<%= link_to room.title, building_room_path(building, room) %>
+			<% rooms.each do |room| %>
+				<%= link_to room.title, building_room_path(building, room) %>
+				<% if user_signed_in? %>
+					<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+					<i class="fa fa-pencil" aria-hidden="true"></i>
+					<% end %>				
+					<%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+					<i class="fa fa-trash" aria-hidden="true"></i>
+					<% end %>			
+				<% end %>
+			<% end %> <!-- rooms.each do |room| -->
+		<% if user_signed_in? %>
+			<%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary"  %>		
 		<% end %>
-		<%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary"  %>		
 	</div>
 	<div class="col-sm-3 hidden-xs">
 		<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>

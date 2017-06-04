@@ -2,6 +2,6 @@
   <%= f.label :deine_nachricht %>:
   <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
 
-  <%= f.hidden_field :room_id, value: room.id %>
+  <%= f.hidden_field :chatroom_id, value: @room.chatroom.id %>
   <%= f.submit "send", class: "btn btn-primary", style: "display: none;", data: {send: "message"} %>
 <% end %>

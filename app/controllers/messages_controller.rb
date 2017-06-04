@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    #binding.pry
   	message = Message.new(message_params)
   	message.user = current_user
   	if message.save
@@ -27,7 +28,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-  	params.require(:message).permit(:content, :room_id)
+  	params.require(:message).permit(:content, :chatroom_id)
   end
 
 end

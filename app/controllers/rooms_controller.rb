@@ -1,10 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:edit]
   before_action :find_room, only: [:update, :show, :destroy]
-
-  def welcome
-    @subscription = Subscription.new
-  end
 
   def createSubscription 
     @subscription = Subscription.new(subscription_params)
@@ -24,7 +19,9 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)  
-    if @room.save
+    @room.user_id = current_user.id
+    @room.chatroom = Chatroom.new
+    if @room.save 
       flash[:notice] = "Your Room was saved"
       redirect_to buildings_path
     else
@@ -34,9 +31,12 @@ class RoomsController < ApplicationController
   end
 
   def edit
+    @building = Building.find(params[:building_id])
+    @room = Room.find(params[:id])
   end
 
   def update
+    @room = Room.find(params[:id])
     respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to buildings_path, notice: 'Room was successfully updated.' }
@@ -50,10 +50,24 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @chatroom = @room.chatroom
   	@message = Message.new
   end
 
   def delete
+    @building = Building.find(params[:building_id])
+    @room = Room.find(params[:id])
+  end
+
+  def destroy
+    @room = Room.find(params[:id])
+    if @room.destroy
+      flash[:notice] = "The Room was destroyed"
+      redirect_to buildings_path
+    else
+      flash[:error] = "An error occurred, the room was not saved"
+      render "delete"
+    end    
   end
 
   private
@@ -63,10 +77,6 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:title, :description, :building_id)
-  end
-
-  def set_room
-    @room = Room.new
   end
 
   def find_room
