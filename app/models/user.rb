@@ -3,7 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :rooms
-  has_many :messages
+  has_many :rooms, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
   has_many :chatrooms, through: :messages         
+  has_one :resource, :dependent => :destroy
+
+  def name 
+  	email.split('@')[0]
+  end
 end

@@ -4,16 +4,17 @@ class MessagesController < ApplicationController
   end
 
   def create
-    #binding.pry
   	message = Message.new(message_params)
   	message.user = current_user
   	if message.save
   		ActionCable.server.broadcast 'messages',
         message: message.content,
-        user: message.user.email
+        user: message.user.name
       head :ok
-  	end
-    #binding.pry
+  	else
+      #flash[:error] = "You need to signup or login to play"
+      #render "rooms/show"
+    end
   end
 
   def edit
