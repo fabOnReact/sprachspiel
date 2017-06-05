@@ -4,6 +4,7 @@
 	<% end %>            
 	<%= render 'partials/error_messages', object: @room %> 
 	<%= f.input :title %>
+	<span class="countdown"></span>
 	<%= f.input :description, :input_html => { :cols => 100, :rows => 20 } %>
 	<%= f.association :building %>
 	<%= link_to :back, buildings_path, class: "btn btn-primary" %>

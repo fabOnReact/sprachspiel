@@ -168,7 +168,7 @@ input:-webkit-autofill {
 	background-image: initial;
 }
 
-/* GET rooms#welcome */
+/* GET buildings#welcome */
 
 .input-group-addon {
 	background-color: black;
@@ -182,7 +182,7 @@ input:-webkit-autofill {
 	width: 30%;
 }
 
-/* GET rooms#index */
+/* GET buildings#index */
 
 .roomsImages {
 	/*width: 26%;*/
@@ -190,6 +190,13 @@ input:-webkit-autofill {
 
 .roomsImages img:hover {
 	
+}
+
+/* rooms controller */
+
+.countdown {
+	color: #8c8c8c;
+	font-size: 13px;
 }
 
 /* GET rooms#show */

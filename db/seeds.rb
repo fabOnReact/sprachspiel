@@ -21,4 +21,7 @@ Building.create(name: "Palast", price_id: 4)
 Price.create(gold: 0, wood: 10, food: 10, stone: 0, metal: 0)
 Building.create(name: "Dorf", price_id: 5)
 
+Room.create(title: "Das bestes Geschäft" , description: "Hallo, <br> mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen <br>Viele Grüße <br>Fabrizio")
+
+
 

@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
   end
 
   def create
+    @building = Building.find(params[:building_id])    
     @room = Room.new(room_params)  
     @room.user_id = current_user.id
     @room.chatroom = Chatroom.new
@@ -36,6 +37,7 @@ class RoomsController < ApplicationController
   end
 
   def update
+    @building = Building.find(params[:building_id])
     @room = Room.find(params[:id])
     respond_to do |format|
       if @room.update(room_params)

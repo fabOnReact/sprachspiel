@@ -1,9 +1,21 @@
-create the buildings and some rooms ... display them in the room index the go to the room and fix the chat
+1. Creation of Migrations
 
 user
 	has_many :rooms
 	has_many :messages
 	has_many :chatrooms, through: :messages
+	has_one :resource
+
+resource
+	user_id:integer gold:integer wood:integer food:integer stone:integer metal:integer
+
+2. Show resources on the user main page
+
+3. Use resources to build other goods
+
+4. Let use trade products
+
+---------------- Models --------------------------------
 
 room 
 	building_id:integer
