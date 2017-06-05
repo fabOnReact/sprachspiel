@@ -5,10 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :rooms, :dependent => :destroy
   has_many :messages, :dependent => :destroy
-  has_many :chatrooms, through: :messages         
-  has_one :resource, :dependent => :destroy
+  has_many :chatrooms, through: :messages 
+  has_many :items, :dependent => :destroy        
 
   def name 
   	email.split('@')[0]
   end
+
+  def startingBalance
+    startingBalance = [100, 100, 100, 100, 100]
+  end
+
 end

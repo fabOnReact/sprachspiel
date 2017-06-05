@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605161604) do
+ActiveRecord::Schema.define(version: 20170605175126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,23 @@ ActiveRecord::Schema.define(version: 20170605161604) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "room_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "purchase_id"
+    t.integer  "sale_id"
+    t.integer  "price_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.boolean  "sold"
+    t.boolean  "used"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -46,6 +63,19 @@ ActiveRecord::Schema.define(version: 20170605161604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -53,6 +83,13 @@ ActiveRecord::Schema.define(version: 20170605161604) do
     t.datetime "updated_at",  null: false
     t.integer  "building_id"
     t.integer  "user_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -74,11 +111,6 @@ ActiveRecord::Schema.define(version: 20170605161604) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "gold"
-    t.integer  "wood"
-    t.integer  "food"
-    t.integer  "stone"
-    t.integer  "metal"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
