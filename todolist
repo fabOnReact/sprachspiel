@@ -20,57 +20,55 @@ resource
 	Each building with some materials/goods can build some goods
 	Farmer can convert flour in Bread with a tool the sickle .. he need to buy the tool from somebody else they decide the price
 
-	user 
-		has_one :balance
+	User.new 
+	
+	user
+		:gold, :wood, :food, :stone, :metal 
+		has_many :resources
 
-	balance
-		has_many:resources
 
-	room
-		has_one :inventory
+	balance calcolato con uno script Stock.where(user_id: current_user.id).sum(:quantity)		
 
-	inventory
-		has_many :tools
-		has_many :products
+	material
+		name
+		has_many :resources
+
+	stock
+		user_id:integer
+		material_id:integer
+		quantity:integer
+		purchase_id:integer
+		sale_id:integer
+	
+	inventory is Item.where(user_id: current_user.id, sold:false, used:false)
+
+	item
+		user_id:integer
+		product_id:integer
+		sold:boolean
+		used:boolean
+
+	formula write some code to require certain resources and products to build other products
 
 	product
-		productype_id:integer
-		number:integer
-		sold:boolean
-
-	producttype
-		name sickle
-		resource_id:integer
-
-	resource
-		type
-		quantity
+		name:string sickle, four ...
+		has_many :item
 
 	purchase
 		user_id:integer
-		sale_id:integer
-		product_id:integer
-		price_id:integer
+		item_id:integer
+		has_one :transaction
+		has_one :stock
+
+	transaction 
+		purchase_id
+		sale_id
 
 	sale
 		user_id:integer
-		purchase_id:integer
-		product_id:integer
-		price_id:integer
-
-
-
-
-
-	tool
-		tooltype_id:integer
-		number:integer
-		used:boolean
-
-	tooltype
-		name sickle
-
-
+		item_id:integer
+		has_one :transaction
+		has_one :stock
 
 
 	inventory include products, material, tools

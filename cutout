@@ -1,31 +1,22 @@
-<% header("campaigns","New Campaign") %>
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-
-        <div class="header">
-            <h4 class="title"><%= yield(:campaigns) %></h4>
-        </div>              
-                </div>
-            </div>
-        </div>
-    </div>
-</div>       
-
-        <div class="content">
-            <%= simple_form_for @campaign do |f| %>
-              <% if @campaign.errors['base'].present? %>
-                <span class="help-block error"><%= @campaign.errors['base'][0] %></span>
-              <% end %>            
-              <%= render 'partials/error_messages', object: @campaign %>
-              <%= f.input :name %>
-              <%= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
-
-
-              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
-              <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
-              <div class="clearfix"></div>
-            <% end %>
-        </div>
+=begin
+    build_resource(sign_up_params)
+    object = Resource.new(gold: 100, wood: 100, food: 100, stone: 100, metal: 100)
+    resource.resource = object
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end   
+=end 
