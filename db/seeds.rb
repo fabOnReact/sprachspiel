@@ -28,16 +28,17 @@ Room.create(title: "Das bestes Geschäft" , description: "Hallo, <br> mein Name 
 # Creating a second User
 first_user = User.first
 second_user = User.last
-second_user = User.new(email: "federico@email.com", password: "fabrizio")
-second_user.password_confirmation = "fabrizio"
-second_user.save
+#second_user = User.new(email: "federico@email.com", password: "fabrizio")
+#second_user.password_confirmation = "fabrizio"
+#second_user.save
 
-product = Product.create(name: :sichel)
+product = Product.first
+#product = Product.create(name: :sichel)
 item = Item.create(user_id: second_user.id, product_id: product.id, sold: false, used:false)
 
-purchase = Purchase.new(user_id: first_user.id, item_id: item.id)
-sale = Sale.new(user_id: second_user.id, item_id: item.id)
-price = Price.new(gold: 10, food: 40)
-invoice = Invoice.new(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
+purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
+sale = Sale.create(user_id: second_user.id, item_id: item.id)
+price = Price.create(gold: 10, food: 40)
+invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
 purchase.save
 sale.save

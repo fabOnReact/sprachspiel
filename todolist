@@ -13,7 +13,7 @@ resource
 
 2. Show resources on the user main page
 
-3. Validation each user can have onl yone room
+3. Validation each user can have only one room
 
 4. Use resources to build other goods
 
@@ -61,30 +61,6 @@ resource
 
 -------------------------------------------------------------------
 
-	material
-		name
-		has_many :stocks
-
-	stock
-		user_id:integer
-		material_id:integer
-		quantity:integer
-		purchase_id:integer
-		sale_id:integer
-
-	inventory include products, material, tools
-	inventory has product
-	product requires resource to build 
-
-	exchange products for other products/resources/services
-
-
-
-	The blacksmith can build tools but he need some resources
-
-	Soldier need to eat and buy food but he can protect people and fight for the lord
-
-	the lord need soldiers and priest, he needs other to pay taxes
 
 5. Trade products for resources
 
