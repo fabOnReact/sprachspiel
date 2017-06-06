@@ -1,0 +1,23 @@
+<%# resource = current_user.resource if user_signed_in? %>
+<div class="container">
+  <div class="row row-resources">
+    <div class="col-sm-2 col-xs-12">
+      Resources
+    </div>  
+    <div class="col-sm-2 col-xs-4">
+      Gold <%= current_user.ending_balance[0] %>
+    </div>
+    <div class="col-sm-2 col-xs-4">
+      Wood <%= current_user.ending_balance[1] %>
+    </div>
+    <div class="col-sm-2 col-xs-4">
+      Food <%= current_user.ending_balance[2] %>
+    </div>
+    <div class="col-sm-2 col-xs-6">
+      Stone <%= current_user.ending_balance[3] %>
+    </div>
+    <div class="col-sm-2 col-xs-6">
+      Metal <%= current_user.ending_balance[4] %>
+    </div>
+  </div>
+</div>

@@ -40,5 +40,3 @@ purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
 sale = Sale.create(user_id: second_user.id, item_id: item.id)
 price = Price.create(gold: 10, food: 40)
 invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
-purchase.save
-sale.save
