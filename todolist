@@ -15,20 +15,14 @@ resource
 
 3. Validation each user can have only one room
 
-4. Use resources to build other goods
+4. Calculate Current Balance
 
-	Each building with some materials/goods can build some goods
-	Farmer can convert flour in Bread with a tool the sickle .. he need to buy the tool from somebody else they decide the price
+5. Purchase Items
 
-	User.new 
-	
-	user
-		startingBalance
-		has_many :items
+6. Build Items
 
-	balance calcolato con uno script Stock.where(user_id: current_user.id).sum(:quantity)		
-	
-	inventory is Item.where(user_id: current_user.id, sold:false, used:false)
+7. Sell Items
+
 
 	item
 		user_id:integer

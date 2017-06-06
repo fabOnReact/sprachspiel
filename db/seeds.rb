@@ -24,7 +24,7 @@ Building.create(name: "Dorf", price_id: 5)
 user = User.last
 Room.create(title: "Das bestes Geschäft" , description: "Hallo, <br> mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen <br>Viele Grüße <br>Fabrizio", user_id: user.id)
 =end
-
+=begin
 # Creating a second User
 first_user = User.first
 second_user = User.last
@@ -40,3 +40,4 @@ purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
 sale = Sale.create(user_id: second_user.id, item_id: item.id)
 price = Price.create(gold: 10, food: 40)
 invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
+=end
