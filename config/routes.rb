@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 	
-  get 'resources/index'
-
 	devise_for :users, controllers: {
 		registrations: 'users/registrations'
 	}
 
-	resources :messages
+	resources :messages, :items, :purchase
 
 	resources :buildings do 
 		resources :rooms

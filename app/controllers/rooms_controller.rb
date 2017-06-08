@@ -54,6 +54,8 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @chatroom = @room.chatroom
   	@message = Message.new
+    @items = current_user.items.where(sold: false, used: false).order(:product_id)
+    @items_number = current_user.items.group(:product_id).count
   end
 
   def delete

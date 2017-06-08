@@ -93,6 +93,18 @@ i:hover {
 	text-align: center;
 }
 
+/* Table */ 
+
+.table {
+	margin-bottom: 0px;
+}
+
+
+.table > tbody > tr > td.table-text {
+	padding-top: 15px;
+	font-size: 18px;
+}
+
 /* Alerts */
 
 .alert {	background-color: white;
@@ -159,8 +171,14 @@ input:-webkit-autofill {
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+	background-color: initial;
+}
+
+/*
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 	background-color: white;
 }
+*/
 
 /* Links in the navbar */
 
