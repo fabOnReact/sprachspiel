@@ -1,4 +1,4 @@
-<% form_tag("/purchase", method: "post") do %>
+<%# form_tag("/purchase", method: "post") do %>
 <table class="table table-hover">
 	<% id = nil %>
 	<% @items.each do |item| %>
@@ -24,4 +24,4 @@
 		<% id = item.product_id %>
   	<% end %>
 </table>
-<% end %>
+<%# end %>

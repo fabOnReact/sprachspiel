@@ -1,4 +1,4 @@
-1. Creation of Migrations
+You need to pass more then 1 number with the purchase#new
 
 user
 	has_many :rooms
@@ -25,44 +25,66 @@ resource
 
 7. Build Items
 
-	item
-		user_id:integer
-		product_id:integer
-		sold:boolean
-		used:boolean
-		purchase_id:integer
-		#sale_id:integer
+	user
+		has_many :rooms
+		has_many :purchases
+		has_many :sales
 
-	formula write some code to require certain resources and products to build other products
+	room
+		user_id:integer
+		has_many :purchases
+		has_many :sales
+		has_many :items
 
 	product
 		name:string sickle, four ...
 		has_many :item
 
-	purchase
-		user_id:integer
-		item_id:integer
-		has_one :invoice
-		#has_one :stock
-		has_many :items
+	price 
+		gold
+		wood
+		...
+		has_many :invoices
 
 	invoice 
-		purchase_id
-		sale_id
+		has_one :purchase
+		has_one :sale
+		#price_id:integer
+
+	purchases
+		room_id:integer
+		invoice_id:integer
 		price_id:integer
+		user_id:integer
+		has_many :items
 
 	sale
+		room_id:integer
+		invoice_id:integer
+		price_id:integer
 		user_id:integer
-		item_id:integer
-		has_one :invoice
-		#has_one :stock
+		has_many :items
+
+	item
+		room_id:integer
+		product_id:integer
+		sold:boolean
+		used:boolean
+		room_id:integer
+		purchase_id:integer
+		sale_id:integer
+
+	1. generate purchases controller
+	2. set up the purchases#new or rooms#new
+	3. show up all the items
+	4. submit to purchase#create
+	5. save
 
 -------------------------------------------------------------------
 
-
 5. Trade products for resources
 
----------------- Models --------------------------------
+---------------- Models -------------------------------------------
 
 room 
 	building_id:integer

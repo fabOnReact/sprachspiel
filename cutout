@@ -1,23 +1,9 @@
-<% resource = current_user.resource if user_signed_in? %>
-<div class="container">
-  <div class="row row-resources">
-    <div class="col-sm-2 col-xs-12">
-      Resources
-    </div>  
-    <div class="col-sm-2 col-xs-4">
-      Gold <%= resource.gold %>
-    </div>
-    <div class="col-sm-2 col-xs-4">
-      Wood <%= resource.wood %>
-    </div>
-    <div class="col-sm-2 col-xs-4">
-      Food <%= resource.food %>
-    </div>
-    <div class="col-sm-2 col-xs-6">
-      Stone <%= resource.stone %>
-    </div>
-    <div class="col-sm-2 col-xs-6">
-      Metal <%= resource.metal %>
-    </div>
-  </div>
-</div>
+    var i = 0;
+    var string = i.toString();
+    var row = ".row"
+    var plus_square = "#plus-square"
+    var number_field = "#number_field"
+    var minus_square = "#minus-square"
+    var plus_square_row = row + string + plus_square;
+    var number_field_row = row + string + number_field;
+    var minus_square_row = row + string + minus_square;

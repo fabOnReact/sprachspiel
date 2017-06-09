@@ -4,10 +4,15 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items, :purchase
+	resources :messages, :items, :prices
 
 	resources :buildings do 
 		resources :rooms
+	end
+
+	resources :rooms do
+		resources :purchases
+		resources :sales
 	end
 
 	# landing page

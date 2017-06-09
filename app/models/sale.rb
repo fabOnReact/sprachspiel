@@ -1,5 +1,7 @@
 class Sale < ApplicationRecord
+	has_many :items	
+	belongs_to :room
+	belongs_to :price
 	belongs_to :user
-	belongs_to :item
 	has_one :invoice
 end

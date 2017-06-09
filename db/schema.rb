@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605175126) do
+ActiveRecord::Schema.define(version: 20170609160705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,18 +31,19 @@ ActiveRecord::Schema.define(version: 20170605175126) do
   create_table "invoices", force: :cascade do |t|
     t.integer  "purchase_id"
     t.integer  "sale_id"
-    t.integer  "price_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "product_id"
     t.boolean  "sold"
     t.boolean  "used"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "purchase_id"
+    t.integer  "sale_id"
+    t.integer  "room_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -70,10 +71,12 @@ ActiveRecord::Schema.define(version: 20170605175126) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "invoice_id"
+    t.integer  "room_id"
+    t.integer  "price_id"
+    t.integer  "user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -86,10 +89,12 @@ ActiveRecord::Schema.define(version: 20170605175126) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "invoice_id"
+    t.integer  "room_id"
+    t.integer  "price_id"
+    t.integer  "user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|

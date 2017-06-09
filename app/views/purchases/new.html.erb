@@ -1,0 +1,85 @@
+<%= form_for [@room, @purchase] do |f| %>
+<table class="table table-hover">
+		<% i = 0 %>
+		<% id = nil %>
+		<% @purchase.items.each do |item| %>
+			<% unless item.product_id == id %>	
+			<tr class="row<%= i %>">
+				<td class="col-sm-4 table-text">	
+			    <%= @purchase.items[i].product.name %> 
+			    </td>
+			  	<td class="col-sm-2">
+			  	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
+			  	</td>	 
+			  	<td class="col-sm-2 table-text">
+			  	<%= @items_number[item.product_id] %>
+			  	</td>
+			  	<td class="col-sm-2" id="#number_field">
+			  	<% variable = @items_number[item.product_id] %>
+			    <%#= number_field_tag :variable[i], "0", id: "number_field", min: 0, max: variable %>
+				<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
+			  	</td>
+			  	<td class="col-sm-2">
+			  	<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
+			  	</td>
+			  	<% i += 1 %>
+			</tr>
+			<% end %>
+		<% id = item.product_id %>
+		<% end %>
+</table>
+	<div class="container">
+		<div class="row price">
+			<%= form_for @price do |price| %>
+			<%#= label_tag "preis" %>
+			<div class="row">
+				<div class="col-sm-4 col-xs-6">
+					<div class="col-sm-4 col-xs-12 no-padding">
+					<%= price.label :gold, {class: "price_field"} %>
+					</div>
+					<div class="col-sm-8 col-xs-12 no-padding">
+					<%= price.number_field :gold, {value: "10", id: "price_field", class: "price_field", min: 10, max: 100000} %>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-6">
+					<div class="col-sm-4 col-xs-12 no-padding">		
+					<%= price.label :wood, {class: "price_field"} %>
+					</div>
+					<div class="col-sm-8 col-xs-12 no-padding">
+					<%= price.number_field :wood, {value: "10", id: "price_field", class: "price_field", min: 10, max: 100000} %>		
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-6">
+					<div class="col-sm-4 col-xs-12 no-padding">
+					<%= price.label :food, {class: "price_field"} %>
+				</div>
+					<div class="col-sm-8 col-xs-12 no-padding">
+					<%= price.number_field :food, {value: "10", id: "price_field", class: "price_field", min: 10, max: 100000} %>
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-6">
+					<div class="col-sm-4 col-xs-12 no-padding">		
+					<%= price.label :stone, {class: "price_field"} %>
+					</div>
+					<div class="col-sm-8 col-xs-12 no-padding">		
+					<%= price.number_field :stone, {value: "10", id: "price_field", class: "price_field", min: 10, max: 100000} %>	
+					</div>
+				</div>
+				<div class="col-sm-4 col-xs-6">
+					<div class="col-sm-4 col-xs-12 no-padding">	
+					<%= price.label :metal, {class: "price_field"} %>
+					</div>
+					<div class="col-sm-8 col-xs-12 no-padding">			
+					<%= price.number_field :metal, {value: "10", id: "price_field", class: "price_field", min: 10, max: 100000} %>		
+					</div>	
+				</div>										
+				<%#= number_field_tag 'price', "10", id: "price_field", min: 10, max: 100000 %>
+				<%#= number_field_tag 'price', "10", id: "price_field", min: 10, max: 100000 %>
+			</div>
+			<% end %>
+			<div class="col-sm-12 no-padding">
+			<%= f.submit :kaufen, {class: "full-width-mobile"} %>
+			</div>
+		</div>
+	</div>
+<% end %>

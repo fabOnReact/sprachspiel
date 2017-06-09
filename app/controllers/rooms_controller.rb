@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :find_room, only: [:update, :show, :destroy]
+  before_action :set_purchase, only: [:show]
 
   def createSubscription 
     @subscription = Subscription.new(subscription_params)
@@ -51,11 +52,10 @@ class RoomsController < ApplicationController
   end  
 
   def show
-    @room = Room.find(params[:id])
     @chatroom = @room.chatroom
   	@message = Message.new
-    @items = current_user.items.where(sold: false, used: false).order(:product_id)
-    @items_number = current_user.items.group(:product_id).count
+    #@items = current_user.items.where(sold: false, used: false).order(:product_id)
+    #@items_number = current_user.items.group(:product_id).count
   end
 
   def delete
@@ -86,5 +86,15 @@ class RoomsController < ApplicationController
   def find_room
     @romm = Room.find(params[:id])
   end
+
+  def set_purchase
+    #binding.pry
+    @price = Price.new
+    @room = Room.find(params[:id])
+    @items = @room.items.where(sold: false, used: false).order(:product_id)
+    @purchase = Purchase.new(room_id: params[:room_id])
+    @purchase.items << @items
+    @items_number = @items.group(:product_id).count
+  end   
 
 end

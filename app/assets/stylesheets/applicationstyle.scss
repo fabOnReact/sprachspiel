@@ -73,6 +73,37 @@ i:hover {
 	color: red;
 }
 
+label {
+	font-size: 20px;
+	padding-right: 18px;
+}
+
+.table input {
+	line-height: 30px;
+	font-size: 23px;
+}
+
+.no-padding {
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.price input[type="submit"], input[name="price"] {
+	font-size: 20px;
+}
+
+.price input[type="submit"]:hover, input[name="price"]:hover {
+	background-color: white;
+	background-image: initial;
+	color: red;
+	border-color: red;
+}
+
+
+.price input.price_field {
+	font-size: 20px;
+}	
+
 /* Bootstrap */ 
 
 /* Rows */ 
@@ -96,7 +127,8 @@ i:hover {
 /* Table */ 
 
 .table {
-	margin-bottom: 0px;
+	margin-bottom: 20px;
+	border-bottom: white 1px solid;
 }
 
 
@@ -248,9 +280,9 @@ input:-webkit-autofill {
 	font-size: initial;
 }
 
-
-/* GET Registration#edit */
-
+.price .col-xs-12 {
+	z-index:1;
+}
 
 /* Media Queries */
 
@@ -290,6 +322,14 @@ input:-webkit-autofill {
 	.form-horizontal a {
 		margin-left: -15px;
 	}
+
+	.price input[type="submit"], input[name="price"] {
+		width: 142px;
+	}
+
+	.price input.price_field {
+		width: 142px;
+	}	
 }
 
 @media (max-width: 414px) {
@@ -301,6 +341,10 @@ input:-webkit-autofill {
 	#message_content {
 		height: 66px;
 	}	
+
+	.full-width-mobile {
+		width: 100%;
+	}		
 }	
 
 @media (max-width: 320px) {

@@ -1,7 +1,7 @@
 <div class="container">
   <h1><%= @room.title %></h1>
   <p><%= @room.description %></p>
-<%= render template: "items/index" %>
+<%= render template: "purchases/new" %>
 <div class="panel panel-default">
   <% if @chatroom.messages.any? %>
     <div class="panel-body" id="messages">

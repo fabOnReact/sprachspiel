@@ -1,5 +1,5 @@
 class Invoice < ApplicationRecord
-	belongs_to :purchase
-	belongs_to :sale
-	belongs_to :price
+	#belongs_to :price
+	has_one :purchase
+	has_one :sale
 end
