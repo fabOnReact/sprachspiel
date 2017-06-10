@@ -54,8 +54,7 @@ class RoomsController < ApplicationController
   def show
     @chatroom = @room.chatroom
   	@message = Message.new
-    #@items = current_user.items.where(sold: false, used: false).order(:product_id)
-    #@items_number = current_user.items.group(:product_id).count
+    @purchases = Purchase.where(invoice_id: nil, room_id: @room.id)
   end
 
   def delete
@@ -88,7 +87,6 @@ class RoomsController < ApplicationController
   end
 
   def set_purchase
-    #binding.pry
     @price = Price.new
     @room = Room.find(params[:id])
     @items = @room.items.where(sold: false, used: false).order(:product_id)

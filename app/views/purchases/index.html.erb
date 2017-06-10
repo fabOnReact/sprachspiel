@@ -1,2 +1,13 @@
-<h1>Purchases#index</h1>
-<p>Find me in app/views/purchases/index.html.erb</p>
+<table class="table table-hover">
+	<tr>
+		<th>Spieler</th>
+		<th>Preis</th>
+		<th>Items</th>
+	</tr>
+	<% @purchases.where(invoice_id: nil).each do |purchase| %>
+	<tr>
+		<td><%= purchase.user.name %></td>
+		<td><%= 
+	</tr>
+	<% end %>
+</table>
