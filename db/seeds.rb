@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-=begin
+
 Price.create(gold: 10, wood: 10, food: 10, stone: 10, metal: 10)
 Building.create(name: "Landwirtschaft", price_id: 1)
 
@@ -22,21 +22,20 @@ Price.create(gold: 0, wood: 10, food: 10, stone: 0, metal: 0)
 Building.create(name: "Dorf", price_id: 5)
 
 user = User.last
-Room.create(title: "Das bestes Geschäft" , description: "Hallo, <br> mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen <br>Viele Grüße <br>Fabrizio", user_id: user.id)
-=end
+room = Room.create(title: "Das bestes Geschäft" , description: "Hallo, <br> mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen <br>Viele Grüße <br>Fabrizio", user_id: user.id)
 
-# Creating a second User
-first_user = User.first
-second_user = User.last
 #second_user = User.new(email: "federico@email.com", password: "fabrizio")
 #second_user.password_confirmation = "fabrizio"
 #second_user.save
+# Creating a second User
+first_user = User.first
+second_user = User.find(2)
 
-product = Product.first
-#product = Product.create(name: :sichel)
-item = Item.create(user_id: second_user.id, product_id: product.id, sold: false, used:false)
+#product = Product.first
+product = Product.create(name: :sichel)
+item = Item.create(user_id: second_user.id, product_id: product.id, sold: false, used:false, room_id: room.id)
 
-purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
-sale = Sale.create(user_id: second_user.id, item_id: item.id)
-price = Price.create(gold: 10, food: 40)
-invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
+#purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
+#sale = Sale.create(user_id: second_user.id, item_id: item.id)
+#price = Price.create(gold: 10, food: 40)
+#invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
