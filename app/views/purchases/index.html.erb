@@ -1,13 +1,44 @@
+<% purchases_new = @purchases.where(sale_id: nil) %>
+
+<% if purchases_new.present? %>
 <table class="table table-hover">
-	<tr>
-		<th>Spieler</th>
-		<th>Preis</th>
-		<th>Items</th>
+	<tr class="row">
+		<th class="hidden-xs col-sm-2">Spieler</th>
+		<th class="col-xs-2 col-sm-1">gold</th>
+		<th class="col-xs-2 col-sm-1">wood</th>
+		<th class="col-xs-2 col-sm-1">stone</th>
+		<th class="col-xs-2 col-sm-1">metal</th>
+		<th class="hidden-xs col-sm-4">Items</th>
+		<th class="col-xs-4 col-sm-2">Optionen</th>
 	</tr>
-	<% @purchases.where(invoice_id: nil).each do |purchase| %>
-	<tr>
-		<td><%= purchase.user.name %></td>
-		<td><%= 
+	<% purchases_new.each do |purchase| %>
+	<tr class="row">
+		<td class="hidden-xs col-sm-2"><%= purchase.user.name %></td>
+		<td class="col-xs-2 col-sm-1"><%= purchase.price.gold %></td>
+		<td class="col-xs-2 col-sm-1"><%= purchase.price.wood %></td>
+		<td class="col-xs-2 col-sm-1"><%= purchase.price.stone %></td>
+		<td class="col-xs-2 col-sm-1"><%= purchase.price.metal %></td>
+		<td class="hidden-xs col-sm-4">
+		<% purchase.items.group(:product_id).count.each do |product_id, number| %>
+		<%= Product.find(product_id).name %>(<%= number %>)
+		<% end %>
+		</td>
+		<td class="col-xs-4 col-sm-2">
+	        <div class="btn-group">
+	         <%= link_to room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot anzeigen"} do %>
+	         <i class="fa fa-arrow-right" aria-hidden="true"></i>
+	         <% end %>
+	         <% if current_user = purchase.user %>
+	         <%= link_to edit_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot bearbeiten"}  do %>
+	         <i class="fa fa-pencil" aria-hidden="true"></i>
+	         <% end %>
+	         <%= link_to delete_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot löschen"}  do %>
+	         <i class="fa fa-trash-o" aria-hidden="true"></i>
+	         <% end %>
+	         <% end %>
+	        </div>			
+		</td>
 	</tr>
 	<% end %>
 </table>
+<% end %>

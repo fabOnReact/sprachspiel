@@ -25,6 +25,8 @@ resource
 
 7. Build Items
 
+	remove invoice for now 
+	
 	user
 		has_many :rooms
 		has_many :purchases
@@ -56,6 +58,7 @@ resource
 		invoice_id:integer
 		price_id:integer
 		user_id:integer
+		sale_id:integer
 		has_many :items
 
 	sale
@@ -63,6 +66,7 @@ resource
 		invoice_id:integer
 		price_id:integer
 		user_id:integer
+		purchase_id:integer
 		has_many :items
 
 	item
@@ -79,6 +83,10 @@ resource
 	3. show up all the items
 	4. submit to purchase#create
 	5. save
+
+
+Internationalization
+Globalize
 
 -------------------------------------------------------------------
 

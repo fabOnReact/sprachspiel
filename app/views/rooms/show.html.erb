@@ -2,6 +2,7 @@
   <h1><%= @room.title %></h1>
   <p><%= @room.description %></p>
 <%= render template: "purchases/new" %>
+<%= render template: "purchases/index" %>
 <div class="panel panel-default">
   <% if @chatroom.messages.any? %>
     <div class="panel-body" id="messages">

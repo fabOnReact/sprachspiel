@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :set_variables, only: [:create]
+  before_action :find_purchase, only: [:show, :delete, :destroy]
 
   def index
   end
@@ -26,6 +27,11 @@ class PurchasesController < ApplicationController
   def edit
   end
 
+  def show 
+    @items_number = @purchase.items.group(:product_id).count
+    @room = Room.find(params[:room_id])
+  end 
+
   def delete
   end
 
@@ -36,6 +42,10 @@ class PurchasesController < ApplicationController
 
   def price_params
     params.require(:price).permit(:gold, :wood, :food, :stone, :metal)
+  end
+
+  def find_purchase 
+    @purchase = Purchase.find(params[:id])
   end
 
   def set_variables

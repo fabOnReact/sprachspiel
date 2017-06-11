@@ -1,3 +1,33 @@
+/* Shortcuts */
+
+.no-padding {
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.padding {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.no-margin {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.margin {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
 /* Container */
 
 .container-links {
@@ -12,17 +42,28 @@
 	border-color: white;
 }
 
+.btn-danger {
+	background-image: initial;
+	background-color: red;
+	border-color: none;
+}
+
+.btn-green {
+	background-color: green;
+	background-image: initial;
+	border-color: white;
+}
+
+.btn-green:hover {
+	background-color: blue;
+	border: red 1px solid;
+}
+
 .btn-primary:hover {
 	background-color: white;
 	background-image: initial;
 	color: red;
 	border-color: red;
-}
-
-.btn-danger {
-	background-image: initial;
-	background-color: red;
-	border-color: white;
 }
 
 .btn-danger:hover {
@@ -37,12 +78,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 30%;
-}
-
-/* Buttons GET buildings#index */ 
-
-.options {
-	text-align: center;
 }
 
 /* Styles */ 
@@ -64,6 +99,11 @@ i:hover {
 	color: red;
 } 
 
+label {
+	font-size: 20px;
+	padding-right: 18px;
+}
+
 .new_user h2 {
 	font-size: 25px;
 	color: red;
@@ -73,19 +113,9 @@ i:hover {
 	color: red;
 }
 
-label {
-	font-size: 20px;
-	padding-right: 18px;
-}
-
 .table input {
 	line-height: 30px;
 	font-size: 23px;
-}
-
-.no-padding {
-	padding-left:0px;
-	padding-right:0px;
 }
 
 .price input[type="submit"], input[name="price"] {
@@ -98,7 +128,6 @@ label {
 	color: red;
 	border-color: red;
 }
-
 
 .price input.price_field {
 	font-size: 20px;
@@ -131,6 +160,9 @@ label {
 	border-bottom: white 1px solid;
 }
 
+.table th {
+	color: white;
+}
 
 .table > tbody > tr > td.table-text {
 	padding-top: 15px;

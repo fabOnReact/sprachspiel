@@ -3,7 +3,7 @@ class Purchase < ApplicationRecord
 	belongs_to :room
 	belongs_to :price
 	belongs_to :user
-	has_one :invoice
+	has_one :sale
 	
 	accepts_nested_attributes_for :items
 end
