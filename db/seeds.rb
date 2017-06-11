@@ -33,7 +33,7 @@ second_user = User.find(2)
 
 #product = Product.first
 product = Product.create(name: :sichel)
-item = Item.create(user_id: second_user.id, product_id: product.id, sold: false, used:false, room_id: room.id)
+item = Item.create(product_id: product.id, sold: false, used:false, room_id: room.id)
 
 #purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
 #sale = Sale.create(user_id: second_user.id, item_id: item.id)
