@@ -6,7 +6,7 @@ class RoomsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
       flash[:notice] = "Your Subscription was saved"
-      redirect_to action: "welcome"
+      redirect_to buildings_path
     else
       flash[:error] = "An error occurred, the subscription was not saved"
       render "welcome"
