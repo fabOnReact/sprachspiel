@@ -31,7 +31,7 @@
 		<% id = item.product_id %>
 		<% end %>
 </table>
-<% unless current_user == @room.user %>
+<% unless current_user == @room.user || @purchase.items.empty? %>
 <div class="container">
 	<div class="row price">
 		<%= form_for @price do |price| %>

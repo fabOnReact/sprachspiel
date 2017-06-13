@@ -13,7 +13,6 @@ class PurchasesController < ApplicationController
     items_number = @items_number.to_a
     variable_params.each do |index, nitems|
       @purchase.items << Item.where(product_id: items_number[index.to_i][0], sold: false, room_id: @room.id).limit(nitems.to_i)
-      #binding.pry
     end 
     if @purchase.save
       flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"

@@ -8,10 +8,10 @@
     <div class="panel-body" id="messages">
       <%= render partial: 'messages/message', collection: @chatroom.messages%>
     </div>
-  <%else%>
+  <% else %>
     <div class="panel-body hidden" id="messages">
     </div>
-  <%end%>
+  <% end %>
 </div>
   <% if user_signed_in? %>
     <%= render partial: 'messages/message_form', locals: {message: @message, room: @room} %>
