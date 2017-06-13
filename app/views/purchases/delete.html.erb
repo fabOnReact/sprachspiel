@@ -1,2 +1,31 @@
-<h1>Purchases#delete</h1>
-<p>Find me in app/views/purchases/delete.html.erb</p>
+<%= render "partials/alert" %>
+<div class="page-header no-margin">
+  <h1><%= @purchase.user.name %> <small>Käufer</small></h1>
+</div>
+<div class="row">
+	<div class="col-sm-6"><h2>Artikel</h2></div>
+	<div class="col-sm-6"><h2 class="">Preis</h2></div>
+	<div class="col-sm-6">
+		<table class="table table-bordered">
+			<tr>
+				<th>Produkt</th>
+			</tr>
+			<% @items_number.each do |product_id, number| %>
+			<tr>
+				<td>(<%= number %>) <%= Product.find(product_id).name %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="col-sm-6">
+		<table class="table table-bordered">
+			<tr><td>Gold</td><td><%= @purchase.price.gold %></td></tr>
+			<tr><td>Wood</td><td><%= @purchase.price.wood %></td></tr>
+			<tr><td>Food</td><td><%= @purchase.price.food %></td></tr>
+			<tr><td>Metal</td><td><%= @purchase.price.metal %></td></tr>
+		</table>
+	</div>
+</div>
+
+<%= link_to "Löschen", {action: "destroy", id: @purchase.id}, method: :delete, class: "btn-danger btn-lg" %>
+<%= link_to "zurück", room_path(@purchase.room_id) , class: "btn-primary btn-lg" %>

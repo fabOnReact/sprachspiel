@@ -25,17 +25,19 @@
 		</td>
 		<td class="col-xs-4 col-sm-2">
 	        <div class="btn-group">
-	         <%= link_to room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot anzeigen"} do %>
-	         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-	         <% end %>
-	         <% if current_user = purchase.user %>
-	         <%= link_to edit_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot bearbeiten"}  do %>
-	         <i class="fa fa-pencil" aria-hidden="true"></i>
-	         <% end %>
-	         <%= link_to delete_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot löschen"}  do %>
-	         <i class="fa fa-trash-o" aria-hidden="true"></i>
-	         <% end %>
-	         <% end %>
+			<%= link_to room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot anzeigen"} do %>
+			<i class="fa fa-arrow-right" aria-hidden="true"></i>
+			<% end %>
+			<% if current_user == purchase.user %>
+				<%= link_to delete_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot löschen"}  do %>
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
+			 <% end %>
+			<% end %>
+			<% if current_user == @room.user %>
+				<%= link_to create_room_sale_path(@room, purchase), { method: :post }, {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
+				<i class="fa fa-check" aria-hidden="true"></i>
+				<% end %>
+			<% end %>		
 	        </div>			
 		</td>
 	</tr>

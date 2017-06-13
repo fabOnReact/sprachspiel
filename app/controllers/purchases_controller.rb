@@ -33,6 +33,19 @@ class PurchasesController < ApplicationController
   end 
 
   def delete
+    @items_number = @purchase.items.group(:product_id).count
+    @room = Room.find(params[:room_id])    
+  end
+
+  def destroy
+    @room = @purchase.room
+    if @purchase.destroy 
+      flash[:notice] = "Ihr Kaufangebot wurde gelöscht!"
+      redirect_to room_path(@room)
+    else
+      flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gelöscht"
+      redirect_to room_path(@room)
+    end        
   end
 
   private 
