@@ -9,22 +9,20 @@ user
 resource
 	user_id:integer gold:integer wood:integer food:integer stone:integer metal:integer
 
-1a. Save the Resource Object when saving user
+2. Build Items
 
-2. Show resources on the user main page
+3. Purchase other People Items
 
-3. Validation each user can have only one room
+4. Sell your Items
 
-4. Calculate Current Balance
+8. Display the item in the correct room after sell
 
-5. Sell Items
-	items controller 
-		index
+9. Calculate the balance
 
-6. Purchase Items
+Internationalization
+Globalize
 
-7. Build Items
-
+-------------------------------------------------------------------
 	remove invoice for now 
 	
 	user
@@ -32,13 +30,20 @@ resource
 		has_many :purchases
 		has_many :sales
 
+	building 
+		has_many: rooms
+		has_many: products
+
 	room
 		user_id:integer
 		has_many :purchases
 		has_many :sales
-		has_many :items
+		has_many :items, through: :purchases
+		#has_many :items, through: :sales
+		#has_many :items
 
 	product
+		building_id:integer
 		name:string sickle, four ...
 		has_many :item
 
@@ -59,6 +64,7 @@ resource
 		price_id:integer
 		user_id:integer
 		sale_id:integer
+		bonus:boolean
 		has_many :items
 
 	sale
@@ -74,19 +80,9 @@ resource
 		product_id:integer
 		sold:boolean
 		used:boolean
-		room_id:integer
+		#room_id:integer
 		purchase_id:integer
 		sale_id:integer
-
-	1. generate purchases controller
-	2. set up the purchases#new or rooms#new
-	3. show up all the items
-	4. submit to purchase#create
-	5. save
-
-
-Internationalization
-Globalize
 
 -------------------------------------------------------------------
 

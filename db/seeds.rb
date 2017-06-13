@@ -21,21 +21,23 @@ Building.create(name: "Palast", price_id: 4)
 Price.create(gold: 0, wood: 10, food: 10, stone: 0, metal: 0)
 Building.create(name: "Dorf", price_id: 5)
 =end
-building = Building.first
-first_user = User.find(2)
-room = Room.create(title: "Geschäft" , description: "Hallo, mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen Viele Grüße Fabrizio", user_id: first_user.id, building_id: building.id)
+#building = Building.first
+first_user = User.find(3)
+#room = Room.create(title: "Geschäft" , description: "Hallo, mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen Viele Grüße Fabrizio", user_id: first_user.id, building_id: building.id)
 
 #second_user = User.new(email: "federico@email.com", password: "fabrizio")
 #second_user.password_confirmation = "fabrizio"
 #second_user.save
 # Creating a second User
-second_user = User.find(2)
+second_user = User.find(4)
 
-#product = Product.first
-product = Product.create(name: :sichel)
-item = Item.create(product_id: product.id, sold: false, used:false, room_id: room.id)
+#product = Product.create(name: :sichel)
+product = Product.first
+item = Item.create(product_id: product.id, sold: false, used: false)
 
-#purchase = Purchase.create(user_id: first_user.id, item_id: item.id)
-#sale = Sale.create(user_id: second_user.id, item_id: item.id)
-#price = Price.create(gold: 10, food: 40)
+price = Price.create(gold: 10, food: 40)
+purchase = Purchase.create(user_id: first_user.id, item_id: item.id, room_id: first_user.rooms.first, price_id: price.id)
+item.sold = true
+item.save
+#sale = Sale.create(user_id: second_user.id, item_id: item.id, )
 #invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)

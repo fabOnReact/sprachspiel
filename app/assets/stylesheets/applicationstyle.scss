@@ -80,6 +80,17 @@
 	width: 30%;
 }
 
+.btn-centered-relative {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	left: 50%;
+	position: relative;
+	transform: translateX(-50%);
+	width: 60%;
+	height: 45px;
+	padding-top: 10px;
+}
+
 /* Styles */ 
 
 p { 
@@ -173,6 +184,11 @@ label {
 
 .alert {	background-color: white;
 	background-image: initial;
+}
+
+.alert p, .alert ul, .alert li {
+	background-color: white;
+	color: red;
 }
 
 /* Images */ 

@@ -26,6 +26,8 @@
 	</div>
 </div>
 
-<%= link_to "Akzeptieren", { controller: "sales", action: "create",room_id: @room.id, purchase_id: @purchase }, method: :post, class: "btn-green btn-lg" %>
-<%= link_to "Ablehnen", {}, class: "btn-danger btn-lg" %>
+<% if current_user == @room.user %>
+	<%= link_to "Akzeptieren", { controller: "sales", action: "create",room_id: @room.id, purchase_id: @purchase }, method: :post, class: "btn-green btn-lg" %>
+<% end %>
+<%= link_to "Ablehnen", delete_room_purchase_path(@room, @purchase), class: "btn-danger btn-lg" %>
 <%= link_to "zurück", room_path(@purchase.room_id) , class: "btn-primary btn-lg" %>

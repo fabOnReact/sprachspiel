@@ -1,9 +1,4 @@
-    var i = 0;
-    var string = i.toString();
-    var row = ".row"
-    var plus_square = "#plus-square"
-    var number_field = "#number_field"
-    var minus_square = "#minus-square"
-    var plus_square_row = row + string + plus_square;
-    var number_field_row = row + string + number_field;
-    var minus_square_row = row + string + minus_square;
+	<%= render 'partials/error_messages', object: resource %>
+	<% if @room.errors['base'].present? %>
+	<span class="help-block error"><%= @room.errors['base'][0] %></span>
+	<% end %>            

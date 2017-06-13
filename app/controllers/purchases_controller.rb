@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
     current_user.purchases.where(room_id: @room.id, invoice_id: nil).destroy_all
     items_number = @items_number.to_a
     variable_params.each do |index, nitems|
-      @purchase.items << Item.where(product_id: items_number[index.to_i][0], sold: false, room_id: @room.id).limit(nitems.to_i)
+      @purchase.items << Item.where(product_id: items_number[index.to_i][0], sold: false).limit(nitems.to_i)
     end 
     if @purchase.save
       flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"

@@ -1,7 +1,4 @@
 <%= simple_form_for [@building, @room], html: {class: 'form-horizontal'} do |f| %>
-	<% if @room.errors['base'].present? %>
-	<span class="help-block error"><%= @room.errors['base'][0] %></span>
-	<% end %>            
 	<%= render 'partials/error_messages', object: @room %> 
 	<%= f.input :title %>
 	<span class="countdown"></span>

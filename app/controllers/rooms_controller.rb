@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
 
   def new
     @building = Building.find(params[:building_id])
-    @room = Room.new(building_id: params[:building_id] )
+    @room = Room.new(building_id: params[:building_id] )    
   end
 
   def create
@@ -24,6 +24,13 @@ class RoomsController < ApplicationController
     @room.user_id = current_user.id
     @room.chatroom = Chatroom.new
     if @room.save 
+      @price = Price.create()
+      @purchase = Purchase.create(room_id: @room.id, price_id: @price.id, user_id: current_user.id, bonus: true)
+      @building.products.each do |product|
+        4.times do
+          Item.create(product_id: product.id, sold: false, used: false, purchase_id: @purchase.id)
+        end
+      end      
       flash[:notice] = "Your Room was saved"
       redirect_to buildings_path
     else
@@ -90,7 +97,7 @@ class RoomsController < ApplicationController
     @price = Price.new
     @room = Room.find(params[:id])
     @items = @room.items.where(sold: false, used: false).order(:product_id)
-    @purchase = Purchase.new(room_id: params[:room_id])
+    @purchase = Purchase.new(room_id: @room.id)
     @purchase.items << @items
     @items_number = @items.group(:product_id).count
   end   
