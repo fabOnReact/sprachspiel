@@ -1,23 +1,16 @@
-You need to pass more then 1 number with the purchase#new
+1. A room with role king is allways available and can be bought
 
-user
-	has_many :rooms
-	has_many :messages
-	has_many :chatrooms, through: :messages
-	has_one :resource
+2  When a player starts a new room he gets some items for free from the king
 
-resource
-	user_id:integer gold:integer wood:integer food:integer stone:integer metal:integer
+3. Build Items
 
-2. Build Items
+4. Purchase other People Items
 
-3. Purchase other People Items
+5. Sell your Items
 
-4. Sell your Items
+6. Display the item in the correct room after sell
 
-8. Display the item in the correct room after sell
-
-9. Calculate the balance
+7. Calculate the balance
 
 Internationalization
 Globalize
@@ -38,9 +31,9 @@ Globalize
 		user_id:integer
 		has_many :purchases
 		has_many :sales
-		has_many :items, through: :purchases
+		#has_many :items, through: :purchases
 		#has_many :items, through: :sales
-		#has_many :items
+		has_many :items
 
 	product
 		building_id:integer
@@ -80,7 +73,7 @@ Globalize
 		product_id:integer
 		sold:boolean
 		used:boolean
-		#room_id:integer
+		room_id:integer
 		purchase_id:integer
 		sale_id:integer
 

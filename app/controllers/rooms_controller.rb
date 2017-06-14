@@ -24,13 +24,8 @@ class RoomsController < ApplicationController
     @room.user_id = current_user.id
     @room.chatroom = Chatroom.new
     if @room.save 
-      @price = Price.create()
-      @purchase = Purchase.create(room_id: @room.id, price_id: @price.id, user_id: current_user.id, bonus: true)
-      @building.products.each do |product|
-        4.times do
-          Item.create(product_id: product.id, sold: false, used: false, purchase_id: @purchase.id)
-        end
-      end      
+      @purchase = Purchase.creating(@room, Price.free, current_user, true)
+      @building.room_items(@purchase)
       flash[:notice] = "Your Room was saved"
       redirect_to buildings_path
     else

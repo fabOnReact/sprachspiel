@@ -50,4 +50,23 @@ class User < ApplicationRecord
     return totals
   end
 
+  def user_has_room(building)
+    #binding.pry
+    if self.admin 
+      return false
+    elsif building.id == 4 
+      return true
+    else
+      #binding.pry
+      return self.present? && self.rooms.present? 
+    end
+  end
+
+  def room_owner(room)
+    self == room.user
+  end
+
+  def admin?
+    self.admin == true
+  end
 end
