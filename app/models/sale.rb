@@ -7,10 +7,7 @@ class Sale < ApplicationRecord
 
 	def saving(purchase) 	
 		self.purchase_id = purchase.id
-		# now rooms has many items
-		#binding.pry
 		purchase.items.each do |item| 
-			#binding.pry
 			item.room_id = purchase.room_id
 			item.save
 		end

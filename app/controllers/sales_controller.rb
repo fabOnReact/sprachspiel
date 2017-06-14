@@ -5,7 +5,7 @@ class SalesController < ApplicationController
 		@sale = Sale.new(room_id: params[:room_id], price_id: @purchase.price_id, user_id: current_user.id )
 		if @sale.saving(@purchase)
 			price = @sale.price
-			if @purchase.saving(@sale)
+			if @purchase.update_attributes(sale_id: @sale.id, room_id: @purchase.user.rooms.first.id)
 			  	flash[:notice] = "Ihr Verkauf wurde gespeichert! Sie haben #{price.gold} Gold, #{price.wood} Wood, #{price.wood}, Food #{price.food}, #{price.stone} Stone, #{price.metal} Metal verdient"
 			  	redirect_to room_path(@room)
 		  	end

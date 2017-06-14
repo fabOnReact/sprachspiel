@@ -11,7 +11,7 @@ class Building < ApplicationRecord
         room = Building.find(4).rooms.first
         
         sale = Sale.creating(purchase, room)
-		purchase.saving(sale)       
+        purchase.update_attributes(sale_id: sale.id, room_id: purchase.user.rooms.first.id)
 		sale.saving(purchase)
     end  
 end
