@@ -12,9 +12,15 @@
 
 7. Calculate the balance
 
+8. Check that the player has available resources for the purchase
+
+9. Temporarely remove the resources from players when they do a purchase, give them back  if the purchase is declined
+
 Internationalization
 Globalize
 
+---------------------------before launch---------------------------
+include the send button for the chat
 -------------------------------------------------------------------
 	remove invoice for now 
 	

@@ -1,7 +1,10 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {  
   received: function(data) {
-    $("#messages").removeClass('hidden')
-    return $('#messages').append(this.renderMessage(data));
+    $("#messages").removeClass('hidden');
+    $('#messages').append(this.renderMessage(data));
+    height = $('.scroll-bar')[0].scrollHeight;
+	$('.scroll-bar').scrollTop(height);
+	/*return $('#messages').append(this.renderMessage(data));*/
   },
   renderMessage: function(data) {
     return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";

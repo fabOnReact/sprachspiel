@@ -1,8 +1,7 @@
 <h1>Spiel Karte</h1>
 <p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
 
-<!-- TO FIX LATER --> 
-<%#= render partial: "partials/resources" if user_signed_in? %>
+<%= render partial: "partials/resources" if user_signed_in? %>
 
 <% @buildings.each do |building| %>
 
@@ -19,13 +18,15 @@
 				<div class="row">
 					<div class="col-md-12">
 						<%= link_to room.title, building_room_path(building, room) %>
-						<% if user_signed_in? && current_user.room_owner(room) || current_user.admin? %>
+						<% if user_signed_in? %> 
+							<% if current_user.room_owner(room) || current_user.admin? %>
 							<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
 							<i class="fa fa-pencil" aria-hidden="true"></i>
 							<% end %>	
 							<%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
 							<i class="fa fa-trash" aria-hidden="true"></i>
 							<% end %>
+							<% end %> <!-- if current_user.room_owner(room) ... -->
 						<% end %> <!-- if user_signed_in? -->
 					</div>
 				</div>
@@ -48,14 +49,16 @@
 				<div class="row">
 					<div class="col-md-12">
 						<%= link_to room.title, building_room_path(building, room) %>
-						<% if user_signed_in? && current_user.room_owner(room) || current_user.admin?%>
+						<% if user_signed_in? %> 
+							<% if current_user.room_owner(room) || current_user.admin? %>
 							<%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
 							<i class="fa fa-pencil" aria-hidden="true"></i>
 							<% end %>		
 							<%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
 								<i class="fa fa-trash" aria-hidden="true"></i>
 							<% end %>			
-						<% end %>
+							<% end %> <!-- current_user.room_owner(room) -->
+						<% end %> <!-- if user_signed_in? -->
 					</div>
 				</div>
 			<% end %> <!-- rooms.each do |room| -->

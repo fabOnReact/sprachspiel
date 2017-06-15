@@ -96,5 +96,4 @@ class RoomsController < ApplicationController
     @purchase.items << @items
     @items_number = @items.group(:product_id).count
   end   
-
 end

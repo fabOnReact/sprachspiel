@@ -13,6 +13,11 @@ var ready = function() {
 	});	
 
 	$('a').tooltip();
+
+	/*row = ($('.scroll-bar').children().children().size() + 1) *100
+	$('.scroll-bar').scrollTop(row);*/
+	height = $('.scroll-bar')[0].scrollHeight;
+	$('.scroll-bar').scrollTop(height);
 }
 
 $(document).on('turbolinks:load', ready);
