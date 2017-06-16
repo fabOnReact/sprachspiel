@@ -338,6 +338,17 @@ input:-webkit-autofill {
 	
 }
 
+/* GET buildings#show */
+
+.subheader-buildings p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.subheader-buildings p:hover {
+	color: red;
+}
+
 /* rooms controller */
 
 .countdown {

@@ -15,7 +15,7 @@
   <% end %>
 </div>
   <% if user_signed_in? %>
-    <%= render partial: 'messages/message_form', locals: {message: @message, room: @room} %>
+    <%= render partial: 'messages/message_form', locals: {message: @message, variable: @room} %>
   <% else %>
     <% flash[:error] = "You need to signup/signin to chat and play" %>
   <% end %>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 	end
 
 	# landing page
-	post "subscription", to: 'rooms#createSubscription'
+	post "subscription", to: 'buildings#createSubscription'
 
 	# rooms
 	get "/buildings/:building_id/rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :purchases, :dependent => :destroy
   has_many :sales, :dependent => :destroy
 
+  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
   def name 
   	email.split('@')[0]
   end
@@ -74,5 +75,9 @@ class User < ApplicationRecord
 
   def admin?
     self.admin == true
+  end
+
+  def online?
+    updated_at > 10.minutes.ago
   end
 end

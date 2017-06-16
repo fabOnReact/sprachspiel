@@ -11,7 +11,6 @@ class Sale < ApplicationRecord
 			item.room_id = purchase.room_id
 			item.save
 		end
-
 		self.items << purchase.items
 		self.save
 	end

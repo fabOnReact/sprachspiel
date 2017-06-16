@@ -14,33 +14,34 @@ var ready = function() {
 
 	$('a').tooltip();
 
-	/*row = ($('.scroll-bar').children().children().size() + 1) *100
-	$('.scroll-bar').scrollTop(row);*/
-
 	$scrollbar = $('.scroll-bar');
 	if (typeof $scrollbar[0] != 'undefined') {
 		height = $scrollbar[0].scrollHeight;
 		$scrollbar.scrollTop(height);
 	}
-}
+	
+	$myTabs_links = $('#myTabs a')
+	if (typeof $myTabs_links != 'undefined') {
+		$('#myTabs li:eq(0) a').tab('show')
+	};
 
-$(document).on('turbolinks:load', ready);
+	$('#myTabs a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	});
 
-
-/* GET companies#new Update char count */
-
-function updateCountdown() {
-    // 360 is the max description length
-    var remaining = 15 - $('#room_title').val().length;
-    var total = $('#room_title').val().length
-    jQuery('.countdown').text(total + ' characters, ' + remaining + ' characters remaining.');
-}
-
-$(document).on('turbolinks:load', function() {
 	variable = $('#room_title').val();
 	if (typeof variable != "undefined") { 
 	    updateCountdown();
 	    $('#room_title').on('input', updateCountdown);
 	    $('#room_title').keyup(updateCountdown);
-	};
-});
+	};	
+}
+
+$(document).on('turbolinks:load', ready);
+
+function updateCountdown() {
+    var remaining = 15 - $('#room_title').val().length;
+    var total = $('#room_title').val().length
+    jQuery('.countdown').text(total + ' characters, ' + remaining + ' characters remaining.');
+}

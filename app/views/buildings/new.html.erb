@@ -1,0 +1,8 @@
+<%= simple_form_for @building, html: {class: 'form-horizontal'} do |f| %>
+	<%= render 'partials/error_messages', object: @building %> 
+	<%= f.input :name %>
+	<span class="countdown"></span>
+	<%= f.input :description, :input_html => { :cols => 100, :rows => 20 } %>
+	<%= link_to :back, buildings_path, class: "btn btn-primary" %>
+	<%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

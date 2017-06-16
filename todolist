@@ -1,4 +1,5 @@
-Fix the check on the price object that the amount is not higher then the available amount
+rendere immagini statiche
+richiedere il nome e cognome del giocatore alla registrazione
 
 1. A room with role king is allways available and can be bought
 

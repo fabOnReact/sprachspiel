@@ -1,16 +1,7 @@
 class RoomsController < ApplicationController
   before_action :find_room, only: [:update, :show, :destroy]
-  before_action :set_purchase, only: [:show]
 
-  def createSubscription 
-    @subscription = Subscription.new(subscription_params)
-    if @subscription.save
-      flash[:notice] = "Your Subscription was saved"
-      redirect_to root_path
-    else
-      flash[:error] = "An error occurred, the subscription was not saved"
-      render "welcome"
-    end       
+  def index
   end
 
   def new
@@ -54,6 +45,12 @@ class RoomsController < ApplicationController
   end  
 
   def show
+    @price = Price.new
+    @room = Room.find(params[:id])
+    @items = @room.items.where(sold: false, used: false).order(:product_id)
+    @purchase = Purchase.new(room_id: @room.id)
+    @purchase.items << @items
+    @items_number = @items.group(:product_id).count    
     @chatroom = @room.chatroom
   	@message = Message.new
     @purchases = Purchase.where(invoice_id: nil, room_id: @room.id)
@@ -76,10 +73,6 @@ class RoomsController < ApplicationController
   end
 
   private
-  def subscription_params
-    params.require(:subscription).permit(:email)
-  end
-
   def room_params
     params.require(:room).permit(:title, :description, :building_id)
   end
@@ -87,13 +80,4 @@ class RoomsController < ApplicationController
   def find_room
     @romm = Room.find(params[:id])
   end
-
-  def set_purchase
-    @price = Price.new
-    @room = Room.find(params[:id])
-    @items = @room.items.where(sold: false, used: false).order(:product_id)
-    @purchase = Purchase.new(room_id: @room.id)
-    @purchase.items << @items
-    @items_number = @items.group(:product_id).count
-  end   
 end
