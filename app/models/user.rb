@@ -26,6 +26,19 @@ class User < ApplicationRecord
     return ending_balance
   end
  
+  def validation_balance(price)
+    balance = self.ending_balance
+    resources = [:gold, :wood, :food, :stone, :metal]
+    resources.each do |resource|
+      i = 0
+      if balance[i] < price[resource]
+        return false if balance[i] - price[resource]
+      end
+      i += 1
+    end
+    return true
+  end
+
   def current_balance
     # Query all invoices from purchases/sales for that user in a nested array
     purchases = Purchase.where(user_id: self.id).joins(:price)
@@ -41,6 +54,7 @@ class User < ApplicationRecord
     partials.each do |partial|
       totals << ( partial[1] - partial[0] )
     end
+    #binding.pry
     return totals
   end
 

@@ -1,4 +1,75 @@
-	<%= render 'partials/error_messages', object: resource %>
-	<% if @room.errors['base'].present? %>
-	<span class="help-block error"><%= @room.errors['base'][0] %></span>
-	<% end %>            
+<h1>Spiel Karte</h1>
+<p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
+
+<%= render partial: "partials/resources" if user_signed_in? %>
+
+<% @buildings.each do |building| %>
+
+<% if building.id.odd? %> 
+<div class="row roomsIndex">
+  <div class="col-sm-3 hidden-xs">
+    <%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+  </div>
+  <div class="col-sm-3 col-xs-12">
+    <p><%= building.name %></p> 
+    <p>Rooms Available:</p>
+    <% rooms = @rooms.where(building_id: building.id) %>
+      <% rooms.each do |room| %>
+        <div class="row no-margin-top">
+          <div class="col-md-12">
+            <%= link_to room.title, building_room_path(building, room) %>
+            <% if user_signed_in? %> 
+              <% if current_user.room_owner(room) || current_user.admin? %>
+              <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %> 
+              <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+              <% end %> <!-- if current_user.room_owner(room) ... -->
+            <% end %> <!-- if user_signed_in? -->
+          </div>
+        </div>
+      <% end %><!-- rooms.each do |room| -->
+    <% unless current_user.nil? %>
+      <%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building)%>
+    <% end %>
+  </div>
+
+<% if building == @buildings.last %>
+</div>
+<% end %>
+
+<% else %>  
+  <div class="col-sm-3 col-xs-12">
+    <p><%= building.name %></p> 
+    <p>Rooms Available:</p>
+    <% rooms = @rooms.where(building_id: building.id) %>
+      <% rooms.each do |room| %>
+        <div class="row no-margin-top">
+          <div class="col-md-12">
+            <%= link_to room.title, building_room_path(building, room) %>
+            <% if user_signed_in? %> 
+              <% if current_user.room_owner(room) || current_user.admin? %>
+              <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %>   
+              <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>     
+              <% end %> <!-- current_user.room_owner(room) -->
+            <% end %> <!-- if user_signed_in? -->
+          </div>
+        </div>
+      <% end %> <!-- rooms.each do |room| -->
+    <% unless current_user.nil? %>      
+      <%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building) %>    
+    <% end %>
+  </div>
+  <div class="col-sm-3 hidden-xs">
+    <%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+  </div>
+</div>
+<% end %>
+
+<% end %>

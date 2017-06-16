@@ -28,6 +28,11 @@
 	text-align: right;
 }
 
+.justify {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
 .scroll-bar {
 	overflow: auto;
 	height: 250px;
@@ -99,6 +104,10 @@
 
 /* Styles */ 
 
+h1, p {
+	margin-top: 15px;
+}
+
 p { 
 	font-size: 17px;
 	}
@@ -150,6 +159,13 @@ label {
 	font-size: 20px;
 }	
 
+
+/* Margins */
+
+.info {
+	margin-top: 30px;
+}
+
 /* Bootstrap */ 
 
 /* Rows */ 
@@ -159,9 +175,14 @@ label {
 	margin-bottom: 17px;
 }
 
+.roomsIndex .row {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
 .row-resources {
 	border: 1px solid white;
-	border-radius: 5px;
+	/*border-radius: 5px;*/
 }
 
 /* Columns */
@@ -398,7 +419,20 @@ input:-webkit-autofill {
 
 	.full-width-mobile {
 		width: 100%;
-	}		
+	}
+
+	.table > tbody > tr > td {
+		padding-top: 10px;
+	}
+
+	.table > tbody > tr > td:nth-child(10) {
+		padding-top: 3px;
+	}	
+
+	.btn-group {
+		left: 50%;
+		transform: translateX(-50%);
+	}
 }	
 
 @media (max-width: 320px) {

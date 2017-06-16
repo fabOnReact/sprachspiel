@@ -49,7 +49,7 @@ class BuildingsController < ApplicationController
   # GET /buildings/1
   # GET /buildings/1.json
   def show
-	@building = Building.find(params[:id])
+    @building = Building.find(params[:id])
   end
 
   def delete

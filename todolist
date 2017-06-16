@@ -1,3 +1,5 @@
+Fix the check on the price object that the amount is not higher then the available amount
+
 1. A room with role king is allways available and can be bought
 
 2  When a player starts a new room he gets some items for free from the king
@@ -16,10 +18,12 @@
 
 9. Temporarely remove the resources from players when they do a purchase, give them back  if the purchase is declined
 
+Build a new chat for buildings where users chan see all items and join a chat
+
 Internationalization
 Globalize
 
----------------------------before launch---------------------------
+-----------------------before launch-------------------------------
 include the send button for the chat
 -------------------------------------------------------------------
 	remove invoice for now 

@@ -8,14 +8,16 @@
 <% if building.id.odd? %>	
 <div class="row roomsIndex">
 	<div class="col-sm-3 hidden-xs">
-		<%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+		<%= link_to building_path(building) do %>
+			<%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+		<% end %>
 	</div>
 	<div class="col-sm-3 col-xs-12">
 		<p><%= building.name %></p> 
 		<p>Rooms Available:</p>
 		<% rooms = @rooms.where(building_id: building.id) %>
 			<% rooms.each do |room| %>
-				<div class="row">
+				<div class="row no-margin-top">
 					<div class="col-md-12">
 						<%= link_to room.title, building_room_path(building, room) %>
 						<% if user_signed_in? %> 
@@ -46,7 +48,7 @@
 		<p>Rooms Available:</p>
 		<% rooms = @rooms.where(building_id: building.id) %>
 			<% rooms.each do |room| %>
-				<div class="row">
+				<div class="row no-margin-top">
 					<div class="col-md-12">
 						<%= link_to room.title, building_room_path(building, room) %>
 						<% if user_signed_in? %> 
@@ -67,7 +69,9 @@
 		<% end %>
 	</div>
 	<div class="col-sm-3 hidden-xs">
-		<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+		<%= link_to building_path(building) do %>
+			<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+		<% end %>
 	</div>
 </div>
 <% end %>

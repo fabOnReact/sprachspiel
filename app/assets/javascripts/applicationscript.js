@@ -16,8 +16,12 @@ var ready = function() {
 
 	/*row = ($('.scroll-bar').children().children().size() + 1) *100
 	$('.scroll-bar').scrollTop(row);*/
-	height = $('.scroll-bar')[0].scrollHeight;
-	$('.scroll-bar').scrollTop(height);
+
+	$scrollbar = $('.scroll-bar');
+	if (typeof $scrollbar[0] != 'undefined') {
+		height = $scrollbar[0].scrollHeight;
+		$scrollbar.scrollTop(height);
+	}
 }
 
 $(document).on('turbolinks:load', ready);

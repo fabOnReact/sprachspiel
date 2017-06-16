@@ -1,38 +1,45 @@
 <% purchases_new = @purchases.where(sale_id: nil, bonus: nil) %>
 
 <% if purchases_new.present? %>
-<table class="table table-hover">
-	<tr class="row">
-		<th class="hidden-xs col-sm-2">Spieler</th>
-		<th class="col-xs-2 col-sm-1">gold</th>
-		<th class="col-xs-2 col-sm-1">wood</th>
-		<th class="col-xs-2 col-sm-1">stone</th>
-		<th class="col-xs-2 col-sm-1">metal</th>
-		<th class="hidden-xs col-sm-4">Items</th>
+<table class="table">
+	<tr class="">
+		<th class="col-xs-2 col-sm-2">Spieler</th>
+		<th class="col-xs-1 hidden-sm hidden-md hidden-lg">Total</td>
+		<th class="col-xs-1 col-sm-1">gold</th>
+		<th class="hidden-xs col-sm-1">wood</th>
+		<th class="hidden-xs col-sm-1">food</th>		
+		<th class="hidden-xs col-sm-1">stone</th>
+		<th class="hidden-xs col-sm-1">metal</th>
+		<th class="hidden-xs col-sm-3">Items</th>
 		<th class="col-xs-4 col-sm-2">Optionen</th>
 	</tr>
 	<% purchases_new.each do |purchase| %>
-	<tr class="row">
+	<% total = purchase.price.gold + purchase.price.wood + purchase.price.food + purchase.price.stone + purchase.price.metal %>
+	<tr class="">
 		<td class="hidden-xs col-sm-2"><%= purchase.user.name %></td>
-		<td class="col-xs-2 col-sm-1"><%= purchase.price.gold %></td>
-		<td class="col-xs-2 col-sm-1"><%= purchase.price.wood %></td>
-		<td class="col-xs-2 col-sm-1"><%= purchase.price.stone %></td>
-		<td class="col-xs-2 col-sm-1"><%= purchase.price.metal %></td>
-		<td class="hidden-xs col-sm-4">
-		<% purchase.items.group(:product_id).count.each do |product_id, number| %>
-		<%= Product.find(product_id).name %>(<%= number %>)
-		<% end %>
+		<td class="col-xs-2 hidden-sm hidden-md hidden-lg"><%= purchase.user.name[0..6] %></td>
+		<td class="col-xs-1 hidden-sm hidden-md hidden-lg"><%= total %></td>
+		<td class="col-xs-1 col-sm-1"><%= purchase.price.gold %></td>
+		<td class="hidden-xs col-sm-1"><%= purchase.price.wood %></td>
+		<td class="hidden-xs col-sm-1"><%= purchase.price.food %></td>
+		<td class="hidden-xs col-sm-1"><%= purchase.price.stone %></td>
+		<td class="hidden-xs col-sm-1"><%= purchase.price.metal %></td>
+		<td class="hidden-xs col-sm-3">
+			<% purchase.items.group(:product_id).count.each do |product_id, number| %>
+			<%= Product.find(product_id).name %>(<%= number %>)
+			<% end %>
 		</td>
 		<td class="col-xs-4 col-sm-2">
 	        <div class="btn-group">
 			<%= link_to room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Angebot anzeigen"} do %>
-			<i class="fa fa-arrow-right" aria-hidden="true"></i>
+			<i class="fa fa-arrow-right hidden-xs" aria-hidden="true"></i>
+			<i class="fa fa-arrow-right fa-2x hidden-sm hidden-md hidden-lg" aria-hidden="true"></i>
 			<% end %>
-			<%= link_to delete_room_purchase_path(@room, purchase), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot löschen"}  do %>
+			<%= link_to delete_room_purchase_path(@room, purchase), {class: "hidden-xs", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot löschen"}  do %>
 			<i class="fa fa-trash-o" aria-hidden="true"></i>
 		 	<% end %>
 			<% if current_user == @room.user %>
-				<%= link_to create_room_sale_path(@room, purchase), { method: :post }, {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
+				<%= link_to create_room_sale_path(@room, purchase), { method: :post }, {class: "hidden-xs", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
 				<i class="fa fa-check" aria-hidden="true"></i>
 				<% end %>
 			<% end %>		
