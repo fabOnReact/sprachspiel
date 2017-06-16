@@ -338,8 +338,6 @@ input:-webkit-autofill {
 	
 }
 
-/* GET buildings#show */
-
 .subheader-buildings p {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -347,6 +345,14 @@ input:-webkit-autofill {
 
 .subheader-buildings p:hover {
 	color: red;
+}
+
+/* GET buildings#show */
+
+.tab-links {
+	border-right: 1px white solid;
+	padding-right: 5px;
+	margin-right: 10px;
 }
 
 /* rooms controller */

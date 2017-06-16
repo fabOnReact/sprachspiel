@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="row subheader-buildings">
+<div class="row">
   <div class="col-sm-2">
     <%= image_tag @images[@building.id.pred], style: "height:110px;" %>
   </div>
@@ -25,31 +25,51 @@
       <% end %>
     </ul>
 
+
     <!-- Tab panes -->
     <div class="tab-content">
       <% i = 0 %>
       <% ids.each do |id| %>
-        <div role="tabpanel" class="tab-pane fade <%#= active if i == 0 %>" id="<%= id %>">Test<%= i %></div>
+        <div role="tabpanel" class="tab-pane fade" id="online">
+        <% users = User.online %>
+        <p>
+        <% users.each do |user| %>
+            <% room = user.rooms.first %>
+            <% name = user.name[0..7] %>
+            <% items_number = room.items.group(:product_id).count %>
+            <%= link_to building_room_path(@building, room), class:"tab-links" do %>
+              <%= name %> verkauft:
+              <% items_number.each do |product_id, number| %>
+                <% item_name = Product.find(product_id).name %>
+                <%= item_name %>(<%= number %>)        
+              <% end %>
+            <% end %>
+        <% end %>
+        </p>
+        </div>      
+        <div role="tabpanel" class="tab-pane fade" id="tools">
+        <% @building.rooms.each do |room| %>
+          <% name = room.user.name %>
+          <% items_number = room.items.group(:product_id).count %>
+
+          <% string = "#{name} verkauft:" %>
+          <%= link_to building_roomo_path(@building, room) do %>
+            <p><%= string %>
+            <% items_number.each do |product_id, number| %>
+              <% item_name = Product.find(product_id).name %>
+              <%= item_name %>(<%= number %>)
+            <% end %>
+            </p>
+          <% end %>
+        <% end %>  
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="weapons"></div>
+        <div role="tabpanel" class="tab-pane fade" id="food"></div>                
         <% i += 1 %>
       <% end %>
     </div>   
   </div>
 </div>
-
-    <% @building.rooms.each do |room| %>
-      <% name = room.user.name %>
-      <% items_number = room.items.group(:product_id).count %>
-   
-      <% string = "#{name} verkauft:" %>
-      <%= link_to building_room_path(@building, room) do %>
-        <p><%= string %>
-        <% items_number.each do |product_id, number| %>
-          <% item_name = Product.find(product_id).name %>
-          <%= item_name %>(<%= number %>)
-        <% end %>
-        </p>
-      <% end %>
-    <% end %>   
 
 <div class="panel panel-default scroll-bar">
   <% if @chatroom.messages.any? %>

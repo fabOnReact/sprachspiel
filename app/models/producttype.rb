@@ -1,0 +1,2 @@
+class Producttype < ApplicationRecord
+end

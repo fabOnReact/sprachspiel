@@ -21,8 +21,13 @@ richiedere il nome e cognome del giocatore alla registrazione
 
 Build a new chat for buildings where users chan see all items and join a chat
 
+
+-----------------------before launch-------------------------------
+Use action cable to update other areas of the game. like players online
+reseources items ...etc..
 Internationalization
 Globalize
+
 
 -----------------------before launch-------------------------------
 include the send button for the chat
