@@ -1,7 +1,7 @@
 class Room < ApplicationRecord
 	has_many :purchases, :dependent => :destroy 
 	has_many :sales, :dependent => :destroy 
-	has_many :items
+	has_many :items, :dependent => :destroy
 	belongs_to :user
 	belongs_to :building
 	has_one :chatroom, :dependent => :destroy

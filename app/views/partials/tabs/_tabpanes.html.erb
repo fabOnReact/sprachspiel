@@ -1,0 +1,49 @@
+<!-- Tab panes -->
+<div class="tab-content">
+  <% i = 0 %>
+  <% @ids.each do |id| %>
+    <!-- Online Users -->
+    <div role="tabpanel" class="tab-pane fade" id="online"> 
+    <% users = User.online %>
+    <p>
+    <% users.each do |user| %>
+        <% room = user.rooms.first %>
+        <% name = user.name[0..7] %>
+        <% items_number = room.items.group(:product_id).count %>
+        <%= link_to room_path(room), class:"tab-links" do %>
+          <%= name %> verkauft:
+          <% items_number.each do |product_id, number| %>
+            <% item_name = Product.find(product_id).name %>
+            <%= item_name %>(<%= number %>)        
+          <% end %>
+        <% end %>
+    <% end %>
+    </p>
+    </div>      
+    <!-- Tools -->
+    <div role="tabpanel" class="tab-pane fade" id="tools">
+      <p>
+      <% @rooms_count.each do |room_id, count| %>
+        <% items = @products.where("items.room_id" => room_id) %>
+        <% room = Room.find(room_id) %>
+        <% name = room.user.name[0..7] %>
+        <% unless room.user.admin %> 
+          <%= link_to room_path(room), class:"tab-links" do %>
+            <%= name %> verkauft:
+            <% products_count = items.group(:product_id).count %>
+            <% products_count.each do |product_id, count| %>
+              <% item_name = Product.find(product_id).name %>
+              <%= item_name %>(<%= count %>)    
+            <% end %> <!-- products_count.each -->
+          <% end %> <!-- link_to -->
+        <% end %>
+      <% end %> <!-- @room_count.each do -->
+      </p> 
+    </div>
+    <!-- Weapons -->
+    <div role="tabpanel" class="tab-pane fade" id="weapons"></div>
+    <!-- Food -->
+    <div role="tabpanel" class="tab-pane fade" id="food"></div>                
+    <% i += 1 %>
+  <% end %>
+</div> 

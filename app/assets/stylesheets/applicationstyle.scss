@@ -207,6 +207,22 @@ label {
 	font-size: 18px;
 }
 
+/* Tabs */
+
+.tab-list {
+	border-bottom: 1px solid white;
+	text-align: center;
+}
+
+.tab-content {
+	margin-bottom: 40px;
+}
+
+.tab-pane {
+	border-bottom: 1px solid white;
+	min-height: 50px;
+}
+
 /* Alerts */
 
 .alert {	background-color: white;
@@ -331,7 +347,7 @@ input:-webkit-autofill {
 /* GET buildings#index */
 
 .roomsImages {
-	/*width: 26%;*/
+	width: 26%;
 }
 
 .roomsImages img:hover {
@@ -449,6 +465,14 @@ input:-webkit-autofill {
 	.btn-group {
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	ul {
+		margin-top: 10px;
+	}
+
+	li {
+		width: 95px;
 	}
 }	
 

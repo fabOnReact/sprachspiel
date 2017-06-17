@@ -1,15 +1,46 @@
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist" id="myTabs">
-      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-    </ul>
+<p>Rooms Available:</p>
+<% rooms = @rooms.where(building_id: building.id) %>
+  <% rooms.each do |room| %>
+    <div class="row no-margin-top">
+      <div class="col-md-12">
+        <%= link_to room.title, building_room_path(building, room) %>
+        <% if user_signed_in? %> 
+          <% if current_user.room_owner(room) || current_user.admin? %>
+          <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %> 
+          <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+          <% end %> <!-- if current_user.room_owner(room) ... -->
+        <% end %> <!-- if user_signed_in? -->
+      </div>
+    </div>
+  <% end %><!-- rooms.each do |room| -->
+<% unless current_user.nil? %>
+  <%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building)%>
+<% end %>
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane fade active" id="home">Test1</div>
-      <div role="tabpanel" class="tab-pane fade" id="profile">Test2</div>
-      <div role="tabpanel" class="tab-pane fade" id="messages">Test3</div>
-      <div role="tabpanel" class="tab-pane fade" id="settings">Test4</div>
-    </div>   
+
+    <p>Rooms Available:</p>
+<% rooms = @rooms.where(building_id: building.id) %>
+  <% rooms.each do |room| %>
+    <div class="row no-margin-top">
+      <div class="col-md-12">
+        <%= link_to room.title, building_room_path(building, room) %>
+        <% if user_signed_in? %> 
+          <% if current_user.room_owner(room) || current_user.admin? %>
+          <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>   
+          <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>     
+          <% end %> <!-- current_user.room_owner(room) -->
+        <% end %> <!-- if user_signed_in? -->
+      </div>
+    </div>
+  <% end %> <!-- rooms.each do |room| -->
+<% unless current_user.nil? %>      
+  <%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building) %>    
+<% end %>

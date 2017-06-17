@@ -1,5 +1,50 @@
+Figure out how to organize the different screen so that it is simple fun and intuitive
+
+	area your business
+		your room 
+		your resource
+		your items 
+		your productions etc...
+
+	area other areas of the game
+		links and short tips
+		user can get the next tip and understand new things about the game
+		click on the link or on the image to go to the room
+
+	small chat below
+
+
+	buildings show 
+		on top you write a title + subtitle
+		then you write tips that the user can press next for reading the next one
+
+		same staff 
+
+		above the chat either a button to the inventory
+			description of all the items in the game
+			description on how to scale up
+
+	rooms show 
+		room is created automatic but can be edited
+		title automatic business type + name player
+		subtitle standard
+		description standard, but changable
+		if the user receive a message or purchase he is notified
+
+Fix the tabs panel, include the tabs panel in the buildings#index
+figure out if it is useful having the buildings show or just having one
+chat for the buildings index
+
+fix the layout on mobile, fix the images on mobile, include links to
+buildings#show
+
 rendere immagini statiche
 richiedere il nome e cognome del giocatore alla registrazione
+ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
+dopo di cui il crea la stanza con una descizione standard, 
+l utente nella sua stanza potra cliccare edit e modificarla
+
+notifiche nel caso venga fatto un acquisto oppure venga inviato un messaggio nella chat
 
 1. A room with role king is allways available and can be bought
 

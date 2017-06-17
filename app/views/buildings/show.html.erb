@@ -12,62 +12,7 @@
     <%= image_tag @images[@building.id.pred], style: "height:110px;" %>
   </div>
   <div class="col-sm-10">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist" id="myTabs">
-      <% i = 0 %>
-      <% ids = ["online", "tools", "weapons", "food"] %>
-      <% ids.each do |id| %>
-          <li role="presentation">
-          <a href="#<%= id %>" aria-controls="#<%= id %>" role="tab" data-toggle="tab"><%= id %>
-          </a>
-        </li>
-        <% i += 1 %>
-      <% end %>
-    </ul>
-
-
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <% i = 0 %>
-      <% ids.each do |id| %>
-        <div role="tabpanel" class="tab-pane fade" id="online">
-        <% users = User.online %>
-        <p>
-        <% users.each do |user| %>
-            <% room = user.rooms.first %>
-            <% name = user.name[0..7] %>
-            <% items_number = room.items.group(:product_id).count %>
-            <%= link_to building_room_path(@building, room), class:"tab-links" do %>
-              <%= name %> verkauft:
-              <% items_number.each do |product_id, number| %>
-                <% item_name = Product.find(product_id).name %>
-                <%= item_name %>(<%= number %>)        
-              <% end %>
-            <% end %>
-        <% end %>
-        </p>
-        </div>      
-        <div role="tabpanel" class="tab-pane fade" id="tools">
-        <% @building.rooms.each do |room| %>
-          <% name = room.user.name %>
-          <% items_number = room.items.group(:product_id).count %>
-
-          <% string = "#{name} verkauft:" %>
-          <%= link_to building_roomo_path(@building, room) do %>
-            <p><%= string %>
-            <% items_number.each do |product_id, number| %>
-              <% item_name = Product.find(product_id).name %>
-              <%= item_name %>(<%= number %>)
-            <% end %>
-            </p>
-          <% end %>
-        <% end %>  
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="weapons"></div>
-        <div role="tabpanel" class="tab-pane fade" id="food"></div>                
-        <% i += 1 %>
-      <% end %>
-    </div>   
+    <%= render partial:"partials/tabs/tabs" %>      
   </div>
 </div>
 

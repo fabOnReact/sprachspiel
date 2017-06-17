@@ -20,6 +20,9 @@ class BuildingsController < ApplicationController
     @rooms = Room.all
     @images = ["muehle.svg","kirche.svg","kaserne.svg","palast.svg","dorf.svg"]
     @buildings = Building.all.order(:id)
+    @ids = ["online", "tools", "weapons", "food"] 
+    @products = Product.where(producttype_id: 1).joins(:items)
+    @rooms_count = @products.group("items.room_id").count    
   end
   
   # GET /buildings/new
@@ -63,8 +66,11 @@ class BuildingsController < ApplicationController
   def show
     @building = Building.find(params[:id])
     @images = ["muehle.svg","kirche.svg","kaserne.svg","palast.svg","dorf.svg"]
+    @ids = ["online", "tools", "weapons", "food"] 
     @chatroom = @building.chatroom
     @message = Message.new
+    @products = Product.where(producttype_id: 1).joins(:items)
+    @rooms_count = @products.group("items.room_id").count
   end
 
   def delete
