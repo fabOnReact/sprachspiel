@@ -1,0 +1,36 @@
+<% i = 0 %>
+<% @buildings.each do |building| %>
+	<% if building.id.odd? %>	
+		<div class="row roomsIndex">
+			<div class="col-sm-5 col-sm-offset-1 left">
+				<p><%= building.name %></p> 
+			</div>
+			<div class="col-sm-5 col-sm-offset-1-right right">
+				<p><%= @buildings[i+1].name unless @buildings[i+1].nil? %></p> 
+			</div>		
+			<div class="col-sm-1">
+				<%= link_to building_path(building) do %>
+					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+				<% end %>
+			</div>
+			<div class="col-sm-5 col-xs-12">
+				<p class="justify"><%= building.description %></p>
+			</div>
+			<% if building == @buildings.last %>
+			</div>
+			<% end %>
+	<% i += 1 %>
+	<% else %>	
+			<div class="col-sm-5 col-xs-12">
+				<p class="justify"><%= building.description %></p>
+			</div>	
+			<div class="col-sm-1 hidden-xs">
+				<%= link_to building_path(building) do %>
+					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+				<% end %>
+			</div>
+		</div>
+	<% i += 1 %>
+	<% end %>
+
+<% end %>

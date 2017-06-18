@@ -182,10 +182,15 @@ label {
 
 .row-resources {
 	border: 1px solid white;
+	margin: 0px auto;
 	/*border-radius: 5px;*/
 }
 
 /* Columns */
+
+.col-sm-offset-1-right {
+	margin-right: 8.33333333%;
+}
 
 .row-resources .col-sm-2 {
 	text-align: center;
@@ -212,15 +217,19 @@ label {
 .tab-list {
 	border-bottom: 1px solid white;
 	text-align: center;
-}
-
-.tab-content {
-	margin-bottom: 40px;
+	width: 25%;
 }
 
 .tab-pane {
-	border-bottom: 1px solid white;
 	min-height: 50px;
+}
+
+.show .tab-content {
+	margin-bottom: 40px;
+}
+
+.show .tab-pane {
+	border-bottom: 1px solid white;
 }
 
 /* Alerts */
@@ -243,7 +252,7 @@ img {
 	filter: invert(100%);
 }
 
-img:hover.roomsImages {
+img:hover.roomsImages, img:hover .roomsIcons {
 	webkit-filter: invert(100%) opacity(50%);	
 	filter: invert(100%) opacity(50%);	
 }
@@ -346,12 +355,9 @@ input:-webkit-autofill {
 
 /* GET buildings#index */
 
-.roomsImages {
-	width: 26%;
-}
-
-.roomsImages img:hover {
-	
+.roomsIcons {
+	height: 100px;
+	width: initial;
 }
 
 .subheader-buildings p {
@@ -363,12 +369,25 @@ input:-webkit-autofill {
 	color: red;
 }
 
+#hammer {
+	margin-right: -54px;
+}
+
 /* GET buildings#show */
+
+.roomsImages {
+	width: 100%;
+	height: initial;
+}
 
 .tab-links {
 	border-right: 1px white solid;
 	padding-right: 5px;
 	margin-right: 10px;
+}
+
+#myTabs .tab-list a {
+	border-radius: 0px;
 }
 
 /* rooms controller */
@@ -472,7 +491,7 @@ input:-webkit-autofill {
 	}
 
 	li {
-		width: 95px;
+		/*width: 95px;*/
 	}
 }	
 

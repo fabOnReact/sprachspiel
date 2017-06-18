@@ -1,9 +1,17 @@
-<% if image == 1 %>
-	<%= image_tag "grain", class: "roomsImages pull-left" %>
-<% elsif image == 2 %>
-	<%= image_tag "celtic", class: "roomsImages pull-left" %>
-<% elsif image == 3 %>
-	<%= image_tag "battle", class: "roomsImages pull-left" %>
-<% elsif image == 4 %>
-	<%= image_tag "crown", class: "roomsImages pull-left" %>
+<% if image == 1 && view == "index" %>
+	<%= image_tag "grain", class: "roomsIcons pull-left" %>
+<% elsif image == 1 && view == "show" %>
+	<%= image_tag "muehle", class: "roomsImages pull-left" %>	
+<% elsif image == 2 && view == "index" %>
+	<%= image_tag "hammer", class: "roomsIcons pull-right", id: "hammer" %>
+<% elsif image == 2 && view == "show" %>
+	<%= image_tag "anvil", class: "roomsImages pull-left" %>
+<% elsif image == 3 && view == "index" %>
+	<%= image_tag "battle", class: "roomsIcons pull-left" %>
+<% elsif image == 3 && view == "show" %>
+	<%= image_tag "armor", class: "roomsImages pull-left" %>	
+<% elsif image == 4 && view == "index" %>
+	<%= image_tag "chess", class: "roomsIcons pull-right", id: "chess" %>
+<% elsif image == 4 && view == "show" %>
+	<%= image_tag "king", class: "roomsImages pull-left" %>	
 <% end %>

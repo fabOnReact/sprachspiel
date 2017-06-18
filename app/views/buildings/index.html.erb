@@ -1,45 +1,8 @@
 <h1>Spiel Karte</h1>
 <p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
 
-<%= render partial: "partials/resources" if user_signed_in? %>
+<%= render partial:"partials/tabs/tabs" %>   
 
-<%= render partial:"partials/tabs/tabs" %>      
+<%= render partial: "partials/resources" if user_signed_in? %>   
 
-<% @buildings.each do |building| %>
-
-<% if building.id.odd? %>	
-<div class="row roomsIndex">
-	<div class="col-sm-3 hidden-xs">
-		<%= link_to building_path(building) do %>
-			<%= render partial: "partials/images/icons", locals: {image: building.id} %>
-			<%#= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
-		<% end %>
-	</div>
-	<div class="col-sm-3 col-xs-12">
-		<%= link_to building_path(building) do %>
-			<%#= render partial: "partials/images/icons", locals: {image: building.id} %>
-			<%#= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
-		<% end %>
-		<p><%= building.name %></p> 
-
-	</div>
-
-<% if building == @buildings.last %>
-</div>
-<% end %>
-
-<% else %>	
-	<div class="col-sm-3 col-xs-12">
-		<p><%= building.name %></p> 
-
-	</div>
-	<div class="col-sm-3 hidden-xs">
-		<%= link_to building_path(building) do %>
-			<%= render partial: "partials/images/icons", locals: {image: building.id} %>
-			<%#= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
-		<% end %>
-	</div>
-</div>
-<% end %>
-
-<% end %>
+<%= render partial: "buildings/partials/menu" %>
