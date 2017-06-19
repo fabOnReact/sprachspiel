@@ -9,10 +9,9 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-2">
+<div class="row no-margin-top-bottom">
+  <div class="col-sm-2 hidden-xs">
     <%= render partial: "partials/images/icons", locals: {image: @building.id, view: "show"} %>
-    <%#= image_tag @images[@building.id.pred], style: "height:110px;" %>
   </div>
   <div class="col-sm-10">
     <%= render partial:"partials/tabs/tabs" %>      
@@ -22,7 +21,7 @@
 <div class="panel panel-default scroll-bar">
   <% if @chatroom.messages.any? %>
     <div class="panel-body" id="messages">
-      <%= render partial: 'messages/message', collection: @chatroom.messages%>
+      <%= render partial: 'messages/message' %>
     </div>
   <% else %>
     <div class="panel-body hidden" id="messages">
@@ -31,11 +30,8 @@
 </div>
   <% if user_signed_in? %>
     <%= render partial: 'messages/message_form', locals: {message: @message, variable: @building } %>
-  <% else %>
-    <% flash[:error] = "You need to signup/signin to chat and play" %>
+    <%= link_to :back, buildings_path, class: "btn btn-primary btn-lg" %>
+    <%= render partial:"buildings/partials/mobile_buttons" %>
+  </div>
   <% end %>
 </div> 
-
-<div class="container container-links">
-  <%= link_to :back, buildings_path, class: "btn btn-primary btn-lg" %>
-</div>

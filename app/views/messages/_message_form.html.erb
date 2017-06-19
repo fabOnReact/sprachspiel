@@ -3,5 +3,7 @@
   <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
 
   <%= f.hidden_field :chatroom_id, value: variable.chatroom.id %>
-  <%= f.submit "send", class: "btn btn-primary", style: "display: none;", data: {send: "message"} %>
+
+  <div class="container container-links no-padding">
+  	<%= f.submit "send", class: "btn btn-green btn-lg", id: "messageSubmit", data: {send: "message"} %>
 <% end %>

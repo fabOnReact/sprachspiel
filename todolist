@@ -1,5 +1,28 @@
-Figure out how to organize the different screen so that it is simple fun and intuitive
+fix the height of the chat with the different screens
 
+aggiungere la classe left or right in base a i.odd?
+
+Tips - with a bottom you can add more tips .. see the other tips in the game..
+Links to different areas of the game
+	link to the player room
+	link to the player inventary and help
+	link to the full screen chat 
+automatic creation of room with all texts see below
+in game notifications for purchases
+
+fix the layout on mobile, fix the images on mobile, include links to
+buildings#show
+
+login with facebook - then big button configure player
+richiedere il nome e cognome del giocatore alla registrazione
+ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
+dopo di cui il crea la stanza con una descizione standard, 
+l utente nella sua stanza potra cliccare edit e modificarla
+
+3. Build Items
+9. Temporarely remove the resources from players when they do a purchase, give them back  if the purchase is declined
+
+---------------------UX Notes---------------------------------
 	area your business
 		your room 
 		your resource
@@ -31,43 +54,8 @@ Figure out how to organize the different screen so that it is simple fun and int
 		description standard, but changable
 		if the user receive a message or purchase he is notified
 
-Fix the tabs panel, include the tabs panel in the buildings#index
-figure out if it is useful having the buildings show or just having one
-chat for the buildings index
 
-fix the layout on mobile, fix the images on mobile, include links to
-buildings#show
-
-rendere immagini statiche
-richiedere il nome e cognome del giocatore alla registrazione
-ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
-dopo di cui il crea la stanza con una descizione standard, 
-l utente nella sua stanza potra cliccare edit e modificarla
-
-notifiche nel caso venga fatto un acquisto oppure venga inviato un messaggio nella chat
-
-1. A room with role king is allways available and can be bought
-
-2  When a player starts a new room he gets some items for free from the king
-
-3. Build Items
-
-4. Purchase other People Items
-
-5. Sell your Items
-
-6. Display the item in the correct room after sell
-
-7. Calculate the balance
-
-8. Check that the player has available resources for the purchase
-
-9. Temporarely remove the resources from players when they do a purchase, give them back  if the purchase is declined
-
-Build a new chat for buildings where users chan see all items and join a chat
-
-
------------------------before launch-------------------------------
+---------------------before launch-------------------------------
 Use action cable to update other areas of the game. like players online
 reseources items ...etc..
 Internationalization

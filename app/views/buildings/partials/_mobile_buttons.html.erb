@@ -1,0 +1,10 @@
+<% if action_name == "index" %>
+	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
+		<%= link_to building_path(building), class: "btn-primary btn-lg btn-mobile", style: variable do %>
+			<%=building.name %>
+		<% end %>
+	</div>
+<% end %>
+<% if action_name == "show" %>
+	<%= link_to :chatroom, building_chatroom_path(@building, @chatroom), class: "btn btn-primary btn-lg" %>
+<% end %>

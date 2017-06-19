@@ -15,6 +15,11 @@
 	margin-right: 0px;
 }
 
+.no-margin-top-bottom {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
 .margin {
 	margin-left: 15px;
 	margin-right: 15px;
@@ -102,6 +107,16 @@
 	padding-top: 10px;
 }
 
+.btn-mobile {
+	padding: 10px 9px;
+	font-size: 16px;
+}
+
+.btn-col {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
 /* Styles */ 
 
 h1, p {
@@ -128,6 +143,14 @@ i:hover {
 label {
 	font-size: 20px;
 	padding-right: 18px;
+}
+
+a {
+	font-size: 17px;
+}
+
+a p:hover {
+	color: red;
 }
 
 .new_user h2 {
@@ -220,9 +243,11 @@ label {
 	width: 25%;
 }
 
+/*
 .tab-pane {
 	min-height: 50px;
 }
+*/
 
 .show .tab-content {
 	margin-bottom: 40px;
@@ -234,7 +259,8 @@ label {
 
 /* Alerts */
 
-.alert {	background-color: white;
+.alert {	
+	background-color: white;
 	background-image: initial;
 }
 
@@ -373,6 +399,27 @@ input:-webkit-autofill {
 	margin-right: -54px;
 }
 
+.roomsIndex .col-sm-5.right, .roomsIndex .col-sm-5.left {
+	border: 1px white solid;
+}
+
+.roomsIndex a, .roomsIndex p {
+	background-color: inherit;
+	color: inherit;
+}
+
+.roomsIndex .col-sm-5.right:hover, .roomsIndex .col-sm-5.left:hover {
+	border: 1px red solid;
+	background-color: white;
+	color: red;
+}
+
+
+.roomsIndex .col-sm-5.right p:hover, .roomsIndex .col-sm-5.left p:hover {
+	background-color: white;
+	color: red;
+}
+
 /* GET buildings#show */
 
 .roomsImages {
@@ -457,6 +504,10 @@ input:-webkit-autofill {
 	.price input.price_field {
 		width: 142px;
 	}	
+
+	#messageSubmit {
+		display: hidden;
+	}
 }
 
 @media (max-width: 414px) {
@@ -491,7 +542,17 @@ input:-webkit-autofill {
 	}
 
 	li {
-		/*width: 95px;*/
+	}
+}	
+
+@media (max-width: 360px) {
+	.tab-list a {
+		font-size: 13px;
+	}
+
+	.btn-col {
+		padding-top: 12px;
+		padding-bottom: 12px;
 	}
 }	
 
@@ -500,3 +561,47 @@ input:-webkit-autofill {
 		height: 250px;
 	}
 }	
+
+.panel.panel-default.scroll-bar.col-sm-12 {
+	height: 723px;
+}
+/*
+.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 380px;	
+}*/
+
+@media (max-height: 1337px) {
+	.panel.panel-default.scroll-bar.col-sm-12 {
+	height: 1107px;
+	}
+}
+
+@media (max-height: 1024px) {
+	.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 710px;
+	}
+}
+
+@media (max-height: 736px) {
+	.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 468px;
+	}
+}
+
+@media (max-height: 735px) {
+	.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 405px;
+	}
+}
+
+@media (max-height: 640px) {
+	.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 380px;
+	}
+}
+
+@media (max-height: 568px) {
+	.panel.panel-default.scroll-bar.col-xs-12 {
+	height: 308px;
+	}
+}

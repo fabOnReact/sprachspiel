@@ -6,10 +6,12 @@ class MessagesController < ApplicationController
   def create
   	message = Message.new(message_params)
   	message.user = current_user
+    chatroom = message.chatroom
   	if message.save
   		ActionCable.server.broadcast 'messages',
         message: message.content,
-        user: message.user.name
+        user: message.user.name,
+        lastuser: chatroom.messages.last.user.name
       head :ok
   	else
       #flash[:error] = "You need to signup or login to play"
