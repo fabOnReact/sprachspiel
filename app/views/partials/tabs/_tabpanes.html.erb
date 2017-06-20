@@ -10,6 +10,7 @@
     <% users.each do |user| %>
         <% room = user.rooms.first %>
         <% name = user.name[0..7] %>
+        <% if room.present? %>
         <% items_number = room.items.group(:product_id).count %>
         <%= link_to room_path(room), class:"tab-links" do %>
           <%= name %> verkauft:
@@ -18,6 +19,7 @@
             <%= item_name %>(<%= number %>)        
           <% end %>
         <% end %>
+        <% end %> <!-- room.present? -->
     <% end %>
     </p>
     </div>      
