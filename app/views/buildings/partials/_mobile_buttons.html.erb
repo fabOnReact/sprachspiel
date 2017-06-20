@@ -1,9 +1,20 @@
-<% if action_name == "index" %>
+<% if action_name == "index" && partial == "buildings#index" %>
+	<!-- you need to hide the buttons with js -->
 	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
-		<%= link_to building_path(building), class: "btn-primary btn-lg btn-mobile", style: variable do %>
+		<%= link_to "#", class: "btn-primary btn-lg btn-mobile btn-mb-lg", id: building.name, style: float do %> <!--building_path(building),-->
 			<%=building.name %>
 		<% end %>
 	</div>
+<% elsif action_name == "index" && partial == 'afterclick' %>
+	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
+		<%= link_to "Next Tip", "#{}", class: "btn-primary btn-lg btn-mobile", id: "#next" %>
+	</div>
+	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
+		<%= link_to "Enter", building_path(building), class: "btn-primary btn-lg btn-mobile", id: "#next" %>
+	</div>
+	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
+		<%= link_to "Back", buildings_path, class: "btn-primary btn-lg btn-mobile", id: "#next" %>
+	</div>		
 <% end %>
 <% if action_name == "show" %>
 	<% if user_signed_in? %>
@@ -12,3 +23,4 @@
 		<%= link_to :login, new_user_session_path, class: "btn btn-primary btn-lg" %>
 	<% end %>
 <% end %>
+

@@ -28,6 +28,8 @@ var ready = function() {
 	$('#myTabs a').click(function (e) {
 		e.preventDefault()
 		$(this).tab('show')
+		id = "#" + $(this)[0].innerText /*$('.tab-pane.fade.active.in')[0].id*/
+		if ($(id)[0].innerHTML == "") { $('.tab-content').hide }
 	});
 
 	variable = $('#room_title').val();
@@ -36,6 +38,14 @@ var ready = function() {
 	    $('#room_title').on('input', updateCountdown);
 	    $('#room_title').keyup(updateCountdown);
 	};	
+
+	$('#Landwirtschaft').click(function(e) {
+		e.preventDefault()
+		$(this).effect("bounce", 600, function() {
+			$('#buildings_buttons').hide("drop", 100);	
+		});
+		
+	});
 }
 
 $(document).on('turbolinks:load', ready);

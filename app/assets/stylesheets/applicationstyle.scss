@@ -44,6 +44,10 @@
 	background-color: black;
 }
 
+.hidden {
+	display: hidden;
+}
+
 /* Container */
 
 .container-links {
@@ -405,6 +409,8 @@ input:-webkit-autofill {
 
 .roomsIndex .col-sm-5.right, .roomsIndex .col-sm-5.left {
 	border: 1px white solid;
+	padding-top: 15px;
+	padding-bottom: 9px;
 }
 
 .roomsIndex a, .roomsIndex p {
@@ -514,6 +520,8 @@ input:-webkit-autofill {
 	}
 }
 
+/* Nexus 6p */ 
+
 @media (max-width: 414px) {
 	/* GET rooms#new description height */
 	textarea.form-control {
@@ -545,9 +553,38 @@ input:-webkit-autofill {
 		margin-top: 10px;
 	}
 
-	li {
+	/* Buildings#index */
+
+	.roomsIndex .col-sm-5.right, .roomsIndex .col-sm-5.left	{
+		border: initial;
+	}
+	
+	.row.roomsIndex .col-xs-12.left {
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 
+	.row.roomsIndex .col-xs-12.left a { 
+		border: 1px solid white;
+		padding: 8px 78px;
+	}
+
+	.row.roomsIndex .col-sm-1.col-xs-12 img {
+		margin-right: 23px;
+	}
+
+	.row.roomsIndex p.justify {
+		margin-top: 0px;
+	}
+	
+	/* Bottons margins and size */
+
+	.btn-mb-lg {
+		padding-top: 18px;
+		padding-bottom: 18px;
+		border-radius: 3px;
+	}	
 
 }	
 
@@ -568,13 +605,14 @@ input:-webkit-autofill {
 	}
 }	
 
-.panel.panel-default.scroll-bar.col-sm-12 {
+
+
+/*.panel.panel-default.scroll-bar.col-sm-12 {
 	height: 723px;
-}
-/*
-.panel.panel-default.scroll-bar.col-xs-12 {
-	height: 380px;	
 }*/
+
+
+/* Maximum Height */
 
 @media (max-height: 1337px) {
 	.panel.panel-default.scroll-bar.col-sm-12 {

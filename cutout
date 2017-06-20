@@ -1,46 +1,38 @@
-<p>Rooms Available:</p>
-<% rooms = @rooms.where(building_id: building.id) %>
-  <% rooms.each do |room| %>
-    <div class="row no-margin-top">
-      <div class="col-md-12">
-        <%= link_to room.title, building_room_path(building, room) %>
-        <% if user_signed_in? %> 
-          <% if current_user.room_owner(room) || current_user.admin? %>
-          <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %> 
-          <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
-          <% end %> <!-- if current_user.room_owner(room) ... -->
-        <% end %> <!-- if user_signed_in? -->
+<% @buildings.each do |building| %>
+  <% if building.id.odd? %> 
+    <div class="row roomsIndex hidden-xs">
+      <div class="col-sm-5 col-sm-offset-1 col-xs-12 left hidden-xs">
+        <%= link_to building_path(building) do %><%= building.name %><% end %>
+      </div>
+      <div class="col-sm-5 col-sm-offset-1-right col-xs-12 right hidden-xs">
+        <%= link_to building_path(building) do %><p><%= @buildings[i+1].name unless @buildings[i+1].nil? %></p><% end %> 
+      </div>    
+      <div class="col-sm-1 col-xs-12 hidden-xs">
+        <%= link_to building_path(building) do %>
+          <%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+        <% end %>
+        <div class="hidden-sm hiddem-md hidden-lg">
+          <p class="justify"><%= building.description %></p>
+        </div>
+      </div>
+      <div class="col-sm-5 col-xs-8 hidden-xs">
+        <p class="justify"><%= building.description %></p>
+      </div>      
+      <% if building == @buildings.last %>
+      </div>
+      <% end %>
+      <%= render partial: "buildings/partials/mobile_buttons", locals: {partial: "afterclick" ,style: "", building: building} %>
+  <% i += 1 %>
+  <% else %>  
+      <div class="col-sm-8 hidden">
+        <p class="justify"><%= building.description %></p>
+      </div>  
+      <div class="col-sm-4 hidden">
+        <%= link_to building_path(building) do %>
+          <%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+        <% end %>
       </div>
     </div>
-  <% end %><!-- rooms.each do |room| -->
-<% unless current_user.nil? %>
-  <%= link_to "Platz schaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building)%>
-<% end %>
-
-
-    <p>Rooms Available:</p>
-<% rooms = @rooms.where(building_id: building.id) %>
-  <% rooms.each do |room| %>
-    <div class="row no-margin-top">
-      <div class="col-md-12">
-        <%= link_to room.title, building_room_path(building, room) %>
-        <% if user_signed_in? %> 
-          <% if current_user.room_owner(room) || current_user.admin? %>
-          <%= link_to edit_building_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Edit Room"} do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>   
-          <%= link_to delete_room_path(building, room), {class: "", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Delete Room"} do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>     
-          <% end %> <!-- current_user.room_owner(room) -->
-        <% end %> <!-- if user_signed_in? -->
-      </div>
-    </div>
-  <% end %> <!-- rooms.each do |room| -->
-<% unless current_user.nil? %>      
-  <%= link_to "Platz scaffen", new_building_room_path(building), class: "btn btn-primary" unless current_user.user_has_room(building) %>    
+  <% i += 1 %>
+  <% end %>
 <% end %>
