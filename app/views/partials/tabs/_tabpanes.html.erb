@@ -2,9 +2,10 @@
 <div class="tab-content">
   <% i = 0 %>
   <% @ids.each do |id| %>
-    <!-- Online Users -->
-    <div role="tabpanel" class="tab-pane fade" id="online"> 
     <% users = User.online %>
+    <% style = "margin-top:-15px;" if users.empty? %>
+    <!-- Online Users -->
+    <div role="tabpanel" class="tab-pane fade" id="online" style="<%= style %>"> 
     <p>
     <% users.each do |user| %>
         <% room = user.rooms.first %>

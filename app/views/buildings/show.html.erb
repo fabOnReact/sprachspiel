@@ -28,10 +28,8 @@
     </div>
   <% end %>
 </div>
-  <% if user_signed_in? %>
     <%= render partial: 'messages/message_form', locals: {message: @message, variable: @building } %>
     <%= link_to :back, buildings_path, class: "btn btn-primary btn-lg" %>
     <%= render partial:"buildings/partials/mobile_buttons" %>
   </div>
-  <% end %>
 </div> 

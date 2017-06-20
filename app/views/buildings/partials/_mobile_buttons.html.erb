@@ -6,5 +6,9 @@
 	</div>
 <% end %>
 <% if action_name == "show" %>
-	<%= link_to :chatroom, building_chatroom_path(@building, @chatroom), class: "btn btn-primary btn-lg" %>
+	<% if user_signed_in? %>
+		<%= link_to :chatroom, building_chatroom_path(@building, @chatroom), class: "btn btn-primary btn-lg" %>
+	<% else %>
+		<%= link_to :login, new_user_session_path, class: "btn btn-primary btn-lg" %>
+	<% end %>
 <% end %>

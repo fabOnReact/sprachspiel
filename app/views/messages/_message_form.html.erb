@@ -5,5 +5,9 @@
   <%= f.hidden_field :chatroom_id, value: variable.chatroom.id %>
 
   <div class="container container-links no-padding">
-  	<%= f.submit "send", class: "btn btn-green btn-lg", id: "messageSubmit", data: {send: "message"} %>
+  	<% if user_signed_in? %>
+  		<%= f.submit "send", class: "btn btn-green btn-lg", id: "messageSubmit", data: {send: "message"} %>
+  	<% else %>
+  		<%= link_to :signup, new_user_registration_path, class: "btn btn-green btn-lg" %>
+  	<% end %>
 <% end %>

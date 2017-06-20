@@ -110,6 +110,10 @@
 .btn-mobile {
 	padding: 10px 9px;
 	font-size: 16px;
+	width: 100%;
+	border-radius: 0px;
+	text-align: center;
+	font-size: 14px;
 }
 
 .btn-col {
@@ -543,6 +547,8 @@ input:-webkit-autofill {
 
 	li {
 	}
+
+
 }	
 
 @media (max-width: 360px) {

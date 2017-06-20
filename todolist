@@ -1,4 +1,5 @@
-fix the height of the chat with the different screens
+fix the send button for not logged in users
+check action cable format
 
 aggiungere la classe left or right in base a i.odd?
 
