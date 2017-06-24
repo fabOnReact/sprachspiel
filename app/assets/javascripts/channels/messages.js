@@ -8,9 +8,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
   renderMessage: function(data) {
     if (data.lastuser == data.user) {
-      return data.message;
+      return "<p>" + data.message + "</p>";
     } else {
-      return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+      return "<br><p> <strong>" + data.user + ": </strong>" + data.message + "</p>";
     };
   }
 });

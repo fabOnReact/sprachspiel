@@ -1,11 +1,11 @@
-<div class="show">
+<div class="show hidden-xs">
   <%= render partial: "partials/resources" if user_signed_in? %>
 </div>
 
-<div class="row">
+<div class="row hidden-xs">
   <div class="col-sm-12">
     <h1><%= @building.name %></h1>
-    <p class="justify"><%= @building.description %></p>
+    <p class="justify hidden-xs"><%= @building.description %></p>
   </div>
 </div>
 
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="panel panel-default scroll-bar">
+<div class="panel buildings panel-default scroll-bar">
   <% if @chatroom.messages.any? %>
     <div class="panel-body" id="messages">
       <%= render partial: 'messages/message' %>
@@ -30,6 +30,6 @@
 </div>
     <%= render partial: 'messages/message_form', locals: {message: @message, variable: @building } %>
     <%= link_to :back, buildings_path, class: "btn btn-primary btn-lg" %>
-    <%= render partial:"buildings/partials/mobile_buttons" %>
+    <%= render partial:"buildings/partials/mobile_buttons", locals: {controller: "buildings"} %>
   </div>
 </div> 

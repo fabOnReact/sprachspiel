@@ -5,14 +5,15 @@
 	<% if building.id.odd? %>	
 		<% hidden = "margin-top: 0px;" if i == 0 %>
 
-		<div class="row roomsIndex hidden-xs" style="<%= hidden %>" >
+		<div class="row roomsIndex no-margin hidden-xs" style="<%= hidden %>" >
 			<div class="col-sm-5 col-sm-offset-1 hidden-xs left">
 				<%= link_to building_path(building) do %><%= building.name %><% end %>
 			</div>
 			<div class="col-sm-5 col-sm-offset-1-right hidden-xs right">
-				<%= link_to building_path(building) do %><%= @buildings[i+1].name unless @buildings[i+1].nil? %><% end %> 
+				<% second_building = @buildings[i+1] unless @buildings[i+1].nil? %>
+				<%= link_to building_path(second_building) do %><%= @buildings[i+1].name unless @buildings[i+1].nil? %><% end %>
 			</div>		
-			<div class="col-sm-1 col-xs-12 hidden-xs">
+			<div class="col-sm-1 col-xs-12 no-padding" id="description<%= building.name %>">
 				<%= link_to building_path(building) do %>
 					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
 				<% end %>
@@ -22,21 +23,25 @@
 			</div>
 			<div class="col-sm-5 hidden-xs">
 				<p class="justify"><%= building.description %></p>
-			</div>			
-			<% if building == @buildings.last %>
-			</div>
-			<% end %>
+			</div>						
 			<%= render partial: "buildings/partials/mobile_buttons", locals: {partial: "afterclick" ,style: "", building: building} %>		
+		<% if building == @buildings.last %>
+		</div>
+		<% end %>	 
 	<% i += 1 %>
 	<% else %>	
 			<div class="col-sm-5 hidden-xs">
 				<p class="justify"><%= building.description %></p>
 			</div>	
-			<div class="col-sm-1 hidden-xs">
+			<div class="col-sm-1 col-xs-12 no-padding" id="description<%= building.name%>">
 				<%= link_to building_path(building) do %>
 					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
 				<% end %>
+				<div class="hidden-sm hiddem-md hidden-lg">
+					<p class="justify"><%= building.description %></p>
+				</div>					
 			</div>
+			<%= render partial: "buildings/partials/mobile_buttons", locals: {partial: "afterclick" ,style: "", building: building} %>		
 		</div>
 	<% i += 1 %>
 	<% end %>

@@ -1,26 +1,28 @@
 <% if action_name == "index" && partial == "buildings#index" %>
 	<!-- you need to hide the buttons with js -->
 	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
-		<%= link_to "#", class: "btn-primary btn-lg btn-mobile btn-mb-lg", id: building.name, style: float do %> <!--building_path(building),-->
+		<%= link_to "#", class: "btn-primary btn-lg btn-mobile btn-mb-high", id: building.name, style: float do %> <!--building_path(building),-->
 			<%=building.name %>
 		<% end %>
 	</div>
 <% elsif action_name == "index" && partial == 'afterclick' %>
-	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
-		<%= link_to "Next Tip", "#{}", class: "btn-primary btn-lg btn-mobile", id: "#next" %>
-	</div>
-	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
-		<%= link_to "Enter", building_path(building), class: "btn-primary btn-lg btn-mobile", id: "#next" %>
-	</div>
-	<div class="col-xs-6 hidden-sm hidden-md hidden-lg btn-col">
-		<%= link_to "Back", buildings_path, class: "btn-primary btn-lg btn-mobile", id: "#next" %>
-	</div>		
+		<div class="flex-box" id="flex-box-<%=building.name%>" style="display:none;">
+			<%= link_to "Next Tip", "#", class: "btn-primary btn-lg btn-mobile", style: "border-right:none;", id: "next" %>
+			<%= link_to "Enter", building_path(building), id: "enter", class: "btn-primary btn-lg btn-mobile" %>
+			<%= link_to "Back", {remote: true, "data-ajax" => false}, { class: "btn-primary btn-lg btn-mobile", id: "back", style: "border-left:none;"} %>
+		</div>
 <% end %>
-<% if action_name == "show" %>
+<% if action_name == "show" && controller == "buildings" %>
 	<% if user_signed_in? %>
 		<%= link_to :chatroom, building_chatroom_path(@building, @chatroom), class: "btn btn-primary btn-lg" %>
 	<% else %>
 		<%= link_to :login, new_user_session_path, class: "btn btn-primary btn-lg" %>
 	<% end %>
+<% elsif action_name == "show" && controller == "rooms" %>
+	<% if user_signed_in? %>
+		<%= link_to :chatroom, room_chatroom_path(@room, @chatroom), class: "btn btn-primary btn-lg" %>
+	<% else %>
+		<%= link_to :login, new_user_session_path, class: "btn btn-primary btn-lg" %>
+	<% end %>	
 <% end %>
 

@@ -1,11 +1,11 @@
 <% if image == 1 && view == "index" %>
-	<%= image_tag "grain.svg", class: "roomsIcons pull-left" %>
+	<%= image_tag "grain.svg", class: "roomsIcons pull-left", id: "grain" %>
 <% elsif image == 1 && view == "show" %>
 	<%= image_tag "muehle.svg", class: "roomsImages pull-left" %>	
 <% elsif image == 2 && view == "index" %>
 	<%= image_tag "hammer.svg", class: "roomsIcons pull-right", id: "hammer" %>
 <% elsif image == 2 && view == "show" %>
-	<%= image_tag "anvil.svg", class: "roomsImages pull-left", style: "margin-top: 25px;" %>
+	<%= image_tag "anvil.svg", class: "roomsImages pull-left", style: "margin-top: 25px;", id: "anvil" %>
 <% elsif image == 3 && view == "index" %>
 	<%= image_tag "battle.svg", class: "roomsIcons pull-left" %>
 <% elsif image == 3 && view == "show" %>

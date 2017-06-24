@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
 	
-  get 'chatrooms/index'
-
-  get 'chatrooms/new'
-
-  get 'chatrooms/edit'
-
-  get 'chatrooms/show'
-
-  get 'chatrooms/delete'
-
 	devise_for :users, controllers: {
 		registrations: 'users/registrations'
 	}

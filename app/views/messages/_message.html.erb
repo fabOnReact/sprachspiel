@@ -1,20 +1,17 @@
-<% variable = nil %>
+<% variable = Message.first.user %>
 <% i = 0 %>
-<% tags = true %>
-<% @chatroom.messages.each do |message| %>
-	<% if tags %>
-		<p>
-	<% end %>
-	<strong>
-	<% unless message.user == variable %>
-		<%= message.user.name %>:
-	<% end %>
-	</strong> <%=message.content %>
-	<% unless i.next < @chatroom.messages.size && @chatroom.messages[i.next].user == message.user %>
-		</p>
+<% @chatroom.messages.order(created_at: :asc).each do |message| %>
+	<% if message.user == variable && i > 0 %>
+		<p>	
 	<% else %>
-		<% tags = false %>
+		<% if i > 0 %><br><% end %><p>
+			<strong>
+				<%= message.user.name %>:
+			</strong> 	
 	<% end %>
+	<%=message.content %>
+
 	<% variable = message.user %>
+	</p>	
 	<% i += 1 %>
 <% end %>

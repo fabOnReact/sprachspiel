@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   		ActionCable.server.broadcast 'messages',
         message: message.content,
         user: message.user.name,
-        lastuser: chatroom.messages.last.user.name
+        lastuser: chatroom.messages.last(2)[0].user.name
       head :ok
   	else
       #flash[:error] = "You need to signup or login to play"
