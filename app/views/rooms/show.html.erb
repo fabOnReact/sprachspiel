@@ -5,7 +5,7 @@
 <%= render template: "purchases/new" %>
 <%= render template: "purchases/index" %>
 <div class="room panel panel-default scroll-bar chatroom" id='chatroom_id' data-chat-room-id="<%= @room.chatroom.id %>">
-  <% if @chatroom.messages.any? %>
+  <% if @room.chatroom.messages.any? %>
     <div class="panel-body" id="messages">
       <%= render partial: 'messages/message' %>
     </div>

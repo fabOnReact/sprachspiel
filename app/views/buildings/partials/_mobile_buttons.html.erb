@@ -20,7 +20,7 @@
 	<% end %>
 <% elsif action_name == "show" && controller == "rooms" %>
 	<% if user_signed_in? %>
-		<%= link_to :chatroom, room_chatroom_path(@room, @chatroom), class: "btn btn-primary btn-lg" %>
+		<%= link_to :chatroom, room_chatroom_path(@room, @room.chatroom), class: "btn btn-primary btn-lg" %>
 	<% else %>
 		<%= link_to :login, new_user_session_path, class: "btn btn-primary btn-lg" %>
 	<% end %>	

@@ -5,12 +5,23 @@
 1 Production - Every room has production facility, every player has some fight, armatura, attack score, etc.. and they will use it somehow
 2 Production will Build Items
 
-1) User buy tools
-2) He has resources
-3) If he has enough resource/tools, a button create bread come out
+You are building the second loop, but you need to figure out how to get those items available in an array
+
+1) User goes to his room
+2) The items he can purchase in his room show up
+3) when he select the number, the price increase
+4) another button show up for the purchase
 4) items#create an item for that room/user
 	5) check the requirement for the product object in the requirement + price tables
-	6) create a purchase 
+
+	  Every product has a building 
+	  A query all the products of a building
+	  a bottom for the item production for every item in that building, will create a purchase and increate the count or create the line item
+
+
+
+	6) create a purchase for that product
+		Purchase.create()
 
 
 3 Tips - with a bottom you can add more tips .. see the other tips in the game..
@@ -32,39 +43,6 @@
 13 make a promotion few days before launch with a code they will get free pro accounts if they invite fb friends
 
 change the product name as "Schaufel" for the first product
-
----------------------UX Notes---------------------------------
-	area your business
-		your room 
-		your resource
-		your items 
-		your productions etc...
-
-	area other areas of the game
-		links and short tips
-		user can get the next tip and understand new things about the game
-		click on the link or on the image to go to the room
-
-	small chat below
-
-
-	buildings show 
-		on top you write a title + subtitle
-		then you write tips that the user can press next for reading the next one
-
-		same staff 
-
-		above the chat either a button to the inventory
-			description of all the items in the game
-			description on how to scale up
-
-	rooms show 
-		room is created automatic but can be edited
-		title automatic business type + name player
-		subtitle standard
-		description standard, but changable
-		if the user receive a message or purchase he is notified
-
 
 ---------------------before launch-------------------------------
 Use action cable to update other areas of the game. like players online
@@ -91,19 +69,24 @@ include the send button for the chat
 		user_id:integer
 		has_many :purchases
 		has_many :sales
-		#has_many :items, through: :purchases
-		#has_many :items, through: :sales
 		has_many :items
 
 	product
 		building_id:integer
 		name:string sickle, four ...
 		has_many :item
+		has_one :price
+		has_one :requirement
+
+	requirement 
+		product_id :integer
 
 	price 
 		gold
 		wood
-		...
+		....
+		product_id :integer
+
 		has_many :invoices
 
 	invoice 

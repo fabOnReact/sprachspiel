@@ -1,18 +1,17 @@
 class RoomsController < ApplicationController
-  before_action :find_room, only: [:update, :show, :destroy]
+  before_action :find_room, only: [:update, :show, :destroy, :delete, :edit, :update, :destroy]
+  before_action :find_building, only: [:new, :create, :edit, :update, :delete ]  
 
   def index
   end
 
   def new
-    @building = Building.find(params[:building_id])
     @room = Room.new(building_id: params[:building_id] )    
   end
 
-  def create
-    @building = Building.find(params[:building_id])    
-    @room = Room.new(room_params)  
-    @room.user_id = current_user.id
+  def create    
+    @room = Room.new(room_params, user_id: current_user.id)  
+    #@room.user_id = current_user.id
     @room.chatroom = Chatroom.new
     if @room.save 
       @purchase = Purchase.creating(@room, Price.free, current_user, true)
@@ -26,13 +25,9 @@ class RoomsController < ApplicationController
   end
 
   def edit
-    @building = Building.find(params[:building_id])
-    @room = Room.find(params[:id])
   end
 
   def update
-    @building = Building.find(params[:building_id])
-    @room = Room.find(params[:id])
     respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to buildings_path, notice: 'Room was successfully updated.' }
@@ -46,28 +41,19 @@ class RoomsController < ApplicationController
 
   def show
     @price = Price.new
-    @room = Room.find(params[:id])
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @purchase = Purchase.new(room_id: @room.id)
     @purchase.items << @items
     @items_number = @items.group(:product_id).count    
-    @chatroom = @room.chatroom
   	@message = Message.new
     @purchases = Purchase.where(sale_id: nil, room_id: @room.id)
-    #users_count = @purchases.group(:user).count.to_a
-    #users_count.each do |user_count|
-      #user = user_count[0]
-      #count = user_count[1]
-    #end
+    @products = @room.building.products
   end
 
   def delete
-    @building = Building.find(params[:building_id])
-    @room = Room.find(params[:id])
   end
 
   def destroy
-    @room = Room.find(params[:id])
     if @room.destroy
       flash[:notice] = "The Room was destroyed"
       redirect_to buildings_path
@@ -84,5 +70,9 @@ class RoomsController < ApplicationController
 
   def find_room
     @room = Room.find(params[:id])
+  end
+
+  def find_building
+    @building = Building.find(params[:building_id])
   end
 end
