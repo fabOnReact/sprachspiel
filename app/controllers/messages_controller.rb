@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
   		ActionCable.server.broadcast 'messages',
         message: message.content,
         user: message.user.name,
+        chatroom_id: message.chatroom_id,
         lastuser: chatroom.messages.last(2)[0].user.name
       head :ok
   	else

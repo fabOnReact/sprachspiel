@@ -11,7 +11,7 @@
 
 <div class="row no-margin-top-bottom">
   <div class="col-sm-2 hidden-xs">
-    <%= render partial: "partials/images/icons", locals: {image: @building.id, view: "show"} %>
+    <%= render partial: "partials/images/icons", locals: {controller: "buildings", image: @building.id, view: "show"} %>
   </div>
   <div class="col-sm-10">
     <%= render partial:"partials/tabs/tabs" %>      

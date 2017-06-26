@@ -15,7 +15,7 @@
 			</div>		
 			<div class="col-sm-1 col-xs-12 no-padding" id="description<%= building.name %>">
 				<%= link_to building_path(building) do %>
-					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+					<%= render partial: "partials/images/icons", locals: {controller: "buildings", image: building.id, view: "index"} %>
 				<% end %>
 				<div class="hidden-sm hiddem-md hidden-lg">
 					<p class="justify"><%= building.description %></p>
@@ -35,7 +35,7 @@
 			</div>	
 			<div class="col-sm-1 col-xs-12 no-padding" id="description<%= building.name%>">
 				<%= link_to building_path(building) do %>
-					<%= render partial: "partials/images/icons", locals: {image: building.id, view: "index"} %>
+					<%= render partial: "partials/images/icons", locals: {controller: "buildings", image: building.id, view: "index"} %>
 				<% end %>
 				<div class="hidden-sm hiddem-md hidden-lg">
 					<p class="justify"><%= building.description %></p>

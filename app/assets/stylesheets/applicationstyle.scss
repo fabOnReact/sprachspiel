@@ -743,13 +743,37 @@ input:-webkit-autofill {
 		margin-left: 0px;
 	}
 
+	/* Navbar */ 
+
 	.navbar-toggle {
 		margin-right: 0px;
+	}
+	
+	/*
+	.navbar {
+		margin-bottom: initial;
+	}
+	*/
+
+	.navbar-brand {
+		padding-left: initial;
+		padding-right: initial;
+	}
+
+	.col-sm-12 {
+		padding-left: initial;
+		padding-right: initial;
 	}
 
 	.panel-body {
 		padding-left: 2px;
 		padding-right: 2px;
+	}
+
+	/* rooms#show */
+
+	.table th.col-xs-5.col-sm-2 {
+		text-align: center;
 	}
 
 }	

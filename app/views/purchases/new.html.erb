@@ -5,7 +5,10 @@
 		<% @purchase.items.each do |item| %>
 			<% unless item.product_id == id %>	
 			<tr class="row<%= i %>">
-				<td class="col-sm-4 table-text">	
+			    <td class="col-sm-1 col-xs-3">
+			    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: item.product_id} %>
+			    </td>			
+				<td class="col-sm-3 table-text">	
 			    <%= @purchase.items[i].product.name %> 
 			    </td>
 			  	<td class="col-sm-2">

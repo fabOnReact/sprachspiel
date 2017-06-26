@@ -1,17 +1,25 @@
-<% if image == 1 && view == "index" %>
-	<%= image_tag "grain.svg", class: "roomsIcons pull-left", id: "grain" %>
-<% elsif image == 1 && view == "show" %>
-	<%= image_tag "muehle.svg", class: "roomsImages pull-left" %>	
-<% elsif image == 2 && view == "index" %>
-	<%= image_tag "hammer.svg", class: "roomsIcons pull-right", id: "hammer" %>
-<% elsif image == 2 && view == "show" %>
-	<%= image_tag "anvil.svg", class: "roomsImages pull-left", style: "margin-top: 25px;", id: "anvil" %>
-<% elsif image == 3 && view == "index" %>
-	<%= image_tag "battle.svg", class: "roomsIcons pull-left" %>
-<% elsif image == 3 && view == "show" %>
-	<%= image_tag "armor.svg", class: "roomsImages pull-left" %>	
-<% elsif image == 4 && view == "index" %>
-	<%= image_tag "chess.png", class: "roomsIcons pull-right", id: "chess" %>
-<% elsif image == 4 && view == "show" %>
-	<%= image_tag "king.svg", class: "roomsImages pull-left" %>	
-<% end %>
+<% if controller == "buildings" %>
+	<% if image == 1 && view == "index" %>
+		<%= image_tag "grain.svg", class: "roomsIcons pull-left", id: "grain" %>
+	<% elsif image == 1 && view == "show" %>
+		<%= image_tag "muehle.svg", class: "roomsImages pull-left" %>	
+	<% elsif image == 2 && view == "index" %>
+		<%= image_tag "hammer.svg", class: "roomsIcons pull-right", id: "hammer" %>
+	<% elsif image == 2 && view == "show" %>
+		<%= image_tag "anvil.svg", class: "roomsImages pull-left", style: "margin-top: 25px;", id: "anvil" %>
+	<% elsif image == 3 && view == "index" %>
+		<%= image_tag "battle.svg", class: "roomsIcons pull-left" %>
+	<% elsif image == 3 && view == "show" %>
+		<%= image_tag "armor.svg", class: "roomsImages pull-left" %>	
+	<% elsif image == 4 && view == "index" %>
+		<%= image_tag "chess.png", class: "roomsIcons pull-right", id: "chess" %>
+	<% elsif image == 4 && view == "show" %>
+		<%= image_tag "king.svg", class: "roomsImages pull-left" %>	
+	<% elsif image == 5 %>
+		<%= image_tag "king.svg", class: "roomsImages pull-left" %>		
+	<% end %>
+<% elsif controller == "purchases" %>
+	<% if product == 1 %>
+		<%= image_tag "shovel-2.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
+	<% end %>
+<% end %>		

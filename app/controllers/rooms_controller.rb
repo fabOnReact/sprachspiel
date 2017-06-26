@@ -53,7 +53,12 @@ class RoomsController < ApplicationController
     @items_number = @items.group(:product_id).count    
     @chatroom = @room.chatroom
   	@message = Message.new
-    @purchases = Purchase.where(invoice_id: nil, room_id: @room.id)
+    @purchases = Purchase.where(sale_id: nil, room_id: @room.id)
+    #users_count = @purchases.group(:user).count.to_a
+    #users_count.each do |user_count|
+      #user = user_count[0]
+      #count = user_count[1]
+    #end
   end
 
   def delete
@@ -78,6 +83,6 @@ class RoomsController < ApplicationController
   end
 
   def find_room
-    @romm = Room.find(params[:id])
+    @room = Room.find(params[:id])
   end
 end

@@ -4,10 +4,10 @@
   <p class="hidden-xs"><%= @room.description %></p>
 <%= render template: "purchases/new" %>
 <%= render template: "purchases/index" %>
-<div class="room panel panel-default scroll-bar chatroom">
+<div class="room panel panel-default scroll-bar chatroom" id='chatroom_id' data-chat-room-id="<%= @room.chatroom.id %>">
   <% if @chatroom.messages.any? %>
     <div class="panel-body" id="messages">
-      <%= render partial: 'messages/message', collection: @chatroom.messages%>
+      <%= render partial: 'messages/message' %>
     </div>
   <% else %>
     <div class="panel-body hidden" id="messages">
@@ -21,7 +21,7 @@
   <% end %>
 </div> 
 
-<!--div class="container container-links "-->
+<div class="margin-top">
   <%= link_to :back, building_path(@room.building_id), class: "btn btn-primary btn-lg" %>
   <%= render partial:"buildings/partials/mobile_buttons", locals: {controller: "rooms"} %>  
-<!--/div-->
+</div>

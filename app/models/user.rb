@@ -14,6 +14,7 @@ class User < ApplicationRecord
   	email.split('@')[0]
   end
 
+  # calculates the ending balance after all purchases/sales
   def ending_balance
     starting_balance = [100, 100, 100, 100, 100]
     ending_balance = []
@@ -27,12 +28,15 @@ class User < ApplicationRecord
     return ending_balance
   end
  
+  # perform a validation to check if the user has money for the purchase/sale
   def validation_balance(price)
     balance = self.ending_balance
     resources = [:gold, :wood, :food, :stone, :metal]
+    i = 0
     resources.each do |resource|
-      i = 0
-      if balance[i] < price[resource]
+      #binding.pry
+      if price[resource] > balance[i]
+        #binding.pry
         return false if balance[i] - price[resource]
       end
       i += 1
@@ -40,6 +44,7 @@ class User < ApplicationRecord
     return true
   end
 
+  # gets the total amounts of purchases and sales
   def current_balance
     # Query all invoices from purchases/sales for that user in a nested array
     purchases = Purchase.where(user_id: self.id).joins(:price)
@@ -49,13 +54,11 @@ class User < ApplicationRecord
     resources.each do |resource| 
       partials << [purchases.sum(resource), sales.sum(resource)]
     end
-
     # Calculation of Balance
     totals = []
     partials.each do |partial|
       totals << ( partial[1] - partial[0] )
     end
-    #binding.pry
     return totals
   end
 

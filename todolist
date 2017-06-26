@@ -1,12 +1,19 @@
-1. send notification 1 week before launch. Write one mail to each user .. depending on how many you have or find a way to build a chain
+1 send notification 1 week before launch. Write one mail to each user .. depending on how many you have or find a way to build a chain
 
-9 days
+6 days
 
-2 Alternative - If the player does not have enough money the purchase offer is deleted
-3 Build Items
-4 Production - Every room has production facility, every player has some fight, armatura, attack score, etc.. and they will use it somehow
+1 Production - Every room has production facility, every player has some fight, armatura, attack score, etc.. and they will use it somehow
+2 Production will Build Items
 
-5 Tips - with a bottom you can add more tips .. see the other tips in the game..
+1) User buy tools
+2) He has resources
+3) If he has enough resource/tools, a button create bread come out
+4) items#create an item for that room/user
+	5) check the requirement for the product object in the requirement + price tables
+	6) create a purchase 
+
+
+3 Tips - with a bottom you can add more tips .. see the other tips in the game..
 6 Links to different areas of the game
 	link to the player room
 	link to the player inventary and help
@@ -23,6 +30,8 @@
 
 12 fb graph
 13 make a promotion few days before launch with a code they will get free pro accounts if they invite fb friends
+
+change the product name as "Schaufel" for the first product
 
 ---------------------UX Notes---------------------------------
 	area your business

@@ -17,5 +17,4 @@ class Purchase < ApplicationRecord
 		    item.update_attributes(room_id: room_id)
 		end
 	end
-
 end

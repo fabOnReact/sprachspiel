@@ -1,6 +1,23 @@
-  <% unless i.next < @chatroom.messages.size && @chatroom.messages[i.next].user == message.user %>
-    </p>
-  <% else %>
-    </p>
-    <% tags = false %>
-  <% end %>
+var ready = function() {  
+  var messages = $('#chatroom_id')
+
+  if ($('#chatroom_id').length > 0) {
+    App.messages = App.cable.subscriptions.create('MessagesChannel', {
+      received: (data) ->
+        if (data.chatroom_id == chat_room_id) {
+          $("#messages").removeClass('hidden');
+          $('#messages').append(this.renderMessage(data));
+          height = $('.scroll-bar')[0].scrollHeight;
+          $('.scroll-bar').scrollTop(height);
+          };
+      renderMessage: (data) ->
+        if (data.lastuser == data.user) {
+          return "<p>" + data.message + "</p>";
+        } else {
+          return "<br><p> <strong>" + data.user + ": </strong>" + data.message + "</p>";
+        };
+      }
+  };
+};
+
+$(document).on('turbolinks:load', ready);

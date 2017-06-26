@@ -43,8 +43,8 @@ var ready = function() {
 		e.preventDefault()
 		$(this).effect("bounce", 600, function() {
 			var $link = $(this)
-			$('#description').hide("drop", 1000);
-			$('#buildings_buttons').hide("drop", 1000, function() {
+			$('#description').hide("drop", 800);
+			$('#buildings_buttons').hide("drop", 800, function() {
 				id = $link[0].id;
 				target = "#description" + id;
 				$(target).parent().removeClass("hidden-xs");
@@ -65,7 +65,7 @@ var ready = function() {
 			/*$div_showing = $(this).parent().parent().children('.col-sm-1.col-xs-12.no-padding');*/
 			/*var target = '#flex-box-' + $div_showing[0].id.replace("description", "");*/
 			$(flex_box_id).hide("slide", "slow");
-			$(description_id).hide("drop", 1000, function() {
+			$(description_id).hide("drop", 800, function() {
 				$('#buildings_buttons').show("slide", "slow");
 				$row.addClass("hidden-xs");
 				$(flex_box_id).css("display", "none");
