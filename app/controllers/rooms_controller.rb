@@ -44,10 +44,12 @@ class RoomsController < ApplicationController
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @purchase = Purchase.new(room_id: @room.id)
     @purchase.items << @items
-    @items_number = @items.group(:product_id).count    
+    #@items_number = @items.group(:product_id).count    
+    @items_number = @items.group(:product).count    
+    # Create new Message for the chatroom
   	@message = Message.new
-    @purchases = Purchase.where(sale_id: nil, room_id: @room.id)
-    @products = @room.building.products
+    @purchases = Purchase.where(sale_id: nil, room_id: @room.id, selfmade: nil)
+    @products = @room.building.products.where("product_id = ?",  )
   end
 
   def delete

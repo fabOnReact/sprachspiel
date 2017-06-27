@@ -1,23 +1,47 @@
-var ready = function() {  
-  var messages = $('#chatroom_id')
+<% if @room = current_user.rooms.first %>
+<div class="row">
+  <% @products.each do |product| %>
+  <div class="col-md-3">
+    <% link_to product.name %>
+  </div>
+  <% end %>
+</div>
+<% end %>
 
-  if ($('#chatroom_id').length > 0) {
-    App.messages = App.cable.subscriptions.create('MessagesChannel', {
-      received: (data) ->
-        if (data.chatroom_id == chat_room_id) {
-          $("#messages").removeClass('hidden');
-          $('#messages').append(this.renderMessage(data));
-          height = $('.scroll-bar')[0].scrollHeight;
-          $('.scroll-bar').scrollTop(height);
-          };
-      renderMessage: (data) ->
-        if (data.lastuser == data.user) {
-          return "<p>" + data.message + "</p>";
-        } else {
-          return "<br><p> <strong>" + data.user + ": </strong>" + data.message + "</p>";
-        };
-      }
-  };
-};
 
-$(document).on('turbolinks:load', ready);
+
+
+
+<% y = 0 %>
+<% id = nil %>
+<% @products.each do |product| %>
+  <%# unless item.product_id == id %> 
+  <tr class="row<%= y %>">
+      <td class="col-sm-1 col-xs-3">
+      <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
+      </td>     
+    <td class="col-sm-3 table-text">  
+      <%= @purchase.items[y].product.name %> 
+      </td>
+      <td class="col-sm-2">
+      <% unless current_user == @room.user %>
+      <i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
+      <% end %> 
+      </td>  
+      <td class="col-sm-2 table-text">
+      <%#= @items_number[item.product_id] %>
+      </td>
+      <td class="col-sm-2" id="#number_field">
+      <%# variable = @items_number[item.product_id] %>
+    <%#= number_field :variable, [y], {value: "0", id: "number_field", min: 0, max: variable } %>
+      </td>
+      <td class="col-sm-2">
+      <% unless current_user == @room.user %>
+        <i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
+      <% end %>
+      </td>
+      <% y += 1 %>
+  </tr>
+  <%# end %>
+<% id = product.id %>
+<% end %> 

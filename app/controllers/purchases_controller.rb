@@ -15,9 +15,8 @@ class PurchasesController < ApplicationController
       redirect_to room_path(@room)      
     else 
       @price.save
-
       # create purchase
-      current_user.purchases.where(room_id: @room.id, invoice_id: nil).destroy_all
+      current_user.purchases.where(room_id: @room.id, sale_id: nil, selfmade: nil).destroy_all
       @purchase = Purchase.new(room_id: params[:room_id], price_id: @price.id, user_id: current_user.id)
       items_number = @items_number.to_a  
       variable_params.each do |index, nitems|

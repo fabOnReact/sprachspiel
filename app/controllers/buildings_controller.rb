@@ -2,7 +2,11 @@ class BuildingsController < ApplicationController
   before_action :set_building, only: [:new, :edit]
 
   def welcome
-    @subscription = Subscription.new
+    if user_signed_in?
+      redirect_to buildings_path
+    else
+      @subscription = Subscription.new
+    end
   end
 
   def createSubscription 

@@ -1,13 +1,17 @@
+<% products = [] %>
 <% i = 0 %>
 <% id = nil %>
-<% @purchase.items.each do |item| %>
-	<% unless item.product_id == id %>	
+
+<% @room.building.products.each do |product| %>
+<%# @purchase.items.each do |item| %>
+	<%# unless item.product_id == id %>	
 	<tr class="row<%= i %>">
 	    <td class="col-sm-1 col-xs-3">
-	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: item.product_id} %>
+	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
 	    </td>			
 		<td class="col-sm-3 table-text">	
-	    <%= @purchase.items[i].product.name %> 
+	    <%#= @purchase.items[i].product.name %> 
+		<%= product.name %> 
 	    </td>
 	  	<td class="col-sm-2">
 	  	<% unless current_user == @room.user %>
@@ -15,11 +19,18 @@
 	  	<% end %> 
 	  	</td>	 
 	  	<td class="col-sm-2 table-text">
-	  	<%= @items_number[item.product_id] %>
+	  	<%#= @items_number[item.product_id] %>
+	  	<% if @items_number[product].present? %>
+	  		<%= @items_number[product].name %>
+	  	<% else %>
+	  	0
+	  	<% end %>
 	  	</td>
 	  	<td class="col-sm-2" id="#number_field">
+	  	<% unless current_user == @room.user %>	  	
 	  	<% variable = @items_number[item.product_id] %>
 		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
+	  	<% end %>		
 	  	</td>
 	  	<td class="col-sm-2">
 	  	<% unless current_user == @room.user %>
@@ -28,6 +39,6 @@
 	  	</td>
 	  	<% i += 1 %>
 	</tr>
-	<% end %>
-<% id = item.product_id %>
+	<%# end %>
+<%# id = item.product_id %>
 <% end %>	

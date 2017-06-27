@@ -1,4 +1,4 @@
-<% purchases_new = @purchases.where(sale_id: nil, bonus: nil) %>
+<% purchases_new = @purchases.where(sale_id: nil, selfmade: nil) %>
 
 <% if purchases_new.present? %>
 <table class="table">

@@ -4,7 +4,7 @@
 </table>
 <% unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
 <div class="container">
-	<%= render partial: "purchases/partials/price" %>
+	<%= render partial: "purchases/partials/price", locals: {form: f} %>
 </div>
 <% end %>
 <% end %>

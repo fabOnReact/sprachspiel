@@ -7,8 +7,8 @@ class Purchase < ApplicationRecord
 	
 	accepts_nested_attributes_for :items
 
-	def self.creating(room, price, user, bonus )
-		Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, bonus: bonus)
+	def self.creating(room, price, user, selfmade)
+		Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
 	end
 
 	def items_change_room
