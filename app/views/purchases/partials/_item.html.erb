@@ -14,9 +14,9 @@
 		<%= product.name %> 
 	    </td>
 	  	<td class="col-sm-2">
-	  	<% unless current_user == @room.user %>
+	  	<%# unless current_user == @room.user %>
 	  	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
-	  	<% end %> 
+	  	<%# end %> 
 	  	</td>	 
 	  	<td class="col-sm-2 table-text">
 	  	<%#= @items_number[item.product_id] %>
@@ -27,15 +27,15 @@
 	  	<% end %>
 	  	</td>
 	  	<td class="col-sm-2" id="#number_field">
-	  	<% unless current_user == @room.user %>	  	
-	  	<% variable = @items_number[item.product_id] %>
+	  	<%# unless current_user == @room.user %>	  	
+	  	<% variable = @items_number[product] %>
 		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
-	  	<% end %>		
+	  	<%# end %>		
 	  	</td>
 	  	<td class="col-sm-2">
-	  	<% unless current_user == @room.user %>
+	  	<%# unless current_user == @room.user %>
 	  		<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
-	  	<% end %>
+	  	<%# end %>
 	  	</td>
 	  	<% i += 1 %>
 	</tr>
