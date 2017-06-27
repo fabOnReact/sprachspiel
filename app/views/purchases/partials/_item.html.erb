@@ -3,42 +3,68 @@
 <% id = nil %>
 
 <% @room.building.products.each do |product| %>
-<%# @purchase.items.each do |item| %>
-	<%# unless item.product_id == id %>	
 	<tr class="row<%= i %>">
 	    <td class="col-sm-1 col-xs-3">
 	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
 	    </td>			
 		<td class="col-sm-3 table-text">	
-	    <%#= @purchase.items[i].product.name %> 
 		<%= product.name %> 
 	    </td>
 	  	<td class="col-sm-2">
-	  	<%# unless current_user == @room.user %>
 	  	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
-	  	<%# end %> 
 	  	</td>	 
 	  	<td class="col-sm-2 table-text">
-	  	<%#= @items_number[item.product_id] %>
-	  	<% if @items_number[product].present? %>
-	  		<%= @items_number[product].name %>
+	  	<% if @items_count[product].present? %>
+	  		<%= @items_count[product] %>
 	  	<% else %>
 	  	0
 	  	<% end %>
 	  	</td>
 	  	<td class="col-sm-2" id="#number_field">
-	  	<%# unless current_user == @room.user %>	  	
-	  	<% variable = @items_number[product] %>
-		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
-	  	<%# end %>		
+	  	<% if @items_count[product].present? %>
+	  		<% variable = @items_count[product] %>
+	  	<% else %>
+	  		<% variable = 10 %>
+	  	<% end %>
+		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: 9 } %>
 	  	</td>
 	  	<td class="col-sm-2">
-	  	<%# unless current_user == @room.user %>
 	  		<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
-	  	<%# end %>
 	  	</td>
 	  	<% i += 1 %>
 	</tr>
-	<%# end %>
-<%# id = item.product_id %>
+<% end %>	
+
+<% @products.each do |entry| %>
+	<% product = Product.find(entry.product_id) %>
+	<tr class="row<%= i %>">
+	    <td class="col-sm-1 col-xs-3">
+	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
+	    </td>			
+		<td class="col-sm-3 table-text">	
+		<%= product.name %> 
+	    </td>
+	  	<td class="col-sm-2">
+	  	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
+	  	</td>	 
+	  	<td class="col-sm-2 table-text">
+	  	<% if @items_count[product].present? %>
+	  		<%= @items_count[product] %>
+	  	<% else %>
+	  	0
+	  	<% end %>
+	  	</td>
+	  	<td class="col-sm-2" id="#number_field">
+	  	<% if @items_number[product].present? %>
+	  		<% variable = @items_number[product] %>
+	  	<% else %>
+	  		<% variable = 10 %>
+	  	<% end %>
+		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: 9 } %>
+	  	</td>
+	  	<td class="col-sm-2">
+	  		<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
+	  	</td>
+	  	<% i += 1 %>
+	</tr>
 <% end %>	

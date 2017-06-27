@@ -79,7 +79,8 @@ You are building the second loop, but you need to figure out how to get those it
 12 fb graph
 13 make a promotion few days before launch with a code they will get free pro accounts if they invite fb friends
 
-change the product name as "Schaufel" for the first product
+remove item.sold
+remove invoice_id
 
 ---------------------before launch-------------------------------
 Use action cable to update other areas of the game. like players online

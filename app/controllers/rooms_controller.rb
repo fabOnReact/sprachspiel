@@ -49,7 +49,11 @@ class RoomsController < ApplicationController
     # Create new Message for the chatroom
   	@message = Message.new
     @purchases = Purchase.where(sale_id: nil, room_id: @room.id, selfmade: nil)
-    @products = @room.building.products.where("product_id = ?",  )
+    #@purchases = @purchases.joins(:items).where.not('items.product_id' => @room.building.products)
+    @items = @room.items.where.not(product: @room.building.products)
+    @products = @items.select(:product_id).distinct
+    @items_count = @items.group(:product).count
+    #@products = @room.building.products.where("product_id = ?",  )
   end
 
   def delete
