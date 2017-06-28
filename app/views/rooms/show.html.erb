@@ -1,5 +1,5 @@
 <%= render partial: "partials/resources" if user_signed_in? %>
-<div class="container">
+<!--div class="container"-->
   <h1><%= @room.title %></h1>
   <p class="hidden-xs"><%= @room.description %></p>
 <%= render template: "purchases/new" %>
@@ -19,7 +19,7 @@
   <% else %>
     <% flash[:error] = "You need to signup/signin to chat and play" %>
   <% end %>
-</div> 
+<!--/div--> 
 
 <div class="margin-top">
   <%= link_to :back, building_path(@room.building_id), class: "btn btn-primary btn-lg" %>

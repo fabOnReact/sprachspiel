@@ -1,12 +1,12 @@
-<div class="row price">
+<div class="row price no-margin">
 	<%= form_for @price do |price| %>
-	<div class="row">
+	<!--div class="row"-->
 		<div class="col-sm-4 col-xs-6">
 			<div class="col-sm-4 col-xs-12 no-padding">
 			<%= price.label :gold, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :gold, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000} %>
+			<%= price.number_field :gold, {value: 10, id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -14,7 +14,7 @@
 			<%= price.label :wood, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :wood, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000} %>		
+			<%= price.number_field :wood, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>		
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -22,7 +22,7 @@
 			<%= price.label :food, {class: "price_field"} %>
 		</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :food, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000} %>
+			<%= price.number_field :food, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -30,7 +30,7 @@
 			<%= price.label :stone, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">		
-			<%= price.number_field :stone, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000} %>	
+			<%= price.number_field :stone, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>	
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -38,13 +38,13 @@
 			<%= price.label :metal, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">			
-			<%= price.number_field :metal, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000} %>		
+			<%= price.number_field :metal, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>		
 			</div>	
 		</div>										
-	</div>
+		<div class="col-sm-12 no-padding">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<%= form.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
+		</div>		
+	<!--/div-->
 	<% end %>
-	<div class="col-sm-12 no-padding">
-	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-	<%= form.submit :kaufen, {class: "full-width-mobile"} %>
-	</div>
 </div>

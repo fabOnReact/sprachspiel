@@ -263,6 +263,10 @@ a p:hover {
 	font-size: 18px;
 }
 
+.room.table.table-hover {
+	margin-bottom: 0px;
+}
+
 /* Tabs */
 
 .tab-list {
@@ -618,9 +622,11 @@ input:-webkit-autofill {
 		margin-left: -15px;
 	}
 
+	/*
 	.price input[type="submit"], input[name="price"] {
 		width: 142px;
 	}
+	*/
 
 	.price input.price_field {
 		width: 142px;

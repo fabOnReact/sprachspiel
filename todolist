@@ -12,39 +12,18 @@ You are building the second loop, but you need to figure out how to get those it
 3) when he select the number, the price increase
 4) another button show up for the purchase
 4) items#create an item for that room/user
-	5) check the requirement for the product object in the requirement + price tables
 
-	  Every product has a building 
-	  A query all the products of a building
-	  a bottom for the item production for every item in that building, will create a purchase and increase the count or create the line item
+	FIRST GROUP
+		items produced from the shop:
+			A) They can be producted from the room owner
+			B) Other users can buy them, IF available
+			C) The user can use them
 
-	  1. Get the number if items in the room
-	  items_number = Room.first.items.group(:product).count
+		items purchased from other shops 
+			A) Other users can buy them
+			B) The owner can use them
+			C) The owner can not repurchase them
 
-	  2. Loop the room products and show the amount from the previous query
-	  products = []
-	  Buiding.first.products.each do |product|
-		items_number[product]
-		products << product.id 
-	  end
-
-	  3. Show the products that are not from the room, but from purchases
-	  products = Building.first.products
-	  Purchase.where(sale_id: nil, room_id: room.id).joins(:items).where.not('items.product_id' => products)
-
-
-
-
-
-	  buildings = Building.where.not(id: room.building_id)
-
-
-	  buildings.find_each do |building|
-	  	building.products.where(items_number[product])
-
-
-
-	  Purchase.where(sale_id: nil, room_id: room.id).joins(:items).where("items.selfmade = ?", true)
 
 
 
@@ -61,6 +40,7 @@ You are building the second loop, but you need to figure out how to get those it
 		Purchase.create()
 
 
+creare le perks per ogni actuisto e creare la tabella delle perks
 3 Tips - with a bottom you can add more tips .. see the other tips in the game..
 6 Links to different areas of the game
 	link to the player room

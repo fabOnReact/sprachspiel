@@ -22,6 +22,10 @@
 	<% if product == 1 %>
 		<%= image_tag "shovel-2.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
 	<% elsif product == 3 %>
-		<%= image_tag "bread.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+		<%= image_tag "bread.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
 	<% end %>
+<% elsif controller == "rooms" && view == "show" %>		
+	<%# if product == 3 %>
+		<%#= image_tag "soybean.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+	<%# end %>
 <% end %>		
