@@ -43,17 +43,18 @@ class RoomsController < ApplicationController
     @price = Price.new
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @purchase = Purchase.new(room_id: @room.id)
-    @purchase.items << @items
-    #@items_number = @items.group(:product_id).count    
+    @purchase.items << @items 
     @items_number = @items.group(:product).count    
-    # Create new Message for the chatroom
   	@message = Message.new
     @purchases = Purchase.where(sale_id: nil, room_id: @room.id, selfmade: nil)
-    #@purchases = @purchases.joins(:items).where.not('items.product_id' => @room.building.products)
     @items = @room.items.where.not(product: @room.building.products)
     @products = @items.select(:product_id).distinct
     @items_count = @items.group(:product).count
-    #@products = @room.building.products.where("product_id = ?",  )
+  end
+
+  def product
+    @product = Product.find(params[:product_id])
+    @price = 
   end
 
   def delete
@@ -72,6 +73,10 @@ class RoomsController < ApplicationController
   private
   def room_params
     params.require(:room).permit(:title, :description, :building_id)
+  end
+
+  def price_params
+    params.require(:price).require()
   end
 
   def find_room

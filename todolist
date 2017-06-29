@@ -1,43 +1,12 @@
 1 send notification 1 week before launch. Write one mail to each user .. depending on how many you have or find a way to build a chain
 
-6 days
+3 days
 
-1 Production - Every room has production facility, every player has some fight, armatura, attack score, etc.. and they will use it somehow
-2 Production will Build Items
-
-You are building the second loop, but you need to figure out how to get those items available in an array
-
-1) User goes to his room
-2) The items he can purchase in his room show up
 3) when he select the number, the price increase
 4) another button show up for the purchase
 4) items#create an item for that room/user
 
-	FIRST GROUP
-		items produced from the shop:
-			A) They can be producted from the room owner
-			B) Other users can buy them, IF available
-			C) The user can use them
-
-		items purchased from other shops 
-			A) Other users can buy them
-			B) The owner can use them
-			C) The owner can not repurchase them
-
-
-
-
-	  all the products for that room
-
-	  
-	  the quantity of products bought already in that room
-
-	  some products are still missing the products of other rooms bought for that room, but If i convert the result to array, I can loop the array and have all the products name
-
-	  Product.all
-
-	6) create a purchase for that product
-		Purchase.create()
+6) create a purchase for that product
 
 
 creare le perks per ogni actuisto e creare la tabella delle perks

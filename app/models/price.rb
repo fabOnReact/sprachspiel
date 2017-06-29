@@ -2,6 +2,7 @@ class Price < ApplicationRecord
 	has_many :buildings
 	has_many :purchases
 	has_many :sales
+	has_many :products
 
 	#validate :price_and_balance
 
