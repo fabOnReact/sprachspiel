@@ -3,8 +3,8 @@
 	<%= render partial: "purchases/partials/item" %>
 </table>
 <%# unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
-<!--div class="container"-->
+<div class="" id="price">
 	<%= render partial: "purchases/partials/price", locals: {form: f} %>
-<!--/div-->
+</div>
 <%# end %>
 <% end %>

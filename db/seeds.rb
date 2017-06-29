@@ -41,3 +41,5 @@ item.sold = true
 item.save
 #sale = Sale.create(user_id: second_user.id, item_id: item.id, )
 #invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
+
+product.price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)

@@ -53,8 +53,12 @@ class RoomsController < ApplicationController
   end
 
   def product
+    #binding.pry
     @product = Product.find(params[:product_id])
-    @price = 
+    @price = @product.price
+    respond_to do |format|
+      format.js
+    end
   end
 
   def delete

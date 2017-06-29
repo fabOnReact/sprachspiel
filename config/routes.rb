@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  get 'products/show'
+
 	devise_for :users, controllers: {
 		registrations: 'users/registrations'
 	}
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
 	# sale
 	post "/rooms/:room_id/sales/:purchase_id", to: 'sales#create', as: 'create_room_sale'
 	# building room product price calculation
-	get "/rooms/:id/products/:product_id", to: 'rooms#product', as: 'room_product'
+	post "/rooms/:id/products/:product_id", to: 'rooms#product', as: 'room_product'
 
 	mount ActionCable.server => '/cable'
 
