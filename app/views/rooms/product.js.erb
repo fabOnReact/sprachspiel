@@ -1,2 +1,7 @@
-$('#gold').val(<%= @price.gold %>);
-$('#food').val(<%= @price.food %>);
+<%# binding.pry %>
+gold = parseInt($('#gold').val());
+gold += <%= @price.gold %>
+$('#gold').val(gold);
+food = parseInt($('#food').val());
+food += <%= @price.food %>
+$('#food').val(food);

@@ -1,3 +1,8 @@
+<% if current_user == @room.user %>
+	<% boolean = true %>
+	<% empty = true %>
+<% end %>
+
 <div class="row price no-margin">
 	<%= form_for @price do |price| %>
 	<!--div class="row"-->
@@ -6,7 +11,7 @@
 			<%= price.label :gold, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :gold, {value: 10, id: "price_field", class: "price_field", id: "gold", min: 0, max: 100000, disabled: true} %>
+			<%= price.number_field :gold, {value: 0, id: "price_field", class: "price_field", id: "gold", min: 0, max: 100000, disabled: boolean} %>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -14,7 +19,7 @@
 			<%= price.label :wood, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :wood, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>		
+			<%= price.number_field :wood, {value: 0, id: "price_field", class: "price_field", min: 0, max: 100000, disabled: empty} %>		
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -22,7 +27,7 @@
 			<%= price.label :food, {class: "price_field"} %>
 		</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :food, {value: "10", id: "price_field", class: "price_field", id: "food", min: 0, max: 100000, disabled: true} %>
+			<%= price.number_field :food, {value: 0, id: "price_field", class: "price_field", id: "food", min: 0, max: 100000, disabled: empty} %>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -30,7 +35,7 @@
 			<%= price.label :stone, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">		
-			<%= price.number_field :stone, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>	
+			<%= price.number_field :stone, {value: 0, id: "price_field", class: "price_field", min: 0, max: 100000, disabled: empty} %>	
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -38,7 +43,7 @@
 			<%= price.label :metal, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">			
-			<%= price.number_field :metal, {value: "10", id: "price_field", class: "price_field", min: 0, max: 100000, disabled: true} %>		
+			<%= price.number_field :metal, {value: 0, id: "price_field", class: "price_field", min: 0, max: 100000, disabled: empty} %>		
 			</div>	
 		</div>										
 		<div class="col-sm-12 no-padding">

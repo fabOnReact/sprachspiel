@@ -32,6 +32,10 @@ class PurchasesController < ApplicationController
     end      
   end
 
+  def price
+    @price = Price.new
+  end
+
   def edit
   end
 
@@ -71,7 +75,12 @@ class PurchasesController < ApplicationController
 
   def set_variables
     @room = Room.find(params[:room_id])    
-    @price = Price.new(price_params)
+    binding.pry
+    if current_user == @room.user
+      @price = Price.new(price_params)
+    else 
+      #@price = 
+    end
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @items_number = @items.group(:product_id).count          
   end    

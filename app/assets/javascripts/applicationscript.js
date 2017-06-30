@@ -1,6 +1,7 @@
 var ready = function() {	
 
-	$("i.fa-plus-square").click(function() {
+	/*$("i.fa-plus-square").click(function() {*/
+	$("a.icon").click(function() {
 		var field = $(this).parent().next().next().children();
 		var value = parseInt(field.val())
 		field.val(value + 1);

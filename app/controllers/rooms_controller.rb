@@ -40,6 +40,7 @@ class RoomsController < ApplicationController
   end  
 
   def show
+    @chatroom = @room.chatroom
     @price = Price.new
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @purchase = Purchase.new(room_id: @room.id)
