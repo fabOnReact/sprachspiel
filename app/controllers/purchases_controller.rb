@@ -9,11 +9,13 @@ class PurchasesController < ApplicationController
   end
 
   def create  
+    #binding.pry
     # perform validation on price, not more then available resources  
     unless current_user.validation_balance(@price)
       flash[:error] = "Der Kaufbetrag ist zu hoch! Du müsst weniger Ressources nutzten"
       redirect_to room_path(@room)      
     else 
+      #binding.pry
       @price.save
       # create purchase
       current_user.purchases.where(room_id: @room.id, sale_id: nil, selfmade: nil).destroy_all
@@ -26,7 +28,10 @@ class PurchasesController < ApplicationController
         flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
         redirect_to room_path(@room)
       else
-        flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gespeichert"
+        binding.pry
+        flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gespeichert."
+        
+        #render "rooms/show.html.erb"
         redirect_to room_path(@room)
       end     
     end      
@@ -75,12 +80,7 @@ class PurchasesController < ApplicationController
 
   def set_variables
     @room = Room.find(params[:room_id])    
-    binding.pry
-    if current_user == @room.user
-      @price = Price.new(price_params)
-    else 
-      #@price = 
-    end
+    @price = Price.new(price_params)
     @items = @room.items.where(sold: false, used: false).order(:product_id)
     @items_number = @items.group(:product_id).count          
   end    

@@ -34,9 +34,7 @@ class User < ApplicationRecord
     resources = [:gold, :wood, :food, :stone, :metal]
     i = 0
     resources.each do |resource|
-      #binding.pry
       if price[resource] > balance[i]
-        #binding.pry
         return false if balance[i] - price[resource]
       end
       i += 1

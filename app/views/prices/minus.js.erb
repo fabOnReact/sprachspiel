@@ -1,0 +1,11 @@
+gold = parseInt($('#gold').val());
+if (gold > 0) {
+	gold -= <%= @price.gold %>
+	$('#gold').val(gold);
+};
+
+food = parseInt($('#food').val());
+if (food > 0) {
+	food -= <%= @price.food %>
+	$('#food').val(food);
+};

@@ -2,7 +2,12 @@
 
 3 days
 
->> now you can fill that field with the parameters, but you should store the total of the purchase in ruby and then add the new amout every time the user cliks, save again the total.. etc.. 
+>> Display Errors:
+	1) The form @price is not showing in the html, maybe I should structure better this action? -> Refactoring
+	Read about Render, Form, Redirect and Controllers
+
+>> Review and Refactor the rooms#purchase and the _new.html.erb _item.html.erb
+
 
 3) when he select the number, the price increase
 4) another button show up for the purchase

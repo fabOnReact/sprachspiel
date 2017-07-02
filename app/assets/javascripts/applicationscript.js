@@ -2,16 +2,26 @@ var ready = function() {
 
 	/*$("i.fa-plus-square").click(function() {*/
 	$("a.icon").click(function() {
-		var field = $(this).parent().next().next().children();
-		var value = parseInt(field.val())
-		field.val(value + 1);
+		$this = $(this);
+		var icon = $this.children()[0].className
+		if (icon == "fa fa-plus-square fa-3x") {		
+			var field = $(this).parent().next().next().children();
+			var value = parseInt(field.val())
+			field.val(value + 1);
+		} else {
+			var field = $(this).parent().prev().children();
+			var value = parseInt(field.val());
+			if (value > 0) { field.val(value - 1); };
+		};
 	});
 
-	$("i.fa-minus-square").click(function() {
-		var field = $(this).parent().prev().children();
-		var value = parseInt(field.val());
-		field.val(value - 1);
-	});	
+	/*$("i.fa-minus-square").click(function() {
+
+	});*/	
+
+	/*$(".icon").click(function(){
+		console.log("clicked");
+	});*/
 
 	$('a').tooltip();
 

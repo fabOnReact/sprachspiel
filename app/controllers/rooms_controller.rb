@@ -40,26 +40,28 @@ class RoomsController < ApplicationController
   end  
 
   def show
-    @chatroom = @room.chatroom
-    @price = Price.new
-    @items = @room.items.where(sold: false, used: false).order(:product_id)
-    @purchase = Purchase.new(room_id: @room.id)
-    @purchase.items << @items 
-    @items_number = @items.group(:product).count    
+    @chatroom = @room.chatroom       
   	@message = Message.new
     @purchases = Purchase.where(sale_id: nil, room_id: @room.id, selfmade: nil)
-    @items = @room.items.where.not(product: @room.building.products)
-    @products = @items.select(:product_id).distinct
-    @items_count = @items.group(:product).count
+    purchase
   end
 
-  def product
-    #binding.pry
-    @product = Product.find(params[:product_id])
-    @price = @product.price
-    respond_to do |format|
-      format.js
-    end
+  def purchase
+    # Filling the Price Form
+    @price = Price.new    
+    # Items from that room (including those purchased from other rooms)
+    @items = @room.items.where(sold: false, used: false).order(:product_id)
+    # Filling the Purchase Form
+    @purchase = Purchase.new(room_id: @room.id)
+    #@purchase.items << @items 
+    @items_number = @items.group(:product).count 
+    # Items that do not belong to that room
+    @items = @room.items.where.not(product: @room.building.products)
+    @products = @items.select(:product_id).distinct
+    @items_count = @items.group(:product).count    
+  end
+
+  def purchases
   end
 
   def delete

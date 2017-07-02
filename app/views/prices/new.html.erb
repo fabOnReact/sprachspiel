@@ -4,15 +4,14 @@
 <% end %>
 
 <div class="row price no-margin">
-	<%#= form_for @price do |price| %>
-	<%#= render partial: "partials/error_messages", locals: {object: @price} %>
-	<!--div class="row"-->
+	<%= form_for [@room, @purchase, @price] do |price| %>
+	<%= render partial: "partials/error_messages", locals: {object: @price} %>
 		<div class="col-sm-4 col-xs-6">
 			<div class="col-sm-4 col-xs-12 no-padding">
-			<%= form.label :price[:gold], {class: "price_field"} %>
+			<%= price.label :gold, {class: "price_field"} %>
 			</div>
 			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= form.price.number_field :price[:gold], {value: 0, id: "price_field", class: "price_field", id: "gold", min: 1, max: 100000, readonly: boolean} %>
+			<%= price.number_field :gold, {value: 0, id: "price_field", class: "price_field", id: "gold", min: 1, max: 100000, readonly: boolean} %>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-6">
@@ -46,11 +45,10 @@
 			<div class="col-sm-8 col-xs-12 no-padding">			
 			<%= price.number_field :metal, {value: 0, id: "price_field", class: "price_field", min: 1, max: 100000, readonly: empty} %>		
 			</div>	
-		</div>										
-		<div class="col-sm-12 no-padding">
-		<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-		<%= form.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
 		</div>		
-	<!--/div-->
-	<%# end %>
+		<div class="col-sm-12 no-padding">
+		<%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
+		<%= form.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
+		</div>											
+	<% end %>
 </div>

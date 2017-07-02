@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items, :prices
+	resources :messages, :items
 
 	resources :buildings do 
 		resources :rooms
@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 	end
 
 	resources :rooms do
-		resources :purchases
+		resource :prices do
+			resources :purchases
+		end
 		resources :sales
 		resources :chatrooms
 	end
@@ -29,7 +31,8 @@ Rails.application.routes.draw do
 	# sale
 	post "/rooms/:room_id/sales/:purchase_id", to: 'sales#create', as: 'create_room_sale'
 	# building room product price calculation
-	post "/rooms/:id/products/:product_id", to: 'rooms#product', as: 'room_product'
+	post "/prices/:id/plus", to: 'prices#plus', as: 'price_plus'
+	post "/prices/:id/minus", to: 'prices#minus', as: 'price_minus'
 
 	mount ActionCable.server => '/cable'
 
