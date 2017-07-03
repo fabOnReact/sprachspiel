@@ -4,15 +4,11 @@ class PricesController < ApplicationController
   before_action :set_variables, only: [:create]
 
   def create
-    #binding.pry
     @price = Price.new(price_params)
     if current_user.validation_balance(@price)
       if @price.save
-        create_purchase #redirect_to action: "
+        create_purchase
       else
-        @price.errors.full_messages.each do |msg| 
-          flash[:error] = "#{msg}"
-        end
         redirect_to room_path(@room), :flash => { :error => @price.errors.full_messages.join(', ')}
       end
     else
@@ -22,24 +18,21 @@ class PricesController < ApplicationController
   end
 
   def create_purchase
+    @purchase = Purchase.new(room_id: @room.id, price_id: @price.id, user_id: current_user.id)
     unless current_user == @room.user
       current_user.purchases.where(room_id: @room.id, sale_id: nil, selfmade: nil).destroy_all
-      @purchase = Purchase.new(room_id: params[:room_id], price_id: @price.id, user_id: current_user.id)
-      items_number = @items_number.to_a  
-      binding.pry
-      variable_params.each do |index, nitems|
-        @purchase.items << Item.where(product_id: items_number[index.to_i][0], sold: false, room_id: @room.id).limit(nitems.to_i)
-      end 
-      if @purchase.save
-        flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
-        redirect_to room_path(@room)
-      else
-        flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gespeichert."
-        redirect_to room_path(@room)
-      end         
+      @purchase.fill_with_items(variable_params, @items_number, @room.id)
     else 
-
+      @products = @room.building.products.order(id: :asc) 
+      @purchase.fill_with_items(variable_params, @products, @room.id)
     end
+    if @purchase.save
+      flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
+      redirect_to room_path(@room)
+    else
+      flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gespeichert."
+      redirect_to room_path(@room)
+    end             
   end
 
   def plus

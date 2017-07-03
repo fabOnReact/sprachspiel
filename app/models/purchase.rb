@@ -17,4 +17,18 @@ class Purchase < ApplicationRecord
 		    item.update_attributes(room_id: room_id)
 		end
 	end
+
+	def fill_with_items(parameters, object, room_id)
+		keys = object.keys if object.class == Hash
+		parameters.each do |index, nitems|      	
+			index = index.to_i
+			n = nitems.to_i
+			if object.class == Hash 
+				product_id = keys[index] 
+			else
+				product_id = object[index].id
+			end
+			self.items << Item.where_limit(product_id, room_id, n)
+		end 	
+    end
 end
