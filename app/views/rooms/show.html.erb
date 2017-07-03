@@ -2,7 +2,7 @@
 <!--div class="container"-->
   <h1><%= @room.title %></h1>
   <p class="hidden-xs"><%= @room.description %></p>
-<%= render template: "purchases/new" %>
+<%= render template: "prices/new" %>
 <%= render template: "purchases/index" %>
 <div class="room panel panel-default scroll-bar chatroom" id='chatroom_id' data-chat-room-id="<%= @room.chatroom.id %>">
   <% if @room.chatroom.messages.any? %>

@@ -2,12 +2,10 @@
 
 3 days
 
->> Display Errors:
-	1) The form @price is not showing in the html, maybe I should structure better this action? -> Refactoring
-	Read about Render, Form, Redirect and Controllers
+>> Find out how to show the correct number of item in _item.html.erb
+rooms#show aciton 
 
->> Review and Refactor the rooms#purchase and the _new.html.erb _item.html.erb
-
+Validate sum of all prices to be greater then 0
 
 3) when he select the number, the price increase
 4) another button show up for the purchase

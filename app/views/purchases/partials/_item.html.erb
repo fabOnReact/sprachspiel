@@ -1,6 +1,7 @@
 <% products = [] %>
 <% i = 0 %>
 <% id = nil %>
+<% item = [] %>
 
 <% @room.building.products.each do |product| %>
 	<% if current_user == @room.user || @items_count[product].present? && @items_count[product] > 0%>
@@ -31,7 +32,7 @@
 		  	<% else %>
 		  		<% variable = 9 %>
 		  	<% end %>
-		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
+		<%= number_field :item[:number], [i], {value: "0", id: "number_field", min: 0, max: variable } %>
 	  	</td>
 	  	<td class="col-sm-2">
 	  		<%= link_to price_minus_path(product.price), method: :post, class: "icon", remote: true do %>

@@ -15,13 +15,19 @@ var ready = function() {
 		};
 	});
 
-	/*$("i.fa-minus-square").click(function() {
+	$("i.fa-plus-square").click(function() {
+		$this = $(this);
+		var field = $this.parent().next().next().children();
+		var value = parseInt(field.val())
+		field.val(value + 1);
+	});	
 
-	});*/	
-
-	/*$(".icon").click(function(){
-		console.log("clicked");
-	});*/
+	$("i.fa-minus-square").click(function() {
+		$this = $(this);
+		var field = $this.parent().prev().children();
+		var value = parseInt(field.val())
+		if (value > 0) { field.val(value - 1);};
+	});	
 
 	$('a').tooltip();
 

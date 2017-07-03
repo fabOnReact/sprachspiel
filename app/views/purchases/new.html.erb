@@ -1,14 +1,9 @@
-<%= form_for [@room, @purchase] do |f| %>
-<%= render partial: "partials/error_messages", locals: {object: @purchase} %>
+<%= form_for [@room, @price] do |price| %>
 <table class="room table table-hover">
 	<%= render partial: "purchases/partials/item" %>
 </table>
 <%# unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
 <div class="" id="price">
-	<%= render template: "prices/new", locals: {form: f} %>
-</div>
-<%# end %>
-<div class="row price no-margin">
-
+	<%= render template: "prices/new", locals: {price: price} %>
 </div>
 <% end %>
