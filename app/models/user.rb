@@ -70,6 +70,10 @@ class User < ApplicationRecord
     end
   end
 
+  def clear_purchases(room_id)
+    self.purchases.where(room_id: room_id, sale_id: nil, selfmade: nil).destroy_all
+  end
+
   def room_owner(room)
     self == room.user
   end

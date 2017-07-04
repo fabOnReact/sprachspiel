@@ -8,7 +8,11 @@ class Item < ApplicationRecord
 		end
 	end
 
-    def self.where_limit(product_id, room_id, nitems)
+    def self.where_with_limit(product_id, room_id, nitems)
     	Item.where(product_id: product_id, sold: false, room_id: room_id).limit(nitems)
-    end	
+    end
+
+    def self.create_item(product_id, room_id)	
+    	Item.create(product_id: product_id, room_id: room_id, sold: false, used: false, selfmade: true)
+    end
 end

@@ -6,8 +6,9 @@ class PricesController < ApplicationController
   def create
     @price = Price.new(price_params)
     if current_user.validation_balance(@price)
-      if @price.save
-        create_purchase
+      if @price.save && Purchase.create_purchase(@room, @price, current_user, variable_params)
+        flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
+        redirect_to room_path(@room)
       else
         redirect_to room_path(@room), :flash => { :error => @price.errors.full_messages.join(', ')}
       end
@@ -15,24 +16,6 @@ class PricesController < ApplicationController
       flash[:error] = "Der Kaufbetrag ist zu hoch! Du müsst weniger Ressources nutzten"
       redirect_to room_path(@room)
     end
-  end
-
-  def create_purchase
-    @purchase = Purchase.new(room_id: @room.id, price_id: @price.id, user_id: current_user.id)
-    unless current_user == @room.user
-      current_user.purchases.where(room_id: @room.id, sale_id: nil, selfmade: nil).destroy_all
-      @purchase.fill_with_items(variable_params, @items_number, @room.id)
-    else 
-      @products = @room.building.products.order(id: :asc) 
-      @purchase.fill_with_items(variable_params, @products, @room.id)
-    end
-    if @purchase.save
-      flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
-      redirect_to room_path(@room)
-    else
-      flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gespeichert."
-      redirect_to room_path(@room)
-    end             
   end
 
   def plus
@@ -69,8 +52,7 @@ class PricesController < ApplicationController
   end
 
   def set_variables
-    #binding.pry
-    @items = @room.items.where(sold: false, used: false).order(:product_id)
-    @items_number = @items.group(:product_id).count          
+    #@items = @room.items.where(sold: false, used: false).order(:product_id)
+    #@items_number = @items.group(:product_id).count          
   end    
 end

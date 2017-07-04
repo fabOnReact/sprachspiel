@@ -4,7 +4,8 @@
 <% item = [] %>
 
 <% @room.building.products.order(id: :asc).each do |product| %>
-	<% if current_user == @room.user || @items_count[product].present? && @items_count[product] > 0%>
+	<%# binding.pry %>
+	<% if current_user == @room.user || @items_number[product].present? && @items_number[product] > 0 %>
 	<tr class="row<%= i %>">
 	    <td class="col-sm-1 col-xs-3">
 	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
@@ -18,20 +19,25 @@
 		 	<% end %>
 		</td>	 
 	  	<td class="col-sm-2 table-text">
+	  	<%# binding.pry %>
 	  	<% if @items_count[product].present? %>
 	  		<%= @items_count[product] %>
+	  	<% elsif @items_number[product].present? %>
+	  		<%= @items_number[product] %>
 	  	<% else %>
 	  	0
 	  	<% end %>
 	  	</td>
 	  	<td class="col-sm-2" id="#number_field">
-	  		<% if current_user == @room.user %>
+	  		<!-- 2 you fixed hear the variable, but need to make sure that the user can not buy more then @items_number[product] number of items -->
+	  		<% if current_user.room_owner(@room) %>
 		  		<% variable = 9 %>
-		  	<% elsif @items[product].present? && @items[product] < 10 %>
-		  		<% variable = @items_count[product] if @items_count[product].present? || @items[product] < 10 %>
+		  	<% elsif @items_number[product].present? && @items_number[product] < 10%>
+		  		<% variable = @items_number[product] %>
 		  	<% else %>
 		  		<% variable = 9 %>
 		  	<% end %>
+		<% binding.pry %>
 		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
 	  	</td>
 	  	<td class="col-sm-2">

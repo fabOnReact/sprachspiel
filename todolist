@@ -2,15 +2,7 @@
 
 3 days
 
->> Find out how to show the correct number of item in _item.html.erb
-rooms#show aciton 
-
->> there is only one product
-	why not making just a form? that submits a purchase? 
-	to the action purchases#create
-	you can not submit 2 forms at the same time, but you can create a form_for
-
->> test the new prices#create_purchase
+>> purchase.rb
 
 Validate sum of all prices to be greater then 0
 
