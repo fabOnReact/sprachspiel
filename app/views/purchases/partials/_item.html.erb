@@ -14,7 +14,7 @@
 		<%= product.name %>
 	    </td>
 	  	<td class="col-sm-2">
-	  		<%= link_to price_plus_path(product.price), method: :post, class: "icon", remote: true do %>
+	  		<%= link_to room_price_plus_path(product.price), method: :post, class: "icon", remote: true do %>
 		 	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
 		 	<% end %>
 		</td>	 
@@ -32,16 +32,16 @@
 	  		<!-- 2 you fixed hear the variable, but need to make sure that the user can not buy more then @items_number[product] number of items -->
 	  		<% if current_user.room_owner(@room) %>
 		  		<% variable = 9 %>
-		  	<% elsif @items_number[product].present? && @items_number[product] < 10%>
+		  	<% elsif @items_number[product].present? && @items_number[product] < 10 %>
 		  		<% variable = @items_number[product] %>
 		  	<% else %>
 		  		<% variable = 9 %>
 		  	<% end %>
-		<% binding.pry %>
+		<%# binding.pry %>
 		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
 	  	</td>
 	  	<td class="col-sm-2">
-	  		<%= link_to price_minus_path(product.price), method: :post, class: "icon", remote: true do %>
+	  		<%= link_to room_price_minus_path(product.price), method: :post, class: "icon", remote: true do %>
 	  			<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
 	  		<% end %>
 	  	</td>

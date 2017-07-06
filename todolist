@@ -4,14 +4,16 @@
 
 >> purchase.rb
 
-Validate sum of all prices to be greater then 0
+add a username field that needs to be unique otherwise people can get confused
+add the field to the user table and add a validation
 
-3) when he select the number, the price increase
-4) another button show up for the purchase
-4) items#create an item for that room/user
+automatic creation of room with all texts see below
+richiedere il nome e cognome del giocatore alla registrazione
+   ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
+   dopo di cui il crea la stanza con utentena descizione standard, 
+   l utente nella sua stanza potra cliccare edit e modificarla
 
-6) create a purchase for that product
-
+>> test all the scenarios for purchase/sale
 
 creare le perks per ogni actuisto e creare la tabella delle perks
 3 Tips - with a bottom you can add more tips .. see the other tips in the game..
@@ -19,15 +21,11 @@ creare le perks per ogni actuisto e creare la tabella delle perks
 	link to the player room
 	link to the player inventary and help
 	link to the full screen chat 
-7 automatic creation of room with all texts see below
+
 8 in game notifications for purchases
 
 9 fix the layout on mobile, fix the images on mobile, include links to
 10 login with facebook - then big button configure player
-11 richiedere il nome e cognome del giocatore alla registrazione
-   ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
-   dopo di cui il crea la stanza con utentena descizione standard, 
-    l utente nella sua stanza potra cliccare edit e modificarla
 
 12 fb graph
 13 make a promotion few days before launch with a code they will get free pro accounts if they invite fb friends

@@ -1,6 +1,5 @@
 var ready = function() {	
 
-	/*$("i.fa-plus-square").click(function() {*/
 	$("a.icon").click(function() {
 		$this = $(this);
 		var icon = $this.children()[0].className
@@ -45,7 +44,7 @@ var ready = function() {
 	$('#myTabs a').click(function (e) {
 		e.preventDefault()
 		$(this).tab('show')
-		id = "#" + $(this)[0].innerText /*$('.tab-pane.fade.active.in')[0].id*/
+		id = "#" + $(this)[0].innerText;
 		if ($(id)[0].innerHTML == "") { $('.tab-content').hide }
 	});
 
@@ -79,8 +78,6 @@ var ready = function() {
 			description_id = "#description" + id;
 			flex_box_id = "#flex-box-" + id;
 			$row = $(this).parent().parent();
-			/*$div_showing = $(this).parent().parent().children('.col-sm-1.col-xs-12.no-padding');*/
-			/*var target = '#flex-box-' + $div_showing[0].id.replace("description", "");*/
 			$(flex_box_id).hide("slide", "slow");
 			$(description_id).hide("drop", 800, function() {
 				$('#buildings_buttons').show("slide", "slow");

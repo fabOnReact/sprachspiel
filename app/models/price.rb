@@ -12,7 +12,6 @@ class Price < ApplicationRecord
 
 	def sum_is_not_0
 		if gold == 0 && wood == 0 && food == 0 && stone == 0 && metal == 0
-			#binding.pry
 			errors[:base] << 'The total amount needs to be higher then 0'
 		end
 	end

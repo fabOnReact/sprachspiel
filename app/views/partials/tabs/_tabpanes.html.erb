@@ -6,6 +6,7 @@
     <% style = "margin-top:-15px;" if users.empty? %>
     <!-- Online Users -->
     <div role="tabpanel" class="tab-pane fade" id="online" style="<%= style %>"> 
+    <% if users.present? %>
     <p>
     <% users.each do |user| %>
         <% room = user.rooms.first %>
@@ -22,9 +23,11 @@
         <% end %> <!-- room.present? -->
     <% end %>
     </p>
+    <% end %>
     </div>      
     <!-- Tools -->
     <div role="tabpanel" class="tab-pane fade" id="tools">
+      <% if @rooms_count.present? %>
       <p>
       <% @rooms_count.each do |room_id, count| %>
         <% items = @products.where("items.room_id" => room_id) %>
@@ -42,6 +45,7 @@
         <% end %>
       <% end %> <!-- @room_count.each do -->
       </p> 
+      <% end %>
     </div>
     <!-- Weapons -->
     <div role="tabpanel" class="tab-pane fade" id="weapons"></div>

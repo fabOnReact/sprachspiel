@@ -2,8 +2,11 @@
 <!--div class="container"-->
   <h1><%= @room.title %></h1>
   <p class="hidden-xs"><%= @room.description %></p>
-<%= render template: "prices/new" %>
-<%= render template: "purchases/index" %>
+<%# binding.pry %>
+<% if current_user.room_owner(@room) || @items_number.present? || @items_count.present? %>
+  <%= render template: "prices/new" %>
+  <%= render template: "purchases/index" %>
+<% end %>
 <div class="room panel panel-default scroll-bar chatroom" id='chatroom_id' data-chat-room-id="<%= @room.chatroom.id %>">
   <% if @room.chatroom.messages.any? %>
     <div class="panel-body" id="messages">

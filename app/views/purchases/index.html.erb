@@ -1,6 +1,9 @@
-<% purchases_new = @purchases.where(sale_id: nil, selfmade: nil) %>
+<!-- now you need to display them hear. purchases are not being displayed anymore for the confirmation --> 
+<%# binding.pry %>
+<%# purchases_new = @purchases.where(sale_id: nil, selfmade: nil) %>
 
-<% if purchases_new.present? %>
+<%# if purchases_new.present? %>
+<% if @purchases.present? %>
 <table class="table">
 	<tr class="">
 		<th class="col-xs-3 col-sm-2">Spieler</th>
@@ -13,7 +16,8 @@
 		<th class="hidden-xs col-sm-3">Items</th>
 		<th class="col-xs-5 col-sm-2">Optionen</th>
 	</tr>
-	<% purchases_new.each do |purchase| %>
+	<%# purchases_new.each do |purchase| %>
+	<% @purchases.each do |purchase| %>
 	<% total = purchase.price.gold + purchase.price.wood + purchase.price.food + purchase.price.stone + purchase.price.metal %>
 	<tr class="">
 		<td class="hidden-xs col-sm-2"><%= purchase.user.name %></td>
@@ -39,7 +43,8 @@
 			<i class="fa fa-trash-o" aria-hidden="true"></i>
 		 	<% end %>
 			<% if current_user == @room.user %>
-				<%= link_to create_room_sale_path(@room, purchase), { method: :post }, {class: "hidden-xs", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
+				<%#= link_to create_room_sale_path(@room, purchase), { method: :post }, {class: "hidden-xs", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
+				<%= link_to sold_room_purchase_path(@room, purchase), { method: :post }, {class: "hidden-xs", 'rel' => 'tooltip', 'data-placement' => 'right', 'title'=>"Angebot akzeptieren"}  do %>
 				<i class="fa fa-check hidden-xs" aria-hidden="true"></i>
 				<i class="fa fa-check fa-2x hidden-sm hidden-md hidden-lg" aria-hidden="true"></i>
 				<% end %>

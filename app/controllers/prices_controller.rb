@@ -1,12 +1,12 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:plus, :minus]
-  before_action :set_room, only: [:create, :create_purchase]
-  before_action :set_variables, only: [:create]
+  before_action :set_room, only: [:create, :create_purchase, :plus, :minus]
+  #before_action :set_variables, only: [:create]
 
   def create
     @price = Price.new(price_params)
     if current_user.validation_balance(@price)
-      if @price.save && Purchase.create_purchase(@room, @price, current_user, variable_params)
+      if @price.save && Purchase.create_purchase(variable_params, @room, @price, current_user)
         flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
         redirect_to room_path(@room)
       else
@@ -19,14 +19,18 @@ class PricesController < ApplicationController
   end
 
   def plus
-    respond_to do |format|
-      format.js
+    if current_user.room_owner(@room)
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
   def minus
-    respond_to do |format|
-      format.js
+    if current_user.room_owner(@room)    
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -50,9 +54,4 @@ class PricesController < ApplicationController
   def set_room
     @room = Room.find(params[:room_id])
   end
-
-  def set_variables
-    #@items = @room.items.where(sold: false, used: false).order(:product_id)
-    #@items_number = @items.group(:product_id).count          
-  end    
 end
