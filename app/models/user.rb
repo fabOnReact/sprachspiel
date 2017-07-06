@@ -8,8 +8,15 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :messages 
   has_many :purchases, :dependent => :destroy
   has_many :sales, :dependent => :destroy
+  belongs_to :role
+
+  accepts_nested_attributes_for :rooms
 
   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+
+  validates :username, uniqueness: true
+  validates :username, :role, presence: true
+
   def name 
   	email.split('@')[0]
   end

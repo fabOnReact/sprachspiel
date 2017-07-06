@@ -12,6 +12,16 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :username %><br />
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :role_id %><br />
+        <%= f.select(:role_id, Role.all.collect {|p| [ p.role, p.id ]}, {prompt: 'Select a Role'}, {:class => "form-control"}) %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -23,7 +33,7 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
       </div>
-
+  
       <div class="form-group">
         <%= f.submit "Registrieren", class: "btn btn-primary btn-block btn-lg" %>
       </div>

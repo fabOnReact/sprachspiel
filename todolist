@@ -10,7 +10,7 @@ add the field to the user table and add a validation
 automatic creation of room with all texts see below
 richiedere il nome e cognome del giocatore alla registrazione
    ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
-   dopo di cui il crea la stanza con utentena descizione standard, 
+   dopo di cui crea la stanza con utente una descizione standard, 
    l utente nella sua stanza potra cliccare edit e modificarla
 
 >> test all the scenarios for purchase/sale
