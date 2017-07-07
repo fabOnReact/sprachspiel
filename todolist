@@ -2,16 +2,9 @@
 
 3 days
 
->> purchase.rb
-
-add a username field that needs to be unique otherwise people can get confused
-add the field to the user table and add a validation
-
 automatic creation of room with all texts see below
-richiedere il nome e cognome del giocatore alla registrazione
-   ask if he wants to be soldier, agricoltore, re, soldato o blacksmith
-   dopo di cui crea la stanza con utente una descizione standard, 
-   l utente nella sua stanza potra cliccare edit e modificarla
+>> delete the invoice_id
+>> create entries for all the descriptions and roles
 
 >> test all the scenarios for purchase/sale
 

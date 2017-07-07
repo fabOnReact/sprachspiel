@@ -7,7 +7,12 @@ class Price < ApplicationRecord
 	validate :sum_is_not_0
 
 	def self.free
-		price = Price.create(gold: 0, wood: 0, food: 0, stone: 0, metal: 0)
+		price = Price.where(gold: 0, wood: 0, food: 0, stone: 0, metal: 0).first
+		if price.nil?
+			price = Price.new(gold: 0, wood: 0, food: 0, stone: 0, metal: 0)  
+			price.save(validate: false)
+		end
+		return price
 	end
 
 	def sum_is_not_0

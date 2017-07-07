@@ -1,27 +1,42 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-   super
-   resource.rooms.build
+    super
   end
 
   # POST /resource
-  #def create
-  #  super 
-  #end
+  def create
+    super 
+    @building = resource.role.building
+    description = @building.descriptions.find_by(name: "room-description").content
+    title = @building.descriptions.find_by(name: "room-title").content
+    @room = Room.new(title: title, description: description, building_id: @building.id, user_id: resource.id)
+    @room.chatroom = Chatroom.new
+    if @room.save
+      #binding.pry
+      @purchase = Purchase.creating(@room, Price.free, current_user, true)
+      @building.room_items(@purchase)
+      flash[:notice] = "Your Room was saved"
+      #redirect_to buildings_path
+    else
+      flash[:error] = "An error occurred, the Room was not saved"
+      #redirect_to buildings_path
+      #render "new"
+    end         
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -37,12 +52,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
   # end
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:admin, :username, :role_id])
+  end 
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:admin, :username, :role_id])
+  end 
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_an data which is usually expired after sign

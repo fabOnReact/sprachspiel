@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
 	  current_user.try :touch
 	end	
 	
-	def configure_permitted_parameters
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:admin, :username])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:admin, :username])
-	end	
+	# def configure_permitted_parameters
+	#	devise_parameter_sanitizer.permit(:sign_up, keys: [:admin, :username, :role_id])
+	#	devise_parameter_sanitizer.permit(:account_update, keys: [:admin, :username, :role_id])
+	# end	
 end
