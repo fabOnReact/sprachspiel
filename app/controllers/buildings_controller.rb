@@ -1,5 +1,6 @@
 class BuildingsController < ApplicationController
   before_action :set_building, only: [:new, :edit]
+  before_action :product_count, only: [:show, :index]
 
   def welcome
     if user_signed_in?
@@ -24,9 +25,6 @@ class BuildingsController < ApplicationController
     @rooms = Room.all
     @images = ["muehle.svg","kirche.svg","kaserne.svg","palast.svg","dorf.svg"]
     @buildings = Building.all.order(:id)
-    @ids = ["online", "tools", "weapons", "food"] 
-    @products = Product.where(producttype_id: 1).joins(:items)
-    @rooms_count = @products.group("items.room_id").count    
   end
   
   # GET /buildings/new
@@ -73,8 +71,8 @@ class BuildingsController < ApplicationController
     @ids = ["online", "tools", "weapons", "food"] 
     @chatroom = @building.chatroom
     @message = Message.new
-    @products = Product.where(producttype_id: 1).joins(:items)
-    @rooms_count = @products.group("items.room_id").count
+    #@products = Product.where(producttype_id: 1).joins(:items)
+    #@rooms_count = @products.group("items.room_id").count
   end
 
   def delete
@@ -104,4 +102,16 @@ class BuildingsController < ApplicationController
   def subscription_params
     params.require(:subscription).permit(:email)
   end  
+
+  def product_count
+    @ids = ["online", "tools", "weapons", "food"] 
+    @product_count = []
+    @products = []
+    i = 0
+    Producttype.all.each do |producttype|
+      @products << Product.where(producttype_id: producttype.id).joins(:items) 
+      @product_count << @products[i].group("items.room_id").count
+      i += 1
+    end
+  end    
 end
