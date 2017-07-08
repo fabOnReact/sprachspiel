@@ -23,7 +23,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       #redirect_to buildings_path
     else
       flash[:error] = "An error occurred, the Room was not saved"
-      #redirect_to buildings_path
       #render "new"
     end         
   end
