@@ -14,7 +14,7 @@
 		<%= product.name %>
 	    </td>
 	  	<td class="col-sm-2">
-	  		<%= link_to room_price_plus_path(product.price), method: :post, class: "icon", remote: true do %>
+	  		<%= link_to room_price_plus_path(@room, product.price), method: :post, class: "icon", remote: true do %>
 		 	<i class="fa fa-plus-square fa-3x" aria-hidden="true" id="plus-square"></i>
 		 	<% end %>
 		</td>	 
@@ -41,7 +41,7 @@
 		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
 	  	</td>
 	  	<td class="col-sm-2">
-	  		<%= link_to room_price_minus_path(product.price), method: :post, class: "icon", remote: true do %>
+	  		<%= link_to room_price_minus_path(@room, product.price), method: :post, class: "icon", remote: true do %>
 	  			<i class="fa fa-minus-square fa-3x" aria-hidden="true" id="minus-square"></i>
 	  		<% end %>
 	  	</td>

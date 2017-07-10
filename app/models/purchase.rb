@@ -18,7 +18,40 @@ class Purchase < ApplicationRecord
 	def self.create_purchase(params, room, price, user)
 		@purchase = Purchase.new_instance(room, price, user, true)
 		if user.room_owner(room)
+		  products = room.building.products
 		  product_ids = room.building.products.order(id: :asc).pluck(:id)
+		  errors = []
+		  binding.pry
+		  # Collect the products id requirements
+		  products.each do |product|
+		  	requirement = Product.find(product.requirement_id)
+		  	number = params[product.id.to_s]
+		  	requirement_items = room.items.where(id: requirement.id).limit(number)
+		  	unless requirement_items.size < number
+		  		requirement_items.each do |item|
+		  			item.used = true
+		  			item.save
+		  		end
+		  	else
+		  		errors << " #{number} of #{requirement.name} to build #{number} #{product.name}"
+		  	end
+
+		  	if errors.present? 
+		  		# 1 IMPORTANT READ
+		  		# figure out a correct way to do this in the controller (for the flash messages) and 
+		  		# also how to loop this message so that is DRY
+		  		# https://glenngillen.com/thoughts/useful-flash-messages-in-rails
+		  		string = "Sorry, but you need"
+		  		errors.each do |error|
+
+		  		end
+		  	end
+
+
+		  # Validate all that the user has the requirements
+
+		  # the item used needs to be flagged as used and deleted
+
 		  @purchase.fill_with_items(params, product_ids, room.id, user)
 		else 
 		  user.clear_purchases(room.id)

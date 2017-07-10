@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710152537) do
+ActiveRecord::Schema.define(version: 20170710173502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20170710152537) do
     t.integer  "producttype_id"
     t.integer  "price_id"
     t.integer  "requirement_id"
+    t.boolean  "bonus"
   end
 
   create_table "producttypes", force: :cascade do |t|

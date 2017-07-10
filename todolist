@@ -1,6 +1,11 @@
+>> IMPORTANT READ
+>> purchase.rb row 40
+
+
 >> delete the invoice_id
 >> test all the scenarios for purchase/sale
 
+configure the game so that new player only have 1 free type of item to sell
 creare requirement per la produzione
 Requirement needs to belong to one product
 	and as requirement many products

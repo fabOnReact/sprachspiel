@@ -1,6 +1,19 @@
 gold = parseInt($('#gold').val());
 gold += <%= @price.gold %>
 $('#gold').val(gold);
+
 food = parseInt($('#food').val());
 food += <%= @price.food %>
 $('#food').val(food);
+
+wood = parseInt($('#wood').val());
+wood += <%= @price.wood %>
+$('#wood').val(wood);
+
+stone = parseInt($('#stone').val());
+stone += <%= @price.stone %>
+$('#stone').val(stone);
+
+metal = parseInt($('#metal').val());
+metal += <%= @price.metal %>
+$('#metal').val(metal);

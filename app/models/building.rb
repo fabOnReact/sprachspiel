@@ -7,7 +7,7 @@ class Building < ApplicationRecord
 	has_one :chatroom, :dependent => :destroy
 
 	def room_items(purchase)
-		self.products.each do |product|
+		self.products.where(bonus: true).each do |product|
 	        Item.bonus_items(product, purchase)
       	end    
         room = Building.find(4).rooms.first
