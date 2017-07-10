@@ -1,13 +1,21 @@
 >> delete the invoice_id
 >> test all the scenarios for purchase/sale
 
-creare le perks per ogni actuisto e creare la tabella delle perks
+creare requirement per la produzione
+Requirement needs to belong to one product
+	and as requirement many products
+	products
+		has_many :objects, class_name: "Product", foreign_key: "requirement_id"
+		belongs_to :requirement, class_name: "Product"
+
+creare le perks per ogni acquisto e creare la tabella delle perks
 fix the sword icon for the product
 6 Links to different areas of the game
 	link to the player room
 	link to the player inventary and help
 	link to the full screen chat 
 add products
+add indexes
 
 do no show players with no items at all
 fix the layout on mobile, fix the images on mobile, include links to
@@ -31,6 +39,7 @@ Globalize
 -----------------------before launch-------------------------------
 include the send button for the chat
 -------------------------------------------------------------------
+	Mine now is screwed up and I
 	remove invoice for now 
 	
 	user
