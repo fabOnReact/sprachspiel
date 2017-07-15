@@ -8,7 +8,8 @@ class Purchase < ApplicationRecord
 	accepts_nested_attributes_for :items
 
 	def self.creating(room, price, user, selfmade)
-		Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
+		purchase = Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
+		return purchase
 	end
 
 	def self.new_instance(room, price, user, selfmade)
@@ -16,12 +17,12 @@ class Purchase < ApplicationRecord
 	end
 
 	def self.create_purchase(params, room, price, user)
+		binding.pry	
 		@purchase = Purchase.new_instance(room, price, user, true)
 		if user.room_owner(room)
 		  products = room.building.products
 		  product_ids = room.building.products.order(id: :asc).pluck(:id)
 		  errors = []
-		  binding.pry
 		  # Collect the products id requirements
 		  products.each do |product|
 		  	requirement = Product.find(product.requirement_id)
@@ -46,8 +47,7 @@ class Purchase < ApplicationRecord
 
 		  		end
 		  	end
-
-
+		  end
 		  # Validate all that the user has the requirements
 
 		  # the item used needs to be flagged as used and deleted

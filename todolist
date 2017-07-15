@@ -1,5 +1,5 @@
 >> IMPORTANT READ
->> purchase.rb row 40
+>> finishe creating seed data for the products
 
 
 >> delete the invoice_id
@@ -21,6 +21,11 @@ fix the sword icon for the product
 	link to the full screen chat 
 add products
 add indexes
+action cable is very slow in buildings#show, the UPDATE is taking 76 ms
+   (0.5ms)  BEGIN
+  SQL (0.4ms)  UPDATE "users" SET "updated_at" = '2017-07-15 14:57:16.149968' WHERE "users"."id" = $1  [["id", 7]]
+   (76.7ms)  COMMIT
+
 
 do no show players with no items at all
 fix the layout on mobile, fix the images on mobile, include links to
@@ -161,4 +166,7 @@ kill -9 59780
 foreman configuration procfile web: bundle exec rails s
 git rm -r vendor/plugins #delete files from git then commit and push
 heroku run rake db:migrate
-Rails.application.config.assets.paths
+Rails.application.config.assets.paths		
+
+---------------- SHORTCUTS --------------------------------
+psql -d db/development_sprachespiel -U fabrizio
