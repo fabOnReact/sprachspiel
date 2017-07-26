@@ -601,6 +601,10 @@ input:-webkit-autofill {
 		color: white;
 		background-color: black;
 	}
+
+	.hidden-small-screen {
+		display:hidden;
+	}
 }
 
 @media (max-width: 425px) {

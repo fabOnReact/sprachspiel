@@ -38,7 +38,7 @@
 		  		<% variable = 9 %>
 		  	<% end %>
 		<%# binding.pry %>
-		<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: variable } %>
+		<%= number_field :variable, [i+1], {value: "0", id: "number_field", min: 0, max: variable } %>
 	  	</td>
 	  	<td class="col-sm-2">
 	  		<%= link_to room_price_minus_path(@room, product.price), method: :post, class: "icon", remote: true do %>
@@ -78,7 +78,7 @@
 		  	<% else %>
 		  		<% variable = 10 %>
 		  	<% end %>
-			<%= number_field :variable, [i], {value: "0", id: "number_field", min: 0, max: 9 } %>
+			<%= number_field :variable, [i+1], {value: "0", id: "number_field", min: 0, max: 9 } %>
 		<% end %>
 	  	</td>
 	  	<td class="col-sm-2">

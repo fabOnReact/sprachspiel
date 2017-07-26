@@ -17,51 +17,52 @@ class Purchase < ApplicationRecord
 	end
 
 	def self.create_purchase(params, room, price, user)
-		binding.pry	
 		@purchase = Purchase.new_instance(room, price, user, true)
 		if user.room_owner(room)
-		  products = room.building.products
-		  product_ids = room.building.products.order(id: :asc).pluck(:id)
-		  errors = []
-		  # Collect the products id requirements
-		  products.each do |product|
-		  	requirement = Product.find(product.requirement_id)
-		  	number = params[product.id.to_s]
-		  	requirement_items = room.items.where(id: requirement.id).limit(number)
-		  	unless requirement_items.size < number
-		  		requirement_items.each do |item|
-		  			item.used = true
-		  			item.save
-		  		end
-		  	else
-		  		errors << " #{number} of #{requirement.name} to build #{number} #{product.name}"
-		  	end
-
-		  	if errors.present? 
-		  		# 1 IMPORTANT READ
-		  		# figure out a correct way to do this in the controller (for the flash messages) and 
-		  		# also how to loop this message so that is DRY
-		  		# https://glenngillen.com/thoughts/useful-flash-messages-in-rails
-		  		string = "Sorry, but you need"
-		  		errors.each do |error|
-
-		  		end
-		  	end
-		  end
-		  # Validate all that the user has the requirements
-
-		  # the item used needs to be flagged as used and deleted
-
-		  @purchase.fill_with_items(params, product_ids, room.id, user)
+			# find all the products
+			products = room.building.products
+			# Collect the products id requirement
+			product_ids = room.building.products.order(id: :asc).pluck(:id)
+			missing_items = []			
+			products.each do |product|
+				# you need to finish this method
+				if product.requirement_id.present?
+					requirement = Product.find(product.requirement_id)
+					# check if the user has enought items
+					number = params[product.id.to_s].to_i 
+					requirement_items = room.items.where(id: requirement.id).limit(number)
+					# if the product has a requirement and was set for purchase					
+					if requirement.present? && number > 0	
+					  	unless requirement_items.size < number
+					  		requirement_items.each do |item|
+					  			# the item is used to create a new one
+					  			item.used!
+					  		end
+					  	else
+					  		# if the required items are not available save an error message
+					  		missing_items << 
+					  		# product.requirement_check(params, requirement_items)
+					  	end
+					end					
+				end
+			end
+			# The model method will return true or false if errors are included
+			if missing_items.present?
+				return missing_items 
+			else 
+				# the item is created
+				@purchase.fill_with_items(params, product_ids, room.id, user)
+			end
 		else 
-		  user.clear_purchases(room.id)
-		  items = room.items.where(sold: false, used: false).order(:product_id)
-    	  @items_number = items.group(:product_id).count   
-		  @purchase.fill_with_items(params, @items_number, room.id, user)
-		  @purchase.selfmade = nil
-		end     
+			# If a customer comes to the room, there is no requirement
+			user.clear_purchases(room.id)
+			items = room.items.where(sold: false, used: false).order(:product_id)
+			@items_number = items.group(:product_id).count   
+			@purchase.fill_with_items(params, @items_number, room.id, user)
+			@purchase.selfmade = nil
+		end
 		@purchase.save       
-	end 
+	end
 
 	def items_change_room
 		self.items.each do |item|

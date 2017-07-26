@@ -2,9 +2,9 @@ class Item < ApplicationRecord
 	belongs_to :room
 	belongs_to :product
 
-	def self.bonus_items(product, purchase) 
+	def self.bonus_items(product, purchase, room) 
 		2.times do  
-			Item.create(product_id: product.id, sold: false, used: false, purchase_id: purchase.id, selfmade: true, room_id: Room.king_room.id) 
+			Item.create(product_id: product.id, sold: false, used: false, purchase_id: purchase.id, selfmade: true, room_id: room.id) #Room.king_room.id 
 		end
 	end
 
@@ -14,5 +14,9 @@ class Item < ApplicationRecord
 
     def self.create_item(product_id, room_id)	
     	Item.create(product_id: product_id, room_id: room_id, sold: false, used: false, selfmade: true)
+    end
+
+    def item_used!
+    	self.update_attributes(used: true)
     end
 end

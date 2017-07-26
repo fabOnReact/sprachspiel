@@ -1,4 +1,5 @@
 class PricesController < ApplicationController
+  include Messages
   before_action :set_price, only: [:plus, :minus]
   before_action :set_room, only: [:create, :create_purchase, :plus, :minus]
   #before_action :set_variables, only: [:create]
@@ -6,9 +7,12 @@ class PricesController < ApplicationController
   def create
     @price = Price.new(price_params)
     if current_user.validation_balance(@price)
-      if @price.save && Purchase.create_purchase(variable_params, @room, @price, current_user)
+      missing_items = Purchase.create_purchase(variable_params, @room, @price, current_user)
+      if @price.save && missing_items.empty?
         flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
         redirect_to room_path(@room)
+      elsif missing_items.present?
+        redirect_to room_path(@room), :flash => { :error => message(missing_items)}
       else
         redirect_to room_path(@room), :flash => { :error => @price.errors.full_messages.join(', ')}
       end

@@ -55,6 +55,7 @@ var ready = function() {
 	    $('#room_title').keyup(updateCountdown);
 	};	
 
+	/* animation for the buildings#index and show */
 	$('#buildings_buttons a').click(function(e) {
 		e.preventDefault()
 		$(this).effect("bounce", 600, function() {
@@ -62,8 +63,10 @@ var ready = function() {
 			$('#description').hide("drop", 800);
 			$('#buildings_buttons').hide("drop", 800, function() {
 				id = $link[0].id;
+				/* finding out what is target */
 				target = "#description" + id;
 				$(target).parent().removeClass("hidden-xs");
+				$(target).removeClass("hidden-xs");
 				$(target).show("drop", 800);
 				target = "#flex-box-" + id;
 				$(target).show("drop", 800);

@@ -1,5 +1,1 @@
-<%= f.field_for :rooms do |rooms_form| %>
-    <%= rooms_form.select(:) %>
-    <%= f.select(:roles_id, Role.all.collect {|p| [ p.role, p.id ]}, {prompt: 'Select a Role'}, {:class => "form-control"}) %>
-
-<% end %>
+		  

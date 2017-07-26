@@ -20,15 +20,17 @@
 	<% end %>
 <% elsif controller == "purchases" %>
 	<% if product == 1 %>
+		<%= image_tag "agriculture.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+	<% elsif product == 3 %>
 		<%= image_tag "shovel-2.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
-	<% elsif product == 2 %>
+	<% elsif product == 3 %>
 		<%= image_tag "dagger.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
 	<% elsif product == 3 %>
 		<%= image_tag "bread.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
 	<% elsif product == 4 %>
 		<%= image_tag "hook.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
-	<% elsif product == 5 %>
-		<%= image_tag "hammer-horizontal.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+	<% elsif product == 2 %>
+		<%= image_tag "hammer-horizontal.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
 	<% end %>	
 <% elsif controller == "rooms" && view == "show" %>		
 	<%# if product == 3 %>

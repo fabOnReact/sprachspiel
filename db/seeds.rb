@@ -51,6 +51,9 @@ Producttype.create(name: "Lebensmittel")
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
 product = Product.create(name: :sichel, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true)
 
+price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
+product = Product.create(name: :hammer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "sichel"))
+
 # Requirements
 
 

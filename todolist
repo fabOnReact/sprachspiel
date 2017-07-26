@@ -1,9 +1,5 @@
 >> IMPORTANT READ
->> finishe creating seed data for the products
-
-
->> delete the invoice_id
->> test all the scenarios for purchase/sale
+>> purchase.rb row 28
 
 configure the game so that new player only have 1 free type of item to sell
 creare requirement per la produzione
@@ -21,14 +17,15 @@ fix the sword icon for the product
 	link to the full screen chat 
 add products
 add indexes
-action cable is very slow in buildings#show, the UPDATE is taking 76 ms
-   (0.5ms)  BEGIN
-  SQL (0.4ms)  UPDATE "users" SET "updated_at" = '2017-07-15 14:57:16.149968' WHERE "users"."id" = $1  [["id", 7]]
-   (76.7ms)  COMMIT
+finish creating seed data for the products
+
 
 
 do no show players with no items at all
 fix the layout on mobile, fix the images on mobile, include links to
+
+delete the invoice_id
+test all the scenarios for purchase/sale
 
 10 login with facebook - then big button configure player
 3 Tips - with a bottom you can add more tips .. see the other tips in the game..

@@ -16,10 +16,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @room = Room.new(title: title, description: description, building_id: @building.id, user_id: resource.id)
     @room.chatroom = Chatroom.new
     if @room.save
-      binding.pry
       @purchase = Purchase.creating(@room, Price.free, current_user, true)
-      binding.pry
-      @building.room_items(@purchase)
+      @building.room_items(@purchase, @room)
       flash[:notice] = "Your Room was saved"
       #redirect_to buildings_path
     else
