@@ -13,7 +13,8 @@ class Item < ApplicationRecord
     end
 
     def self.create_item(product_id, room_id)	
-    	Item.create(product_id: product_id, room_id: room_id, sold: false, used: false, selfmade: true)
+    	item = Item.create(product_id: product_id, room_id: room_id, sold: false, used: false, selfmade: true)
+        #binding.pry
     end
 
     def item_used!

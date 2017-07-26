@@ -17,35 +17,10 @@ class Purchase < ApplicationRecord
 	end
 
 	def self.create_purchase(params, room, price, user)
-		@purchase = Purchase.new_instance(room, price, user, true)
+		# @purchase = Purchase.new_instance(room, price, user, true)
+		#binding.pry		
 		if user.room_owner(room)
-			# find all the products
-			products = room.building.products
-			# Collect the products id requirement
-			product_ids = room.building.products.order(id: :asc).pluck(:id)
-			missing_items = []			
-			products.each do |product|
-				# you need to finish this method
-				if product.requirement_id.present?
-					requirement = Product.find(product.requirement_id)
-					# check if the user has enought items
-					number = params[product.id.to_s].to_i 
-					requirement_items = room.items.where(id: requirement.id).limit(number)
-					# if the product has a requirement and was set for purchase					
-					if requirement.present? && number > 0	
-					  	unless requirement_items.size < number
-					  		requirement_items.each do |item|
-					  			# the item is used to create a new one
-					  			item.used!
-					  		end
-					  	else
-					  		# if the required items are not available save an error message
-					  		missing_items << 
-					  		# product.requirement_check(params, requirement_items)
-					  	end
-					end					
-				end
-			end
+			missing_items = room.building_products(params)
 			# The model method will return true or false if errors are included
 			if missing_items.present?
 				return missing_items 
@@ -61,7 +36,7 @@ class Purchase < ApplicationRecord
 			@purchase.fill_with_items(params, @items_number, room.id, user)
 			@purchase.selfmade = nil
 		end
-		@purchase.save       
+		return missing_items if @purchase.save
 	end
 
 	def items_change_room
@@ -80,9 +55,10 @@ class Purchase < ApplicationRecord
 	def fill_with_items(parameters, object, room_id, user)
 		object = Product.hash_keys(object)
 		parameters.each do |index, nitems|      	
-			index = index.to_i
+			index = index.to_i - 1
 			n = nitems.to_i
 			product_id = object[index]
+			#binding.pry
 			if user.room_owner(Room.find(room_id))
 				self.items << self.create_items(product_id, room_id, n)
 			else 

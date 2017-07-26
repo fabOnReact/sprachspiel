@@ -15,4 +15,20 @@ class Building < ApplicationRecord
         purchase.update_attributes(sale_id: sale.id, room_id: purchase.user.rooms.first.id)
 		sale.saving(purchase)
     end  
+
+	def products_requirements(params, room)
+		# find all the products
+		products = self.products
+		missing_items = []			
+		# perform the requirement check from the product model
+		products.each do |product|
+			missing_item = product.requirement_check(params, room, product) 
+			missing_items << missing_item if missing_item.present?
+		end		
+		return missing_items
+	end    
+
+	def products_ids
+		self.products.order(id: :asc).pluck(:id)
+	end
 end

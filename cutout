@@ -1,1 +1,22 @@
-		  
+def self.create_purchase(params, room, price, user)
+	# @purchase = Purchase.new_instance(room, price, user, true)
+	binding.pry		
+	if user.room_owner(room)
+		missing_items = room.building_products(params)
+		# The model method will return true or false if errors are included
+		if missing_items.present?
+			return missing_items 
+		else 
+			# the item is created
+			@purchase.fill_with_items(params, product_ids, room.id, user)
+		end
+	else 
+		# If a customer comes to the room, there is no requirement
+		user.clear_purchases(room.id)
+		items = room.items.where(sold: false, used: false).order(:product_id)
+		@items_number = items.group(:product_id).count   
+		@purchase.fill_with_items(params, @items_number, room.id, user)
+		@purchase.selfmade = nil
+	end
+	return missing_items if @purchase.save
+end		  

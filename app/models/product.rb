@@ -6,22 +6,30 @@ class Product < ApplicationRecord
 	belongs_to :building
 	belongs_to :producttype
 	belongs_to :price, :dependent => :destroy
-	#belongs_to :requirement, class_name: "Product"
-	def requirement_check(input_params, requirements)
+
+	def requirement_check(input_params, room, product)
+		# this method does not work well and is causing the 
+		# functionality to allways require the product even if 
+		# the user already has some 
+
 		# if the product has a requirement and was set for purchase
-		
-		if  requirements.present && number > 0	
-		  	unless requirements.size < number
-		  		requirements.each do |item|
-		  			# the item is used to create a new one
-		  			item.used!
-		  		end
-		  	else
-		  		# if the required items are not available save an error message
-		  		# errors << " #{number} of #{requirement.name} to build #{number} #{product.name}"
-		  		# missing_items << [number, requirement, self]
-		  		return missing_item
-		  	end
+		if product.requirement_id.present?
+			requirement = Product.find(product.requirement_id)
+			# check if the user has enought items
+			number = input_params[product.id.to_s].to_i 
+			requirement_items = room.items.where(id: requirement.id).limit(number)
+			# if the product has a requirement and was set for purchase					
+			if requirement.present? && number > 0	
+			  	unless requirement_items.size < number
+			  		requirement_items.each do |item|
+			  			# the item is used to create a new one
+			  			item.used!
+			  		end
+			  	else
+			  		# if the required items are not available save an error message
+			  		return [number, requirement, product]
+			  	end
+			end					
 		end
 	end
 end

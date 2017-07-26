@@ -2,7 +2,9 @@ module Messages
 	def message(missing_items)
 		message = String.new
 		missing_items.each do |item|
-			message += "Sorry, but you need #{item[0]} of #{item[1].name} to build a #{item[2].name}"
+			message += "Tut mir leid, aber Sie brauchen #{item[0]} #{item[1].name} um eine #{item[2].name} zu bauen"
+			#binding.pry
 		end
+		return message
 	end
 end
