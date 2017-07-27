@@ -2,12 +2,7 @@
 >> product.rb row 11
 
 configure the game so that new player only have 1 free type of item to sell
-creare requirement per la produzione
-Requirement needs to belong to one product
-	and as requirement many products
-	products
-		has_many :objects, class_name: "Product", foreign_key: "requirement_id"
-		belongs_to :requirement, class_name: "Product"
+
 
 creare le perks per ogni acquisto e creare la tabella delle perks
 fix the sword icon for the product
