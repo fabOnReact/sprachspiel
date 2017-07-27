@@ -17,7 +17,7 @@ class Item < ApplicationRecord
         #binding.pry
     end
 
-    def item_used!
+    def used!
     	self.update_attributes(used: true)
     end
 end

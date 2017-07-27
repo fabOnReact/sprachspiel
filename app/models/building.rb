@@ -18,13 +18,18 @@ class Building < ApplicationRecord
 
 	def products_requirements(params, room)
 		# find all the products
+		# binding.pry
 		products = self.products
 		missing_items = []			
 		# perform the requirement check from the product model
-		products.each do |product|
-			missing_item = product.requirement_check(params, room, product) 
-			missing_items << missing_item if missing_item.present?
-		end		
+		params.each do |product_id, number|
+			if number.to_i > 0
+				product = Product.find(product_id)
+				missing_item = product.requirement_check(params, room, product) 
+				#binding.pry
+				missing_items << missing_item if missing_item.present?	
+			end
+		end
 		return missing_items
 	end    
 

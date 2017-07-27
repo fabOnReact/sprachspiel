@@ -17,14 +17,17 @@ class Product < ApplicationRecord
 			requirement = Product.find(product.requirement_id)
 			# check if the user has enought items
 			number = input_params[product.id.to_s].to_i 
-			requirement_items = room.items.where(id: requirement.id).limit(number)
+			requirement_items = room.items.where(product_id: requirement.id, used: false).limit(number)
 			# if the product has a requirement and was set for purchase					
+			#binding.pry
 			if requirement.present? && number > 0	
 			  	unless requirement_items.size < number
 			  		requirement_items.each do |item|
 			  			# the item is used to create a new one
 			  			item.used!
 			  		end
+			  		#binding.pry
+			  		return nil
 			  	else
 			  		# if the required items are not available save an error message
 			  		return [number, requirement, product]

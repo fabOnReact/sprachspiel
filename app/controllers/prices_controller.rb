@@ -13,10 +13,9 @@ class PricesController < ApplicationController
       missing_items = @room.building.products_requirements(variable_params, @room)
       owner = current_user.room_owner(@room)
       if @price.save
-        binding.pry
         if owner && missing_items.empty?
+          #binding.pry
           @purchase = Purchase.new_instance(@room, @price, current_user, true)
-          binding.pry
           @purchase.fill_with_items(variable_params, building.products_ids, @room.id, current_user)
           if @purchase.save 
             flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
@@ -25,6 +24,7 @@ class PricesController < ApplicationController
             flash[:alert] = "Error"
           end
         elsif owner && missing_items.present?
+          #binding.pry
           redirect_to room_path(@room), :flash => { :error => message(missing_items)}
         else
           user.clear_purchases(room.id)

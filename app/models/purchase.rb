@@ -58,7 +58,6 @@ class Purchase < ApplicationRecord
 			index = index.to_i - 1
 			n = nitems.to_i
 			product_id = object[index]
-			#binding.pry
 			if user.room_owner(Room.find(room_id))
 				self.items << self.create_items(product_id, room_id, n)
 			else 
