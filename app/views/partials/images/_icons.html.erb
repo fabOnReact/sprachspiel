@@ -20,17 +20,31 @@
 	<% end %>
 <% elsif controller == "purchases" %>
 	<% if product == 1 %>
-		<%= image_tag "agriculture.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+		<%= image_tag "agriculture.svg", class: "roomsImages pull-left", style: "height:31px;" %>
 	<% elsif product == 3 %>
 		<%= image_tag "shovel-2.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
 	<% elsif product == 3 %>
-		<%= image_tag "dagger.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+		<%= image_tag "schwert.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
 	<% elsif product == 3 %>
-		<%= image_tag "bread.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+		<%= image_tag "brot.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
 	<% elsif product == 4 %>
 		<%= image_tag "hook.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
 	<% elsif product == 2 %>
 		<%= image_tag "hammer-horizontal.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
+	<% elsif product ==  %>
+		<%= image_tag "achse.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
+	<% elsif product ==  %>
+		<%= image_tag "ofen.svg", class: "roomsImages pull-left", style: "height:31px;" %>					
+	<% elsif product ==  %>
+		<%= image_tag "messer.svg", class: "roomsImages pull-left", style: "height:31px;" %>					
+	<% elsif product ==  %>
+		<%= image_tag "fisch.svg", class: "roomsImages pull-left", style: "height:31px;" %>							
+	<% elsif product ==  %>
+		<%= image_tag "hänchen.svg", class: "roomsImages pull-left", style: "height:31px;" %>									
+	<% elsif product ==  %>
+		<%= image_tag "bank.svg", class: "roomsImages pull-left", style: "height:31px;" %>									
+	<% elsif product ==  %>
+		<%= image_tag "schild.svg", class: "roomsImages pull-left", style: "height:31px;" %>											
 	<% end %>	
 <% elsif controller == "rooms" && view == "show" %>		
 	<%# if product == 3 %>
