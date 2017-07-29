@@ -15,7 +15,7 @@ class Purchase < ApplicationRecord
 	def self.new_instance(room, price, user, selfmade)
 		@purchase = Purchase.new(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
 	end
-
+=begin
 	def self.create_purchase(params, room, price, user)
 		# @purchase = Purchase.new_instance(room, price, user, true)
 		#binding.pry		
@@ -38,7 +38,7 @@ class Purchase < ApplicationRecord
 		end
 		return missing_items if @purchase.save
 	end
-
+=end
 	def items_change_room
 		self.items.each do |item|
 			room_id = self.user.rooms.first.id
@@ -54,16 +54,17 @@ class Purchase < ApplicationRecord
 
 	def fill_with_items(parameters, object, room_id, user)
 		object = Product.hash_keys(object)
-		parameters.each do |index, nitems|      	
-			index = index.to_i - 1
+		parameters.each do |index, nitems|
+			# i removed index, because now variable is passing the product_id
+			#index = index.to_i # -1
 			n = nitems.to_i
-			product_id = object[index]
+			#product_id = object[index]
 			if user.room_owner(Room.find(room_id))
-				self.items << self.create_items(product_id, room_id, n)
+				self.items << self.create_items(index, room_id, n)
 			else 
 				# change the selfmade to nil
 				# you need to select the correct items
-				self.items << Item.where_limit(product_id, room_id, n)			
+				self.items << Item.where_limit(index, room_id, n)			
 				self.selfmade_items(nil)
 			end
 		end 	

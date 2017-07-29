@@ -49,40 +49,37 @@ Producttype.create(name: "Lebensmittel")
 # Create Products
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
-product = Product.create(name: :sichel, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "hammer"))
+product = Product.create(name: :sichel, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "hammer").id)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
-product = Product.create(name: :hammer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "brot"))
+product = Product.create(name: :hammer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "brot").id)
 
 price = Price.create(gold: 0, wood: 15, food: 0, stone: 0, metal: 15)
-product = Product.create(name: :schwert, building_id: 3, producttype_id: 2, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer"))
+product = Product.create(name: :schwert, building_id: 3, producttype_id: 2, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer").id)
 
 price = Price.create(gold: 0, wood: 0, food: 10, stone: 0, metal: 0)
-product = Product.create(name: :brot, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "sichel"))
+product = Product.create(name: :brot, building_id: 1, producttype_id: 3, price_id: price.id, bonus: true, requirement_id: Product.find_by(name: "sichel").id)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 10)
-product = Product.create(name: :achse, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer"))
-
-price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
-product = Product.create(name: :ofen, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "sichel"))
+product = Product.create(name: :achse, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer").id)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 15)
-product = Product.create(name: :messer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "brot"))
+product = Product.create(name: :messer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "brot").id)
 
 price = Price.create(gold: 0, wood: 10, food: 30, stone: 0, metal: 0)
-product = Product.create(name: :fisch, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "messer"))
+product = Product.create(name: :fisch, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "messer").id)
 
 price = Price.create(gold: 0, wood: 50, food: 30, stone: 10, metal: 0)
-product = Product.create(name: :bank, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer"))
+product = Product.create(name: :bank, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hammer").id)
 
 price = Price.create(gold: 5, wood: 10, food: 10, stone: 50, metal: 10)
-product = Product.create(name: :ofen, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "bank"))
+product = Product.create(name: :ofen, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "bank").id)
 
 price = Price.create(gold: 0, wood: 10, food: 50, stone: 0, metal: 0)
-product = Product.create(name: :hähnchen, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "ofen"))
+product = Product.create(name: :hähnchen, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "ofen").id)
 
 price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
-product = Product.create(name: :schild, building_id: 2, producttype_id: 2, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hähnchen"))
+product = Product.create(name: :schild, building_id: 2, producttype_id: 2, price_id: price.id, bonus: false, requirement_id: Product.find_by(name: "hähnchen").id)
 
 # Descriptions
 

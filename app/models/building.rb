@@ -26,7 +26,6 @@ class Building < ApplicationRecord
 			if number.to_i > 0
 				product = Product.find(product_id)
 				missing_item = product.requirement_check(params, room, product) 
-				#binding.pry
 				missing_items << missing_item if missing_item.present?	
 			end
 		end
@@ -34,6 +33,6 @@ class Building < ApplicationRecord
 	end    
 
 	def products_ids
-		self.products.order(id: :asc).pluck(:id)
+		self.products.reload.order(id: :asc).pluck(:id)
 	end
 end

@@ -1,9 +1,8 @@
 class PricesController < ApplicationController
   include Messages
   before_action :set_price, only: [:plus, :minus]
-  before_action :set_room, only: [:create, :create_purchase, :plus, :minus]
+  before_action :set_room, only: [:create, :plus, :minus]
   #before_action :set_variables, only: [:create]
-
   def create
     @price = Price.new(price_params)
     if current_user.validation_balance(@price)
@@ -13,30 +12,31 @@ class PricesController < ApplicationController
       missing_items = @room.building.products_requirements(variable_params, @room)
       owner = current_user.room_owner(@room)
       if @price.save
+        @purchase = Purchase.new_instance(@room, @price, current_user, true)
         if owner && missing_items.empty?
-          #binding.pry
-          @purchase = Purchase.new_instance(@room, @price, current_user, true)
+          binding.pry
           @purchase.fill_with_items(variable_params, building.products_ids, @room.id, current_user)
           if @purchase.save 
-            flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
+            flash[:notice] = "Ihr Kaufangebot wurde gespeichert!"
             redirect_to room_path(@room)
           else
-            flash[:alert] = "Error"
+            flash[:alert] = "Sorry an Error occurred and the purchase was not saved"
           end
         elsif owner && missing_items.present?
           #binding.pry
           redirect_to room_path(@room), :flash => { :error => message(missing_items)}
         else
-          user.clear_purchases(room.id)
-          items = room.items.where(sold: false, used: false).order(:product_id)
+          current_user.clear_purchases(@room.id)
+          items = @room.items.where(sold: false, used: false).order(:product_id)
           items_number = items.group(:product_id).count
-          @purchase.fill_with_items(params, items_number, @room.id, current_user)
+          @purchase.fill_with_items(variable_params, items_number, @room.id, current_user)
           @purchase.selfmade = nil
           if @purchase.save 
             flash[:notice] = "Ihr Kaufangebot wurde gespeichert! Jetzt musst du auf den Verkäufer warten"
             redirect_to room_path(@room)
           else
-            flash[:alert] = "Error"
+            #binding.pry
+            flash[:alert] = "Sorry, an error occurred and the purchase was not saved"
             redirect_to room_path(@room)
           end
         end

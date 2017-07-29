@@ -2,7 +2,8 @@
 <!--div class="container"-->
   <h1><%= @room.title %></h1>
   <p class="hidden-xs"><%= @room.description %></p>
-<% if current_user.room_owner(@room) || @items_number.present? || @items_count.present? %>
+<%# binding.pry %>
+<% if user_signed_in? && current_user.room_owner(@room) || @items_number.present? || @items_count.present? %>
   <%= render template: "prices/new" %>
   <%= render template: "purchases/index" %>
 <% end %>

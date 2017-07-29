@@ -19,32 +19,31 @@
 		<%= image_tag "king.svg", class: "roomsImages pull-left" %>		
 	<% end %>
 <% elsif controller == "purchases" %>
-	<% if product == 1 %>
-		<%= image_tag "agriculture.svg", class: "roomsImages pull-left", style: "height:31px;" %>
-	<% elsif product == 3 %>
-		<%= image_tag "shovel-2.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
-	<% elsif product == 3 %>
-		<%= image_tag "schwert.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
-	<% elsif product == 3 %>
+	<% if product == 13 %>
+		<%= image_tag "sichel.svg", class: "roomsImages pull-left", style: "height:31px;" %>
+	<% elsif product == 15 %>
+		<%= image_tag "schwert.svg", class: "roomsImages pull-left", style: "height:31px;" %>
+	<% elsif product == 16 %>
 		<%= image_tag "brot.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
-	<% elsif product == 4 %>
-		<%= image_tag "hook.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
-	<% elsif product == 2 %>
+	<% elsif product ==  %>
+		<%= image_tag "sichel.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
+	<% elsif product == 14 %>
 		<%= image_tag "hammer-horizontal.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
-	<% elsif product ==  %>
-		<%= image_tag "achse.svg", class: "roomsImages pull-left", style: "height:31px;" %>			
-	<% elsif product ==  %>
-		<%= image_tag "ofen.svg", class: "roomsImages pull-left", style: "height:31px;" %>					
-	<% elsif product ==  %>
-		<%= image_tag "messer.svg", class: "roomsImages pull-left", style: "height:31px;" %>					
-	<% elsif product ==  %>
-		<%= image_tag "fisch.svg", class: "roomsImages pull-left", style: "height:31px;" %>							
-	<% elsif product ==  %>
-		<%= image_tag "hänchen.svg", class: "roomsImages pull-left", style: "height:31px;" %>									
-	<% elsif product ==  %>
-		<%= image_tag "bank.svg", class: "roomsImages pull-left", style: "height:31px;" %>									
-	<% elsif product ==  %>
-		<%= image_tag "schild.svg", class: "roomsImages pull-left", style: "height:31px;" %>											
+	<% elsif product == 17 %>
+		<%= image_tag "achse.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+	<% elsif product == 21 %>
+		<%= image_tag "ofen.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+	<% elsif product == 18 %>
+		<%= image_tag "knife.svg", class: "roomsImages pull-left", style: "height:31px;" %>
+		<!--i class="icon-accessories icon-knife"></i-->
+	<% elsif product == 19 %>
+		<%= image_tag "fisch.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+	<% elsif product == 22 %>
+		<%= image_tag "hänchen.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
+	<% elsif product == 20 %>
+		<%= image_tag "table.svg", class: "roomsImages pull-left", style: "height:31px;" %>		
+	<% elsif product == 23 %>
+		<%= image_tag "schild.svg", class: "roomsImages pull-left", style: "height:31px;" %>	
 	<% end %>	
 <% elsif controller == "rooms" && view == "show" %>		
 	<%# if product == 3 %>

@@ -1,5 +1,7 @@
+>> purchase.rb row 58
+
 creare le perks per ogni acquisto e creare la tabella delle perks
-fix the sword icon for the product
+
 6 Links to different areas of the game
 	link to the player room
 	link to the player inventary and help
@@ -32,15 +34,12 @@ Use action cable to update other areas of the game. like players online
 reseources items ...etc..
 Internationalization
 Globalize
-
-
------------------------before launch-------------------------------
 include the send button for the chat
--------------------------------------------------------------------
-
-5. Trade products for resources
-
----------------- SHORTCUTS --------------------------------
+---------------------after launch--------------------------------
+Trade products for resources
+Configure SVG Images
+fix on mobile buildings#index padding
+---------------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione
 psql -d SocialNetwork_development per accedere al db

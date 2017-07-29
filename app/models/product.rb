@@ -13,6 +13,7 @@ class Product < ApplicationRecord
 		# the user already has some 
 
 		# if the product has a requirement and was set for purchase
+		# binding.pry
 		if product.requirement_id.present?
 			requirement = Product.find(product.requirement_id)
 			# check if the user has enought items

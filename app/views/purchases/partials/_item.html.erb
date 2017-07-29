@@ -28,7 +28,7 @@
 	  	</td>
 	  	<td class="col-sm-2" id="#number_field">
 	  		<!-- 2 you fixed hear the variable, but need to make sure that the user can not buy more then @items_number[product] number of items -->
-	  		<% if current_user.room_owner(@room) %>
+	  		<% if user_signed_in? && current_user.room_owner(@room) %>
 		  		<% variable = 9 %>
 		  	<% elsif @items_number[product].present? && @items_number[product] < 10 %>
 		  		<% variable = @items_number[product] %>
@@ -47,6 +47,7 @@
 	<% end %>
 <% end %>	
 
+<%# binding.pry %>
 <% @products.each do |entry| %>
 	<% product = Product.find(entry.product_id) %>
 	<tr class="row<%= i %>">
