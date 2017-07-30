@@ -1,17 +1,12 @@
 creare le perks per ogni acquisto e creare la tabella delle perks
 
-6 Links to different areas of the game
-	link to the player room
-	link to the player inventary and help
-	link to the full screen chat 
+player inventary and help
 
 do no show players with no items at all
 fix the layout on mobile, fix the images on mobile, include links to
 
 delete the invoice_id
 test all the scenarios for purchase/sale
-
-configure the game so that new player only have 1 free type of item to sell
 
 10 login with facebook - then big button configure player
 3 Tips - with a bottom you can add more tips .. see the other tips in the game..

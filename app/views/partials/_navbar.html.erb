@@ -20,14 +20,15 @@
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><%= link_to "Profil bearbeiten", edit_user_registration_path(current_user) %></li>
-	            <li><a href="#">Somethings</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li><a href="#">Separated link</a></li>
+              <% room = current_user.rooms.first %>
+	            <li><%= link_to "Your Room", room_path(room) %></li>
+	            <li><%= link_to "Your Chatroom", room_chatroom_path(room, room.chatroom)%></li>
+	            <li><%= link_to "Main Menu", buildings_path()%></li>
 	          </ul>
 	        </li>
 	    <% else %>
-    	<li><%#= link_to "Login", new_user_session_path %></li>
-      <li><%#= link_to "Registrieren", new_user_registration_path %></li>
+    	<li><%= link_to "Login", new_user_session_path %></li>
+      <li><%= link_to "Registrieren", new_user_registration_path %></li>
       <% end %>
       </ul>      
     </div>  <!-- div collapse navbar-collapse -->
