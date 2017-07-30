@@ -1,16 +1,9 @@
->> purchase.rb row 58
-
 creare le perks per ogni acquisto e creare la tabella delle perks
 
 6 Links to different areas of the game
 	link to the player room
 	link to the player inventary and help
 	link to the full screen chat 
-add products
-add indexes
-finish creating seed data for the products
-
-
 
 do no show players with no items at all
 fix the layout on mobile, fix the images on mobile, include links to

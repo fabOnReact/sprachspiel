@@ -4,6 +4,7 @@
   press enter to send
     <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
   <% end %>
+  <%# binding.pry %>
   <%= f.hidden_field :chatroom_id, value: variable.chatroom.id %>
 
   <div class="margin-top"> <!--container container-links no-padding-->

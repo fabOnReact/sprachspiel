@@ -1,22 +1,20 @@
-def self.create_purchase(params, room, price, user)
-	# @purchase = Purchase.new_instance(room, price, user, true)
-	binding.pry		
-	if user.room_owner(room)
-		missing_items = room.building_products(params)
-		# The model method will return true or false if errors are included
-		if missing_items.present?
-			return missing_items 
-		else 
-			# the item is created
-			@purchase.fill_with_items(params, product_ids, room.id, user)
-		end
-	else 
-		# If a customer comes to the room, there is no requirement
-		user.clear_purchases(room.id)
-		items = room.items.where(sold: false, used: false).order(:product_id)
-		@items_number = items.group(:product_id).count   
-		@purchase.fill_with_items(params, @items_number, room.id, user)
-		@purchase.selfmade = nil
-	end
-	return missing_items if @purchase.save
-end		  
+<div class="chatroom panel panel-default scroll-bar col-sm-12 col-xs-12">
+  <% if @chatroom.messages.any? %>
+    <div class="panel-body" id="messages">
+      <%= render partial: 'messages/message' %> <!--collection: @chatroom.messages-->
+    </div>
+  <% else %>
+    <div class="panel-body hidden" id="messages">
+    </div>
+  <% end %>
+</div>
+  <% if user_signed_in? %>
+    <%= render partial: 'messages/message_form', locals: {message: @message, variable: @room } %>
+    <% if @building.present? %>
+      <%= link_to :back, building_path(@building), class: "btn btn-primary btn-lg full-width" %>
+    <% else %>
+      <%= link_to :back, room_path(@room), class: "btn btn-primary btn-lg full-width" %>      
+    <% end %>
+  </div>
+  <% end %>
+</div> 

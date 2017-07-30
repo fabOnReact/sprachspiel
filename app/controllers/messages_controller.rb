@@ -8,10 +8,11 @@ class MessagesController < ApplicationController
   	message.user = current_user
     chatroom = message.chatroom
   	if message.save
+      #binding.pry
   		ActionCable.server.broadcast 'messages',
         message: message.content,
         user: message.user.name,
-        chatroom_id: message.chatroom_id,
+        chatroom_id: message.chatroom_id,        
         lastuser: chatroom.messages.last(2)[0].user.name
       head :ok
   	else
