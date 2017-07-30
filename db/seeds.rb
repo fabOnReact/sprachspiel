@@ -82,7 +82,7 @@ price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
 product = Product.create(name: :schild, building_id: 2, producttype_id: 2, price_id: price.id, bonus: false)
 
 
-requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hänchen, :ofen], [:schild, :hänchen]]
+requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hähnchen, :ofen], [:schild, :hähnchen]]
 
 requirements.each do |requirement|
 	product = Product.find_by(name: requirement[0])
