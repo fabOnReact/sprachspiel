@@ -84,12 +84,11 @@ product = Product.create(name: :schild, building_id: 2, producttype_id: 2, price
 
 requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hänchen, :ofen], [:schild, :hänchen]]
 
-i = 0
-Product.all.order(:id).each do |product|
-	requirement = Product.find_by(name: requirements[i][1])
-	product.requirement_id = requirement.id
-	product.save if requirements[i][0] = product.name
-	i += 1
+requirements.each do |requirement|
+	product = Product.find_by(name: requirement[0])
+	object = Product.find_by(name: requirement[1])
+	product.requirement_id = object.id
+	product.save 
 end
 
 # Descriptions
