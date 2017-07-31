@@ -47,7 +47,6 @@
 	<% end %>
 <% end %>	
 
-<%# binding.pry %>
 <% @products.each do |entry| %>
 	<% product = Product.find(entry.product_id) %>
 	<tr class="row<%= i %>">

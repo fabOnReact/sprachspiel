@@ -56,7 +56,7 @@ class RoomsController < ApplicationController
     #@purchase.items << @items 
     @items_number = @items.group(:product).count 
     # Items that do not belong to that room
-    @items = @room.items.where.not(product: @room.building.products)
+    @items = @room.items.where.not(product: @room.building.products).where(sold: false, used: false)
     @products = @items.select(:product_id).order(product_id: :asc).distinct
     @items_count = @items.group(:product).count    
   end

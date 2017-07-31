@@ -726,6 +726,10 @@ $position-of-icons: 100%/(3);
 	.row.roomsIndex .col-sm-1.col-xs-12 {
 		display: none;
 	}
+
+	.row.roomsIndex.no-margin.hidden-xs .col-sm-1.col-xs-12.hidden-xs {
+		display: none;
+	}
 	
 	/* chatroom in building#show */
 
