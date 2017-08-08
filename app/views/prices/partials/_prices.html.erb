@@ -44,10 +44,16 @@
 			<div class="col-sm-8 col-xs-12 no-padding">			
 			<%= price.number_field :metal, {value: 0, id: "price_field", class: "price_field", id: "metal", min: 0, max: 100000, readonly: empty} %>		
 			</div>	
-		</div>		
-		<div class="col-sm-12 no-padding">
-		<%#= hidden_field_tag :authenticity_token, price_authenticity_token %>
-		<%= price.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
-		</div>											
-	<%# end %>
+		</div>
+		<% if user_signed_in? %>		
+			<div class="col-sm-12 no-padding">
+				<%#= hidden_field_tag :authenticity_token, price_authenticity_token %>
+				<%= price.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
+			</div>
+		<% else %>											
+			<div class="col-xs-12 col-sm-12 no-padding">
+				<%#= hidden_field_tag :authenticity_token, price_authenticity_token %>
+				<%= link_to "Sign in", new_user_session_path, {class: "btn-primary btn-centered-medium btn-mobile full-width-mobile full-width margin-top"} %>
+			</div>
+		<% end %>
 </div>

@@ -29,7 +29,9 @@
   <% end %>
 </div>
     <%= render partial: 'messages/message_form', locals: {message: @message, variable: @building } %>
+    <div class="hidden-xs">
     <%= link_to :back, buildings_path, class: "btn btn-primary btn-lg" %>
-    <%= render partial:"buildings/partials/mobile_buttons", locals: {controller: "buildings"} %>
+      <%= render partial:"buildings/partials/mobile_buttons", locals: {controller: "buildings"} %>
+    </div>
   </div>
 </div> 

@@ -9,7 +9,7 @@
   <% end %>
 </div>
   <% if user_signed_in? %>
-    <%= render partial: 'messages/message_form', locals: {message: @message, variable: @room } %>
+    <%= render partial: 'messages/message_form', locals: {message: @message, variable: @room || @building } %>
     <% if @building.present? %>
       <%= link_to :back, building_path(@building), class: "btn btn-primary btn-lg full-width" %>
     <% else %>
