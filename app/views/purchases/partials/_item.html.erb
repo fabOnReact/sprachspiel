@@ -6,7 +6,7 @@
 <% @room.building.products.order(id: :asc).each do |product| %>
 	<% if current_user == @room.user || @items_number[product].present? && @items_number[product] > 0 %>
 	<tr class="row<%= i %>">
-	    <td class="col-sm-1 hidden-xs"> <!--col-xs-3-->
+	    <td class="col-sm-1 col-xs-3"> <!---->
 	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
 	    </td>			
 		<td class="col-sm-3 table-text">	
@@ -50,7 +50,7 @@
 <% @products.each do |entry| %>
 	<% product = Product.find(entry.product_id) %>
 	<tr class="row<%= i %>">
-	    <td class="col-sm-1 hidden-xs">
+	    <td class="col-sm-1 col-xs-3">
 	    <%= render partial: "partials/images/icons", locals: {controller: "purchases", product: product.id} %>
 	    </td>			
 		<td class="col-sm-3 table-text">	
