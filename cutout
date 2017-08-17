@@ -1,20 +1,5 @@
-<div class="chatroom panel panel-default scroll-bar col-sm-12 col-xs-12">
-  <% if @chatroom.messages.any? %>
-    <div class="panel-body" id="messages">
-      <%= render partial: 'messages/message' %> <!--collection: @chatroom.messages-->
-    </div>
-  <% else %>
-    <div class="panel-body hidden" id="messages">
-    </div>
-  <% end %>
-</div>
-  <% if user_signed_in? %>
-    <%= render partial: 'messages/message_form', locals: {message: @message, variable: @room } %>
-    <% if @building.present? %>
-      <%= link_to :back, building_path(@building), class: "btn btn-primary btn-lg full-width" %>
-    <% else %>
-      <%= link_to :back, room_path(@room), class: "btn btn-primary btn-lg full-width" %>      
-    <% end %>
-  </div>
-  <% end %>
-</div> 
+<!-- begin olark code -->
+<script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('2922-432-10-3248');</script>
+<!-- end olark code -->
