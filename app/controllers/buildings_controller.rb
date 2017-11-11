@@ -109,9 +109,10 @@ class BuildingsController < ApplicationController
     @products = []
     i = 0
     Producttype.all.each do |producttype|
-      @products << Product.where(producttype_id: producttype.id).joins(:items) 
+      @products << Product.where(producttype_id: producttype.id).joins(:items).where(items: { sold: false, used: false })
       @product_count << @products[i].group("items.room_id").count
       i += 1
     end
+    #binding.pry
   end    
 end

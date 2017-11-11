@@ -13,7 +13,7 @@
       <% room = user.rooms.first %>
       <% name = user.name[0..7] %>
       <% if room.present? %>
-      <% items_number = room.items.group(:product_id).count %>
+      <% items_number = room.items.where(sold: false, used: false).group(:product_id).count %>
       <% if items_number.present? %>
         <% if paragraph %>
           <p>
@@ -45,6 +45,7 @@
         <%= link_to room_path(room), class:"tab-links" do %>
           <%= name %> verkauft:
           <% products_count = items.group(:product_id).count %>
+          <%# binding.pry %>
           <% products_count.each do |product_id, count| %>
             <% item_name = Product.find(product_id).name %>
             <%= item_name %>(<%= count %>)    
