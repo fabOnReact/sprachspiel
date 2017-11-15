@@ -23,4 +23,4 @@
 # Added from developer
 config/environments/development.rb
 notes
-public/assets/
+todolist
