@@ -662,6 +662,7 @@ $position-of-icons: 100%/(3);
 	.row.roomsIndex .col-sm-1.col-xs-12.no-padding p.justify {
 		display: none;
 	}
+
 }
 
 /* Nexus 6p */ 
@@ -807,6 +808,11 @@ $position-of-icons: 100%/(3);
 
 	.table th.col-xs-5.col-sm-2 {
 		text-align: center;
+	}
+
+
+	nav {
+		display: none;
 	}
 
 }	
