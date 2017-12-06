@@ -13,8 +13,9 @@
   <body>
   	<%= render partial: "partials/navbar" %>
     <%= render partial: "partials/flash" %>
-    <div class="container">
+    <div class="container <%= css_class(action_name) %>">   
       <%= yield %>
     </div>
+
   </body>
 </html>

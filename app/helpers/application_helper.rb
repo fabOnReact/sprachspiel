@@ -5,4 +5,8 @@ module ApplicationHelper
 				content_for(:rooms) { text } 
 		end
 	end	
+
+	def css_class(action_name)
+		return "center" if action_name == "welcome"
+	end
 end
