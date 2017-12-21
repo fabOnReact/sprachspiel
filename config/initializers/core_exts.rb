@@ -1,0 +1,1 @@
+Dir[File.join(Rails.root, 'lib', 'core_ext','action_dispatch', 'middleware','*.rb')].each {|l| require l}

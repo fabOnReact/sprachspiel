@@ -1,6 +1,6 @@
-<div class="alert alert-danger">
-  <button data-dismiss="alert" class="close close-sm btn-fill" type="button">
+<div class="alert alert-<%= msg_class %> fade in">
+  <button data-dismiss="alert" class="close close-sm" type="button">
       <i class="icon-remove"></i>
   </button>
-  <strong>Achtung!</strong> Sind Sie sicher, dass Sie dieses Angebot löschen möchten?
-</div> 
+  <strong><%= alert_message(msg_class) %></strong> <%= flash_message %>
+</div>
