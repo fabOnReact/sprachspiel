@@ -29,4 +29,16 @@ module ApplicationHelper
 	def flash_message
 		flash.return_message
 	end
+
+	def room 
+		current_user.rooms.first
+	end
+
+	def room_id
+		room.id
+	end
+
+	def chatroom_id
+		room.chatroom.id
+	end
 end
