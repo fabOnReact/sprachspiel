@@ -88,6 +88,18 @@ var ready = function() {
 				$(flex_box_id).css("display", "none");
 				});	
 		});	
+
+	/* Triggers functions only for the mobile */
+	var window_width = $(window).width();
+	if (window_width < 440) {
+		htmlFullDeviceHeight();
+	}
+	
+	/* Setting the HTML height to the same height of the device compatible with android app */
+	function htmlFullDeviceHeight() {
+		var device_height = $(window).height() - 8 + 'px';
+		$('html').css('height', device_height)
+	};
 }
 
 $(document).on('turbolinks:load', ready);

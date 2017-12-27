@@ -544,6 +544,10 @@ $position-of-icons: 100%/(3);
 	line-height: 1.9;
 }
 
+.panel.buildings.panel-default.scroll-bar {
+	overflow: scroll;
+}
+
 /* Media Queries */
 
 /* Height */
@@ -678,9 +682,9 @@ $position-of-icons: 100%/(3);
 		height: 350px;
 	}
 	
-	#message_content {
+	/*#message_content {
 		height: 66px;
-	}	
+	}	*/
 
 	.full-width-mobile {
 		width: 100%;
@@ -776,6 +780,39 @@ $position-of-icons: 100%/(3);
 		margin-right: 0px;
 		margin-left: 0px;
 	}
+
+/* chatroom in room for Mobile App */
+
+	/*html {
+		min-height: 100vh;
+	}*/
+
+	body {
+		height: 100%;
+	}
+
+	.navbar.navbar-inverse {
+		margin-bottom: 0px;
+	}
+
+	.container {
+		height: 100%;
+	}
+
+	.panel.buildings.panel-default.scroll-bar {
+		height: 84%;
+	}
+	.panel { margin-bottom: 18px;}
+	.panel-body { height: 100%; }
+
+	form.new_message { height: 16%;	}
+
+	form.new_message textarea.form-control {
+		height: 100%;
+		margin-top: -5%;
+	}
+
+	.margin-top { display: none; }
 
 	/* Navbar */ 
 

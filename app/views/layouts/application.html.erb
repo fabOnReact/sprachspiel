@@ -6,7 +6,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <% if user_signed_in? %>
-    	<%= tag :meta, name: "current-user", data: { id: current_user.id, room_id: room_id, chatroom_id: chatroom_id} %>
+    	<%= tag :meta, name: "current-user", data: { id: current_user.id, room_id: room_id, chatroom_id: chatroom_id, email: current_user.email} %>
     <% end %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,10 +14,10 @@
 
   <body>
   	<%= render partial: "partials/navbar" %>
-    <%= render partial: "partials/flash" %>
-    <div class="container <%= css_class(action_name) %>">   
-      <%= yield %>
-    </div>
+   <%= render partial: "partials/flash" %>
+   <div class="container <%= css_class(action_name) %>">   
+     <%= yield %>
+   </div>
 
   </body>
 </html>
