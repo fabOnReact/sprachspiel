@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
 
-	let(:purchase) { purchase = FactoryGirl.create(:purchase)}
+	let(:purchase) { purchase = FactoryBot.create(:purchase)}
 	subject { Purchase.new }
 
 	it "should be an instance of Purchase" do 

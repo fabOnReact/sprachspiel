@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :price do
     gold 1
     wood 1
