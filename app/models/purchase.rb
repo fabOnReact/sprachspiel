@@ -7,6 +7,8 @@ class Purchase < ApplicationRecord
 	
 	accepts_nested_attributes_for :items
 
+	scope :price_sum, ->(resource) { joins(:price).sum(resource) }
+
 	def self.creating(room, price, user, selfmade)
 		purchase = Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
 		return purchase

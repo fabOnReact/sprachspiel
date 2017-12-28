@@ -5,6 +5,8 @@ class Sale < ApplicationRecord
 	belongs_to :user
 	has_one :purchase
 
+	scope :price_sum, ->(resource) { joins(:price).sum(resource) }
+
 	def saving(purchase) 	
 		self.purchase_id = purchase.id
 		purchase.items.each do |item| 

@@ -20,5 +20,4 @@ class Price < ApplicationRecord
 			errors[:base] << 'The total amount needs to be higher then 0'
 		end
 	end
-
 end
