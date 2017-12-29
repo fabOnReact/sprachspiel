@@ -25,20 +25,25 @@ class User < ApplicationRecord
 		email.split('@')[0]
 	end
 
-	# calculates the ending balance after all purchases/sales
+   # defines a Proc, the variable add_array is passed as argument to the method 
+   # Array#calculation to perform a specific arythmetic calculation
+   def add_array
+      return Proc.new {|x, y| x + y }
+   end
+
+   def is_not_higher
+      return Proc.new {|x, y| x >= y}
+   end
+	
+   # calculates the ending balance after all purchases/sales
 	def ending_balance
-		[STARTING_BALANCE, current_balance].transpose.map do |starting_amount, delta|
-			starting_amount + delta
-		end
+      STARTING_BALANCE.calculation(add_array, current_balance)
 	end
 
 	# perform a validation to check if the user has money for the purchase/sale
 	def validation_balance(price)
 		price_array = Array.new(RESOURCES.map {|resource| price[resource]})
-		[ending_balance, price_array].transpose.map do |limit, input|
-			return false unless limit >= input
-		end
-		return true
+      return ending_balance.compare(is_not_higher, price_array)
 	end
 
 	# get the total amounts of purchases for an user
@@ -53,11 +58,15 @@ class User < ApplicationRecord
 		RESOURCES.collect { |resource| self.sales.price_sum(resource)}
 	end
 
+   # defines a Proc, the variable substraction is passed as argument to the method 
+   # Array#calculation to perform a specific arythmetic calculation
+   def substract_array
+      return Proc.new {|x, y| x - y }
+   end
+
 	# takes the totals sales and purchases arrays and returns an array of results
 	def current_balance
-		[total_sales, total_purchases].transpose.map do |sale, purchase| 
-			sale - purchase 
-		end
+      total_sales.calculation(substract_array, total_purchases)
 	end
 
 	def user_has_room(building)
