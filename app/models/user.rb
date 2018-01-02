@@ -6,19 +6,41 @@ class User < ApplicationRecord
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
 	      :recoverable, :rememberable, :trackable, :validatable
-	has_many :rooms, :dependent => :destroy
+	# has_one :room, :dependent => :destroy
 	has_many :messages, :dependent => :destroy
 	has_many :chatrooms, through: :messages 
 	has_many :purchases, :dependent => :destroy
+   has_many :items, :dependent => :destroy
 	has_many :sales, :dependent => :destroy
 	belongs_to :role
 
-	accepts_nested_attributes_for :rooms
+	# accepts_nested_attributes_for :rooms
 
 	scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
 
 	validates :username, uniqueness: true
 	validates :username, :role, presence: true
+
+   after_create :create_items
+
+   # def create_room
+   #    @room = Room.new(title: title, description: text, building_id: self.role.building.id, user_id: self.id)        
+   # end  
+
+   def create_items
+      # @purchase = Purchase.create(price_id: Price.free, room_id: self.id, selfmade: true, user_id: self.user.id)
+      # binding.pry
+      self.role.building.products.where(bonus: true).each do |product|
+         2.times do 
+            @item = Item.create(sold: false, used: false, selfmade: true, product: product, user: self)
+         end
+      end  
+      # sale = Sale.create(purchase_id: @purchase.id, room_id: self.id, price_id: self.price.id, user_id: self.user.id)    
+      # sale.purchase.items.each do |item| 
+         # item.update_attributes(room_id: purchase.room_id)
+      # end
+   end     
+
 
 	# splits the email and uses the part before the @ for the name
 	def name 
@@ -79,19 +101,31 @@ class User < ApplicationRecord
 		end
 	end
 
-  def clear_purchases(room_id)
-    self.purchases.where(room_id: room_id, sale_id: nil, selfmade: nil).destroy_all
-  end
+   def clear_purchases(room_id)
+      self.purchases.where(room_id: room_id, sale_id: nil, selfmade: nil).destroy_all
+   end
 
-  def room_owner(room)
-    self == room.user
-  end
+   def room_owner(room)
+      self == room.user
+   end
 
-  def admin?
-    self.admin == true
-  end
+   def admin?
+      self.admin == true
+   end
 
-  def online?
-    updated_at > 10.minutes.ago
-  end
+   def online?
+      updated_at > 10.minutes.ago
+   end
+
+   def descriptions
+      self.role.building.descriptions
+   end
+
+   def title
+      descriptions.title
+   end
+
+   def text
+      descriptions.text
+   end
 end

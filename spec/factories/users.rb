@@ -3,8 +3,8 @@ FactoryBot.define do
 	email { Faker::Internet.email }
 	password { Faker::Internet.password }
 	username { Faker::Internet.user_name }
-	role    
-	
+	association :role, factory: :role_with_descriptions
+
 	factory :user_with_purchases  do 
 		transient do
 			purchases_count 5

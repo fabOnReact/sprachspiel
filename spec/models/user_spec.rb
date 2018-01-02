@@ -81,4 +81,23 @@ RSpec.describe User, type: :model do
 			expect(user.validation_balance(price)).to be(true)
 		end
 	end
+
+   describe '#create_items' do
+      it 'should return an instance of the Items created' do
+         expect(user.create_items).to be_an_instance_of(Array)
+      end
+
+      it 'should create four items' do
+         item_number = user.role.building.products.where(bonus: true).count * 2
+         expect{user.create_items}.to change(Item, :count).by(item_number)
+      end
+   end
+
+   describe '#descriptions' do 
+      it 'should return the mocked result' do
+         user = FactoryBot.create(:user)
+         expect(user.title).to eql('Bauernhof')
+         expect(user.text).to eql('an example of description for this building')
+      end
+   end
 end
