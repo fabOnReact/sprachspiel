@@ -1,25 +1,25 @@
 class User < ApplicationRecord
-	# returns the list of resource available
-	RESOURCES = ["gold", "wood", "food", "stone", "metal"]
-	STARTING_BALANCE = [100, 100, 100, 100, 100]
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
-	devise :database_authenticatable, :registerable,
-	      :recoverable, :rememberable, :trackable, :validatable
-	# has_one :room, :dependent => :destroy
-	has_many :messages, :dependent => :destroy
-	has_many :chatrooms, through: :messages 
-	has_many :purchases, :dependent => :destroy
+   # returns the list of resource available
+   RESOURCES = ["gold", "wood", "food", "stone", "metal"]
+   STARTING_BALANCE = [100, 100, 100, 100, 100]
+   # Include default devise modules. Others available are:
+   # :confirmable, :lockable, :timeoutable and :omniauthable
+   devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+   # has_one :room, :dependent => :destroy
+   has_many :messages, :dependent => :destroy
+   has_many :chatrooms, through: :messages 
+   has_many :purchases, :dependent => :destroy
    has_many :items, :dependent => :destroy
-	has_many :sales, :dependent => :destroy
-	belongs_to :role
+   has_many :sales, :dependent => :destroy
+   belongs_to :role
 
-	# accepts_nested_attributes_for :rooms
+   # accepts_nested_attributes_for :rooms
 
-	scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
 
-	validates :username, uniqueness: true
-	validates :username, :role, presence: true
+   validates :username, uniqueness: true
+   validates :username, :role, presence: true
 
    after_create :create_items
 
@@ -42,10 +42,10 @@ class User < ApplicationRecord
    end     
 
 
-	# splits the email and uses the part before the @ for the name
-	def name 
-		email.split('@')[0]
-	end
+   # splits the email and uses the part before the @ for the name
+   def name 
+      email.split('@')[0]
+   end
 
    # defines a Proc, the variable add_array is passed as argument to the method 
    # Array#calculation to perform a specific arythmetic calculation
@@ -56,29 +56,29 @@ class User < ApplicationRecord
    def is_not_higher
       return Proc.new {|x, y| x >= y}
    end
-	
+   
    # calculates the ending balance after all purchases/sales
-	def ending_balance
+   def ending_balance
       STARTING_BALANCE.calculation(add_array, current_balance)
-	end
+   end
 
-	# perform a validation to check if the user has money for the purchase/sale
-	def validation_balance(price)
-		price_array = Array.new(RESOURCES.map {|resource| price[resource]})
+   # perform a validation to check if the user has money for the purchase/sale
+   def validation_balance(price)
+      price_array = Array.new(RESOURCES.map {|resource| price[resource]})
       return ending_balance.compare(is_not_higher, price_array)
-	end
+   end
 
-	# get the total amounts of purchases for an user
-	def total_purchases
-		# Query all invoices from purchases/sales for that user in a nested array
-		RESOURCES.collect { |resource| self.purchases.price_sum(resource)}
-	end
+   # get the total amounts of purchases for an user
+   def total_purchases
+      # Query all invoices from purchases/sales for that user in a nested array
+      RESOURCES.collect { |resource| self.purchases.price_sum(resource)}
+   end
 
-	# get the total amount of sales for an user
-	def total_sales
-		# Query all invoices from purchases/sales for that user in a nested array
-		RESOURCES.collect { |resource| self.sales.price_sum(resource)}
-	end
+   # get the total amount of sales for an user
+   def total_sales
+      # Query all invoices from purchases/sales for that user in a nested array
+      RESOURCES.collect { |resource| self.sales.price_sum(resource)}
+   end
 
    # defines a Proc, the variable substraction is passed as argument to the method 
    # Array#calculation to perform a specific arythmetic calculation
@@ -86,20 +86,20 @@ class User < ApplicationRecord
       return Proc.new {|x, y| x - y }
    end
 
-	# takes the totals sales and purchases arrays and returns an array of results
-	def current_balance
+   # takes the totals sales and purchases arrays and returns an array of results
+   def current_balance
       total_sales.calculation(substract_array, total_purchases)
-	end
+   end
 
-	def user_has_room(building)
-		if self.admin 
-			return false
-		elsif building.id == 4 
-			return true
-		else
-			return self.present? && self.rooms.present? 
-		end
-	end
+   def user_has_room(building)
+      if self.admin 
+         return false
+      elsif building.id == 4 
+         return true
+      else
+         return self.present? && self.rooms.present? 
+      end
+   end
 
    def clear_purchases(room_id)
       self.purchases.where(room_id: room_id, sale_id: nil, selfmade: nil).destroy_all
