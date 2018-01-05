@@ -140,11 +140,6 @@
 	border-radius: 3px;
 }	
 
-.btn-col {
-	padding-top:5px;
-	padding-bottom:5px;
-}
-
 /* Styles */ 
 
 h1, p {
@@ -433,83 +428,15 @@ $position-of-icons: 100%/(3);
 	background-color: transparent;
 }
 
-/* GET buildings#index */
-
-.roomsIcons {
-	height: 100px;
-	width: initial;
-}
-
-.subheader-buildings p {
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-
-.roomsIndex a, .roomsIndex p {
-	background-color: inherit;
-	color: inherit;
-}
-
-.subheader-buildings p:hover {
-	color: red;
-}
-
-.row.roomsIndex .col-sm-1 a img.pull-left {
-	margin-right: 13px;
-	margin-left: 0px;
-}
-
-.row.roomsIndex .col-sm-1 a img.pull-right {
-	margin-right: 0px;
-	margin-left: 13px;
-}
-
-.roomsIndex .col-sm-5.right, .roomsIndex .col-sm-5.left {
-	border: 1px white solid;
-	padding-top: 15px;
-	padding-bottom: 9px;
-}
-
-
-
-.roomsIndex .col-sm-5.right:hover, .roomsIndex .col-sm-5.left:hover {
-	border: 1px red solid;
-	background-color: white;
-	color: red;
-}
-
-
-.roomsIndex .col-sm-5.right p:hover, .roomsIndex .col-sm-5.left p:hover {
-	background-color: white;
-	color: red;
-}
-
-/* GET buildings#show */
-
-.roomsImages {
-	width: 100%;
-	height: initial;
-}
-
-.tab-links {
-	border-right: 1px white solid;
-	padding-right: 5px;
-	margin-right: 10px;
-}
-
-#myTabs .tab-list a {
-	border-radius: 0px;
-}
-
 /* rooms controller */
-
+/*
 .countdown {
 	color: #8c8c8c;
 	font-size: 13px;
 }
-
+*/
 /* GET rooms#show */
-
+/*
 .icon {
 	font-size: 1em;
 }
@@ -518,17 +445,13 @@ $position-of-icons: 100%/(3);
 	color: white;
 }
 
-.panel p {
-	/*font-size: initial;*/
-}
-
 .price .col-xs-12 {
 	z-index:1;
 }
-
+*/
 
 /* chatroom */ 
-
+/*
 .panel-body {
 	padding: initial;
 	padding-left: 7px;
@@ -547,11 +470,12 @@ $position-of-icons: 100%/(3);
 .panel.buildings.panel-default.scroll-bar {
 	overflow: scroll;
 }
+*/
 
 /* Media Queries */
 
 /* Height */
-
+/*
 @media (min-height: 1335px) {
 	.panel.panel-default.scroll-bar.col-sm-12 {
 	height: 1107px;
@@ -575,7 +499,7 @@ $position-of-icons: 100%/(3);
 	height: 468px;
 	}
 	.chatroom.panel.panel-default.scroll-bar.col-xs-12 {
-	height: 692px; /*height: 808px; editing buildings/chatroom/show*/
+	height: 692px; 
 	}
 }
 
@@ -605,9 +529,9 @@ $position-of-icons: 100%/(3);
 	}	
 
 }
-
+*/
 /* Width */
-
+/*
 @media (min-width: 768px){
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
@@ -644,16 +568,9 @@ $position-of-icons: 100%/(3);
 
 @media (min-width: 414px) {
 
-	/* Buttons GET buildings#new/edit */
 	.form-horizontal a {
 		margin-left: -15px;
 	}
-
-	/*
-	.price input[type="submit"], input[name="price"] {
-		width: 142px;
-	}
-	*/
 
 	.price input.price_field {
 		width: 142px;
@@ -668,24 +585,19 @@ $position-of-icons: 100%/(3);
 	}
 
 }
-
+*/
 /* Nexus 6p */ 
 
-@media (max-width: 414px) {
+/*@media (max-width: 414px) {
 
 	a {
 		font-size: 15px;
 	}
 
-	/* GET rooms#new description height */
 	textarea.form-control {
 		height: 350px;
 	}
 	
-	/*#message_content {
-		height: 66px;
-	}	*/
-
 	.full-width-mobile {
 		width: 100%;
 	}
@@ -706,8 +618,6 @@ $position-of-icons: 100%/(3);
 	ul {
 		margin-top: 10px;
 	}
-
-	/* Buildings#index */
 
 	.roomsIndex .col-sm-5.right, .roomsIndex .col-sm-5.left	{
 		border: initial;
@@ -740,14 +650,11 @@ $position-of-icons: 100%/(3);
 		display: none;
 	}
 	
-	/* chatroom in building#show */
-
 	textarea#message_content {
 		background-color: white;
 		color: black;
 	}
 
-	/* Modifing style for chatrooms show */ 
 	.buildings.panel-default.scroll-bar {
 		height: 235px;
 	}
@@ -781,12 +688,6 @@ $position-of-icons: 100%/(3);
 		margin-left: 0px;
 	}
 
-/* chatroom in room for Mobile App */
-
-	/*html {
-		min-height: 100vh;
-	}*/
-
 	body {
 		height: 100%;
 	}
@@ -814,18 +715,10 @@ $position-of-icons: 100%/(3);
 
 	.margin-top { display: none; }
 
-	/* Navbar */ 
-
 	.navbar-toggle {
 		margin-right: 0px;
 	}
 	
-	/*
-	.navbar {
-		margin-bottom: initial;
-	}
-	*/
-
 	.navbar-brand {
 		padding-left: initial;
 		padding-right: initial;
@@ -841,16 +734,11 @@ $position-of-icons: 100%/(3);
 		padding-right: 2px;
 	}
 
-	/* rooms#show */
 
 	.table th.col-xs-5.col-sm-2 {
 		text-align: center;
 	}
 
-
-	/*nav {
-		display: none;
-	}*/
 
 }	
 
@@ -877,4 +765,4 @@ $position-of-icons: 100%/(3);
 	.btn-mobile {
 		font-size: 12px;
 	}
-}	
+}	*/

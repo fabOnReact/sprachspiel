@@ -6,11 +6,7 @@
 		<% end %>
 	</div>
 <% elsif action_name == "index" && partial == 'afterclick' %>
-		<div class="flex-box" id="flex-box-<%=building.name%>" style="display:none;">
-			<%= link_to "Next Tip", "#", class: "btn-primary btn-lg btn-mobile", style: "border-right:none;", id: "next" %>
-			<%= link_to "Enter", building_path(building), id: "enter", class: "btn-primary btn-lg btn-mobile" %>
-			<%= link_to "Back", {remote: true, "data-ajax" => false}, { class: "btn-primary btn-lg btn-mobile", id: "back", style: "border-left:none;"} %>
-		</div>
+
 <% end %>
 <% if action_name == "show" && controller == "buildings" %>
 	<% if user_signed_in? %>

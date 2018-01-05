@@ -14,4 +14,12 @@ module BuildingsHelper
    #       when 4 then 'chess'
    #    end
    # end       <%= style %><%= set_image_id %> 
+
+   def float(object)
+      case object.id.odd?
+         when true then 'float:right;'
+         else
+          'float:left;'
+      end
+   end
 end

@@ -15,7 +15,9 @@
 			</div>		
 			<div class="col-sm-1 col-xs-12 hidden-xs" id="description<%= building.name %>"> <!-- no-padding --> 
 				<%= link_to building_path(building) do %>
-					<%= render partial: "partials/images/icons", locals: {controller: "buildings", image: building.id, view: "index"} %>
+               <!-- maybe the ids are not necessary -->
+               <% binding.pry %>
+               <%= image_tag building.picture, class: 'roomsIcons ', id: '' %>
 				<% end %>
 				<div class="hidden-sm hiddem-md hidden-lg">
 					<p class="justify"><%= building.description %></p>
@@ -35,7 +37,7 @@
 			</div>	
 			<div class="col-sm-1 col-xs-12 hidden-xs " id="description<%= building.name%>"> <!-- no-padding col-xs-12 style="display:none;"--> 
 				<%= link_to building_path(building) do %>
-					<%= render partial: "partials/images/icons", locals: {controller: "buildings", image: building.id, view: "index"} %>
+               <%= image_tag building.picture, class: 'roomsIcons <%= building.style %>', id: '<%= building.set_image_id %>' %>
 				<% end %>
 				<div class="hidden-sm hiddem-md hidden-lg">
 					<p class="justify"><%= building.description %></p>

@@ -55,40 +55,6 @@ var ready = function() {
 	    $('#room_title').keyup(updateCountdown);
 	};	
 
-	/* animation for the buildings#index and show */
-	$('#buildings_buttons a').click(function(e) {
-		e.preventDefault()
-		$(this).effect("bounce", 600, function() {
-			var $link = $(this)
-			$('#description').hide("drop", 800);
-			$('#buildings_buttons').hide("drop", 800, function() {
-				id = $link[0].id;
-				/* finding out what is target */
-				target = "#description" + id;
-				$(target).parent().removeClass("hidden-xs");
-				$(target).removeClass("hidden-xs");
-				$(target).show("drop", 800);
-				target = "#flex-box-" + id;
-				$(target).show("drop", 800);
-			});	
-		});
-		
-	});
-
-	$('.flex-box #back').click(function(e) {
-		e.preventDefault
-			id = $(this).parent()[0].id.replace("flex-box-", "");
-			description_id = "#description" + id;
-			flex_box_id = "#flex-box-" + id;
-			$row = $(this).parent().parent();
-			$(flex_box_id).hide("slide", "slow");
-			$(description_id).hide("drop", 800, function() {
-				$('#buildings_buttons').show("slide", "slow");
-				$row.addClass("hidden-xs");
-				$(flex_box_id).css("display", "none");
-				});	
-		});	
-
 	/* Triggers functions only for the mobile */
 	var window_width = $(window).width();
 	if (window_width < 440) {
