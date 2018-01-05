@@ -1,24 +1,24 @@
 FactoryBot.define do
-   factory :producttype do
+   factory :category do
       name { Faker::Zelda.item }
       
-      factory :producttype_with_products do 
+      factory :category_with_products do 
          transient do
             products_count 5
          end
 
-         after(:create) do |producttype, evaluator|
-            create_list(:product, evaluator.products_count, producttype: producttype)
+         after(:create) do |category, evaluator|
+            create_list(:product, evaluator.products_count, category: category)
          end
       end
 
-      factory :producttype_with_products_and_items do 
+      factory :category_with_products_and_items do 
          transient do
             products_count 5
          end
 
-         after(:create) do |producttype, evaluator|
-            create_list(:product_with_items, evaluator.products_count, producttype: producttype)
+         after(:create) do |category, evaluator|
+            create_list(:product_with_items, evaluator.products_count, category: category)
          end
       end
 

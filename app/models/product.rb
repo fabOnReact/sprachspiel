@@ -1,11 +1,17 @@
 class Product < ApplicationRecord
 	extend ProductsHelper
+	PRODUCTS = {'sichel' => "sichel.svg",'schwert' => "schwert.svg",'achse' => "achse.svg",'bank' => "bank.svg","hammer" => "horizontal.svg",'brot' => 'brot.svg','messer' => "messer.svg",'fisch' => "fisch.svg",'ofen' => "ofen.svg",'hähnchen' => "hänchen.svg",'schild' => "schild.svg"}
 
 	has_many :items, :dependent => :destroy
 	has_many :objects, class_name: "Product", foreign_key: "requirement_id"
 	belongs_to :building
-	belongs_to :producttype
+	belongs_to :category
 	belongs_to :price, :dependent => :destroy
+	scope :not_used_items, -> { find_by_sql("SELECT products.name, products.price_id, COUNT(items.id) AS NumberOfItems FROM products INNER JOIN items on products.id = items.product_id GROUP BY products.id;") }
+
+	def picture
+		PRODUCTS[self.name]
+	end
 
 	def requirement_check(input_params, room, product)
 		# this method does not work well and is causing the 

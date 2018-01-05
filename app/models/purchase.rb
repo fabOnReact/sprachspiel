@@ -1,13 +1,23 @@
 class Purchase < ApplicationRecord
-	has_many :items
-	belongs_to :room
+	# has_many :items
+	# belongs_to :room
 	belongs_to :price
 	belongs_to :user
-	has_one :sale
+	# has_one :sale
 	
-	accepts_nested_attributes_for :items
+	# accepts_nested_attributes_for :items
+	validate :user_has_money
 
 	scope :price_sum, ->(resource) { joins(:price).sum(resource) }
+
+   def user_has_money
+      # the purchase instance still it is not created
+      # probably I can do this test after creating the purchase instance
+      unless self.user.validation_balance(self.price)
+      	errors.add(:price, "Price is too high!")
+      end
+   end
+
 
 	def self.creating(room, price, user, selfmade)
 		purchase = Purchase.create(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
@@ -17,30 +27,7 @@ class Purchase < ApplicationRecord
 	def self.new_instance(room, price, user, selfmade)
 		@purchase = Purchase.new(room_id: room.id, price_id: price.id, user_id: user.id, selfmade: selfmade)
 	end
-=begin
-	def self.create_purchase(params, room, price, user)
-		# @purchase = Purchase.new_instance(room, price, user, true)
-		#binding.pry		
-		if user.room_owner(room)
-			missing_items = room.building_products(params)
-			# The model method will return true or false if errors are included
-			if missing_items.present?
-				return missing_items 
-			else 
-				# the item is created
-				@purchase.fill_with_items(params, product_ids, room.id, user)
-			end
-		else 
-			# If a customer comes to the room, there is no requirement
-			user.clear_purchases(room.id)
-			items = room.items.where(sold: false, used: false).order(:product_id)
-			@items_number = items.group(:product_id).count   
-			@purchase.fill_with_items(params, @items_number, room.id, user)
-			@purchase.selfmade = nil
-		end
-		return missing_items if @purchase.save
-	end
-=end
+
 	def items_change_room
 		self.items.each do |item|
 			room_id = self.user.rooms.first.id

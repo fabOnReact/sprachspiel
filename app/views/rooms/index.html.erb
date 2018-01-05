@@ -9,7 +9,7 @@
 <div class="row roomsIndex">
 	<div class="col-sm-3 hidden-xs">
 		<%= link_to building_path(building) do %>
-			<%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+			<%= image_tag IMAGES[building.id.pred], class: "roomsImages pull-left" %>
 		<% end %>
 	</div>
 	<div class="col-sm-3 col-xs-12">
@@ -70,7 +70,7 @@
 	</div>
 	<div class="col-sm-3 hidden-xs">
 		<%= link_to building_path(building) do %>
-			<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+			<%= image_tag IMAGES[building.id.pred], class: "roomsImages pull-right" %>
 		<% end %>
 	</div>
 </div>

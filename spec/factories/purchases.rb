@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :purchase do
-    user 		
-    price
-  end
+	factory :purchase do
+		user 		
+		price
+	end
 end

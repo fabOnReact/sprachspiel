@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	describe '#picture' do
+      it 'returns the correct picture name' do
+         product = FactoryBot.build(:hammer)
+         expect(product.picture).to eql('horizontal.svg')
+      end
+   end
 end

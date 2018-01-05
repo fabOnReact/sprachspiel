@@ -3,8 +3,16 @@ FactoryBot.define do
       name { Faker::Zelda.item}
       price
       building
-      producttype
+      category
       bonus { Faker::Boolean.boolean}
+
+	   factory :hammer do 
+	   	name 'hammer'
+	   	price
+	   	building
+	   	category
+	   	bonus { Faker::Boolean.boolean }
+	   end
 
       factory :product_with_items do 
          transient do 
