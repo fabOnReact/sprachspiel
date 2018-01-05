@@ -42,44 +42,44 @@ end
 
 # Create Productstype
 
-Producttype.create(name: "Werkzeuge")
-Producttype.create(name: "Waffen")
-Producttype.create(name: "Lebensmittel")
+Category.create(name: "Werkzeuge")
+Category.create(name: "Waffen")
+Category.create(name: "Lebensmittel")
 
 # Create Products
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
-product = Product.create(name: :sichel, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true)
+product = Product.create(name: :sichel, building_id: 2, category_id: 1, price_id: price.id, bonus: true)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 5)
-product = Product.create(name: :hammer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: true)
+product = Product.create(name: :hammer, building_id: 2, category_id: 1, price_id: price.id, bonus: true)
 
 price = Price.create(gold: 0, wood: 15, food: 0, stone: 0, metal: 15)
-product = Product.create(name: :schwert, building_id: 3, producttype_id: 2, price_id: price.id, bonus: false)
+product = Product.create(name: :schwert, building_id: 3, category_id: 2, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 0, food: 10, stone: 0, metal: 0)
-product = Product.create(name: :brot, building_id: 1, producttype_id: 3, price_id: price.id, bonus: true)
+product = Product.create(name: :brot, building_id: 1, category_id: 3, price_id: price.id, bonus: true)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 10)
-product = Product.create(name: :achse, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false)
+product = Product.create(name: :achse, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 15)
-product = Product.create(name: :messer, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false)
+product = Product.create(name: :messer, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 10, food: 30, stone: 0, metal: 0)
-product = Product.create(name: :fisch, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false)
+product = Product.create(name: :fisch, building_id: 1, category_id: 3, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 50, food: 30, stone: 10, metal: 0)
-product = Product.create(name: :bank, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false)
+product = Product.create(name: :bank, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 5, wood: 10, food: 10, stone: 50, metal: 10)
-product = Product.create(name: :ofen, building_id: 2, producttype_id: 1, price_id: price.id, bonus: false)
+product = Product.create(name: :ofen, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 10, food: 50, stone: 0, metal: 0)
-product = Product.create(name: :hähnchen, building_id: 1, producttype_id: 3, price_id: price.id, bonus: false)
+product = Product.create(name: :hähnchen, building_id: 1, category_id: 3, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
-product = Product.create(name: :schild, building_id: 2, producttype_id: 2, price_id: price.id, bonus: false)
+product = Product.create(name: :schild, building_id: 2, category_id: 2, price_id: price.id, bonus: false)
 
 
 requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hähnchen, :ofen], [:schild, :hähnchen]]
@@ -100,46 +100,41 @@ Description.create(name: "room-description", content: "Jeder Spieler kann Lebens
 Description.create(name: "room-description", content: "Hier können sie Schwerter, Rüstung, Werkzeuge, Hämmer und viele anderen Objekten kaufen. Soldaten können Schwerter, Rüstung, Bögen und Pfeile kaufen um eine Vorteile im Kampf zu bekommen, während Schmiede, Farmer einige Werkzeuge wie Hämmer, Schaufeln, Mahlstein brauchen um Produkte wie Brot, Schwert, Lebensmittel zu erstellen.", building_id: 2)
 Description.create(name: "room-description", content: "In der Armee können Spieler Soldaten anwerben, die für eine Faktion kämpfen können oder die Sicherheit einem Geschäft gegen die Diebstähle gewährleisten können.. Im SprachSpiel können Spieler   stehlen, deshalb ist die Organisation der Bürgersicherheit notwendig.", building_id: 3)
 
+# Seeds to rerun in production
 
+# PICTURES = {"Landwirtschaft" => "grain.svg", "Schmied" => "hammer.svg", "Armee" => "battle.svg", "Palast" => "chess.png"}
+# AVATARS = {"Landwirtschaft" => "muehle.svg","Schmied" => "anvil.svg","Armee" => "armor.svg","Palast" => "king.svg"}
 
+# NEWPICTURE = {}
+# BUILDINGS = ["Landwirtschaft", "Schmied", "Armee", "Palast"]
+# BUILDINGS.map do |building|
+#    NEWPICTURE[building] = {"picture" => PICTURES[building], "avatar" => AVATARS[building]}
+# end
 
+# images = [["Landwirtschaft", "grain.svg", "muehle.svg"],
+#    ["Schmied", "hammer.svg", "anvil.svg"],
+#    ["Armee","battle.svg", "armor.svg"],
+#    ["Palast","chess.png", "king.svg"]]
 
+# images.map do |array|
+#    building = Building.find_by(name: array[0])
+#    picture = array[1]
+#    avatar = array[2]
+#    building.update_attributes(picture: picture, avatar: avatar)
+# end
 
+# products = [['sichel',"sichel.svg"],['schwert', "schwert.svg"],['achse',"achse.svg"],['bank',"bank.svg"],['hammer', "hammer-horizontal.svg"],['brot', 'brot.svg'],['messer',"messer.svg"],['fisch',"fisch.svg"],['ofen',"ofen.svg"],['hähnchen', "hänchen.svg"],['schild', "schild.svg"]]
 
+# products.map do |array|
+#    product = Product.find_by(name: array[0])
+#    picture = array[1]
+#    product.update_attributes(picture: picture)
+# end
 
+# categories = [["Werkzeuge", "Schmied"],["Waffen","Armee"],["Lebensmittel", "Landwirtschaft"]]
 
-
-
-
-
-
-
-
-
-
-
-
-
-# Other Test Cases
-
-#building = Building.first
-#first_user = User.find(3)
-#room = Room.create(title: "Geschäft" , description: "Hallo, mein Name ist Fabrizio Bertoglio, ich habe SprachSpiel von einigen Tagen entwickelt und hier möchte ich Lebensmittel, Weizen und andere typischen Produkte verkaufen... Ich kann Ihnen einen guten Deal anbieten, deshalb kontaktieren Sie mich und ich werde Sie nicht enttäuschen Viele Grüße Fabrizio", user_id: first_user.id, building_id: building.id)
-
-#second_user = User.new(email: "federico@email.com", password: "fabrizio")
-#second_user.password_confirmation = "fabrizio"
-#second_user.save
-# Creating a second User
-#second_user = User.find(4)
-
-=begin
-product = Product.first
-item = Item.create(product_id: product.id, sold: false, used: false)
-
-price = Price.create(gold: 10, food: 40)
-purchase = Purchase.create(user_id: first_user.id, item_id: item.id, room_id: first_user.rooms.first, price_id: price.id)
-item.sold = true
-item.save
-#sale = Sale.create(user_id: second_user.id, item_id: item.id, )
-#invoice = Invoice.create(purchase_id: purchase.id, sale_id: sale.id, price_id: price.id)
-=end
+# categories.map do |array|
+#    building = Building.find_by(name: array[1])
+#    category = Category.find_by(name: array[0])
+#    building.products.map {|product| product.update_attributes(category: category)}
+# end

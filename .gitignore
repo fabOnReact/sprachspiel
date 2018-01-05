@@ -25,3 +25,4 @@ config/environments/development.rb
 notes
 todolist
 cutout
+public/assets

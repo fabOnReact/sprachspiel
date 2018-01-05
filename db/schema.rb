@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710173502) do
+ActiveRecord::Schema.define(version: 20180103122751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20170710173502) do
     t.datetime "updated_at",  null: false
     t.text     "description"
     t.integer  "role_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -56,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170710173502) do
     t.integer  "sale_id"
     t.integer  "room_id"
     t.boolean  "selfmade"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
@@ -81,16 +89,11 @@ ActiveRecord::Schema.define(version: 20170710173502) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "building_id"
-    t.integer  "producttype_id"
     t.integer  "price_id"
     t.integer  "requirement_id"
     t.boolean  "bonus"
-  end
-
-  create_table "producttypes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -135,6 +138,12 @@ ActiveRecord::Schema.define(version: 20170710173502) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "timers", id: :bigserial, force: :cascade do |t|
+    t.integer  "minutes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -155,4 +164,6 @@ ActiveRecord::Schema.define(version: 20170710173502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "users"
+  add_foreign_key "products", "categories"
 end
