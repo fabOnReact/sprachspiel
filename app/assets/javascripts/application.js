@@ -18,6 +18,6 @@
 //= require cable
 //= require rooms
 //= require cookieconsent
+//= require main
 //= require buildings
-//= require applicationscript
 //= require turbolinks

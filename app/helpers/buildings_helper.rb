@@ -22,4 +22,8 @@ module BuildingsHelper
           'float:left;'
       end
    end
+
+   def page(building)
+      "/buildings/" + building.id.to_s
+   end   
 end

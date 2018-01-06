@@ -55,12 +55,14 @@ var ready = function() {
 	    $('#room_title').keyup(updateCountdown);
 	};	
 
-	/* Triggers functions only for the mobile */
+	// Triggers functions only for the mobile 
+   // used for android phone, to set their 
+   // html = screen height in px
 	var window_width = $(window).width();
-	if (window_width < 440) {
+	if (screenWidth(440)) {
 		htmlFullDeviceHeight();
 	}
-	
+
 	/* Setting the HTML height to the same height of the device compatible with android app */
 	function htmlFullDeviceHeight() {
 		var device_height = $(window).height() - 8 + 'px';
@@ -69,6 +71,13 @@ var ready = function() {
 }
 
 $(document).on('turbolinks:load', ready);
+
+
+// return true if the screen with is lower of the 
+// input parameter
+function screenWidth(constant) {
+   return $(window).width() < constant
+}
 
 function updateCountdown() {
     var remaining = 15 - $('#room_title').val().length;
