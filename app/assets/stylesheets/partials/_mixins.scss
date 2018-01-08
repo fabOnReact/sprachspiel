@@ -1,6 +1,6 @@
-@mixin flex($direction: column, $justify: initial, $align-items: initial) {
+@mixin flex($direction: column, $justify: initial, $align: initial) {
 	display: flex;
 	flex-direction: $direction;
 	justify-content: $justify;
-   align-items: $align-items;
+   align-items: $align;
 }

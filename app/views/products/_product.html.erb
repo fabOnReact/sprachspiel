@@ -1,0 +1,9 @@
+<div class="col-md-3 col-sm-4 col-xs-6 product-partial" id="">	
+		<%= link_to room_price_plus_path(product.price), method: :post, class: "icon", remote: true do %>
+			<i class="fa fa-plus-square fa-2x" aria-hidden="true" id="plus-square"></i>
+		<% end %>
+	   <%= image_tag product.picture, class: "", style: "height: 31px" %>	
+		<%= link_to room_price_minus_path(product.price), method: :post, class: "icon", remote: true do %>
+			<i class="fa fa-minus-square fa-2x" aria-hidden="true" id="minus-square"></i>
+		<% end %>
+</div>

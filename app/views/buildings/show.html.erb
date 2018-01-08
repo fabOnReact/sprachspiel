@@ -1,36 +1,45 @@
-<div class="show hidden-xs">
+<div class="show">
 	<%= render partial: "partials/resources" if user_signed_in? %>
 </div>
 
-<div class="row hidden-xs">
-   <div class="col-sm-12">
+<!-- div class="row"-->
+   <!--div class="col-sm-12"-->
       <h1><%= @building.name %></h1>
-      <p class="justify hidden-xs"><%= @building.description %></p>
-   </div>
-</div>
+      <p class="justify"><%= @building.description %></p>
+   <!--/div-->
+<!--/div-->
 
-<div class="row no-margin-top-bottom">
+<!-- The image of the room does not really look good so I am coomenting it -->
+<!--div class="row no-margin-top-bottom">
    <div class="col-sm-2 hidden-xs">
-      <!-- anvil.svg should have a style: "margin-top: 25px;", id: "anvil" -->
-      <%= image_tag @building.avatar, class: 'roomImages pull-left' %>
-   </div>
+      < anvil.svg should have a style: "margin-top: 25px;", id: "anvil" -->
+      <%#= image_tag @building.avatar, class: 'roomImages pull-left' %>
+   <!--/div>
    <div class="col-sm-10">
-      <%= render partial:"partials/tabs/tabs" %>      
-   </div>
-</div>
+      < to be fixed later -->
+      <%#= render partial:"partials/tabs/tabs" %>      
+   <!--/div>
+</div-->
 
 <!-- I show all available items for sale with the _item partial -->
 <!-- The partial renders each a plus icon, the image of the product followed by a minus sign -->
-<%= render partial: 'product', collection: @products %>
+<div class="row margin-top-bottom">
+   <%= render @products %>
+</div>
 
 <!-- Items selected for purchase by the user are included in the purchase -->
 
 
 <!-- The price is calculated automatically but custom price can be set -->
-<%= render 'prices/new' if user_signed_in? %>
+<%= render template: 'prices/new' if user_signed_in? %>
+
 
 
 <!-- the chatroom is remove from buildings/show.html.erb -->
-<%= link_to "Join Chatroom", building_chatroom(@building, @building.chatroom), class: "btn btn-primary btn-lg" %>
+<% if user_signed_in? %>
+   <%= link_to "Join Chatroom", building_chatroom_path(@building, @building.chatroom), class: "btn btn-primary btn-lg" %>
+<% else %>
+   <%= link_to "Log In", new_user_session_path, class: "btn btn-primary btn-lg" %>
+<% end %>
 
-<%= link_to "Sign in", new_user_session_path, {class: "btn-primary btn-centered-medium btn-mobile full-width-mobile full-width margin-top"} unless user_signed_in? %>
+<%#= link_to "Sign in", new_user_session_path, {class: "btn-primary btn-centered-medium btn-mobile full-width-mobile full-width margin-top"} unless user_signed_in? %>

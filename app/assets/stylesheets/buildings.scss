@@ -1,14 +1,8 @@
-@import 'partials/mixins';
-
-html, body, .container {
-   height: 100%;
-}
-
 // index
 // partial _building 
 .col-building.col-md-6 {
 	// height: 35%;
-   @include flex($direction: row, $align-items: center);
+   @include flex($direction: row, $align: center);
 }
 
 // Mobile Menu 

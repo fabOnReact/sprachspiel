@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SpracheSpiel</title>
-    <%= csrf_meta_tags %>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <% if user_signed_in? %>
-    	<%= tag :meta, name: "current-user", data: { id: current_user.id, room_id: room_id, chatroom_id: chatroom_id, email: current_user.email} %>
-    <% end %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+   <head>
+      <title>SpracheSpiel</title>
+      <%= csrf_meta_tags %>
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <!--meta name="viewport" content="width=device-width" -->
+      <%= tag :meta, name: "current-user", data: { id: current_user.id, email: current_user.email} if user_signed_in?%>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
 
-  <body>
-  	<%= render partial: "partials/navbar" %>
-   <%= render partial: "partials/flash" %>
-   <div class="container <%= css_class(action_name) %>">   
-     <%= yield %>
-   </div>
-
-  </body>
+   <body>
+      <div class="container <%= css_class(action_name) %>">   
+         <%= render partial: "partials/navbar" unless android_request %>
+         <%= render partial: "partials/flash" %>
+         <%= yield %>
+         <footer>
+            <%= link_to "Privacy", page_path("privacy") %>
+            <%= link_to "Credits/Imprint", page_path("credits") %>
+         </footer>   
+      </div>
+   </body>
 </html>
