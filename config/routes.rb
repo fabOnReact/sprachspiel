@@ -11,14 +11,16 @@ Rails.application.routes.draw do
 		resources :chatrooms
 	end
 
-	resources :rooms do
-		resources :prices do
-			resources :purchases
-		end			
-		resources :purchases
-		resources :sales
-		resources :chatrooms
-	end
+   resources :prices
+
+	# resources :rooms do
+	# 	resources :prices do
+	# 		resources :purchases
+	# 	end			
+	# 	resources :purchases
+	# 	resources :sales
+	# 	resources :chatrooms
+	# end
 
 	# landing page
 	post "subscription", to: 'buildings#createSubscription'
@@ -33,8 +35,9 @@ Rails.application.routes.draw do
 	# price create_purchase
 	
 	# building room product price calculation
-	post "rooms/:room_id/prices/:id/plus", to: 'prices#plus', as: 'room_price_plus'
-	post "rooms/:room_id/prices/:id/minus", to: 'prices#minus', as: 'room_price_minus'
+	# this needs to be refactored togheter with the action
+	post "prices/:id/plus", to: 'prices#plus', as: 'room_price_plus'
+	post "prices/:id/minus", to: 'prices#minus', as: 'room_price_minus'
 
 	mount ActionCable.server => '/cable'
 

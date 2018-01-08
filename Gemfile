@@ -46,7 +46,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
-  # gem "better_errors"
+  gem "better_errors"
 end
 
 group :test do
@@ -76,3 +76,5 @@ gem 'devise', '~> 4.3'
 gem 'devise-bootstrapped', '~> 0.1.1'
 gem 'simple_form'
 gem 'jquery-turbolinks', '~> 2.1'
+gem 'high_voltage'
+gem 'plutus'
