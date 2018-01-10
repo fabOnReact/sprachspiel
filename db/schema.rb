@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108115623) do
+ActiveRecord::Schema.define(version: 20180108163350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180108115623) do
     t.boolean  "contra"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tenant_id"
     t.index ["name", "type"], name: "index_plutus_accounts_on_name_and_type", using: :btree
   end
 
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180108115623) do
     t.integer "account_id"
     t.integer "entry_id"
     t.decimal "amount",     precision: 20, scale: 10
+    t.integer "quantity"
     t.index ["account_id", "entry_id"], name: "index_plutus_amounts_on_account_id_and_entry_id", using: :btree
     t.index ["entry_id", "account_id"], name: "index_plutus_amounts_on_entry_id_and_account_id", using: :btree
     t.index ["type"], name: "index_plutus_amounts_on_type", using: :btree
