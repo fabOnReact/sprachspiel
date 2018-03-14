@@ -2,7 +2,7 @@ class Price < ApplicationRecord
 	has_many :buildings
 	has_many :sales
 	has_many :products
-   has_one :purchase
+   # has_one :purchase
 	validate :sum_is_not_0
    after_create :set_purchase 
 
