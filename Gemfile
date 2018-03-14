@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -46,7 +46,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
-  gem "better_errors"
+  # gem "better_errors"
 end
 
 group :test do
