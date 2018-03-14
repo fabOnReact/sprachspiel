@@ -1,10 +1,10 @@
 module ApplicationHelper
-	def header(type, text)
-		case type
-			when "rooms"
-				content_for(:rooms) { text } 
-		end
-	end	
+	# def header(type, text)
+	# 	case type
+	# 		when "rooms"
+	# 			content_for(:rooms) { text } 
+	# 	end
+	# end	
 
 	def css_class(action_name)
 		return "center" if action_name == "welcome"
@@ -30,15 +30,15 @@ module ApplicationHelper
 		flash.return_message
 	end
 
-	def room 
-		current_user.rooms.first
-	end
+	# def room 
+	# 	current_user.rooms.first
+	# end
 
-	def room_id
-		room.id
-	end
+	# def room_id
+	# 	room.id
+	# end
 
-	def chatroom_id
-		room.chatroom.id
-	end
+	# def chatroom_id
+	# 	room.chatroom.id
+	# end
 end
