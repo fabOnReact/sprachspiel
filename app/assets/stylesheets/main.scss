@@ -308,11 +308,15 @@ img {
 	width: 100%;
 	webkit-filter: invert(100%);
 	filter: invert(100%);
-}
 
-img:hover.roomsImages, img:hover .roomsIcons {
-	webkit-filter: invert(100%) opacity(50%);	
-	filter: invert(100%) opacity(50%);	
+	&:hover.roomsImages, &:hover .roomsIcons {
+		webkit-filter: invert(100%) opacity(50%);	
+		filter: invert(100%) opacity(50%);	
+	}
+
+	&:hover {
+		opacity: .5;
+	}
 }
 
 /* Forms */ 

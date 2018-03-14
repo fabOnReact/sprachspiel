@@ -1,5 +1,7 @@
 .product-partial.col-md-3 {
-   @include flex($direction: row, $justify: space-between);
-   a { @include flex($direction: row, $align: center); }
-   img { width: 60%; }
+  justify-content: center;
+  @include flex($direction: row, $justify: space-between);
+  a { @include flex($direction: row, $align: center); }
+  img { margin: 7px 5px; }
+  img.color { width: 60%; filter: initial; background-color: initial;}
 }

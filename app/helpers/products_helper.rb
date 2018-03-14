@@ -1,4 +1,5 @@
 module ProductsHelper
+  BW = ['bank', 'ofen', 'ache']
 	def hash_keys(input)
 		if input.is_a?(Hash)
 	  	keys = input.keys 
@@ -7,4 +8,8 @@ module ProductsHelper
 			input
 		end
 	end	
+
+  def color
+    "color" unless Product::BW.include? self.name
+  end   
 end

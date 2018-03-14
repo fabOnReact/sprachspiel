@@ -4,14 +4,12 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items
+	resources :messages, :items, :prices, :products
 
 	resources :buildings do 
 		resources :rooms
 		resources :chatrooms
 	end
-
-   resources :prices
 
 	# resources :rooms do
 	# 	resources :prices do

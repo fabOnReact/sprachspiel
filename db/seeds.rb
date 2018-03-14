@@ -60,8 +60,8 @@ product = Product.create(name: :schwert, building_id: 3, category_id: 2, price_i
 price = Price.create(gold: 0, wood: 0, food: 10, stone: 0, metal: 0)
 product = Product.create(name: :brot, building_id: 1, category_id: 3, price_id: price.id, bonus: true)
 
-price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 10)
-product = Product.create(name: :achse, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
+# price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 10)
+# product = Product.create(name: :achse, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
 
 price = Price.create(gold: 0, wood: 10, food: 0, stone: 0, metal: 15)
 product = Product.create(name: :messer, building_id: 2, category_id: 1, price_id: price.id, bonus: false)
@@ -81,6 +81,11 @@ product = Product.create(name: :hähnchen, building_id: 1, category_id: 3, price
 price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
 product = Product.create(name: :schild, building_id: 2, category_id: 2, price_id: price.id, bonus: false)
 
+price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
+product = Product.create(name: :steak, building_id: 1, category_id: 3, price_id: price.id, bonus: false)
+
+price = Price.create(gold: 10, wood: 0, food: 0, stone: 0, metal: 70)
+product = Product.create(name: :fisch, building_id: 1, category_id: 3, price_id: price.id, bonus: false)
 
 requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hähnchen, :ofen], [:schild, :hähnchen]]
 
