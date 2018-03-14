@@ -17,6 +17,22 @@ RSpec.describe User, type: :model do
 		it { validate_presence_of :role}
 	end
 
+   describe 'creating_entries' do 
+      it 'should create all the accounts' do
+         expect(user.accounts.size).to eql(User::ACCOUNTS.size)
+      end
+
+      it 'should have the correct balance for every account' do
+         balances = user.accounts.map {|account| account.balance.to_i }
+         expect(balances).to match_array([100, 100, 100, 100, 100, 100, 600])
+      end
+
+      it 'should have accounting enties' do
+         entry = user.accounts.find_by(name: "coins").entries.first
+         expect(entry).to be_an_instance_of(Plutus::Entry)
+      end
+   end
+
 	describe '#name' do
 		it 'splits the email and returns the email' do
 			user = FactoryBot.create(:user, email: 'fabrizio@email.com')
