@@ -1,7 +1,6 @@
 class Product < ApplicationRecord
 	extend ProductsHelper
 	PRODUCTS = {'sichel' => "sickle.svg",'schwert' => "sword.svg",'achse' => "achse.svg",'bank' => "bank.svg","hammer" => "hammer2.svg",'brot' => 'bread.svg','messer' => "butcher.svg",'fisch' => "fisch.svg",'ofen' => "oven2.svg",'hähnchen' => "meat.svg",'schild' => "shield.svg", 'fisch' => 'fish.svg', 'steak' => 'steak.svg'}
-	BW = ['bank', 'ofen', 'ache']
 
 	has_many :items, :dependent => :destroy
 	has_many :objects, class_name: "Product", foreign_key: "requirement_id"
@@ -13,9 +12,7 @@ class Product < ApplicationRecord
 	def picture
 		PRODUCTS[self.name]
 	end
-  def black_white
-    "black-white" if Product::BW.include? self.name
-  end 
+
 	def requirement_check(input_params, room, product)
 		# this method does not work well and is causing the 
 		# functionality to allways require the product even if 
