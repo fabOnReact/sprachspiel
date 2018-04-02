@@ -1,7 +1,8 @@
 <div class="col-md-3 col-sm-4 col-xs-4 product-partial" id="">
 	<%= link_to add_item_path(product), method: :post, class: "icon", remote: true do %>
-    <%= image_tag "one", class:"icon-number", style:"" %>
-		<%= image_tag product.picture, class: product.color, style: "height: 90px" %> 
+    <%= image_tag 'one', class:"icon-number", style:"", id: "icon-#{product.name}" %>
+    <!-- <div class="circle">1</div> -->
+		<%= image_tag product.picture, class: product.color, style: "height: 90px", id: product.name %> 
     <!--i class="fa fa-minus-square fa-2x" aria-hidden="true" id="minus-square"></i-->
 	<% end %>
 </div>

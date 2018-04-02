@@ -1,1 +1,8 @@
-$("<%= escape_javascript(render @item) %>").appendTo("#items-purchase");
+var price = parseInt($('#price-amount').html()) + <%= @product["price"] %>
+$("#price-amount").html(price);
+// var host = "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
+// var links = {"one": "two.svg", "two":"three.svg", "three" : "four.svg"}
+// $icon = $("#"+ @product["name"]).prev()[0]
+// var number = $icon.alt.toLowerCase()
+// var newlink = host + links[number]
+// $icon.attr("src", newlink);

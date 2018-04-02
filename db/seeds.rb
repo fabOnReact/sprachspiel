@@ -105,6 +105,14 @@ Description.create(name: "room-description", content: "Jeder Spieler kann Lebens
 Description.create(name: "room-description", content: "Hier können sie Schwerter, Rüstung, Werkzeuge, Hämmer und viele anderen Objekten kaufen. Soldaten können Schwerter, Rüstung, Bögen und Pfeile kaufen um eine Vorteile im Kampf zu bekommen, während Schmiede, Farmer einige Werkzeuge wie Hämmer, Schaufeln, Mahlstein brauchen um Produkte wie Brot, Schwert, Lebensmittel zu erstellen.", building_id: 2)
 Description.create(name: "room-description", content: "In der Armee können Spieler Soldaten anwerben, die für eine Faktion kämpfen können oder die Sicherheit einem Geschäft gegen die Diebstähle gewährleisten können.. Im SprachSpiel können Spieler   stehlen, deshalb ist die Organisation der Bürgersicherheit notwendig.", building_id: 3)
 
+# Set prices for Products
+PRODUCTS = {'sichel' => 10,'schwert' => 50,'achse' => 20,'bank' => 5,"hammer" => 10,'brot' => 5,'messer' => 10,'fisch' => 10,'ofen' => 25,'hähnchen' => 10,'schild' => 100, 'fisch' => 20, 'steak' => 25}
+
+Product.all.each do |product|
+	product.price = PRODUCTS[product.name]
+	product.save
+end
+
 # Seeds to rerun in production
 
 # PICTURES = {"Landwirtschaft" => "grain.svg", "Schmied" => "hammer.svg", "Armee" => "battle.svg", "Palast" => "chess.png"}

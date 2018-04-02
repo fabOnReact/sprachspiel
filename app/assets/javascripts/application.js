@@ -20,5 +20,6 @@
 //= require rooms
 //= require cookieconsent
 //= require main
+//= require products
 //= require turbolinks
 //= require buildings
