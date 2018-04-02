@@ -19,22 +19,22 @@ class PricesController < ApplicationController
       end
 	end
 
-	# needs to be refactored
-	def plus
-		if current_user.room_owner(@room)
-			respond_to do |format|
-				format.js
-			end
-		end
-	end
+	# # needs to be refactored
+	# def plus
+	# 	if current_user.room_owner(@room)
+	# 		respond_to do |format|
+	# 			format.js
+	# 		end
+	# 	end
+	# end
 
-	def minus
-		if current_user.room_owner(@room)    
-			respond_to do |format|
-				format.js
-			end
-		end
-	end
+	# def minus
+	# 	if current_user.room_owner(@room)    
+	# 		respond_to do |format|
+	# 			format.js
+	# 		end
+	# 	end
+	# end
 
 	private 
 

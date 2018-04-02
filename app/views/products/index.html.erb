@@ -3,4 +3,11 @@
 <p id="description">Klicken Sie auf das Symbol, um das Produkt zu kaufen!</p> 
 
 <%= render partial: "partials/resources" if user_signed_in? %>   
-<%= render @products %>
+<div class="row">
+  <%= render @products %>
+</div>
+
+<div class="row" id="items-purchase">
+  <p> this is the price</p>
+  <%#= render @items if @items.present? %> <!-- if @purchase.items.present? && user_signed_in? -->
+</div>

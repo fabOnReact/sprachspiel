@@ -1,7 +1,18 @@
 .product-partial.col-md-3 {
   justify-content: center;
   @include flex($direction: row, $justify: space-between);
-  a { @include flex($direction: row, $align: center); }
+  a { @include flex($direction: row, $justify: space-around, $align: initial); }
   img { margin: 7px 5px; }
   img.color { width: 60%; filter: initial; background-color: initial;}
+}
+
+.icon-number {
+  background-color: initial;
+  webkit-filter: initial;
+  filter: initial;
+  height:34px;
+  position: relative;
+  left: 28%;
+  z-index: 10;
+  width: 20%;
 }

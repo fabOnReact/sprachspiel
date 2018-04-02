@@ -1,9 +1,8 @@
-<%= form_for [@room, @price] do |price| %>
-<table class="room table table-hover">
-	<%= render partial: "purchases/partials/item" %>
-</table>
-<%# unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
-<div class="" id="price">
-	<%= render template: "prices/new", locals: {price: price} %>
-</div>
+<%= form_for @purchase do |f| %>
+  <%= @purchase.items do |item| %>  
+    <%= item.picture %>
+    <%#= amount %>
+    <%= link_to delete_item_path(item) %>
+  <% end %>
+  <%= f.submit %>
 <% end %>

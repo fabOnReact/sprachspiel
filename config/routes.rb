@@ -20,22 +20,11 @@ Rails.application.routes.draw do
 	# 	resources :chatrooms
 	# end
 
+	# ajax action to add items to form
+	post "items/:product_id", to: "items#new", as: "add_item"
+
 	# landing page
 	post "subscription", to: 'buildings#createSubscription'
-
-	# rooms
-	get "/buildings/:building_id/rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'
-	# purchase
-	get "/rooms/:room_id/purchases/:id/delete", to: 'purchases#delete', as: 'delete_room_purchase'
-	post "/rooms/:room_id/purchases/:id", to: 'purchases#sold', as: 'sold_room_purchase'
-	# sale
-	post "/rooms/:room_id/sales/:purchase_id", to: 'sales#create', as: 'create_room_sale'
-	# price create_purchase
-	
-	# building room product price calculation
-	# this needs to be refactored togheter with the action
-	post "prices/:id/plus", to: 'prices#plus', as: 'room_price_plus'
-	post "prices/:id/minus", to: 'prices#minus', as: 'room_price_minus'
 
 	mount ActionCable.server => '/cable'
 

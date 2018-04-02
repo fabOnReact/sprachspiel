@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
-	extend ProductsHelper
-	PRODUCTS = {'sichel' => "sickle.svg",'schwert' => "sword.svg",'achse' => "achse.svg",'bank' => "bank.svg","hammer" => "hammer2.svg",'brot' => 'bread.svg','messer' => "butcher.svg",'fisch' => "fisch.svg",'ofen' => "oven2.svg",'hähnchen' => "meat.svg",'schild' => "shield.svg", 'fisch' => 'fish.svg', 'steak' => 'steak.svg'}
-
+	PRODUCTS = {'sichel' => "sickle.svg",'schwert' => "sword.svg",'achse' => "axe.svg",'bank' => "desk.svg","hammer" => "hammer2.svg",'brot' => 'bread.svg','messer' => "butcher.svg",'fisch' => "fisch.svg",'ofen' => "stone-oven.svg",'hähnchen' => "meat.svg",'schild' => "shield.svg", 'fisch' => 'fish.svg', 'steak' => 'steak.svg'}
+	BW = ['bank', 'ofen', 'achse']
 	has_many :items, :dependent => :destroy
+	# has_many :purchases, :dependent => :destroy
 	has_many :objects, class_name: "Product", foreign_key: "requirement_id"
-	belongs_to :building
+	# belongs_to :building
 	belongs_to :category
 	belongs_to :price, :dependent => :destroy
 	scope :not_used_items, -> { find_by_sql("SELECT products.name, products.price_id, COUNT(items.id) AS NumberOfItems FROM products INNER JOIN items on products.id = items.product_id GROUP BY products.id;") }
@@ -13,6 +13,10 @@ class Product < ApplicationRecord
 		PRODUCTS[self.name]
 	end
 
+  def color
+    "color" # unless BW.include? self.name
+  end  
+	
 	def requirement_check(input_params, room, product)
 		# this method does not work well and is causing the 
 		# functionality to allways require the product even if 
