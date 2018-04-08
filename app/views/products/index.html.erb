@@ -7,8 +7,10 @@
   <%= render @products %>
 </div>
 
-<div class="row" id="items-purchase">
-  <p> this is the price</p>
-  <div id="price-amount">0</div>
-  <%#= render @items if @items.present? %> <!-- if @purchase.items.present? && user_signed_in? -->
+<div class="purchase">
+  <div class="price">
+    <%= image_tag "coins", class:"icon coins" %>
+    <p id="price-amount">0</p>
+  </div>
+  <div class="btn btn-primary" id="submit">Purchase</div>
 </div>

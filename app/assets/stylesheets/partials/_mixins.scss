@@ -2,5 +2,15 @@
 	display: flex;
 	flex-direction: $direction;
 	justify-content: $justify;
-   align-items: $align;
+  align-items: $align;
 }
+
+@mixin imageColor($background-color: initial, $filter: initial) {
+  background-color: $background-color;
+  webkit-filter: $filter;
+  filter: $filter;
+}
+
+// @mixin marginReset() {
+//   margin
+// }

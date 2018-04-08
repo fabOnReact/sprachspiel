@@ -16,14 +16,4 @@ var ready = function() {
   });
 }
 
-/*$('img.color').click(function(){
-  var host = "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
-  var links = {"one": "two.svg", "two":"three.svg", "three" : "four.svg"}
-  $icon = $(this).prev();
-  var number = $icon[0].alt.toLowerCase()
-  var newlink = host + links[number]
-  $icon.attr("src", newlink);
-  $icon.attr("alt", links[number].split('.')[1]);
-});*/
-
 $(document).on('turbolinks:load', ready);
