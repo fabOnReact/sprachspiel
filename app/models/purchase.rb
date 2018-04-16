@@ -5,7 +5,7 @@ class Purchase < ApplicationRecord
 	belongs_to :user
 	# has_one :sale
 	
-	accepts_nested_attributes_for :items
+	# accepts_nested_attributes_for :items
 	validate :user_has_money
 
 	scope :price_sum, ->(resource) { joins(:price).sum(resource) }

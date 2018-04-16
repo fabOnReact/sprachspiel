@@ -9,7 +9,11 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @purchase = Purchase.new()
+    # binding.pry
+    # @purchase = Purchase.new
+    # items_params.map do |item| 
+    #   item["amount"].to_i.times {Item.create(product_id: item.product_id)}
+    # end
   end
 
   def edit
@@ -58,8 +62,9 @@ class PurchasesController < ApplicationController
     @purchase = Purchase.find(params[:id])
   end
 
-  def purchase_params
-  end
+  # def items_params
+  #   params.require(:purchase).permit(items_attributes:[:product_id, :amount])["items_attributes"]
+  # end
 
   # def set_variables
   #   @room = Room.find(params[:room_id])    

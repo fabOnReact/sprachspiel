@@ -22,10 +22,10 @@ class Purchase
     @postPurchase(data)
   postPurchase: (data) ->
     $.ajax
-       url: "/purchases"
+       url: "/items"
        method: "POST"
        dataType: "json"
-       data: {"purchase": {"items_attributes": data }} 
+       data: {"items": data }
        error: (jqXHR, textStatus, errorThrown) ->
          console.log "AJAX Error: #{textStatus}"
        success: (data, textStatus, jqXHR) ->
