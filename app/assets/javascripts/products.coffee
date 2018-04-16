@@ -9,13 +9,23 @@ class Purchase
     @setEvents()      
   setEvents: ->
     @submit.click => 
-      @createPurchase() 
+      @createPurchase()
+  getRow: (i, product) -> 
+    unless product.amount == 0
+      "product_id": product.id
+      "amount": product.amount
+  aggregateData: ->
+    @getRow i+1, product for product, i in @products
   createPurchase: -> 
+    data = @aggregateData().filter (n) -> n != undefined
+    console.log(data)
+    @postPurchase(data)
+  postPurchase: (data) ->
     $.ajax
-       url: "/products"
+       url: "/purchases"
        method: "POST"
        dataType: "json"
-       data: { items: {product_id: @products[0].id, amount: @products[0].amount }}
+       data: {"purchase": {"items_attributes": data }} 
        error: (jqXHR, textStatus, errorThrown) ->
          console.log "AJAX Error: #{textStatus}"
        success: (data, textStatus, jqXHR) ->

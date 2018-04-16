@@ -17,9 +17,10 @@
 //= require jquery-ui
 //= require bootstrap
 //= require cable
+//= require main
 //= require rooms
 //= require cookieconsent
-//= require main
+//= require purchases
 //= require products
-//= require turbolinks
 //= require buildings
+//= require turbolinks

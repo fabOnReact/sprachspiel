@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
   def create
-    binding.pry
   end
   def show; end
 end
