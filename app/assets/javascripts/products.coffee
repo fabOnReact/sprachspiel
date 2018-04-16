@@ -4,13 +4,9 @@ $(document).on 'turbolinks:load', ->
 class Purchase
   constructor: () -> 
     @submit = $('#submit')
-    # @setEvents()
     @products = $.map $('.product-partial'), (product, i) -> 
       new Product(product)
-    @setEvents()
-  # increaseItemCount: (id) -> 
-  #   @amounts[id] ||= 0
-  #   @amounts[id] += 1         
+    @setEvents()      
   setEvents: ->
     @submit.click => 
       @createPurchase() 
@@ -26,38 +22,25 @@ class Purchase
          console.log "Successful AJAX call: #{data}"
          console.log data
 
-class Product extends Purchase
+class Product
   constructor: (product) ->
     @product = $(product)
     @id = @product.data("id")
-    # @icon = @product.find('img[data-name=icon]')
-    div = @product.find('img[data-name=icon]')
-    @icon = new Icon(div)
-    @setAnotherEvent()
-    @amount = {}
-  # amounts: {}
-  # setEvents: ->
-  #   @product.click => 
-  #     @changeIcon()   
-  setAnotherEvent: ->
-    @product.click =>
-      @increaseItemCount()
-  increaseItemCount: () -> 
-    # @amounts[@id] ||= 0
-    # @amounts[@id] += 1    
-    @amount += 1
-
-class Icon extends Product
-  constructor: (product) ->
-    # super(product)
-    @setHash index for index in [0..9]  
-    # @setEvents()
+    @icon = @product.find('img[data-name=icon]')
+    @setEvent()
+    @amount ||= 0
+    @setHash index for index in [0..9] 
   host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
   numbers: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
-  sequence: {}
+  sequence: {}  
+  setEvent: ->
+    @product.click =>
+      @increaseItemCount()
+      @changeIcon()   
+  increaseItemCount: () -> 
+    @amount += 1
   setHash: (index) -> @sequence[index + 1] = @numbers[index]
   changeIcon: ->
-    # @increaseItemCount()
-    # newlink = @host + @sequence[@amounts[@id]] + ".svg"
-    # @icon.attr("src", newlink)
-    # @icon.removeClass('hidden')
+    newlink = @host + @sequence[@amount] + ".svg"
+    @icon.attr("src", newlink)
+    @icon.removeClass('hidden')
