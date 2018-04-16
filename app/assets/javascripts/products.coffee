@@ -1,70 +1,63 @@
 $(document).on 'turbolinks:load', ->
-  new Purchase
+  new Purchase()
 
 class Purchase
-  constructor: -> 
+  constructor: () -> 
     @submit = $('#submit')
+    # @setEvents()
+    @products = $.map $('.product-partial'), (product, i) -> 
+      new Product(product)
     @setEvents()
-    products = $.map $('.product-partial'), (product, i) -> 
-      new Icon(product)
+  # increaseItemCount: (id) -> 
+  #   @amounts[id] ||= 0
+  #   @amounts[id] += 1         
   setEvents: ->
     @submit.click => 
-      @createPurchase()  
-      # console.log('test')
+      @createPurchase() 
   createPurchase: -> 
     $.ajax
        url: "/products"
        method: "POST"
        dataType: "json"
-       data: { items: {product_id: '1', name: 'test' }}
+       data: { items: {product_id: @products[0].id, amount: @products[0].amount }}
        error: (jqXHR, textStatus, errorThrown) ->
          console.log "AJAX Error: #{textStatus}"
        success: (data, textStatus, jqXHR) ->
          console.log "Successful AJAX call: #{data}"
          console.log data
 
-# $.ajax
-#    url: "some.html"
-#    dataType: "html"
-#    error: (jqXHR, textStatus, errorThrown) ->
-#      $('body').append "AJAX Error: #{textStatus}"
-#    success: (data, textStatus, jqXHR) ->
-#      $('body').append "Successful AJAX call: #{data}"
-
-# $.ajax({
-#     url: "/sub_comments",
-#     type: "POST",
-#     data: {subcomment: {
-#              field: val, 
-#              field2: val, etc... }},
-#     success: function(resp){ }
-# });
-
-class Product
+class Product extends Purchase
   constructor: (product) ->
     @product = $(product)
     @id = @product.data("id")
-    @icon = @product.find('img[data-name=icon]')
-  amounts: {}
-  setEvents: ->
-    @product.click => 
-      @changeIcon()   
-  increaseItemCount: (id) -> 
-    @amounts[@id] ||= 0
-    @amounts[@id] += 1    
+    # @icon = @product.find('img[data-name=icon]')
+    div = @product.find('img[data-name=icon]')
+    @icon = new Icon(div)
+    @setAnotherEvent()
+    @amount = {}
+  # amounts: {}
+  # setEvents: ->
+  #   @product.click => 
+  #     @changeIcon()   
+  setAnotherEvent: ->
+    @product.click =>
+      @increaseItemCount()
+  increaseItemCount: () -> 
+    # @amounts[@id] ||= 0
+    # @amounts[@id] += 1    
+    @amount += 1
 
 class Icon extends Product
   constructor: (product) ->
-    super(product)
+    # super(product)
     @setHash index for index in [0..9]  
-    @setEvents()
+    # @setEvents()
   host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
   numbers: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
   sequence: {}
   setHash: (index) -> @sequence[index + 1] = @numbers[index]
   changeIcon: ->
-    @increaseItemCount()
-    newlink = @host + @sequence[@amounts[@id]] + ".svg"
-    @icon.attr("src", newlink)
-    @icon.removeClass('hidden')
-
+    # @increaseItemCount()
+    # newlink = @host + @sequence[@amounts[@id]] + ".svg"
+    # @icon.attr("src", newlink)
+    # @icon.removeClass('hidden')
