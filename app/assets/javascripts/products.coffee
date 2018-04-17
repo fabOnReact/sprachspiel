@@ -6,32 +6,45 @@ class Purchase
     @submit = $('#submit')
     @products = $.map $('.product-partial'), (product, i) -> 
       new Product(product)
-    @setEvents()      
+    @setEvents()    
+  data: {}
+  array: []  
   setEvents: ->
     @submit.click => 
       @createPurchase()
-  getRow: (i, product) -> 
-    unless product.amount == 0
+  getRow: (product) -> 
+    i = 0
+    while i < product.amount
+      i++ 
       "product_id": product.id
-      "amount": product.amount
   aggregateData: ->
-    @getRow i+1, product for product, i in @products
+    @getRow product for product in @products
+  cleanData: -> 
+    @data = @aggregateData().filter (n) -> n.length != 0
+    # @data = [].concat([], @data)
+    @data = JSON.stringify(@data).replace(/\]|\[/g, "")
+    @data = JSON.stringify("{\"purchase\": {"items_attributes": @data }})
+      "{\"product_id\":3},{\"product_id\":3},{\"product_id\":6},{\"product_id\":6}"}
+    console.log @data
   createPurchase: -> 
-    data = @aggregateData().filter (n) -> n != undefined
-    console.log(data)
-    @postPurchase(data)
+    @cleanData()
+    # console.log @data
+    # console.log @data
+    @postPurchase()
   postPurchase: (data) ->
     $.ajax
-       url: "/items"
+       url: "/purchases"
        method: "POST"
        dataType: "json"
-       data: {"items": data }
+       data: @data
        error: (jqXHR, textStatus, errorThrown) ->
          console.log "AJAX Error: #{textStatus}"
        success: (data, textStatus, jqXHR) ->
-         console.log "Successful AJAX call: #{data}"
-         console.log data
+         console.log "Successful AJAX call"
 
+# refactor this as Item and not product, you need to make 
+# sure that you can use the product for the callbacks
+# on click
 class Product
   constructor: (product) ->
     @product = $(product)
