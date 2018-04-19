@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 	# end
 
 	# ajax action to add items to form
-	post "items/:product_id", to: "items#new", as: "add_item"
+	# post "items/:product_id", to: "items#new", as: "add_item"
+	post "purchases/:product_id", to: "purchases#new", as: "add_item"
 
 	# landing page
 	post "subscription", to: 'buildings#createSubscription'

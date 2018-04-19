@@ -6,13 +6,26 @@ class PurchasesController < ApplicationController
   end
 
   def new
+    @purchase = Purchase.new
+    # 10.times { @purchase.items.new }
+    @products = Product.all 
+    
+    if params[:product_id]
+      @product = Product.find(params[:product_id])
+      @purchase.items.new product: @product
+    end
+
+    respond_to do |format| 
+      format.js
+      format.html
+    end       
   end
 
   def create
     # binding.pry
-    @purchase = Purchase.new purchase_params
-    @purchase.user_id = current_user
-    @purchase.valid?
+    # @purchase = Purchase.new purchase_params
+    # @purchase.user_id = current_user
+    # @purchase.valid?
   end
 
   def edit
@@ -57,13 +70,13 @@ class PurchasesController < ApplicationController
   # end
 
   private
-  def find_purchase 
-    @purchase = Purchase.find(params[:id])
-  end
+  # def find_purchase 
+  #   @purchase = Purchase.find(params[:id])
+  # end
 
-  def purchase_params
-    params.require(:purchase).permit(items_attributes:[:product_id])
-  end
+  # def purchase_params
+  #   params.require(:purchase).permit(items_attributes:[:product_id])
+  # end
 
   # def set_variables
   #   @room = Room.find(params[:room_id])    

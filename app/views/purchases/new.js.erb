@@ -1,0 +1,15 @@
+# new Item()
+
+# class Item 
+#   constructor: -> 
+#     @price = parseInt($('#price-amount').html()) + <%= @product["price"] %>
+#     @setPrice
+#     @addItem
+#   setPrice: -> 
+#     $("#price-amount").html(price)
+#   addItem: ->
+#     $('#new_purchase').append '<%=j render partial: 'item', locals: {count: @count} %>'
+
+var price = parseInt($('#price-amount').html()) + <%= @product["price"] %>
+$("#price-amount").html(price);
+$('#new_purchase').append '<%=j render partial: 'item', locals: {item: } %>'
