@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = Purchase.new
-    # 10.times { @purchase.items.new }
+    2.times { @purchase.items.new }
     @products = Product.all 
     
     if params[:product_id]
