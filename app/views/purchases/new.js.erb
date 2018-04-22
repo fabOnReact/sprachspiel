@@ -1,9 +1,10 @@
-new Item()
+var Purchase = {
+  price: parseInt($('#price-amount').html()) + <%= @product["price"] %>,
+  setPrice: function() {
+    $("#price-amount").html(Purchase.price)    
+  }
+}
 
-class Item 
-  constructor: -> 
-    @price = parseInt($('#price-amount').html()) + <%= @product["price"] %>
-    @setPrice()
-    @addItem()
-  setPrice: -> 
-    $("#price-amount").html(price)
+console.log(Purchase.price);
+console.log(Purchase.setPrice());
+Purchase.setPrice();

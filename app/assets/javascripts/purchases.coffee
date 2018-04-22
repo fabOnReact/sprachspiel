@@ -1,5 +1,5 @@
 $(document).on 'turbolinks:load', ->
-  purchase = new Purchase()
+  new Purchase()
   
 class Purchase
   @items: []  
@@ -12,14 +12,14 @@ class Purchase
   array: []  
   onSubmit: -> 
     @submit.click =>
-      console.log "this is data"
-      data = Purchase.serialize()
-      console.log data      
+      # console.log "this is data"
+      # data = Purchase.serialize()
+      # console.log data      
       $.ajax
          url: "/purchases"
          method: "POST"
          dataType: "json"
-         data: data
+         data: Purchase.serialize()
          error: (jqXHR, textStatus, errorThrown) ->
            console.log "AJAX Error: #{textStatus}"
          success: (data, textStatus, jqXHR) ->
@@ -34,18 +34,16 @@ class Purchase
       "product_id": product.id
 
 class Product
-  @items: []
+  # @items: []
   @host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
   @numbers: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
-  @secondSubmit: $('#submit')
   constructor: (product) ->
     @product = $(product)
     @id = @product.data("id")
     @icon = @product.find('img[data-name=icon]')
     @amount ||= 0
     @sequence = {}
-    @setHash index for index in [0..9] 
-    @submit = $('#submit')
+    @setHash index for index in [0..9]
     @setEvent()
   setEvent: =>
     @product.click =>
