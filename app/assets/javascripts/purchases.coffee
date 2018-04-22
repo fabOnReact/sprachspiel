@@ -8,8 +8,8 @@ class Purchase
     @products = $.map $('.product-partial'), (product, i) -> 
       new Product(product)
     @onSubmit()
-  data: {}
-  array: []  
+  # data: {}
+  # array: []  
   onSubmit: -> 
     @submit.click =>
       # console.log "this is data"
@@ -27,11 +27,11 @@ class Purchase
   @serialize: => 
     purchase:
       items_attributes: (item.serialize() for item in Product.items)           
-  getRow: (product) -> 
-    i = 0
-    while i < product.amount
-      i++ 
-      "product_id": product.id
+  # getRow: (product) -> 
+  #   i = 0
+  #   while i < product.amount
+  #     i++ 
+  #     "product_id": product.id
 
 class Product
   # @items: []
