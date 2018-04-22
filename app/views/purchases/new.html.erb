@@ -9,12 +9,10 @@
   <%= render @products %>
 </div>
 
-<%= form_for @purchase, html: {class: "purchase"} do |f| %>
-  <%= f.fields_for :items do |item| %><%= item.text_field :product_id, class: "hidden"%><% end %>
+<div class="purchase">
   <div class="price">
     <%= image_tag "coins", class:"icon coins" %>
-    <%= f.hidden_field :price, html: { id:"price-amount", value: 0} %>
-    <p id="price-amount">0</p>
+    <p id="price-amount">0</p>  
   </div>
-  <%= f.submit :purchase, class: "btn btn-primary", id: "submit" %>
-<% end %>
+  <div class="btn btn-primary" id="submit">Purchase</div>
+</div>

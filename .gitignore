@@ -22,8 +22,6 @@
 
 # Added from developer
 config/environments/development.rb
-notes
-todolist
-cutout
 public/assets
 app/assets/images
+my_notes/

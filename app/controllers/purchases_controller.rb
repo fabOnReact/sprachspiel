@@ -23,7 +23,9 @@ class PurchasesController < ApplicationController
 
   def create
     # binding.pry
-    # @purchase = Purchase.new purchase_params
+    @purchase = Purchase.new purchase_params
+    puts @purchase.inspect
+    puts purchase_params
     # @purchase.user_id = current_user
     # @purchase.valid?
   end
@@ -74,9 +76,9 @@ class PurchasesController < ApplicationController
   #   @purchase = Purchase.find(params[:id])
   # end
 
-  # def purchase_params
-  #   params.require(:purchase).permit(items_attributes:[:product_id])
-  # end
+  def purchase_params
+    params.require(:purchase).permit(items_attributes:[:product_id])
+  end
 
   # def set_variables
   #   @room = Room.find(params[:room_id])    
