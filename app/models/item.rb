@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 	# belongs_to :room
 	belongs_to :product
-  belongs_to :purchase
+  # belongs_to :purchase
   # belongs_to :user
 
   # def self.bonus_items(product, purchase, room) 

@@ -18,6 +18,9 @@ class Purchase
         data: Product.serialize()
         error: (jqXHR, textStatus, errorThrown) ->
           console.log "AJAX Error: #{textStatus}"
+          console.log jqXHR
+          console.log textStatus
+          console.log errorThrown
         success: (data, textStatus, jqXHR) ->
           console.log "Successful AJAX call: #{data}"         
 

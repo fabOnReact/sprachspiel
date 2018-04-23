@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  # before_action :set_variables, only: [:create]
+  # before_action :render_authentication_error, only: [:create]
   before_action :find_purchase, only: [:show, :delete, :destroy]
   before_action :set_purchase, only: [:create]
   before_action :set_products, only: [:new, :create]
@@ -8,14 +8,8 @@ class PurchasesController < ApplicationController
   end
 
   def new
+    @product = Product.find params[:product_id] if params[:product_id].present?
     @purchase = Purchase.new
-    2.times { @purchase.items.new }
-    
-    if params[:product_id]
-      @product = Product.find(params[:product_id])
-      @purchase.items.new product: @product
-    end
-
     respond_to do |format| 
       format.js
       format.html
@@ -23,19 +17,14 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @purchase.assign_attributes(user: current_user)
-    # you need to assign item.purchase_id the id of the purchase
-    # @purchase.items.map {|item| item.purchase = @purchase }
-    puts "------------------------ purchase object -------------------------"
-    puts @purchase.inspect
-    puts "------------------------ purchase items -------------------------"
-    puts @purchase.items.inspect
+    @purchase.assign_attributes user: current_user
     respond_to do |format|
       if @purchase.save
         flash[:notice] = "Your purchase was saved."
-        format.html { redirect_to new_purchase_path }
+        redirect_to new_purchase_path, notice: "The purchase is saved" 
       else
-        flash.now[:error] = "The purchase was not saved."
+        puts "the purchase was not saved"
+        @messages = @purchase.errors.full_messages.join(" ")
         format.html { render :new }
       end
     end
@@ -80,6 +69,12 @@ class PurchasesController < ApplicationController
   #     flash[:error] = "Ein Fehler ist aufgetreten, der Verkauf wurde nicht gespeichert"
   #     redirect_to room_path(@room)
   #   end  
+  # end
+
+  # def render_authentication_error
+  #   binding.pry
+  #   @messages = "You need to sign in to purchase items" unless user_signed_in?
+  #   authenticate_user!
   # end
 
   private

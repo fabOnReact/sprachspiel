@@ -15,11 +15,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @product = Product.find(params[:product_id])
-    @product.items.build
-    respond_to do |format| 
-      format.js
-    end       
+    # @product = Product.find(params[:product_id])
+    # @product.items.build
+    # respond_to do |format| 
+    #   format.js
+    # end       
   end
 
   private
