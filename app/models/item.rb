@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 	# belongs_to :room
 	belongs_to :product
-  # belongs_to :purchase
-  belongs_to :user
+  belongs_to :purchase
+  # belongs_to :user
 
   # def self.bonus_items(product, purchase, room) 
   #    2.times do  
@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   #    end
   # end
   def amount
-    sef.amount.to_i
+    self.amount.to_i
   end
 
   def self.where_limit(product_id, room_id, nitems)

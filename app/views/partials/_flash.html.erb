@@ -3,7 +3,6 @@
 <% end %>
 
 <% if android_request && flash.present? %>
-	<%# binding.pry %>
 	<div class="container">
 		<script>Android.showToast("<%= flash_message %>")</script>
 	</div>

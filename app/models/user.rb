@@ -11,9 +11,9 @@ class User < ApplicationRecord
    # has_one :room, :dependent => :destroy
    has_many :messages, :dependent => :destroy
    has_many :chatrooms, through: :messages 
-   has_many :products, through: :items
 
-   # has_many :purchases, :dependent => :destroy
+   has_many :purchases, :dependent => :destroy
+   has_many :items, through: :purchases
    # has_many :sales, :dependent => :destroy
    # has_many :accounts, class_name: "Plutus::Account", foreign_key: "tenant_id"
    # has_many :accounts, class_name: "Account", foreign_key: "tenant_id"

@@ -2,39 +2,27 @@ $(document).on 'turbolinks:load', ->
   new Purchase()
   
 class Purchase
-  @items: []  
   constructor: () -> 
     @submit = $('#submit')
     @products = $.map $('.product-partial'), (product, i) -> 
       new Product(product)
     @onSubmit()
-  # data: {}
-  # array: []  
   onSubmit: -> 
     @submit.click =>
-      # console.log "this is data"
-      # data = Purchase.serialize()
-      # console.log data      
+      console.log Product.serialize()["purchase"]["price"]
+      console.log Product.serialize()
       $.ajax
-         url: "/purchases"
-         method: "POST"
-         dataType: "json"
-         data: Purchase.serialize()
-         error: (jqXHR, textStatus, errorThrown) ->
-           console.log "AJAX Error: #{textStatus}"
-         success: (data, textStatus, jqXHR) ->
-           console.log "Successful AJAX call: #{data}"
-  @serialize: => 
-    purchase:
-      items_attributes: (item.serialize() for item in Product.items)           
-  # getRow: (product) -> 
-  #   i = 0
-  #   while i < product.amount
-  #     i++ 
-  #     "product_id": product.id
+        url: "/purchases"
+        method: "POST"
+        dataType: "json"
+        data: Product.serialize()
+        error: (jqXHR, textStatus, errorThrown) ->
+          console.log "AJAX Error: #{textStatus}"
+        success: (data, textStatus, jqXHR) ->
+          console.log "Successful AJAX call: #{data}"         
 
 class Product
-  # @items: []
+  @items: []
   @host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
   @numbers: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
   constructor: (product) ->
@@ -48,8 +36,8 @@ class Product
   setEvent: =>
     @product.click =>
       @increaseItemCount()
-      @changeIcon()   
-      Purchase.items.push new Item(@id)
+      @changeIcon() 
+      Product.items.push new Item(@id)  
   increaseItemCount: () -> 
     @amount += 1
   setHash: (index) -> @sequence[index + 1] = Product.numbers[index]
@@ -57,6 +45,13 @@ class Product
     newlink = Product.host + @sequence[@amount] + ".svg"
     @icon.attr("src", newlink)
     @icon.removeClass('hidden')
+  @getPrice: ->
+    priceButton = $('#price-amount')
+    parseInt(priceButton.html())
+  @serialize: =>
+    purchase:
+      price: Product.getPrice()
+      items_attributes: (item.serialize() for item in Product.items)    
 
 class Item
   constructor: (@product_id)->

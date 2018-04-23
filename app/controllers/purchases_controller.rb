@@ -1,6 +1,8 @@
 class PurchasesController < ApplicationController
   # before_action :set_variables, only: [:create]
   before_action :find_purchase, only: [:show, :delete, :destroy]
+  before_action :set_purchase, only: [:create]
+  before_action :set_products, only: [:new, :create]
 
   def index
   end
@@ -8,7 +10,6 @@ class PurchasesController < ApplicationController
   def new
     @purchase = Purchase.new
     2.times { @purchase.items.new }
-    @products = Product.all 
     
     if params[:product_id]
       @product = Product.find(params[:product_id])
@@ -22,12 +23,22 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @purchase = Purchase.new purchase_params
+    @purchase.assign_attributes(user: current_user)
+    # you need to assign item.purchase_id the id of the purchase
+    # @purchase.items.map {|item| item.purchase = @purchase }
+    puts "------------------------ purchase object -------------------------"
     puts @purchase.inspect
-    puts purchase_params
-    # @purchase.user_id = current_user
-    # @purchase.valid?
+    puts "------------------------ purchase items -------------------------"
+    puts @purchase.items.inspect
+    respond_to do |format|
+      if @purchase.save
+        flash[:notice] = "Your purchase was saved."
+        format.html { redirect_to new_purchase_path }
+      else
+        flash.now[:error] = "The purchase was not saved."
+        format.html { render :new }
+      end
+    end
   end
 
   def edit
@@ -76,8 +87,16 @@ class PurchasesController < ApplicationController
   #   @purchase = Purchase.find(params[:id])
   # end
 
+  def set_purchase
+    @purchase = Purchase.new purchase_params
+  end
+
+  def set_products
+    @products = Product.all
+  end
+
   def purchase_params
-    params.require(:purchase).permit(items_attributes:[:product_id])
+    params.require(:purchase).permit(:price, items_attributes:[:product_id])
   end
 
   # def set_variables
