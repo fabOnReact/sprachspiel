@@ -1,12 +1,12 @@
-$(document).ajaxError (event, request) -> 
-  new Message(event, request)
+# $(document).ajaxError (event, request) -> 
+#   new Message(event, request)
 
-class Message
-  constructor: (@event, @request) ->
-    @msg = @request.getResponseHeader('X-Message').toString()
-    @renderAlerts() if @msg
-  renderAlerts: ->
-    alert(@msg)
+# class Message
+#   constructor: (@event, @request) ->
+#     @msg = @request.getResponseHeader('X-Message').toString()
+#     @renderAlerts() if @msg
+#   renderAlerts: ->
+#     alert(@msg)
 
 
 ################# REMOVED CODE ####################

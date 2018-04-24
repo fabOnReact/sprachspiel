@@ -23,9 +23,10 @@ class PurchasesController < ApplicationController
         flash[:notice] = "Your purchase was saved."
         redirect_to new_purchase_path, notice: "The purchase is saved" 
       else
-        puts "the purchase was not saved"
-        @messages = @purchase.errors.full_messages.join(" ")
-        format.html { render :new }
+        # @messages = @purchase.errors.full_messages.join(" ")
+        # format.html { render :new }
+        puts @purchase.errors.full_messages.inspect
+        format.json { render :json => { :error => @purchase.errors.full_messages}, :status => 422}
       end
     end
   end

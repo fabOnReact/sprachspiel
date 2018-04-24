@@ -23,4 +23,5 @@
 //= require purchases
 //= require products
 //= require buildings
+//= require errors
 //= require turbolinks

@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	after_action :user_activity
-	after_filter :flash_to_headers
+	# after_filter :flash_to_headers
 
-	def flash_to_headers
-		# binding.pry
-	  return unless request.xhr?
-	  @messages = "You need to sign in to purchase items" unless user_signed_in?
-	  response.headers['X-Message'] = @messages  unless @messages.blank?
-	  flash.discard
-	end
+	# def flash_to_headers
+	# 	# binding.pry
+	#   return unless request.xhr?
+	#   @messages = "You need to sign in to purchase items" unless user_signed_in?
+	#   response.headers['X-Message'] = @messages  unless @messages.blank?
+	#   flash.discard
+	# end
 
 	# def authenticate_user! 
 	# 	super
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 	# end
 
 	def after_sign_in_path_for(resource)
-	  buildings_path
+	  new_purchase_path
 	end
 
 	private	

@@ -26,8 +26,8 @@ class User < ApplicationRecord
    validates :username, uniqueness: true
    validates :username, :role, presence: true
 
-   before_save :create_accounts
-   after_create :create_entries
+   # before_save :create_accounts
+   # after_create :create_entries
 
    # def create_room
    #    @room = Room.new(title: title, description: text, building_id: self.role.building.id, user_id: self.id)        

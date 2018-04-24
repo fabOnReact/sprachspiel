@@ -8,14 +8,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
    # POST /resource
-   def create
-      super
-      if @room.save
-         flash[:notice] = "Your Room was saved"
-      else
-         flash[:error] = "An error occurred, the Room was not saved"
-      end       
-   end
+   # def create
+   #    super
+   #   if @room.save
+   #      flash[:notice] = "Your Room was saved"
+   #   else
+   #      flash[:error] = "An error occurred, the Room was not saved"
+   #   end       
+   # end
 
    # GET /resource/edit
    def edit
