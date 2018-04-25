@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  # before_action :render_authentication_error, only: [:create]
+  # before_action :authentication_error, only: [:create]
   before_action :find_purchase, only: [:show, :delete, :destroy]
   before_action :set_purchase, only: [:create]
   before_action :set_products, only: [:new, :create]
@@ -18,17 +18,22 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase.assign_attributes user: current_user
-    respond_to do |format|
+    # respond_to do |format|
+      # binding.pry
       if @purchase.save
-        flash[:notice] = "Your purchase was saved."
-        redirect_to new_purchase_path, notice: "The purchase is saved" 
+        # flash[:notice] = "Your purchase was saved."
+        # flash.keep(:notice)
+        # puts 'before rendering js'
+        # render js: "window.location = '#{root_path}'"
+        render json: { location: root_path, flash: {:notice => "Hello"}}
+        # format.js { "window.location = '#{root_path}'" }
+        # format.html { redirect_to root_path } #new_purchase_path, notice: "The purchase is saved" 
       else
         # @messages = @purchase.errors.full_messages.join(" ")
         # format.html { render :new }
-        puts @purchase.errors.full_messages.inspect
-        format.json { render :json => { :error => @purchase.errors.full_messages}, :status => 422}
+        render json: { error: @purchase.errors.full_messages}, status: 422
       end
-    end
+    # end
   end
 
   def edit
@@ -70,12 +75,6 @@ class PurchasesController < ApplicationController
   #     flash[:error] = "Ein Fehler ist aufgetreten, der Verkauf wurde nicht gespeichert"
   #     redirect_to room_path(@room)
   #   end  
-  # end
-
-  # def render_authentication_error
-  #   binding.pry
-  #   @messages = "You need to sign in to purchase items" unless user_signed_in?
-  #   authenticate_user!
   # end
 
   private

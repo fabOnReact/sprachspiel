@@ -4,7 +4,7 @@
 
 <%#= render partial: "partials/resources" if user_signed_in? %> 
 <%#= render 'partials/error_messages', object: @purchase %>
-<ul id='errors'></ul>
+<ul class='alert alert-danger fade out' id='errors'></ul>
 
 <div class="row">
   <%= render @products %>

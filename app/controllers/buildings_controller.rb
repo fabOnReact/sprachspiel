@@ -3,11 +3,11 @@ class BuildingsController < ApplicationController
    # before_action :product_count, only: [:show, :index]
 
    def welcome
-      if user_signed_in?
-         redirect_to buildings_path
-      else
+      # if user_signed_in?
+      #    redirect_to buildings_path
+      # else
          @subscription = Subscription.new
-      end
+      # end
    end
 
    def createSubscription 

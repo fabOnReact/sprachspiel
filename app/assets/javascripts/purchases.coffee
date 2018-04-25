@@ -18,11 +18,29 @@ class Purchase
         data: Product.serialize()
         error: (jqXHR, textStatus, errorThrown) ->
           console.log "AJAX Error: #{textStatus}"
-          console.log jqXHR
+          console.log jqXHR.responseJSON.error
           console.log textStatus
           console.log errorThrown
+          new Message jqXHR.responseJSON.error
         success: (data, textStatus, jqXHR) ->
-          console.log "Successful AJAX call: #{data}"         
+          window.location.href = data.location
+          new Message data.flash["notice"]
+
+class Message
+  constructor: (@errors) ->
+    # if xhr
+    # @errors = jqXHR.responseJSON.error 
+    @div = $('ul#errors')
+    @renderErrors()
+  renderErrors: ->
+    for message of @errors
+      @authenticationError() if @errors[message] == "User must exist"
+      @renderMessage()
+    @div.removeClass('out').addClass('in')
+  authenticationError: -> 
+    @errors[message] = "You need to log in to perform this action"
+  renderMessage: ->
+    @div.append '<li>' + @errors[message] + '</li>'
 
 class Product
   @items: []
