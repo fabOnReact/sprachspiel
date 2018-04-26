@@ -18,22 +18,11 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase.assign_attributes user: current_user
-    # respond_to do |format|
-      # binding.pry
-      if @purchase.save
-        # flash[:notice] = "Your purchase was saved."
-        # flash.keep(:notice)
-        # puts 'before rendering js'
-        # render js: "window.location = '#{root_path}'"
-        render json: { location: root_path, flash: {:notice => "Hello"}}
-        # format.js { "window.location = '#{root_path}'" }
-        # format.html { redirect_to root_path } #new_purchase_path, notice: "The purchase is saved" 
-      else
-        # @messages = @purchase.errors.full_messages.join(" ")
-        # format.html { render :new }
-        render json: { error: @purchase.errors.full_messages}, status: 422
-      end
-    # end
+    if @purchase.save
+      render json: { location: root_path, flash: {:notice => ["Your purchase was saved"]}, css_class: "success" }
+    else
+      render json: { error: @purchase.errors.full_messages }, status: 422
+    end
   end
 
   def edit

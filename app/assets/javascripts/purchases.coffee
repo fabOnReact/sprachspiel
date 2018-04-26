@@ -16,30 +16,35 @@ class Purchase
         method: "POST"
         dataType: "json"
         data: Product.serialize()
-        error: (jqXHR, textStatus, errorThrown) ->
-          console.log "AJAX Error: #{textStatus}"
-          console.log jqXHR.responseJSON.error
+        error: (data, textStatus, errorThrown) ->
+          # console.log "AJAX Error: #{textStatus}"
+          # console.log jqXHR.responseJSON.error
           console.log textStatus
           console.log errorThrown
-          new Message jqXHR.responseJSON.error
+          new Message data.responseJSON.error, data.css_class
         success: (data, textStatus, jqXHR) ->
-          window.location.href = data.location
-          new Message data.flash["notice"]
+          console.log textStatus
+          console.log data
+          console.log jqXHR
+          console.log data.css_class
+          new Message data.flash["notice"], data.css_class
+          # window.location.href = data.location          
 
 class Message
-  constructor: (@errors) ->
+  constructor: (@errors, css) ->
     # if xhr
     # @errors = jqXHR.responseJSON.error 
+    @css = "in alert-" + css
     @div = $('ul#errors')
     @renderErrors()
   renderErrors: ->
     for message of @errors
-      @authenticationError() if @errors[message] == "User must exist"
-      @renderMessage()
-    @div.removeClass('out').addClass('in')
-  authenticationError: -> 
+      @authenticationError(message) if @errors[message] == "User must exist"
+      @renderMessage(message)
+    @div.removeClass('out').addClass(@css)
+  authenticationError:(message) -> 
     @errors[message] = "You need to log in to perform this action"
-  renderMessage: ->
+  renderMessage:(message) ->
     @div.append '<li>' + @errors[message] + '</li>'
 
 class Product

@@ -43,8 +43,10 @@
   }
 }
 
-ul.alert-danger {
+ul.alert.fade {
   list-style-type: none;
   text-align: center;
-  text-shadow: 0px 1px #ff0000;
+  // text-shadow: 0px 1px #ff0000;
+  &.alert-success li { color: #468847; text-shadow: 0px 1px #468847; }
+  &.alert-danger li { color: #ff0000; text-shadow: 0px 1px #ff0000; }
 }
