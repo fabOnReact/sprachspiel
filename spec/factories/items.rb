@@ -1,7 +1,8 @@
 FactoryBot.define do
    factory :item do
       product
-      user
+      purchase
+      # user
       sold false
       used false
    end

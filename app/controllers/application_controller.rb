@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	after_action :user_activity
+	# after_action :user_activity
 
 	# def authenticate_user! 
 	# 	super
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	private	
-	def user_activity
-	  current_user.try :touch
-	end	
+	# def user_activity
+	#   current_user.try :touch
+	# end	
 end
