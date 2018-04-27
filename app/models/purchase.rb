@@ -1,5 +1,5 @@
 class Purchase < ApplicationRecord
-	has_many :items
+	has_many :items, inverse_of: :purchase
 	# belongs_to :room
 	# belongs_to :price
 	belongs_to :user
