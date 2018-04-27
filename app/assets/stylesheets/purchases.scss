@@ -4,6 +4,7 @@
   a { @include flex($direction: row, $justify: center); }
   img { margin: 7px 5px; }
   img.color { width: 60%; filter: initial; background-color: initial;}
+  p.justify { display: none; }
 }
 
 .icon {

@@ -151,3 +151,12 @@ end
 #    category = Category.find_by(name: array[0])
 #    building.products.map {|product| product.update_attributes(category: category)}
 # end
+
+# Products Descriptions
+
+descriptions = ["sickle will allow you ability to make food", "hammer is a tool useful for building items", "sword will make you strong in fight", "bread will give you energy to work", "the axis is great for close-quarters", "use this blade to cut the meat", "fish gives you energy to work", "a bench is required to build complex tools", "furnace let you prepare food and raw materials", "more meat more energy", "defence is as much important as offence"]
+i = 0
+Product.all.each do |product|
+	Description.create(product: product, name: "purpose",content: descriptions[i])
+	i += 1
+end

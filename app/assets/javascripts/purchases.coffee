@@ -4,7 +4,7 @@ $(document).on 'turbolinks:load', ->
 class Purchase
   constructor: () -> 
     @submit = $('#submit')
-    @products = $.map $('.product-partial'), (product, i) -> 
+    @products = $.map $('[data-name=product]'), (product, i) -> 
       new Product(product)
     @onSubmit()
   onSubmit: -> 
@@ -54,7 +54,8 @@ class Product
   constructor: (product) ->
     @product = $(product)
     @id = @product.data("id")
-    @icon = @product.find('img[data-name=icon]')
+    @icon = @product.find('[data-name=icon]')
+    @description = @product.children('[data-name=description]')
     @amount ||= 0
     @sequence = {}
     @setHash index for index in [0..9]
@@ -64,6 +65,8 @@ class Product
       @increaseItemCount()
       @changeIcon() 
       Product.items.push new Item(@id)  
+    @product.hover =>
+      @showDescription()
   increaseItemCount: () -> 
     @amount += 1
   setHash: (index) -> @sequence[index + 1] = Product.numbers[index]
@@ -74,6 +77,9 @@ class Product
   @getPrice: ->
     priceButton = $('#price-amount')
     parseInt(priceButton.html())
+  showDescription: ->
+    @description.show()
+
   @serialize: =>
     purchase:
       price: Product.getPrice()

@@ -1,6 +1,7 @@
-<div class="col-md-3 col-sm-4 col-xs-4 product-partial" data-id="<%= product.id %>">
+<div class="col-md-3 col-sm-4 col-xs-4 product-partial" data-id="<%= product.id %>" data-name="product">
   <%= link_to add_item_path(product), method: :post, class: "", remote: true do %>
     <%= image_tag 'one', class:"icon numbers hidden", style:"", id: "icon-#{product.name}", data: {name: 'icon'} %>
     <%= image_tag product.picture, class: product.color, style: "height: 90px"%>     
   <% end %>
+  <p class="justify" data-name="description" ><%= product.description.content %></p>  
 </div>
