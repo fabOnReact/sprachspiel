@@ -17,23 +17,19 @@ class Purchase
         dataType: "json"
         data: Product.serialize()
         error: (data, textStatus, errorThrown) ->
-          # console.log "AJAX Error: #{textStatus}"
-          # console.log jqXHR.responseJSON.error
-          console.log textStatus
-          console.log errorThrown
-          new Message data.responseJSON.error, data.css_class
+          errors = data.responseJSON.error
+          if typeof errors == 'string' 
+            errors = [ errors ]
+          new Message errors, data.css_class
         success: (data, textStatus, jqXHR) ->
-          console.log textStatus
-          console.log data
-          console.log jqXHR
-          console.log data.css_class
-          new Message data.flash["notice"], data.css_class
-          # window.location.href = data.location          
+          text == data.flash["notice"]
+          new Message text, data.css_class
+          window.location.href = data.location          
+  @convertString: (string) ->
+
 
 class Message
   constructor: (@errors, css) ->
-    # if xhr
-    # @errors = jqXHR.responseJSON.error 
     @css = "in alert-" + css
     @div = $('ul#errors')
     @renderErrors()
@@ -57,7 +53,6 @@ class Product
     @icon = @product.find('[data-name=icon]')
     data_name = "[data-name=description-#{@id}]"
     @description = $(data_name)
-    # @text = @product.children('[data-name=description]').html()
     @amount ||= 0
     @sequence = {}
     @setHash index for index in [0..9]
