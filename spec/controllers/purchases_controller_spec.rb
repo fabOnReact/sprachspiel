@@ -32,11 +32,34 @@ RSpec.describe PurchasesController, type: :controller do
   end
 
   describe "POST #create" do
-    login_user
     let(:params) { { "purchase" => { "price" => purchase.price, "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} }
 
-    it 'returns http success' do
-      expect { post :create, params: params }.to change{ Purchase.count }.by(1)
+    context 'user authenticated' do
+      login_user      
+      
+      it 'returns http success' do
+        expect { post :create, params: params }.to change{ Purchase.count }.by(1)
+      end
+
+      it 'return a notice if successfull' do
+        post :create, params: params
+        flash_hash = json_response[:flash]
+        expect(flash_hash).to eql({:notice=>["Your purchase was saved"]})
+      end
+
+      it 'returns the errors if failed' do 
+        params = { "purchase" => { "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} 
+        post :create, params: params
+        errors = json_response[:errors]
+        expect(errors).to eql(["Price can't be blank"])
+      end
+    end
+
+    context 'user not authenticated' do
+      it 'returns an authentication error message' do
+        post :create, params: params 
+        expect(response).to have_http_status(302)
+      end
     end
   end
 

@@ -23,7 +23,7 @@ class PurchasesController < ApplicationController
     if @purchase.save
       render json: { location: root_path, flash: {:notice => ["Your purchase was saved"]}, css_class: "success" }
     else
-      render json: { error: @purchase.errors.full_messages }, status: 422
+      render json: { errors: @purchase.errors.full_messages }, status: 422
     end
   end
 

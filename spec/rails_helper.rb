@@ -8,6 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'devise'
 require_relative 'support/controller_macros' 
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -59,6 +60,9 @@ RSpec.configure do |config|
   # Setting up Devise
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
+
+  # including module for json helpers
+  config.include Request::JsonHelpers, :type => :controller
 end
 
 Shoulda::Matchers.configure do |config|
