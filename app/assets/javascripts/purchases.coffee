@@ -67,13 +67,10 @@ class Product
       @increaseItemCount()
       @changeIcon() 
       Product.items.push new Item(@id)  
-    @product.mouseenter =>
-      @showDescription()
-    @product.mouseleave =>
-      @hideDescription()
-    # @product.hover 
-    #  -> @showDescription(), 
-    #  -> @hideDescription()
+    # @product.mouseenter =>
+    #   @showDescription()
+    # @product.mouseleave =>
+    #   @hideDescription()
   increaseItemCount: () -> 
     @amount += 1
   setHash: (index) -> @sequence[index + 1] = Product.numbers[index]
