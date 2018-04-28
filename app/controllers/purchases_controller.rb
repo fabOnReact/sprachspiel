@@ -1,13 +1,13 @@
 class PurchasesController < ApplicationController
-  # before_action :authentication_error, only: [:create]
+  before_action :authenticate_user!, only: [:create]
   before_action :find_purchase, only: [:show, :delete, :destroy]
   before_action :set_purchase, only: [:create]
   before_action :set_products, only: [:new, :create]
 
-  def index
-    @products_count = current_user.items.group(:product).count #products_count
-    @products = @products_count.keys()
-  end
+  # def index
+  #   @products_count = current_user.items.group(:product).count #products_count
+  #   @products = @products_count.keys()
+  # end
 
   def new
     @product = Product.find params[:product_id] if params[:product_id].present?

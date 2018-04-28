@@ -1,7 +1,7 @@
 <h1>Spiel Karte</h1>
 <p id="description">Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
 <p id="second-description">Klicken Sie auf das Symbol, um das Produkt zu kaufen!</p> 
-
+<p class="justify" data-name="item-description" ><%#= product.description.content %></p>
 <%#= render partial: "partials/resources" if user_signed_in? %> 
 <%#= render 'partials/error_messages', object: @purchase %>
 <ul class='alert fade out' id='errors'></ul>

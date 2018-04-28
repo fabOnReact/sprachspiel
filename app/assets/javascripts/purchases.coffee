@@ -55,7 +55,8 @@ class Product
     @product = $(product)
     @id = @product.data("id")
     @icon = @product.find('[data-name=icon]')
-    @description = @product.children('[data-name=description]')
+    @description = $('[data-name=item-description]')
+    @text = @product.children('[data-name=description]').html()
     @amount ||= 0
     @sequence = {}
     @setHash index for index in [0..9]
@@ -78,7 +79,8 @@ class Product
     priceButton = $('#price-amount')
     parseInt(priceButton.html())
   showDescription: ->
-    @description.show()
+    @description.html(@text)
+    # @description.slideToggle('2000', "swing");
 
   @serialize: =>
     purchase:
