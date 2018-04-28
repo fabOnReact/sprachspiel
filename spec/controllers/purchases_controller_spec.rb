@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe PurchasesController, type: :controller do
   let(:product) { FactoryBot.create(:product) }
+  let(:purchase) { FactoryBot.build(:purchase_with_items)}
+  let(:item1) { FactoryBot.build(:item) }
+  let(:item2) { FactoryBot.build(:item) }
+  let(:item3) { FactoryBot.build(:item) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -28,8 +32,11 @@ RSpec.describe PurchasesController, type: :controller do
   end
 
   describe "POST #create" do
+    login_user
+    let(:params) { { "purchase" => { "price" => purchase.price, "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} }
+
     it 'returns http success' do
-      # post :create, params: 
+      expect { post :create, params: params }.to change{ Purchase.count }.by(1)
     end
   end
 

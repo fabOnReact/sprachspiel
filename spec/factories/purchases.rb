@@ -1,7 +1,7 @@
 FactoryBot.define do
 	factory :purchase do
 		user 		
-		price
+		price { Faker::Number.number(2) }
 
     factory :purchase_with_items do
       transient do 
