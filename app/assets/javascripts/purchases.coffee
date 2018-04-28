@@ -55,8 +55,9 @@ class Product
     @product = $(product)
     @id = @product.data("id")
     @icon = @product.find('[data-name=icon]')
-    @description = $('[data-name=item-description]')
-    @text = @product.children('[data-name=description]').html()
+    data_name = "[data-name=description-#{@id}]"
+    @description = $(data_name)
+    # @text = @product.children('[data-name=description]').html()
     @amount ||= 0
     @sequence = {}
     @setHash index for index in [0..9]
@@ -66,8 +67,13 @@ class Product
       @increaseItemCount()
       @changeIcon() 
       Product.items.push new Item(@id)  
-    @product.hover =>
+    @product.mouseenter =>
       @showDescription()
+    @product.mouseleave =>
+      @hideDescription()
+    # @product.hover 
+    #  -> @showDescription(), 
+    #  -> @hideDescription()
   increaseItemCount: () -> 
     @amount += 1
   setHash: (index) -> @sequence[index + 1] = Product.numbers[index]
@@ -79,9 +85,9 @@ class Product
     priceButton = $('#price-amount')
     parseInt(priceButton.html())
   showDescription: ->
-    @description.html(@text)
-    # @description.slideToggle('2000', "swing");
-
+    @description.show()
+  hideDescription: ->
+    @description.hide()
   @serialize: =>
     purchase:
       price: Product.getPrice()

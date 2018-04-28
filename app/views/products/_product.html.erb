@@ -3,5 +3,5 @@
     <%= image_tag 'one', class:"icon numbers hidden", style:"", id: "icon-#{product.name}", data: {name: 'icon'} %>
     <%= image_tag product.picture, class: product.color, style: "height: 90px"%>     
   <% end %>
-  <p class="justify hidden" data-name="description" ><%= product.description.content %></p>  
+  <p class="justify hidden"><%= product.description%></p>
 </div>
