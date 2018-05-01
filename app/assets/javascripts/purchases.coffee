@@ -17,22 +17,30 @@ class Purchase
         dataType: "json"
         data: Product.serialize()
         error: (data, textStatus, errorThrown) ->
-          errors = data.responseJSON.error
-          if typeof errors == 'string' 
-            errors = [ errors ]
-          new Message errors, data.css_class
+          messages = Purchase.convertString(data.responseJSON)
+          css = data.responseJSON.css_class
+          new Message messages, css, false
         success: (data, textStatus, jqXHR) ->
-          text == data.flash["notice"]
-          new Message text, data.css_class
-          window.location.href = data.location          
-  @convertString: (string) ->
-
+          messages = Purchase.convertString(data.responseJSON)
+          css = data.responseJSON.css_class
+          new Message messages, css, true
+          window.location.href = data.location     
+  @convertString: (json) ->
+    message = switch
+      when typeof json["error"] == 'string' then [ json["error"] ]
+      when json["error"] != undefined then json["error"]
+      when json["notice"] != undefined then json["notice"]
 
 class Message
-  constructor: (@errors, css) ->
+  constructor: (@errors, css, @alert) ->
     @css = "in alert-" + css
     @div = $('ul#errors')
-    @renderErrors()
+    if @alert 
+      @renderAlert()
+    else
+      @renderErrors()
+  renderAlert: -> 
+    alert(@errors.toString())
   renderErrors: ->
     for message of @errors
       @authenticationError(message) if @errors[message] == "User must exist"

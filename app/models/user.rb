@@ -9,7 +9,7 @@ class User < ApplicationRecord
    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
    # has_one :room, :dependent => :destroy
-   belongs_to :chatroom 
+   # belongs_to :chatroom 
    has_many :messages, :dependent => :destroy
 
    has_many :purchases, :dependent => :destroy

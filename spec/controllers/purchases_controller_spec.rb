@@ -43,14 +43,14 @@ RSpec.describe PurchasesController, type: :controller do
 
       it 'return a notice if successfull' do
         post :create, params: params
-        flash_hash = json_response[:flash]
-        expect(flash_hash).to eql({:notice=>["Your purchase was saved"]})
+        flash_hash = json_response[:responseJSON][:notice]
+        expect(flash_hash).to eql(["Your purchase was saved"])
       end
 
       it 'returns the errors if failed' do 
         params = { "purchase" => { "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} 
         post :create, params: params
-        errors = json_response[:errors]
+        errors = json_response[:responseJSON][:error]
         expect(errors).to eql(["Price can't be blank"])
       end
     end

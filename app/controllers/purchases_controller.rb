@@ -12,6 +12,7 @@ class PurchasesController < ApplicationController
   def new
     @product = Product.find params[:product_id] if params[:product_id].present?
     @purchase = Purchase.new
+    @chatroom = Chatroom.first
     respond_to do |format| 
       format.js
       format.html
@@ -21,9 +22,9 @@ class PurchasesController < ApplicationController
   def create
     @purchase.assign_attributes user: current_user
     if @purchase.save
-      render json: { location: root_path, flash: {:notice => ["Your purchase was saved"]}, css_class: "success" }
+      render json: { location: chatroom_path(Chatroom.first), responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
     else
-      render json: { errors: @purchase.errors.full_messages }, status: 422
+      render json: { responseJSON: { error: @purchase.errors.full_messages }, status: 500 }
     end
   end
 
