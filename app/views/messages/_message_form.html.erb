@@ -1,11 +1,11 @@
 <%= form_for message, remote: true, authenticity_token: true do |f| %>
-  <% if user_signed_in? %>
+  <%# if user_signed_in? %>
     <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
-  <% end %>
-  <%= f.hidden_field :chatroom_id, value: variable.chatroom.id %>
+  <%# end %>
+  <%= f.hidden_field :chatroom_id, value: chatroom.id %>
 
-  <div class="margin-top"> <!--container container-links no-padding-->
-  	<% if user_signed_in? %>
-  		<%= f.submit "send", class: "btn btn-green btn-lg hidden", id: "messageSubmit", data: {send: "message"} %>
-  	<% end %>
+  <!-- <div class="margin-top">-->
+  	<%# if user_signed_in? %>
+  	<%= f.submit "send", class: "btn btn-green btn-lg hidden", id: "messageSubmit", data: {send: "message"} %>
+  	<%# end %>
 <% end %>

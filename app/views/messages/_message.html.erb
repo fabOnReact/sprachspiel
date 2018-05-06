@@ -1,17 +1,2 @@
-<% variable = Message.first.user %>
-<% i = 0 %>
-<% @chatroom.messages.order(created_at: :asc).each do |message| %>
-	<% if message.user == variable && i > 0 %>
-		<p>	
-	<% else %>
-		<% if i > 0 %><br><% end %><p>
-			<strong>
-				<%= message.user.name %>:
-			</strong> 	
-	<% end %>
-	<%=message.content %>
-
-	<% variable = message.user %>
-	</p>	
-	<% i += 1 %>
-<% end %>
+<p><%= message.user.name %></p>
+<p><%= message.content %></p>
