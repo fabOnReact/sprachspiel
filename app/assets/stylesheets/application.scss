@@ -2,6 +2,11 @@
 @import "bootstrap";
 @import "bootstrap-theme";
 @import "font-awesome";
+@import "chat/emojiPicker";
+@import "chat/header";
+@import "chat/index";
+@import "chat/message";
+@import "chat/userInput";
 @import "animation";
 @import "base";
 @import "cookielayout";
@@ -11,3 +16,5 @@
 @import "buildings";
 @import 'purchases';
 @import "products";
+@import "chatrooms";
+@import "messages";

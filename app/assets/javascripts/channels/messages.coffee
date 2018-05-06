@@ -7,9 +7,11 @@ App.cable.subscriptions.create { channel: "MessagesChannel" },
     if data.chatroom_id == chat_room_id
       $("#messages").removeClass('hidden')
       $('#messages').append(@renderMessage(data))
-      height = $('.scroll-bar')[0].scrollHeight
-      $('.scroll-bar').scrollTop(height)
+      @scrollDownChat()
+  scrollDownChat: ->
+    height = $('.scroll-bar')[0].scrollHeight
+    $('.scroll-bar').scrollTop(height)
   renderMessage: (data) ->
     """
-    <p>#{data.user}</p><p>#{data.message}</p>
+    <p class="message #{data.alignment}">#{data.user}: #{data.message}</p>
     """
