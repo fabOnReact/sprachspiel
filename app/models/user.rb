@@ -21,8 +21,9 @@ class User < ApplicationRecord
 
    # accepts_nested_attributes_for :rooms
 
-   scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
-   scope :products_count, lambda{ items.group(:product_id).count }
+   # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }
+   scope :products_count, -> { items.group(:product_id).count }
+   scope :guest, -> { where(email: "guest@email.com").first }
 
    validates :username, uniqueness: true
    validates :username, :role, presence: true
