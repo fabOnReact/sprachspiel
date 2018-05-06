@@ -11,7 +11,8 @@
 
 ################# REMOVED CODE ####################
 
-# var ready = function() {	
+# $(document).on 'turbolinks:load', -> 
+  # scrollbar()
 
 # 	$("a.icon").click(function() {
 # 		$this = $(this);
@@ -43,11 +44,10 @@
 
 # 	$('a').tooltip();
 
-# 	$scrollbar = $('.scroll-bar');
-# 	if (typeof $scrollbar[0] != 'undefined') {
-# 		height = $scrollbar[0].scrollHeight;
-# 		$scrollbar.scrollTop(height);
-# 	}
+# $scrollbar = $('.scroll-bar')
+# if typeof $scrollbar[0] != 'undefined'
+# 	height = $scrollbar[0].scrollHeight
+# 	$scrollbar.scrollTop(height)
 	
 # 	$myTabs_links = $('#myTabs a')
 # 	if (typeof $myTabs_links != 'undefined') {

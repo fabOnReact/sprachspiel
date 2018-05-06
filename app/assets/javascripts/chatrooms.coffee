@@ -1,9 +1,18 @@
 $(document).on 'turbolinks:load', ->
-  submitNewMessage()
+  new Message()
 
-submitNewMessage = -> 
-  $('textarea#message_content').keydown event, ->
-    if event.keyCode == 13
-      $('[data-send="message"]').click()
-      $('[data-textarea="message"]').val(" ")        
-      return false
+class Message
+  constructor: -> 
+    @submit = $('[data-id="chatroom-input"]')
+    @scrollbar = $('[data-id="scroll-bar"]')
+    @sendMessage()
+    @scrollDownChat() if @scrollbar? 
+  sendMessage: -> 
+    @submit.keydown event, ->
+      if event.keyCode == 13
+        $('[data-send="message"]').click()
+        $('[data-textarea="message"]').val(" ")        
+        return false   
+  scrollDownChat: -> 
+    height = @scrollbar[0].scrollHeight
+    @scrollbar.scrollTop(height)

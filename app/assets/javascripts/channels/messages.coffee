@@ -11,5 +11,5 @@ App.cable.subscriptions.create { channel: "MessagesChannel" },
       $('.scroll-bar').scrollTop(height)
   renderMessage: (data) ->
     """
-    <br><p><strong>#{data.user}: </strong>#{data.message}</p>
+    <p>#{data.user}</p><p>#{data.message}</p>
     """
