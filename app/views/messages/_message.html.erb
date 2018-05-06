@@ -1,2 +1,12 @@
-<p><%= message.user.name %></p>
-<p><%= message.content %></p>
+<!-- <div>
+  <p class="message <%#= message.alignment %>">
+    <%#= message.content %>
+    </br> <span class="user"><%#= message.user.name %></span>
+  </p>
+</div> -->
+
+<div class="sc-message">
+  <div class="sc-message--content <%= message.alignment %>">
+    <div class="sc-message--text"><%= message.content %></br> <span><%= message.user.name %></span></div>
+  </div>
+</div>

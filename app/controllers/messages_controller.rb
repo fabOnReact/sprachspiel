@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def create
   	if @message.save
   		ActionCable.server.broadcast 'messages',
+        alignment: @message.alignment,
         message: @message.content,
         user: @message.user.name,
         chatroom_id: @message.chatroom_id        

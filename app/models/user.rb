@@ -80,7 +80,7 @@ class User < ApplicationRecord
 
    # splits the email and uses the part before the @ for the name
    def name 
-      email.split('@')[0]
+      email.split('@')[0][0,8]
    end
 
    # defines a Proc, the variable add_array is passed as argument to the method 
