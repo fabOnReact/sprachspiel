@@ -13,6 +13,8 @@ class PurchasesController < ApplicationController
     @product = Product.find params[:product_id] if params[:product_id].present?
     @purchase = Purchase.new
     @chatroom = Chatroom.first
+    @message = Message.new
+    @messages = @chatroom.messages.order(:created_at)
     respond_to do |format| 
       format.js
       format.html
