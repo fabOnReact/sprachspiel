@@ -1,10 +1,16 @@
 .sc-message {
   width: initial;
   
+  span { text-decoration: underline; }
+
   .sent { 
     span {background-color: #4e8cff; color: #ffffff; text-shadow: 2px 2px 2px #ffffff; } 
   }
   .received { 
     span {background-color: #f4f7f9; color: #263238; text-shadow: 2px 2px 2px #ffffff; }
   } 
+}
+
+.sc-message--content.sent .sc-message--text {
+  max-width: calc(100%);
 }

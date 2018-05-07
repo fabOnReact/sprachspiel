@@ -4,9 +4,14 @@
 
 .panel-default {
   border-color: transparent;
+  height: 94%;
 }
 
-#message_content {
-  background-color: white;
-  color: black
+.new_message {
+  height: 10%;
+  .form-control { 
+    height: 100%; 
+    background-color: white;
+    color: black;
+  }
 }

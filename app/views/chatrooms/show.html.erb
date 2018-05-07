@@ -1,12 +1,2 @@
-<div class="panel buildings panel-default scroll-bar" id='chatroom_id' data-chat-room-id="<%= @chatroom.id %>" data-id='scroll-bar'>
-  <% if @chatroom.messages.any? %>
-    <div class="panel-body" id="messages">
-      <%= render @messages %>
-    </div>
-  <% else %>
-    <div class="panel-body hidden" id="messages">
-    </div>
-  <% end %>
-</div>
-  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
-</div> 
+<%= render partial: "chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
+<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>

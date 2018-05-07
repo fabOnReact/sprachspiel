@@ -10,13 +10,24 @@
 <ul class='alert fade out' id='errors'></ul>
 
 <div class="row">
-  <%= render @products %>
-</div>
-<div class="purchase">
-  <div class="price">
-    <%= image_tag "coins", class:"icon coins" %>
-    <p id="price-amount">0</p>  
+  <div class="col-xs-12 col-sm-8">
+    <%= render @products %>
   </div>
-  <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
-  <div class="btn btn-primary" id="submit">Purchase</div>
+  <% unless android_request %>
+  <div class="col-sm-4 hidden-xs">
+    <%= render partial: "chatrooms/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
+  </div><% end %>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 purchase">
+    <div class="price">
+      <%= image_tag "coins", class:"icon coins" %>
+      <p id="price-amount">0</p>  
+    </div>
+    <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
+    <div class="btn btn-primary" id="submit">Purchase</div>
+  </div>      
+  <div class="col-sm-4 hidden-xs">
+    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
+  </div>
 </div>
