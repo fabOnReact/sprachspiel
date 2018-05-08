@@ -21,17 +21,21 @@
   }
 }
 
-.row { height: 70%;
+.row:nth-child(odd) { height: 54%; }
+
+.row { 
+
   .col-sm-8 { /*height: 100%; .col-sm-12 { height: 89%; }*/}
   .col-sm-4:last-child { height: 100%; }
 
   .purchase {
     height: 45px; //6%;
     @include flex($direction: row, $justify: space-between, $align: center);
-    .price, .btn-primary {
+    .price, .btn-primary, .btn-green {
       height: 100%;
       border: 1px solid white;
       border-radius: 19px;
+      margin: 0px 15px;
       p { background-color: #1ab2ff; text-shadow: 2px 2px 2px black; margin: initial; }    
     }
     .price {
@@ -39,13 +43,20 @@
       flex-basis: 30%;
       background-color: #1ab2ff;
     }
-    .btn-primary {
+    .btn-primary, .btn-green {
       @include flex($direction: row, $justify: center, $align: center);
       flex-basis: 61%;
-      background-color: #ff8533;
       font-size: 1.4rem;
       font-weight: 900;    
     }
+
+    .btn-primary {
+      background-color: #ff8533;
+    }    
+
+    .btn-green {
+      background-color: #66ff66;
+    }    
   }
 }
 
