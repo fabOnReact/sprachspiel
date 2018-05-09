@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   def index
-  	# @items = current_user.items
     @products_count = current_user.items.group(:product).count
-    @products = @products_count.keys()    
+    @products = @products_count.keys()        
   end 
 
   def create

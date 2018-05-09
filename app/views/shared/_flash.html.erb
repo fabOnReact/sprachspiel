@@ -1,5 +1,5 @@
 <% unless android_request || flash.empty? %>
-	<div> <%= render partial: 'partials/alert' %> </div><!--class="container"-->
+	<div> <%= render partial: 'shared/alert' %> </div><!--class="container"-->
 <% end %>
 
 <% if android_request && flash.present? %>

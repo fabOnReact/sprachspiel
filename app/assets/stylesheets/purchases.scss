@@ -21,9 +21,10 @@
   }
 }
 
-.row:nth-child(odd) { height: 54%; }
-
 .row { 
+
+  &.main { height: 54%; }
+  &:last-of-type { display: flex; align-items: center;}
 
   .col-sm-8 { /*height: 100%; .col-sm-12 { height: 89%; }*/}
   .col-sm-4:last-child { height: 100%; }

@@ -1,5 +1,5 @@
 <%= simple_form_for @building, html: {class: 'form-horizontal'} do |f| %>
-	<%= render 'partials/error_messages', object: @building %> 
+	<%= render 'shared/error_messages', object: @building %> 
 	<%= f.input :name %>
 	<span class="countdown"></span>
 	<%= f.input :description, :input_html => { :cols => 100, :rows => 20 } %>

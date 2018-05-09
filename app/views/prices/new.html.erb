@@ -1,7 +1,7 @@
 <%= form_for @price do |price| %>
-	<%= render partial: "partials/error_messages", locals: {object: @price} %>
+	<%= render partial: "shared/error_messages", locals: {object: @price} %>
 	<div class="" id="price">
-		<%= render partial: "prices/partials/prices", locals: {price: price} %>
+		<%= render partial: "prices/shared/prices", locals: {price: price} %>
 	</div>
 <% end %>
 

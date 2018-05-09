@@ -12,8 +12,8 @@
 
    <body>
       <div class="container <%= css_class(action_name) %>">   
-         <%= render partial: "partials/navbar" unless android_request %>
-         <%= render partial: "partials/flash" %>
+         <%= render partial: "shared/navbar" unless android_request %>
+         <%= render partial: "shared/flash" %>
          <%= yield %>  
       </div>
    </body>

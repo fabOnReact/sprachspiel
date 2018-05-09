@@ -2,20 +2,20 @@
 <p id="description">Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
 <p id="second-description">Klicken Sie auf das Symbol, um das Produkt zu kaufen!</p> 
 
-<%= render partial: "products/partials/product", collection:
+<%= render partial: "products/shared/product", collection:
 @products %>
 
-<%#= render partial: "partials/resources" if user_signed_in? %> 
-<%#= render 'partials/error_messages', object: @purchase %>
+<%#= render partial: "shared/resources" if user_signed_in? %> 
+<%#= render 'shared/error_messages', object: @purchase %>
 <ul class='alert fade out' id='errors'></ul>
 
-<div class="row">
+<div class="row main">
   <div class="col-xs-12 col-sm-8">
     <%= render @products %>
   </div>
   <% unless android_request %>
   <div class="col-sm-4 hidden-xs">
-    <%= render partial: "chatrooms/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
+    <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
   </div><% end %>
 </div>
 <div class="row">
@@ -24,11 +24,11 @@
       <%= image_tag "coins", class:"icon coins" %>
       <p id="price-amount">0</p>  
     </div>
-    <%= link_to "Inventory", items_path, class:"btn btn-green" %>
+    <%= link_to "Inventory", items_path, class:"btn btn-green" if user_signed_in? %>
     <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
     <div class="btn btn-primary" id="submit">Purchase</div>
   </div>      
   <div class="col-sm-4 hidden-xs">
-    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
+    <%= render partial: 'shared/message_form', locals: {message: @message, chatroom: @chatroom} %>
   </div>
 </div>

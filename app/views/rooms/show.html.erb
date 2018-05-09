@@ -1,4 +1,4 @@
-<%= render partial: "partials/resources" if user_signed_in? %>
+<%= render partial: "shared/resources" if user_signed_in? %>
   <h2><%= @room.title %><span class="hidden-xs"> room from <%= @room.user.name %></span></h2>
   <p class="hidden-xs"><%= @room.description %></p>
 <% if user_signed_in? && current_user.room_owner(@room) || @items_number.present? || @items_count.present? %>
@@ -22,7 +22,7 @@
 
 <div class="margin-top hidden-xs">
   <%= link_to :back, building_path(@room.building_id), class: "btn btn-primary btn-lg" %>
-  <%= render partial:"buildings/partials/mobile_buttons", locals: {controller: "rooms"} %>  
+  <%= render partial:"buildings/shared/mobile_buttons", locals: {controller: "rooms"} %>  
 </div>
 
 <%= link_to "Join Chatroom", room_chatroom_path(@room, @room.chatroom), class: "btn btn-primary btn-block" %>
