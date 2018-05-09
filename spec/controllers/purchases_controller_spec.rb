@@ -6,6 +6,7 @@ RSpec.describe PurchasesController, type: :controller do
   let(:item1) { FactoryBot.build(:item) }
   let(:item2) { FactoryBot.build(:item) }
   let(:item3) { FactoryBot.build(:item) }
+  let(:chatroom) { FactoryBot.create(:chatroom) }
 
   describe "GET #index" do
     it "returns http success" do
@@ -15,7 +16,7 @@ RSpec.describe PurchasesController, type: :controller do
   end
 
   describe "GET #new" do
-    before(:each) { FactoryBot.create(:chatroom) }
+    before(:each) { chatroom }
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
@@ -33,6 +34,7 @@ RSpec.describe PurchasesController, type: :controller do
   end
 
   describe "POST #create" do
+    before(:each) { chatroom }
     let(:params) { { "purchase" => { "price" => purchase.price, "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} }
 
     context 'user authenticated' do
