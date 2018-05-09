@@ -15,6 +15,7 @@ RSpec.describe PurchasesController, type: :controller do
   end
 
   describe "GET #new" do
+    before(:each) { FactoryBot.create(:chatroom) }
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)

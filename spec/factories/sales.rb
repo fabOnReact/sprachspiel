@@ -1,6 +1,6 @@
-FactoryBot.define do
-  factory :sale do
-    user
-    price
-  end
-end
+# FactoryBot.define do
+#   factory :sale do
+#     user
+#     price
+#   end
+# end

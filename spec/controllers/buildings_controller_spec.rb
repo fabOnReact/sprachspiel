@@ -1,5 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe BuildingsController, type: :controller do
+# RSpec.describe BuildingsController, type: :controller do
 
-end
+# end

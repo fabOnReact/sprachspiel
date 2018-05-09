@@ -3,7 +3,7 @@ FactoryBot.define do
 	email { Faker::Internet.email }
 	password { Faker::Internet.password }
 	username { Faker::Internet.user_name }
-	association :role, factory: :role_with_descriptions
+	association :role
 
 		factory :user_with_purchases  do 
 			transient do
