@@ -8,9 +8,40 @@
   }
   .received { 
     span {background-color: #f4f7f9; color: #263238; text-shadow: 2px 2px 2px #ffffff; }
+    .speech-bubble:after {
+      right: 0;
+      border: 19px solid transparent;
+      border-left-color: #f4f7f9;
+      border-right: 0;
+      border-top: 0;
+      margin-right: -19px;
+      left: initial;
+    }      
   } 
 }
 
 .sc-message--content.sent .sc-message--text {
   max-width: calc(100%);
+}
+
+// sets left and right thicks for the chat messages
+.speech-bubble {
+  position: relative;
+  background: #4e8cff;
+  border-radius: .4em;
+
+  &:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 19px solid transparent;
+  border-right-color: #4e8cff;
+  border-left: 0;
+  border-top: 0;
+  margin-top: -9.5px;
+  margin-left: -19px;
+  }
 }
