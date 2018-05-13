@@ -1,4 +1,4 @@
-The old app is still available at sprachspiel.xyz
+The old app is still available at https://sprachspiel.xyz
 
 I have been working on a new version of this app which will be available as Web and Android Application.
 The new application sourcecode is available in the development branch.
