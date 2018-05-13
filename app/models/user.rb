@@ -22,8 +22,11 @@ class User < ApplicationRecord
    # accepts_nested_attributes_for :rooms
 
    # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }
-   scope :products_count, -> { items.group(:product_id).count }
    scope :guest, -> { where(email: "guest@email.com").first }
+   # scope :products_count, -> { items.group(:product_id).count }
+   # scope :count_items, -> (filter) { items.group(:product_id).count(filter) }
+   # scope :count_used, -> { items.group(:product_id).count(:used) }
+   # scope :count_sold, -> { items.group(:product_id).count(:sold) }
 
    validates :username, uniqueness: true
    validates :username, :role, presence: true
@@ -35,12 +38,9 @@ class User < ApplicationRecord
    #    @room = Room.new(title: title, description: text, building_id: self.role.building.id, user_id: self.id)        
    # end  
 
-   # def create_accounts
-   #    # Accounting Features from Plutus Gem
-   #    # For every user I create accounts of Assets and Liabilities to record transactions
-   #    ASSETS.map { |account| self.accounts << Plutus::Asset.create(:name => account) }
-   #    EQUITY.map { |account| self.accounts << Plutus::Equity.create(:name => account) }
-   # end   
+   def count_items(filter = :id)
+      items.group(:product).count(filter)
+   end
 
    def total_amount
       # total amount of starting resources for us

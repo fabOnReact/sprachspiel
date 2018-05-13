@@ -7,4 +7,12 @@ module ProductsHelper
 			input
 		end
 	end	 
+
+  def not_used(product)
+    @count[product] > @used[product]
+  end
+
+  def not_sold(product)
+    @count[product] > @sold[product]
+  end
 end

@@ -10,7 +10,7 @@ class Product < ApplicationRecord
 	# replaces with the price field
 	# belongs_to :price, :dependent => :destroy
 	scope :not_used_items, -> { find_by_sql("SELECT products.name, products.price_id, COUNT(items.id) AS NumberOfItems FROM products INNER JOIN items on products.id = items.product_id GROUP BY products.id;") }
-
+	
 	def picture
 		PRODUCTS[self.name]
 	end

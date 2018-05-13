@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    @products_count = current_user.items.group(:product).count
-    @products = @products_count.keys()       
+    @count = current_user.count_items
+    @used = current_user.count_items(:used)
+    @sold = current_user.count_items(:sold)
+    @products = @count.keys()
   end
+
   def create; end
   def show; end
 end
