@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428191154) do
+ActiveRecord::Schema.define(version: 20180516185727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "alliances", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "buildings", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "price_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "description"
-    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -47,6 +48,18 @@ ActiveRecord::Schema.define(version: 20180428191154) do
     t.index ["product_id"], name: "index_descriptions_on_product_id", using: :btree
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer  "action_id"
+    t.string   "action_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.integer  "purchase_id"
     t.integer  "sale_id"
@@ -65,6 +78,9 @@ ActiveRecord::Schema.define(version: 20180428191154) do
     t.integer  "room_id"
     t.boolean  "selfmade"
     t.integer  "user_id"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.index ["owner_type", "owner_id"], name: "index_items_on_owner_type_and_owner_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -141,6 +157,11 @@ ActiveRecord::Schema.define(version: 20180428191154) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trades", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
