@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items, :products, :purchases, :chatrooms
+	resources :messages, :items, :products, :purchases, :chatrooms, :alliances, :trades, :buildings, :fights
 
 	# resources :buildings do 
 	# 	resources :rooms

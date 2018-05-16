@@ -16,7 +16,6 @@
   <% unless android_request %>
   <div class="col-sm-4 hidden-xs">
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
-    <%= render partial: "actions", locals: {} %>    
   </div><% end %>
 </div>
 <div class="row">
