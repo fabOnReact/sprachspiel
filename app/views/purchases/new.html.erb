@@ -16,6 +16,7 @@
   <% unless android_request %>
   <div class="col-sm-4 hidden-xs">
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
+    <%= render partial: "action", locals: {} %>    
   </div><% end %>
 </div>
 <div class="row">
@@ -24,7 +25,8 @@
       <%= image_tag "coins", class:"icon coins" %>
       <p id="price-amount">0</p>  
     </div>
-    <%= link_to "Inventory", products_path, class:"btn btn-green" if user_signed_in? %>
+    <%#= link_to "Inventory", products_path, class:"btn btn-green" if user_signed_in? %>
+    <% if user_signed_in? %><a href="#" class="btn btn-green" data-name="show-actions">Inventory</a><% end %>
     <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
     <div class="btn btn-primary" id="submit">Purchase</div>
   </div>      

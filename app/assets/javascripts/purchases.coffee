@@ -2,11 +2,13 @@ $(document).on 'turbolinks:load', ->
   new Purchase()
   
 class Purchase
-  constructor: () -> 
+  constructor: -> 
     @submit = $('#submit')
+    @chatroom = $('[data-name=scroll-bar]')
     @products = $.map $('[data-name=product]'), (product, i) -> 
       new Product(product)
     @onSubmit()
+    @onAction()
   onSubmit: -> 
     @submit.click =>
       console.log Product.serialize()["purchase"]["price"]
@@ -25,6 +27,11 @@ class Purchase
           css = data.responseJSON.css_class
           new Message messages, css, true
           window.location.href = data.location     
+  onAction: -> 
+    $('[data-name=show-actions]').click => 
+      @chatroom.hide()
+      
+      
   @convertString: (json) ->
     message = switch
       when typeof json["error"] == 'string' then [ json["error"] ]
