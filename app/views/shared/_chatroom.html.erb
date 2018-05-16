@@ -1,11 +1,7 @@
 <div class="panel panel-default scroll-bar" id='chatroom_id' data-chat-room-id="<%= @chatroom.id %>" data-id='scroll-bar'>
-  <%# if chatroom.messages.any? %>
+  <% if chatroom.messages.any? %>
     <div class="panel-body" id="messages">
       <%= render messages %>
     </div>
-    <div class="actions" data-class="actions">
-      <% Event::TYPES.each do |event| %>
-        <%= link_to event, event.constantize.new, class: "" %>
-      <% end %>
-    </div>
+  <% end %>
 </div>

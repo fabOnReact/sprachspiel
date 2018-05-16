@@ -18,6 +18,16 @@
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
   </div><% end %>
 </div>
+
+<div class="actions" data-class="actions">
+  <% Event::TYPES.each do |event| %>
+    <%= link_to event.path, event.constantize.new, class: ""  do %>
+      <%= image_tag event.constantize.image %>
+      <%= event %>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-8 purchase">
     <div class="price">

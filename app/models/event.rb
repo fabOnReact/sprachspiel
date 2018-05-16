@@ -5,4 +5,12 @@ class Event < ApplicationRecord
   belongs_to :building
   belongs_to :alliance
   belongs_to :trade
+
+  def image
+    IMAGES[self]
+  end
+
+  def path
+    url_for(controller: self.pluralize.downcase, action: 'new')
+  end
 end
