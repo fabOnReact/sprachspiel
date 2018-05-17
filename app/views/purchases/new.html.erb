@@ -16,25 +16,26 @@
   <% unless android_request %>
   <div class="col-sm-4 hidden-xs">
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
-  </div><% end %>
-</div>
-
-<div class="actions" data-class="actions">
-  <% Event::TYPES.each do |event| %>
-    <%= link_to event.path, event.constantize.new, class: ""  do %>
-      <%= image_tag event.constantize.image %>
-      <%= event %>
-    <% end %>
+  </div>
   <% end %>
 </div>
 
-<div class="row">
+<div class="row prices">
+  
+  <div class="col-xs-12 col-sm-8 actions" data-class="actions">
+    <% Event::TYPES.each do |event| %>
+      <%= link_to [:new, event.downcase.to_sym] do %>
+        <%#= image_tag event.constantize.image, class: "color" %>
+        <%= event.to_s %>
+      <% end %>
+    <% end %>
+  </div>      
+
   <div class="col-xs-12 col-sm-8 purchase">
     <div class="price">
       <%= image_tag "coins", class:"icon coins" %>
       <p id="price-amount">0</p>  
     </div>
-    <%#= link_to "Inventory", products_path, class:"btn btn-green" if user_signed_in? %>
     <% if user_signed_in? %><a href="#" class="btn btn-green" data-name="show-actions">Inventory</a><% end %>
     <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
     <div class="btn btn-primary" id="submit">Purchase</div>

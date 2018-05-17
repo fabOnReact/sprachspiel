@@ -1,38 +1,32 @@
 .product-partial.col-md-3 {
   padding-right: 0px;
   padding-left: 0px;
-  a { @include flex($direction: row, $justify: center); }
+  a { @include flexRow; }
   p.justify { display: none; }
 }
 
 img { margin: 7px 5px; }
-img.color { width: 60%; filter: initial; background-color: initial;}
 
-.icon {
-  @include imageColor;  
-  &.numbers {
-    height:34px;
-    position: absolute;
-    left: 15%;
-    z-index: 2;
-    width: 20%;
-  }
-  &.coins {
+.coins {
+    @include imageColor;
     height: 26px;
   }
-}
+
+img.color { @include imageColor; height: 90px; }
+
+//  filter: initial; background-color: initial;
 
 .row { 
 
+  .col-sm-8 img.color { width: 60%;}
   &.main { height: 54%; }
-  &:last-of-type { display: flex; align-items: center;}
 
-  .col-sm-8 { /*height: 100%; .col-sm-12 { height: 89%; }*/}
-  .col-sm-4:last-child { height: 100%; }
+  .prices { display: flex; align-items: center;}
+  .col-sm-4 { height: 100%; }
 
+  .purchase, .col-sm-8.actions { @include flexRow($justify: space-between)}
   .purchase {
-    height: 45px; //6%;
-    @include flex($direction: row, $justify: space-between, $align: center);
+    height: 45px; 
     .price, .btn-primary, .btn-green {
       height: 100%;
       border: 1px solid white;
@@ -41,12 +35,12 @@ img.color { width: 60%; filter: initial; background-color: initial;}
       p { background-color: #1ab2ff; text-shadow: 2px 2px 2px black; margin: initial; }    
     }
     .price {
-      @include flex($direction: row, $justify: space-around, $align: center);
+      @include flexRow($justify: space-around);
       flex-basis: 30%;
       background-color: #1ab2ff;
     }
     .btn-primary, .btn-green {
-      @include flex($direction: row, $justify: center, $align: center);
+      @include flexRow;
       flex-basis: 61%;
       font-size: 1.4rem;
       font-weight: 900;    
@@ -65,7 +59,6 @@ img.color { width: 60%; filter: initial; background-color: initial;}
 ul.alert.fade {
   list-style-type: none;
   text-align: center;
-  // text-shadow: 0px 1px #ff0000;
   &.alert-success li { color: #468847; text-shadow: 0px 1px #468847; }
   &.alert-danger li { color: #ff0000; text-shadow: 0px 1px #ff0000; }
 }

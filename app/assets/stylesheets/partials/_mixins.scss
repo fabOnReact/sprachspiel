@@ -5,6 +5,13 @@
   align-items: $align;
 }
 
+@mixin flexRow($justify: center, $align: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
 @mixin imageColor($background-color: initial, $filter: initial) {
   background-color: $background-color;
   webkit-filter: $filter;
