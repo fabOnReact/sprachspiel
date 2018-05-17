@@ -1,16 +1,13 @@
 class Event < ApplicationRecord
   TYPES = %w[Alliance Trade Fight Building]
-  belongs_to :user
-  belongs_to :fight
-  belongs_to :building
-  belongs_to :alliance
-  belongs_to :trade
+  IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
+  has_and_belongs_to_many :users
 
-  def image
-    IMAGES[self]
+  def self.image
+    IMAGES[self.to_s]
   end
 
-  def path
-    url_for(controller: self.pluralize.downcase, action: 'new')
-  end
+  # def path
+  #   url_for(controller: self.pluralize.downcase, action: 'new')
+  # end
 end

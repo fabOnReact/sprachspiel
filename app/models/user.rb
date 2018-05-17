@@ -12,11 +12,7 @@ class User < ApplicationRecord
       has_many :messages, :dependent => :destroy
       has_many :purchases, :dependent => :destroy
       has_many :items, through: :purchases
-      has_many :events, as: :actions
-      has_many :fights, through: :events, source: :action, source_type: 'Fight' 
-      has_many :buildings, through: :events, source: :action, source_type: 'Building' 
-      has_many :alliances, through: :events, source: :action, source_type: 'Alliance' 
-      has_many :trades, through: :events, source: :action, source_type: 'Trade' 
+      has_and_belongs_to_many :events
       belongs_to :role
 
       # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }

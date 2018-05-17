@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items, :products, :purchases, :chatrooms, :alliances, :trades, :buildings, :fights
+	resources :messages, :items, :products, :purchases, :chatrooms
+
+	resources :alliances, :controller => "events", :type => "Alliance"
+	resources :buildings, :controller => "events", :type => "Building"
+	resources :trades, :controller => "events", :type => "Trade"
+	resources :fights, :controller => "events", :type => "Fight"
 
 	# resources :buildings do 
 	# 	resources :rooms
