@@ -52,7 +52,7 @@ class Message
     for message of @errors
       @authenticationError(message) if @errors[message] == "User must exist"
       @renderMessage(message)
-    @div.removeClass('out').addClass(@css)
+    @div.removeClass('out hidden').addClass(@css)
   authenticationError:(message) -> 
     @errors[message] = "You need to log in to perform this action"
   renderMessage:(message) ->
@@ -89,7 +89,7 @@ class Product
     @icon.attr("src", newlink)
     @icon.removeClass('hidden')
   @getPrice: ->
-    priceButton = $('#price-amount')
+    priceButton = $('[data-id=price-amount]')
     parseInt(priceButton.html())
   showDescription: ->
     @description.show()

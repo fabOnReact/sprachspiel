@@ -54,7 +54,7 @@
 
 .scroll-bar {
 	overflow: auto;
-	height: 366px; /*height: 250px;*/
+	height: 366px; 
 	background-color: black;
 }
 
@@ -62,20 +62,9 @@
 	width: 100%;
 }
 
-// .container-links {
-//    margin-top: 15px  ;
-// }
-
 /* Tags and Main Classes */
 
 .container { height: 100vh }
-
-/*footer {
-   position: absolute;
-   bottom: 0%;
-   right: 50%;
-   transform: translateX(+50%);
-}*/
 
 /* Buttons */ 
 
@@ -92,14 +81,37 @@
 }
 
 .btn-green {
-	background-color: green;
+	background-color: #66ff66;
 	background-image: initial;
 	border-color: white;
 }
 
-.btn-green:hover {
-	background-color: blue;
-	border: red 1px solid;
+.btn-azure { 
+  background-color: #1ab2ff;
+  p { background-color: #1ab2ff; text-shadow: 2px 2px 2px black; margin: initial; }    
+}
+
+.btn-orange {
+  background-color: #ff8533;
+} 
+
+.btn-round { 
+  height: 100%;
+  border: 1px solid white;
+  border-radius: 19px;
+  margin: 0px 15px;
+}
+
+.btn-f-large { 
+  @include flexRow;
+  flex-basis: 61%;
+  font-size: 1.4rem;
+  font-weight: 900;    
+}   
+
+.btn-f-small {
+	@include flexRow($justify: space-around);
+	flex-basis: 30%;
 }
 
 .btn-primary:hover {
@@ -115,6 +127,21 @@
 	color: red;
 	border-color: red;
 }
+
+.btn-green:hover {
+	background-color: blue;
+	border: red 1px solid;
+}
+
+.btn-azure:hover { 
+	background-color: #ffff1a;
+  border: blue 5px solid;  
+}
+
+.btn-orange:hover {
+	background-color: #1a1aff;
+  border: red 5px solid;
+} 
 
 .btn-centered-medium {
 	display: block;
@@ -215,16 +242,18 @@ a p:hover {
 	font-size: 20px;
 }	
 
-
 /* Margins */
 
 .info {
 	margin-top: 30px;
 }
 
-/* Bootstrap */ 
-
 /* Rows */ 
+
+.row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 
 .roomsIndex .row {
 	margin-top: 4px;
@@ -274,12 +303,6 @@ a p:hover {
 	text-align: center;
 	width: 25%;
 }
-
-/*
-.tab-pane {
-	min-height: 50px;
-}
-*/
 
 .show .tab-content {
 	margin-bottom: 40px;

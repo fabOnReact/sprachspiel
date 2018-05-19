@@ -18,6 +18,16 @@
   filter: $filter;
 }
 
+@mixin noMargin() {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+@mixin noPadding() {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 // @mixin fontStyle($background-color: #4e8cff, $color: #ffffff, $text-shadow: 2px 2px 2px #ffffff){
 //   background-color: $background-color; 
 //   color: $color; 

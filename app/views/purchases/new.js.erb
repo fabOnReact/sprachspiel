@@ -8,9 +8,9 @@
 //     $("#price-amount").html(@price)    
 
 var Purchase = {
-  price: parseInt($('#price-amount').html()) + <%= @product["price"] %>,
+  price: parseInt($('[data-id=price-amount]').html()) + <%= @product["price"] %>,
   setPrice: function() {
-    $("#price-amount").html(Purchase.price)    
+    $('[data-id=price-amount]').html(Purchase.price)    
   }
 }
 
