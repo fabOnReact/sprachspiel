@@ -13,16 +13,6 @@
     <div>
       <%= render @products %>
     </div>
-
-    <div class="hidden-xs col-xs-12 col-sm-12 actions" data-class="actions">
-      <% Event::TYPES.each do |event| %>
-        <div class="col-xs-12 col-sm-3">
-          <%= link_to [:new, event.downcase.to_sym], class: 'btn btn-primary' do %>
-            <%= event.to_s %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>  
   </div>
   <div class="col-sm-4 hidden-xs">
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
@@ -30,10 +20,9 @@
 </div>
 
 <div class="row prices">    
-
   <div class="col-xs-12 col-sm-8 purchase">
     <% if user_signed_in? %>
-    <a href="#" class="col-xs-12 btn btn-green btn-round btn-f-large visible-xs" data-name="show-actions">Inventory</a>
+    <%= link_to "Inventory", events_path, class: "col-xs-12 btn btn-green btn-round btn-f-large", data: {name:"show-actions"} %>
     <% end %>    
     <div class="btn hidden-xs btn-azure btn-round btn-f-small">
       <%= image_tag "coins", class:"icon coins hidden-xs" %>

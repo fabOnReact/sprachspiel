@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 		registrations: 'users/registrations'
 	}
 
-	resources :messages, :items, :products, :purchases, :chatrooms, :alliances, :buildings, :fights, :trades
+	resources :messages, :items, :products, :purchases, :chatrooms, :events
 
 	# resources :alliances, :controller => "events", :type => "Alliance"
 	# resources :buildings, :controller => "events", :type => "Building"

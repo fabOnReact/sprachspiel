@@ -56,8 +56,24 @@ guest_user = User.create(email: 'guest@email.com', username: 'guest', password: 
 
 # Alliances
 
+# current_user = User.where(email: 'fabrizio.bertoglio@gmail.com')
+# other_user = User.new(email: 'test@email.com', username: 'Paul', role_id: 1, password: 'fabri2787', password_confirmation: 'fabri2787')
+
 current_user = User.where(email: 'fabrizio.bertoglio@gmail.com')
-other_user = User.new(email: 'test@email.com', username: 'Paul', role_id: 1, password: 'fabri2787', password_confirmation: 'fabri2787')
+other_user = User.where(email: 'test@email.com')
 
 alliance = Alliance.new(name: 'kings of the South', description: 'joined in our defensive strategy')
 alliance.users << [current_user, other_user]
+alliance.save
+
+trade = Trade.new(name: 'the Asia route', description: 'exchange resources and make profits')
+trade.users << [current_user, other_user]
+trade.save
+
+building = Building.new(name: 'Baracke', description: 'Infanterie')
+building.users << [current_user, other_user]
+buidling.save
+
+fight = Fight.new(name: 'War: Conquer Aristotele', description: 'trying to conquer the next village')
+fight.users << [current_user, other_user]
+fight.save
