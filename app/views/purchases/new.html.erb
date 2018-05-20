@@ -4,14 +4,13 @@
 
 <%#= render partial: "shared/product_description", collection:
 @products %>
-
 <%#= render partial: "shared/resources" if user_signed_in? %> 
-<%#= render 'shared/error_messages', object: @purchase %>
+
 <ul class='alert fade out hidden' id='errors'></ul>
 
 <div class="row main">
   <div class="col-xs-12 col-sm-8">
-    <div>  <!-- class="col-xs-12 col-sm-12" -->
+    <div>
       <%= render @products %>
     </div>
 
@@ -19,7 +18,6 @@
       <% Event::TYPES.each do |event| %>
         <div class="col-xs-12 col-sm-3">
           <%= link_to [:new, event.downcase.to_sym], class: 'btn btn-primary' do %>
-            <%#= image_tag event.constantize.image, class: "color" %>
             <%= event.to_s %>
           <% end %>
         </div>

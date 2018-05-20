@@ -1,0 +1,15 @@
+<h1>Alliances</h1>
+<table class="table table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Agreement</th>
+    <th>Participants</th>
+  </tr>
+  <tr>
+  <% @alliances.each do |alliance| %>
+    <td><%= alliance.name %></td>
+    <td><%= alliance.description %></td>
+    <td><%= alliance.allies(current_user) %></td>
+  <% end %>
+  </tr>
+</table>

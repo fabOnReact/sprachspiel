@@ -3,6 +3,8 @@ class Event < ApplicationRecord
   IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
   has_and_belongs_to_many :users
 
+  scope :alliances, -> { where(type: "Alliance") }
+
   def self.image
     IMAGES[self.to_s]
   end
