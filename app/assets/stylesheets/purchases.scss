@@ -19,7 +19,7 @@ img.color { @include imageColor; height: 90px; }
   .col-sm-8 img.color { width: 60%;}
   &.main { 
     height: 60%; 
-    .col-sm-8 { @include flex($justify: space-evenly); height: 100%;}
+    .col-sm-8 { @include flex($justify: flex-start); height: 100%;}
   }
 
   &.prices { 
