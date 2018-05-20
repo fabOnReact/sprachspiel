@@ -68,32 +68,23 @@
 
 /* Buttons */ 
 
-.btn-primary {
-	background-color: black;
-	background-image: initial;
-	border-color: white;
+@each $name, $background-color, $border-color in (primary, black, white),(danger, red, none),
+	(green, #66ff66, white),(azure, #1ab2ff, initial), (orange, #ff8533, initial) {
+  .btn-#{$name} { 
+  	@include btn($background-color, $border-color); 
+  	background-image: initial;
+  }
 }
 
-.btn-danger {
-	background-image: initial;
-	background-color: red;
-	border-color: none;
+@each $name, $background-color, $border-color, $color, $border in (primary, white, red, red, 1px),(danger, white, red, red, 1px),
+	(green, blue, red, red, 1px),(azure, #ffff1a, blue, #ffffff, 5px), (orange, #1a1aff, red, #ffffff, 5px) {
+  .btn-#{$name}:hover { 
+  	background-image: initial;
+  	color: $color;
+  	border: $border solid;
+  	@include btn($background-color, $border-color); 
+  }
 }
-
-.btn-green {
-	background-color: #66ff66;
-	background-image: initial;
-	border-color: white;
-}
-
-.btn-azure { 
-  background-color: #1ab2ff;
-  p { background-color: #1ab2ff; text-shadow: 2px 2px 2px black; margin: initial; }    
-}
-
-.btn-orange {
-  background-color: #ff8533;
-} 
 
 .btn-round { 
   height: 100%;
@@ -113,35 +104,6 @@
 	@include flexRow($justify: space-around);
 	flex-basis: 30%;
 }
-
-.btn-primary:hover {
-	background-color: white;
-	background-image: initial;
-	color: red;
-	border-color: red;
-}
-
-.btn-danger:hover {
-	background-color: white;
-	background-image: initial;
-	color: red;
-	border-color: red;
-}
-
-.btn-green:hover {
-	background-color: blue;
-	border: red 1px solid;
-}
-
-.btn-azure:hover { 
-	background-color: #ffff1a;
-  border: blue 5px solid;  
-}
-
-.btn-orange:hover {
-	background-color: #1a1aff;
-  border: red 5px solid;
-} 
 
 .btn-centered-medium {
 	display: block;
@@ -213,34 +175,34 @@ a p:hover {
 	color: red;
 }
 
-.new_user h2 {
-	font-size: 25px;
-	color: red;
-}
+// .new_user h2 {
+// 	font-size: 25px;
+// 	color: red;
+// }
 
-.new_user li {
-	color: red;
-}
+// .new_user li {
+// 	color: red;
+// }
 
-.table input {
-	line-height: 30px;
-	font-size: 23px;
-}
+// .table input {
+// 	line-height: 30px;
+// 	font-size: 23px;
+// }
 
-.price input[type="submit"], input[name="price"] {
-	font-size: 20px;
-}
+// .price input[type="submit"], input[name="price"] {
+// 	font-size: 20px;
+// }
 
-.price input[type="submit"]:hover, input[name="price"]:hover {
-	background-color: white;
-	background-image: initial;
-	color: red;
-	border-color: red;
-}
+// .price input[type="submit"]:hover, input[name="price"]:hover {
+// 	background-color: white;
+// 	background-image: initial;
+// 	color: red;
+// 	border-color: red;
+// }
 
-.price input.price_field {
-	font-size: 20px;
-}	
+// .price input.price_field {
+// 	font-size: 20px;
+// }	
 
 /* Margins */
 
@@ -250,67 +212,67 @@ a p:hover {
 
 /* Rows */ 
 
-.row {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+// .row {
+// 	margin-top: 10px;
+// 	margin-bottom: 10px;
+// }
 
-.roomsIndex .row {
-	margin-top: 4px;
-	margin-bottom: 0px;
-}
+// .roomsIndex .row {
+// 	margin-top: 4px;
+// 	margin-bottom: 0px;
+// }
 
-.row-resources {
-	border: 1px solid white;
-	margin: 0px auto;
-	/*border-radius: 5px;*/
-}
+// .row-resources {
+// 	border: 1px solid white;
+// 	margin: 0px auto;
+// 	/*border-radius: 5px;*/
+// }
 
 /* Columns */
 
-.col-sm-offset-1-right {
-	margin-right: 8.33333333%;
-}
+// .col-sm-offset-1-right {
+// 	margin-right: 8.33333333%;
+// }
 
-.row-resources .col-sm-2 {
-	text-align: center;
-}
+// .row-resources .col-sm-2 {
+// 	text-align: center;
+// }
 
 /* Table */ 
 
-.table {
-	margin-bottom: 20px;
-	border-bottom: white 1px solid;
-}
+// .table {
+// 	margin-bottom: 20px;
+// 	border-bottom: white 1px solid;
+// }
 
-.table th {
-	color: white;
-}
+// .table th {
+// 	color: white;
+// }
 
-.table > tbody > tr > td.table-text {
-	padding-top: 15px;
-	font-size: 18px;
-}
+// .table > tbody > tr > td.table-text {
+// 	padding-top: 15px;
+// 	font-size: 18px;
+// }
 
-.room.table.table-hover {
-	margin-bottom: 0px;
-}
+// .room.table.table-hover {
+// 	margin-bottom: 0px;
+// }
 
 /* Tabs */
 
-.tab-list {
-	border-bottom: 1px solid white;
-	text-align: center;
-	width: 25%;
-}
+// .tab-list {
+// 	border-bottom: 1px solid white;
+// 	text-align: center;
+// 	width: 25%;
+// }
 
-.show .tab-content {
-	margin-bottom: 40px;
-}
+// .show .tab-content {
+// 	margin-bottom: 40px;
+// }
 
-.show .tab-pane {
-	border-bottom: 1px solid white;
-}
+// .show .tab-pane {
+// 	border-bottom: 1px solid white;
+// }
 
 /* Alerts */
 
@@ -328,7 +290,6 @@ a p:hover {
 
 img {
 	background-color: white;
-	/*width: 100%;*/
 	webkit-filter: invert(100%);
 	filter: invert(100%);
 
@@ -344,9 +305,9 @@ img {
 
 /* Forms */ 
 
-input:-webkit-autofill {
-	background-color: white !important;
-}
+// input:-webkit-autofill {
+// 	background-color: white !important;
+// }
 
 /* Navbar */
 
@@ -357,7 +318,6 @@ input:-webkit-autofill {
 }
 
 .navbar-inverse {
-	/*background-color: white;*/
 	border-color: white;
 	color: white;
 	background-image: initial;
@@ -393,20 +353,20 @@ input:-webkit-autofill {
 
 /* Icons */
 
-.icon-accessories {
-	width: 3rem;
-	height: 3rem;
-	background: image-url("accessories.svg");
-	background-size: cover;
-	padding: 0;
-	filter: invert(100%);
-}
+// .icon-accessories {
+// 	width: 3rem;
+// 	height: 3rem;
+// 	background: image-url("accessories.svg");
+// 	background-size: cover;
+// 	padding: 0;
+// 	filter: invert(100%);
+// }
 
-$position-of-icons: 100%/(3);
+// $position-of-icons: 100%/(3);
 
-.icon-knife {
-	background-position: 50% 0;
-}
+// .icon-knife {
+// 	background-position: 50% 0;
+// }
 
 /* Links in the navbar */
 
@@ -437,10 +397,10 @@ $position-of-icons: 100%/(3);
 
 /* Chatroom */ 
 
-.panel p {
-	// text-align:justify;
-	font-size: 14px;
-}
+// .panel p {
+// 	// text-align:justify;
+// 	font-size: 14px;
+// }
 
 /* GET buildings#welcome */
 

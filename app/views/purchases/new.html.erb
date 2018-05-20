@@ -37,9 +37,9 @@
     <% if user_signed_in? %>
     <a href="#" class="col-xs-12 btn btn-green btn-round btn-f-large visible-xs" data-name="show-actions">Inventory</a>
     <% end %>    
-    <div class="hidden-xs btn-azure btn-round btn-f-small">
+    <div class="btn hidden-xs btn-azure btn-round btn-f-small">
       <%= image_tag "coins", class:"icon coins hidden-xs" %>
-      <p class="price-amount" data-id="price-amount">0</p>  
+      <span class="price-amount" data-id="price-amount">0</span>
     </div>
     <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
     <a href="" class="col-xs-12 btn btn-orange btn-round btn-f-large" id="submit"><span class="visible-xs price-amount" data-id="price-amount">0</span>Purchase</a>

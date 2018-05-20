@@ -28,6 +28,11 @@
   padding-right: 0px;
 }
 
+@mixin btn($background-color: initial, $border-color: initial) {
+  background-color: $background-color;
+  border-color: $border-color;
+}
+
 // @mixin fontStyle($background-color: #4e8cff, $color: #ffffff, $text-shadow: 2px 2px 2px #ffffff){
 //   background-color: $background-color; 
 //   color: $color; 

@@ -10,7 +10,7 @@ img { margin: 7px 5px; }
 .coins {
     @include imageColor;
     height: 26px;
-  }
+}
 
 img.color { @include imageColor; height: 90px; }
 
@@ -25,6 +25,8 @@ img.color { @include imageColor; height: 90px; }
   &.prices { 
     @include flexRow;
     .btn span { background-color: inherit; margin: 0 5px;}
+    .btn:hover span { color: blue; }
+    .btn-orange:hover span { color: white;}
   }
   .col-sm-4 { height: 100%; }
 
