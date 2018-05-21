@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-      ASSETS = ["coins","gold", "wood", "wheat", "stone", "iron"]
-      EQUITY = ["equity"]
-      RESOURCES = ["gold", "wood", "food", "stone", "metal"]
-      STARTING_BALANCE = [100, 100, 100, 100, 100, 100]
-      STARTING_QUANTITIES = [100, 100, 100, 100, 100, 100]
+      # ASSETS = ["coins","gold", "wood", "wheat", "stone", "iron"]
+      # EQUITY = ["equity"]
+      # RESOURCES = ["gold", "wood", "food", "stone", "metal"]
+      # STARTING_BALANCE = [100, 100, 100, 100, 100, 100]
+      # STARTING_QUANTITIES = [100, 100, 100, 100, 100, 100]
       # Include default devise modules. Others available are:
       # :confirmable, :lockable, :timeoutable and :omniauthable
       devise :database_authenticatable, :registerable,

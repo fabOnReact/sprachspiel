@@ -1,3 +1,11 @@
+<h1>Personal Info</h1>
+<p>Health: 10 Attack: 10 Defense: 10 Energy: 10 Money: 100</p>
+
+<%= render partial: 'product', layout: 'table_layout', collection: @products, locals: {header: :inventory, constants: Event::INVENTORIES_HEADERS, count: @count } %>
+
 <% Event::TYPES.each do |type| %>
-  <%= render partial:'event', layout: 'table_layout', collection: filter(type) %>
+  <%= render partial:'event', layout: 'table_layout', collection: filter(type), locals: {header: :event, constants: Event::EVENTS_HEADERS } %>
 <% end %>
+
+<% content_for :event do %><%= @events.first.type %><% end %>
+<% content_for :inventory do %>Inventory<% end %>

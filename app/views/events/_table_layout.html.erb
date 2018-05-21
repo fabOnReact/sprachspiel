@@ -1,9 +1,11 @@
-<h1><%= event.type%></h1>
-<table class="table table-condensed">
-  <tr>
-    <th>Name</th>
-    <th>Agreement</th>
-    <th>Participants</th>
-  </tr>
-  <%= yield %>
-</table>
+<div class="col-sm-6">
+  <h1><%= yield header %></h1>
+  <table class="table table-condensed">
+    <tr>
+      <% constants.each do |header| %>
+        <%= th_tag header %>
+      <% end %>
+    </tr>     
+    <%= yield %>
+  </table>
+</div>
