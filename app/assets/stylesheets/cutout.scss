@@ -1,0 +1,223 @@
+// Old style maybe to delete
+
+// Icons
+// .new_user h2 {
+//  font-size: 25px;
+//  color: red;
+// }
+
+// .new_user li {
+//  color: red;
+// }
+
+// .table input {
+//  line-height: 30px;
+//  font-size: 23px;
+// }
+
+// .price input[type="submit"], input[name="price"] {
+//  font-size: 20px;
+// }
+
+// .price input[type="submit"]:hover, input[name="price"]:hover {
+//  background-color: white;
+//  background-image: initial;
+//  color: red;
+//  border-color: red;
+// }
+
+// .price input.price_field {
+//  font-size: 20px;
+// }  
+
+
+// .row {
+//  margin-top: 10px;
+//  margin-bottom: 10px;
+// }
+
+// .roomsIndex .row {
+//  margin-top: 4px;
+//  margin-bottom: 0px;
+// }
+
+// .row-resources {
+//  border: 1px solid white;
+//  margin: 0px auto;
+//  /*border-radius: 5px;*/
+// }
+
+/* Columns */
+
+// .col-sm-offset-1-right {
+//  margin-right: 8.33333333%;
+// }
+
+// .row-resources .col-sm-2 {
+//  text-align: center;
+// }
+
+/* Table */ 
+
+// .table {
+//  margin-bottom: 20px;
+//  border-bottom: white 1px solid;
+// }
+
+// .table th {
+//  color: white;
+// }
+
+// .table > tbody > tr > td.table-text {
+//  padding-top: 15px;
+//  font-size: 18px;
+// }
+
+// .room.table.table-hover {
+//  margin-bottom: 0px;
+// }
+
+/* Tabs */
+
+// .tab-list {
+//  border-bottom: 1px solid white;
+//  text-align: center;
+//  width: 25%;
+// }
+
+// .show .tab-content {
+//  margin-bottom: 40px;
+// }
+
+// .show .tab-pane {
+//  border-bottom: 1px solid white;
+// }
+
+
+/* Forms */ 
+
+// input:-webkit-autofill {
+//  background-color: white !important;
+// }
+
+
+/* Icons */
+
+// .icon-accessories {
+//  width: 3rem;
+//  height: 3rem;
+//  background: image-url("accessories.svg");
+//  background-size: cover;
+//  padding: 0;
+//  filter: invert(100%);
+// }
+
+// $position-of-icons: 100%/(3);
+
+// .icon-knife {
+//  background-position: 50% 0;
+// }
+
+
+/* Chatroom */ 
+
+// .panel p {
+//  // text-align:justify;
+//  font-size: 14px;
+// }
+
+// #olark-wrapper svg {
+//  background-color: transparent;
+// }
+
+// /* GET buildings#welcome */
+
+
+// img {background-color: white;webkit-filter: invert(100%);filter: invert(100%);
+//   // &:hover.roomsImages, &:hover .roomsIcons {
+//   //  webkit-filter: invert(100%) opacity(50%); 
+//   //  filter: invert(100%) opacity(50%);  
+//   // }
+//   &:hover {
+//     opacity: .5;
+//   }
+// }
+
+
+// buildings scss
+
+// // index
+// // partial _building 
+// .col-building.col-md-6 {
+//  // height: 35%;
+//    @include flex($direction: row, $align: center);
+// }
+
+// // Mobile Menu 
+
+// .btn-col {
+//    padding-top:5px;
+//    padding-bottom:5px;
+// }
+
+// // Media Queries for Desktop
+// // Small, Medium and Large Screens 
+// @media (min-width: 990px) { 
+
+//    .col-md-6.col-building {
+//       .col-md-2, .col-md-10 {
+//          // fixing positioning issues on desktop
+//          // of descriptions and Icons
+//          @include flex;
+         
+//          img { height: 100%; }
+//          img#palast { height: 40%;}    
+//       }
+      
+//       // Setting hover effect on the buildings index, this should be
+//       // reused for all divs later
+//       &:hover { 
+//          border: 1px solid red; 
+//          background-color: white;
+
+//          * {
+//             background-color: white;
+//             color: red; 
+//             background-color: white;
+//             webkit-filter: invert(0%);
+//             filter: invert(0%);
+//          }
+//       }       
+//    }
+
+//    // Hiding the divs for the mobile app
+//    .menu-mobile, .mobile-buttons, .col-building .col-xs-12 p { display: none; }   
+// }
+
+// // Media Queries for Mobile
+// // Small Screens
+// @media (max-width: 990px) {
+
+//    .col-xs-6.menu-mobile {
+//       padding-left: 5px;
+//       padding-right: 5px;
+//    }
+
+//    .col-building.col-md-6 {
+//       display: none;
+//       height: 54%;
+
+//       h3, p { display: none; }
+//       .col-xs-12 { 
+//          padding: 0;
+//          img { height: 100px; width: initial; padding-right: 5px; }
+//          p { margin: 0; display: initial; }
+//       }
+
+//       .mobile-buttons {
+//          @include flex($direction: row);
+//          //display:flex; 
+//          width: 100%;
+//       }
+//    }   
+// }

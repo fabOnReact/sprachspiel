@@ -7,7 +7,8 @@ module ApplicationHelper
 	# end	
 
 	def css_class(action_name)
-		return "center" if action_name == "welcome"
+		puts controller_name
+		return "center" if controller_name == "subscriptions"
 	end
 
 	def android_request

@@ -5,17 +5,7 @@
   p.justify { display: none; }
 }
 
-img { margin: 7px 5px; }
-
-.coins {
-    @include imageColor;
-    height: 26px;
-}
-
-img.color { @include imageColor; height: 90px; }
-
 .row { 
-  // .col-xs-12:first-child { @include noMargin(); @include noPadding();}
   .col-sm-8 img.color { width: 60%;}
   &.main { 
     height: 60%; 
@@ -25,19 +15,15 @@ img.color { @include imageColor; height: 90px; }
   &.prices { 
     @include flexRow;
     .btn span { background-color: inherit; margin: 0 5px;}
+    .btn img {background-color:inherit;}
     .btn:hover span { color: blue; }
     .btn-orange:hover span { color: white;}
   }
   .col-sm-4 { height: 100%; }
 
-  .purchase  { 
-    @include flexRow($justify: space-between);
-  }
+  .purchase  { @include flexRow($justify: space-between); }
 
-  .col-sm-12.actions { 
-    // @include flex($direction: column);
-    a {width:100%;} 
-  }
+  .col-sm-12.actions { a {width:100%;} }
   
   .purchase { height: 45px; }
 }

@@ -1,16 +1,9 @@
-.icon {
-  @include imageColor;  
-  &.numbers {
-    height:34px;
-    position: absolute;
-    left: 15%;
-    top: 0;
-    z-index: 2;
-    width: 20%;
-  }
-  // &.coins {
-  //   height: 26px;
-  // }
+.numbers {
+  position: absolute;
+  left: 15%;
+  top: 0;
+  z-index: 2;
+  width: 20%;
 }
 
 .description { 

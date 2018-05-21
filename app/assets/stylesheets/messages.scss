@@ -1,3 +1,4 @@
+// style estrapolated from https://github.com/dharness/react-chat-window
 .sc-message {
   width: initial;
   
@@ -14,7 +15,7 @@
       border-left-color: #f4f7f9;
       border-right: 0;
       border-top: 0;
-      margin-right: -19px;
+      margin-right: -18px;
       left: initial;
     }      
   } 
@@ -22,7 +23,9 @@
 
 .sc-message--content.sent .sc-message--text {
   max-width: calc(100%);
+  max-width: 95%;
 }
+
 
 // sets left and right thicks for the chat messages
 .speech-bubble {
@@ -37,11 +40,11 @@
   top: 50%;
   width: 0;
   height: 0;
-  border: 19px solid transparent;
+  border: 20px solid transparent;
   border-right-color: #4e8cff;
   border-left: 0;
   border-top: 0;
   margin-top: -9.5px;
-  margin-left: -19px;
+  margin-left: -17px;
   }
 }
