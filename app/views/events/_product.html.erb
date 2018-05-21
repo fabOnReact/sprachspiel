@@ -1,6 +1,6 @@
 <tr>
   <td><%= image_tag product.picture, class:'icon-s1' %></td>
   <td><%= count[product] %></td>
-  <td><%#= product.bonus %></td>
-  <td><%#= product.options %></td>
+  <td><%= product.property.name + " "%> <%= span(product) %></td>
+  <td><%= product.options %></td>
 </tr>

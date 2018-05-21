@@ -62,18 +62,39 @@ guest_user = User.create(email: 'guest@email.com', username: 'guest', password: 
 current_user = User.where(email: 'fabrizio.bertoglio@gmail.com')
 other_user = User.where(email: 'test@email.com')
 
-alliance = Alliance.new(name: 'kings of the South', description: 'joined in our defensive strategy')
-alliance.users << [current_user, other_user]
-alliance.save
+# alliance = Alliance.new(name: 'kings of the South', description: 'joined in our defensive strategy')
+# alliance.users << [current_user, other_user]
+# alliance.save
 
-trade = Trade.new(name: 'the Asia route', description: 'exchange resources and make profits')
-trade.users << [current_user, other_user]
-trade.save
+# trade = Trade.new(name: 'the Asia route', description: 'exchange resources and make profits')
+# trade.users << [current_user, other_user]
+# trade.save
 
-building = Building.new(name: 'Baracke', description: 'Infanterie')
-building.users << [current_user, other_user]
-buidling.save
+# building = Building.new(name: 'Baracke', description: 'Infanterie')
+# building.users << [current_user, other_user]
+# buidling.save
 
-fight = Fight.new(name: 'War: Conquer Aristotele', description: 'trying to conquer the next village')
-fight.users << [current_user, other_user]
-fight.save
+# fight = Fight.new(name: 'War: Conquer Aristotele', description: 'trying to conquer the next village')
+# fight.users << [current_user, other_user]
+# fight.save
+
+# attack = Property.new(name: 'Angriff', amount: 10)
+# product = Product.find_by(name: 'schwert')
+# product.update_attributes(property: attack)
+
+# defense = Property.new(name: 'Verteidigung', amount: 5)
+# product = Product.find_by(name: 'schild')
+# product.update_attributes(property: defense)
+
+# energy = Property.new(name: 'Energie', amount: 15)
+# product = Product.find_by(name: 'brot')
+# product.update_attributes(property: energy)
+
+# health = Property.new(name: 'Gesundheit', amount: 10)
+
+products = {"sichel" => [:Energie, 10],"hammer" => [:Energie, 20],"achse" => [:Angriff, 20],"messer" => [:Angriff, 10],"fisch" => [:Gesundheit, 20],"bank" => [:Energie, 30],"ofen" => [:Energie, 10],"hähnchen" => [:Energie, 20],"schwert" => [:Angriff, 35],"schild" => [:Verteidigung, 20],"brot"=> [:Energie, 30]}
+products.keys.map do |key|
+	product = Product.find_by(name: key)
+	property = Property.create(name: products[key][0], amount: products[key][1] )
+	product.update_attributes(property: property)
+end

@@ -10,4 +10,8 @@ module EventsHelper
   def title(query)
     query.first.is_a? Product ? "Inventory" : query.first.type
   end
+
+  def span(object)
+    content_tag :span, object.property.amount, class: 'blue-highlight'
+  end
 end
