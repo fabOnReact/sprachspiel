@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   TYPES = %w[Alliance Trade Fight Building]
   EVENTS_HEADERS = %w[Participants Bonus Options]
-  INVENTORIES_HEADERS = %w[N Bonus Options]   
+  INVENTORIES_HEADERS = %w[Product N Bonus Options]   
   # IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
   has_and_belongs_to_many :users
 

@@ -6,4 +6,8 @@ module EventsHelper
   def th_tag(text)
     content_tag :th, text
   end
+
+  def title(query)
+    query.first.is_a? Product ? "Inventory" : query.first.type
+  end
 end

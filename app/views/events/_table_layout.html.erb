@@ -1,11 +1,9 @@
 <div class="col-sm-6">
-  <h1><%= yield header %></h1>
+  <%= yield h1 %>
   <table class="table table-condensed">
     <tr>
-      <% constants.each do |header| %>
-        <%= th_tag header %>
-      <% end %>
+      <% constants.each do |header| %><%= th_tag header %><% end %>
     </tr>     
-    <%= yield %>
+    <%= render partial: partial, collection: objects, locals: {count: @count} %>
   </table>
 </div>
