@@ -1,3 +1,7 @@
+@import 'partials/buttons';
+@import 'partials/images';
+@import 'partials/navbar';
+
 // Shortcuts
 .flex-box {display:flex;width:100%;}
 .no-padding {padding-left:0px;padding-right:0px;}
@@ -14,44 +18,6 @@
 .full-width {width: 100%;}
 // Tags and Main Classes
 .container { height: 100vh }
-// Buttons 
-@each $name, $background-color, $border-color in (primary, black, white),(danger, red, none),
-	(green, #66ff66, white),(azure, #1ab2ff, initial), (orange, #ff8533, initial) {
-  .btn-#{$name} { 
-  	@include btn($background-color, $border-color); 
-  	background-image: initial;
-  }
-}
-@each $name, $background-color, $border-color, $color, $border in (primary, white, red, red, 1px),(danger, white, red, red, 1px),
-	(green, blue, red, red, 1px),(azure, #ffff1a, blue, #ffffff, 5px), (orange, #1a1aff, red, #ffffff, 5px) {
-  .btn-#{$name}:hover { 
-  	background-image: initial;
-  	color: $color;
-  	border: $border solid;
-  	@include btn($background-color, $border-color); 
-  }
-}
-.btn-round {height: 100%;border: 1px solid white;border-radius: 19px;margin: 0px 15px;}
-.btn-f-large {@include flexRow;flex-basis: 61%;font-size: 1.4rem;font-weight: 900;}   
-.btn-f-small {@include flexRow($justify: space-around);flex-basis: 30%;}
-.btn-centered-medium {display: block;margin-left: auto;margin-right: auto;
-	width: 30%;}
-.btn-centered-relative {margin-top: 25px;margin-bottom: 25px;left: 50%;
-	position: relative;transform: translateX(-50%);width: 60%;height: 45px;
-	padding-top: 10px;}
-.btn-mobile {	padding: 10px 9px;font-size: 16px;width: 100%;border-radius: 0px;
-	text-align: center;font-size: 14px;}
-.btn-mb-wide {padding-left: 23px;	padding-right: 23px;} 
-.btn-mb-high {padding-top: 18px;	padding-bottom: 18px;	border-radius: 3px;}	
-// Icons and Images
-// img { @include imageColor; }
-img { margin: 7px 5px; }
-.icon-large { height: 90px; }
-.icon-s2 { height: 34px; }
-.icon-s1 { height: 26px; }
-.img-bw {background-color: white;webkit-filter: invert(100%);filter: invert(100%);
-	&:hover {opacity: .5;}
-}
 // Fonts
 p {font-size: 17px;}
 strong {background-color: initial;color: black;}
@@ -65,30 +31,3 @@ a p:hover {color: red;}
 // Alerts
 .alert {background-color: white;background-image: initial;}
 .alert p, .alert ul, .alert li {background-color: white;color: red;}
-// Navbar
-.form-control, body, *, h1, h2, h3, h4, p, a {
-	background-color: black;color: white;font-family: courier;
-}
-.navbar-inverse {	border-color: white;color: white;	background-image: initial;
-	background-color: black;}
-.navbar-inverse .navbar-toggle {border-color: white;}
-.navbar-inverse .navbar-brand {color: white;}
-.navbar-inverse .navbar-nav > li > a {color: white;font-family: courier;}
-.navbar-inverse .navbar-nav > li > a, .dropdown-menu, .dropdown {
-	color: white;font-family: courier;}
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {border-color: white;}
-.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {background-color: initial;}
-// Links in the navbar
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
-	text-decoration: underline;	color: red;}
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-	color: red;text-decoration: underline;
-}
-.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-	text-decoration: underline;color: red;}
-// Dropdown Menu
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-	background-image: initial;
-}
-
-@media (min-width: 780px) { .dropdown-menu a {background-color: white;}}
