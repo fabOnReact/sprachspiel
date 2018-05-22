@@ -1,9 +1,12 @@
 class Event < ApplicationRecord
   TYPES = %w[Alliance Trade Fight Building]
+  CATEGORIES = {Alliance: :Waffen, Trade: [:Werkzeuge, :Lebensmittel]}
   EVENTS_HEADERS = %w[Participants Bonus Options]
-  INVENTORIES_HEADERS = %w[Product N Bonus Options]   
+  INVENTORIES_HEADERS = %w[Product N Bonus]   
   # IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
   has_and_belongs_to_many :users
+  has_many :items
+  has_one :category
 
   TYPES.each do |type|
     scope type.downcase, -> { where(type: type) }

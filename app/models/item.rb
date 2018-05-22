@@ -3,7 +3,6 @@ class Item < ApplicationRecord
 	belongs_to :product
   belongs_to :purchase
   # belongs_to :user
-
   # def self.bonus_items(product, purchase, room) 
   #    2.times do  
   #       Item.create(product_id: product.id, sold: false, used: false, purchase_id: purchase.id, selfmade: true, room_id: room.id) #Room.king_room.id 

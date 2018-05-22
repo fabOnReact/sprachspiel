@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-   # has_many :products
+   has_many :products
    
    # scope :type, ->(product_type){ where(category_id: product)}
    # type.products

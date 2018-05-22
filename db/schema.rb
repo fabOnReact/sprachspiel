@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521192108) do
+ActiveRecord::Schema.define(version: 20180522194940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20180521192108) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "alliance_id"
+    t.index ["alliance_id"], name: "index_categories_on_alliance_id", using: :btree
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -82,13 +84,10 @@ ActiveRecord::Schema.define(version: 20180521192108) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "purchase_id"
-    t.integer  "sale_id"
-    t.integer  "room_id"
     t.boolean  "selfmade"
     t.integer  "user_id"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.index ["owner_type", "owner_id"], name: "index_items_on_owner_type_and_owner_id", using: :btree
+    t.integer  "alliance_id"
+    t.index ["alliance_id"], name: "index_items_on_alliance_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -114,7 +113,6 @@ ActiveRecord::Schema.define(version: 20180521192108) do
     t.string   "name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "building_id"
     t.integer  "requirement_id"
     t.boolean  "bonus"
     t.integer  "category_id"
@@ -205,7 +203,9 @@ ActiveRecord::Schema.define(version: 20180521192108) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "categories", "alliances"
   add_foreign_key "descriptions", "products"
+  add_foreign_key "items", "alliances"
   add_foreign_key "items", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "properties"

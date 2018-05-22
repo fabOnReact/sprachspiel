@@ -1,13 +1,14 @@
 // Buttons 
-@each $name, $background-color, $border-color in (primary, black, white),(danger, red, none),
-  (green, #66ff66, white),(azure, #1ab2ff, initial), (orange, #ff8533, initial) {
+@each $name, $background-color, $border-color in (primary, black, white),
+(danger, red, none), (green, #66ff66, white),(azure, #1ab2ff, initial), 
+(orange, #ff8533, initial) {
   .btn-#{$name} { 
     @include btn($background-color, $border-color); 
     background-image: initial;
   }
 }
 @each $name, $background-color, $border-color, $color, $border in (primary, white, red, red, 1px),(danger, white, red, red, 1px),
-  (green, blue, red, red, 1px),(azure, #ffff1a, blue, #ffffff, 5px), (orange, #1a1aff, red, #ffffff, 5px) {
+  (green, blue, red, red, 1px),(azure, #ffff1a, blue, black, 5px), (orange, #1a1aff, red, #ffffff, 5px) {
   .btn-#{$name}:hover { 
     background-image: initial;
     color: $color;
@@ -15,6 +16,7 @@
     @include btn($background-color, $border-color); 
   }
 }
+
 .btn-round {height: 100%;border: 1px solid white;border-radius: 19px;margin: 0px 15px;}
 .btn-f-large {@include flexRow;flex-basis: 61%;font-size: 1.4rem;font-weight: 900;}   
 .btn-f-small {@include flexRow($justify: space-around);flex-basis: 30%;}
