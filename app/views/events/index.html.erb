@@ -7,6 +7,6 @@
 
 <% Event::TYPES.each do |type| %>
   <% content_for type do %><h1><%= type %></h1><% end %>
-  <% content_for "new#{type}" do %><%= link_to "create #{type}", new_event_path, class:'btn btn-azure' %><% end %>
+  <% content_for "new#{type}" do %><%= link_to "create #{type}", [:new , type.constantize.new], class:'btn btn-azure' %><% end %>
   <%= render partial:'table_layout', locals: {objects: filter(type), constants: Event::EVENTS_HEADERS, partial: 'event', h1: type, link: "new#{type}" } if filter(type).size > 0 %>  
 <% end %>
