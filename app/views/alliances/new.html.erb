@@ -1,0 +1,8 @@
+<%= form_for @alliance do |f| %>
+  <%= f.fields_for :users do |user_form| %>
+    <%= render 'user_fields', f: user_form %>
+  <% end %>    
+  <div class="links">
+    <%= link_to_add_association 'add user', f, :users %>
+  </div>
+<% end %>

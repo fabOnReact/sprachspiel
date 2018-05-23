@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :items
   has_one :category
+  # to avoid errors when saving users (read in the cocoon gem)
+  accepts_nested_attributes_for :users
 
   TYPES.each do |type|
     scope type.downcase, -> { where(type: type) }
