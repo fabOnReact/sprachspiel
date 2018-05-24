@@ -14,7 +14,6 @@ class User < ApplicationRecord
       has_many :items, through: :purchases
       has_and_belongs_to_many :events
       belongs_to :role
-      belongs_to :event
 
       # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }
       scope :guest, -> { where(email: "guest@email.com").first }

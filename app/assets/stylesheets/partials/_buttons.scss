@@ -17,6 +17,7 @@
   }
 }
 
+.btn-green {color:black;}
 .btn-round {height: 100%;border: 1px solid white;border-radius: 19px;margin: 0px 15px;}
 .btn-f-large {@include flexRow;flex-basis: 61%;font-size: 1.4rem;font-weight: 900;}   
 .btn-f-small {@include flexRow($justify: space-around);flex-basis: 30%;}

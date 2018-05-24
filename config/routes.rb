@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	devise_for :users, controllers: {registrations: 'users/registrations'}
+
+  get '/alliances', to: 'events#index'
 	resources :messages, :items, :products, :purchases, :chatrooms, :events, :alliances
 	resource :subscriptions, only: [:new, :create]
 	# ajax action to add items to form
