@@ -1,8 +1,24 @@
-<%= form_for @alliance do |f| %>
+<%= form_for @alliance, html: {class:"form-horizontal"} do |f| %>
+  <%= render 'shared/error_messages', object: @alliance %>
+  <div class="form-group">
+    <%= f.label :name, class:"col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+  <%= f.label :description, class:"col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, class: "form-control" %>
+    </div>  
+  </div>
   <%= f.fields_for :users do |user_form| %>
     <%= render 'user_fields', f: user_form %>
   <% end %>    
   <div class="links">
-    <%= link_to_add_association 'add user', f, :users %>
+    <%= f.submit 'Save Alliance', class: 'col-sm-offset-2 btn btn-azure' %>
+    <%= link_to_add_association 'add user', f, :users, class: 'btn btn-green' %>
   </div>
 <% end %>
+
+<!-- , url: {controller: :events, action: :create} -->

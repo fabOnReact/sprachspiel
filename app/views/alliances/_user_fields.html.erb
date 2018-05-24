@@ -1,4 +1,4 @@
-<div class="nested-fields">
-  <%= f.select :username, User.all.collect {|u| [u.username, u.email]}, {include_blank: true} %>  
-  <%= link_to_remove_association "remove user", f %>
+<div class="nested-fields"> 
+  <%= f.collection_select :id, User.all.collect {|u| [u.username, u.id]}, class:'form-control col-sm-offset-2' %>  
+  <%= link_to_remove_association "remove user", f, class: 'btn btn-danger' %>
 </div>
