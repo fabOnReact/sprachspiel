@@ -5,27 +5,23 @@
   p.justify { display: none; }
 }
 
-.row { 
+.row:first-of-type { 
+  height: 70%; 
   .col-sm-8 img.color { width: 60%;}
-  &.main { 
-    height: 60%; 
-    .col-sm-8 { @include flex($justify: flex-start); height: 100%;}
-  }
-
-  &.prices { 
+  .col-sm-8 { @include flex($justify: flex-start); } // height: 100%;
+  .prices { 
     @include flexRow;
-    .btn span { background-color: inherit; margin: 0 5px;}
-    .btn img {background-color:inherit;}
-    .btn:hover span { color: blue; }
+    .btn {
+      span { background-color: inherit; margin-right: 5px;}
+      img {background-color:inherit;}
+      &:hover span { color: blue; }
+    }
     .btn-orange:hover span { color: white;}
   }
-  .col-sm-4 { height: 100%; }
-
+  .chatroom {height: 90%;}
   .purchase  { @include flexRow($justify: space-between); }
-
-  .col-sm-12.actions { a {width:100%;} }
-  
   .purchase { height: 45px; }
+  // .col-sm-12.actions { a {width:100%;} }
 }
 
 ul.alert.fade {
