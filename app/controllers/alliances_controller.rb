@@ -7,7 +7,6 @@ class AlliancesController < ApplicationController
 
   def create
     @alliance = Alliance.new alliance_params
-    # binding.pry
     if @alliance.save
       redirect_to events_path, notice: 'Post was successfully created.'
     else
@@ -20,6 +19,6 @@ class AlliancesController < ApplicationController
 
   private
   def alliance_params
-    params.require(:alliance).permit(:name, :description, user_ids: [:id])
+    params.require(:alliance).permit(:name, :description, user_ids: [])
   end  
 end

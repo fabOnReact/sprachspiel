@@ -12,12 +12,22 @@
       <%= f.text_area :description, class: "form-control" %>
     </div>  
   </div>
-  <%= f.fields_for :users do |user_form| %>
-    <%= render 'user_fields', f: user_form %>
-  <% end %>    
-  <div class="links">
-    <%= f.submit 'Save Alliance', class: 'col-sm-offset-2 btn btn-azure' %>
-    <%= link_to_add_association 'add user', f, :users, class: 'btn btn-green' %>
+  <%#= f.fields_for :users do |user_form| %>
+    <%#= render 'user_fields', f: user_form %>
+  <%# end %>    
+  <div class="form-group">
+    <%= f.label "select multiple allies", class:"col-sm-2" %>
+    <div class="col-sm-10">
+      <%= f.select :user_ids, User.all.collect {|u| [u.username, u.id]}, {}, {:multiple => true,class:'form-control' } %>
+    </div>  
+  </div>    
+  <%#= f.select :permission, , {prompt: "Select Permission Level"},
+{:multiple => true, class: "input-lg"} %>
+  <!-- select_tag "access", "<option>Read</option><option>Write</option>".html_safe, multiple: true, class: 'form_input', id: 'unique_id' -->
+  <div class="col-sm-offset-2 links"> 
+    <%#= link_to_add_association 'add user', f, :users, class: 'btn btn-green' %>
+    <%= link_to :back, url_for(:back), class: "btn btn-orange" %>
+    <%= f.submit 'Save Alliance', class: 'btn btn-azure' %>
   </div>
 <% end %>
 
