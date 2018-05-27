@@ -78,7 +78,7 @@ guest_user = User.create(email: 'guest@email.com', username: 'guest', password: 
 # fight.users << [current_user, other_user]
 # fight.save
 
-# attack = Property.new(name: 'Angriff', amount: 10)
+# attack = Property.new(name: 'Attack', amount: 10)
 # product = Product.find_by(name: 'schwert')
 # product.update_attributes(property: attack)
 

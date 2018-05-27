@@ -2,6 +2,11 @@
   <!-- <td><%#= event.name %></td> -->
   <!-- <td><%#= event.description %></td> -->
   <td><%= event.users.participants(current_user) %></td>
-  <td><%= %></td>
-  <td><%= %></td>
+  <td>
+  <%= event.bonus.each do |bonus| %>
+    <%= bonus[0] %><span class="blue-highlight"><%= bonus[1] %></span>
+    <% puts bonus %>
+  <% end %>
+  </td>
+  <td><%#= link_to "", use_option, remote: true %></td>
 </tr>
