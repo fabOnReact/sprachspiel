@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
   TYPES = %w[Alliance Trade Fight Building]
   CATEGORIES = {Alliance: :Waffen, Trade: [:Werkzeuge, :Lebensmittel]}
-  # BONUS = {Alliance: [[:Angriff, 20],[:Verteidigung, 10]], Trade: [[:Geld, 30],[:Energie, 20]], Fight: [], Building:[]}  
+  BONUS = {Alliance: [[:Angriff, 20],[:Verteidigung, 10]], Trade: [[:Geld, 30],[:Energie, 20]], Fight: [], Building:[]}  
+  ICONS = {edit: ['pencil', :get], destroy: ['garbage', :delete], update: ['check', :put]}
   EVENTS_HEADERS = %w[Participants Bonus Options]
   INVENTORIES_HEADERS = %w[Product N Bonus]   
   # IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
