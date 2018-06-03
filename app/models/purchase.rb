@@ -7,11 +7,15 @@ class Purchase < ApplicationRecord
 	
 	accepts_nested_attributes_for :items
 	validates :price, presence: true
-	# validate :user_has_money
 
+	before_save :user_has_money
 	after_save :update_balance
 
 	scope :price_sum, ->(resource) { joins(:price).sum(resource) }
+
+	# def balance
+	# 	self.user.money
+	# end
 
 	def update_balance
 		user.money -= self.price
@@ -19,13 +23,9 @@ class Purchase < ApplicationRecord
   end
 
 
-	# def user_has_money
-	#   # the purchase instance still it is not created
-	#   # probably I can do this test after creating the purchase instance
-	#   unless self.user.validation_balance(self.price)
-	#   	errors.add(:price, "Price is too high!")
-	#   end
-	# end
+	def user_has_money
+	  errors.add(:price, "Price is too high!") if user.money < price
+	end
 
 
 	# def self.creating(room, price, user, selfmade)
