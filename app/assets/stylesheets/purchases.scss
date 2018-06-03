@@ -5,7 +5,7 @@
   p.justify { display: none; }
 }
 
-.row { 
+.row.purchase { 
   height: 70%; 
   .col-sm-8 img.color { width: 60%;}
   .col-sm-8 { @include flex($justify: flex-start); } // height: 100%;
@@ -17,10 +17,10 @@
       &:hover span { color: blue; }
     }
     .btn-orange:hover span { color: white;}
+    .col-xs-12.col-sm-8  { @include flexRow($justify: space-between); }
+    .col-xs-12.col-sm-8 { height: 45px; }
   }
   .chatroom {height: 90%;}
-  .purchase  { @include flexRow($justify: space-between); }
-  .purchase { height: 45px; }
   // .col-sm-12.actions { a {width:100%;} }
 }
 

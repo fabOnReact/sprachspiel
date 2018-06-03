@@ -4,12 +4,12 @@
 
 <%#= render partial: "shared/product_description", collection:
 @products %>
-<%#= render partial: "shared/resources" if user_signed_in? %> 
+<%= render partial: "shared/resources" if user_signed_in? %> 
 
 <ul class='alert fade out hidden' id='errors'></ul>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-8">
+<div class="row purchase">
+  <div class="col-xs-12 col-sm-8 no-padding">
     <div>
       <%= render @products %>
     </div>
@@ -17,8 +17,8 @@
   <div class="col-sm-4 hidden-xs chatroom">
     <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
   </div>
-  <div class="col-xs-12 prices">
-    <div class="col-xs-12 col-sm-8 purchase">
+  <div class="col-xs-12 prices mtb-small">
+    <div class="col-xs-12 col-sm-8">
       <% if user_signed_in? %>
       <%= link_to "Inventory", events_path, class: "col-xs-12 btn btn-green btn-round btn-f-large", data: {name:"show-actions"} %>
       <% end %>    

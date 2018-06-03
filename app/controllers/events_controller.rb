@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :find_event, only: [:edit, :update, :destroy]
+  before_filter :find_event, only: [:edit, :update, :show, :destroy]
   def index
     @events = current_user.events
     @count = current_user.count_items
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   def update; @event.update_attribute(accept, true); end
 
+  def show; end
   def destroy
     @event.destroy
     redirect_to events_path, notice: "#{@event.type} successfully deleted"

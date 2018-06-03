@@ -1,24 +1,20 @@
-<%# resource = current_user.resource if user_signed_in? %>
-<!--div class="container"-->
-  <div class="row row-resources">
-    <div class="col-sm-2 col-xs-12">
-      Resources
-    </div>  
-    <% balance = current_user.ending_balance %>
-    <div class="col-sm-2 col-xs-4">
-      Gold <%= balance[0] %>
-    </div>
-    <div class="col-sm-2 col-xs-4">
-      Wood <%= balance[1] %>
-    </div>
-    <div class="col-sm-2 col-xs-4">
-      Food <%= balance[2] %>
-    </div>
-    <div class="col-sm-2 col-xs-6">
-      Stone <%= balance[3] %>
-    </div>
-    <div class="col-sm-2 col-xs-6">
-      Metal <%= balance[4] %>
-    </div>
+<div class="row resources mlr-no mtb-small">
+  <div class="col-sm-2 col-xs-12">
+    Resources
   </div>
-<!--/div-->
+  <div class="col-sm-2 col-xs-6">
+    Money <%= current_user.money %>
+  </div>      
+  <div class="col-sm-2 col-xs-6">
+    Healt <%= current_user.health %>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    Defence <%= current_user.defence %>
+  </div>
+  <div class="col-sm-2 col-xs-6">
+    Attack <%= current_user.attack %>
+  </div>
+  <div class="col-sm-2 col-xs-12">
+    Energy <%= current_user.energy %>
+  </div>
+</div>

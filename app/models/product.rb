@@ -4,7 +4,7 @@ class Product < ApplicationRecord
 	has_many :items, :dependent => :destroy
 	has_many :objects, class_name: "Product", foreign_key: "requirement_id"
 	# has_one :description
-	# belongs_to :property
+	belongs_to :property
 	# belongs_to :category
 	# replaces with the price field
 	# belongs_to :price, :dependent => :destroy

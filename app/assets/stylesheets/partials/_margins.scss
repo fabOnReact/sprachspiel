@@ -1,0 +1,25 @@
+// MARGINS
+// TOP AND BOTTOM
+@each $name, $size in ("big", 2),("medium", 1.5),("small", 1),("x-small", 0.5), ("xx-small", 0.3), ("no", 0) {
+.mtb-#{$name} {margin-top: $size+rem;margin-bottom: $size+rem;}}
+
+// LEFT RIGHT
+.margin {margin-left: 15px;margin-right: 15px;}
+
+// TOP
+.margin-top {margin-top: 15px;}
+
+// NO MARGIN
+.mlr-no {margin-left: 0px;margin-right: 0px;}
+// no-margin {margin-left: 0px;margin-right: 0px;}
+// .no-margin-top-bottom {margin-top: 0px !important;margin-bottom: 0px !important;}
+
+// others
+.flex-box {display:flex;width:100%;}
+.no-padding {padding-left:0px;padding-right:0px;}
+.padding {padding-left: 15px;padding-right: 15px;}
+.center {text-align: center;}
+.right {text-align: right;}
+.justify {text-align: justify;text-justify: inter-word;}
+.scroll-bar {overflow: auto;height: 366px;background-color: black;}
+.full-width {width: 100%;}

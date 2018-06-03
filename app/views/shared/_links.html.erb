@@ -1,4 +1,7 @@
-<% if controller_name = "events" %><div class="links">
+<% if controller_name = "events" %>
+<div class="col-sm-6 links">
   <%= link_to :back, new_purchase_path, class:"btn btn-orange" %>
-  <% Event::TYPES.each do |type| %><%= link_to "create #{type}", "/#{type.new_path}", class:'btn btn-azure' %><% end %>
-</div><% end %> 
+  <% Event::TYPES.each do |type| %><%= link_to "#{type}", "/#{type.new_path}", class:'btn btn-azure' %><% end %>
+  <%= link_to "Attack", new_fight_path, class:'btn btn-azure' %>
+</div>
+<% end %> 

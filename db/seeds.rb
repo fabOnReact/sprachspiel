@@ -78,23 +78,12 @@ fight = Fight.new(name: 'War: Conquer Aristotele', description: 'trying to conqu
 fight.users << [current_user, other_user]
 fight.save
 
-attack = Property.create(name: 'Angriff', amount: 10)
-product = Product.find_by(name: 'schwert')
-product.update_attributes(property: attack)
-
-defense = Property.new(name: 'Verteidigung', amount: 5)
-product = Product.find_by(name: 'schild')
-product.update_attributes(property: defense)
-
-energy = Property.new(name: 'Energie', amount: 15)
-product = Product.find_by(name: 'brot')
-product.update_attributes(property: energy)
-
 # health = Property.new(name: 'Gesundheit', amount: 10)
 
 products = {"sichel" => [:Energie, 10],"hammer" => [:Energie, 20],"achse" => [:Angriff, 20],"messer" => [:Angriff, 10],"fisch" => [:Gesundheit, 20],"bank" => [:Energie, 30],"ofen" => [:Energie, 10],"hähnchen" => [:Energie, 20],"schwert" => [:Angriff, 35],"schild" => [:Verteidigung, 20],"brot"=> [:Energie, 30]}
 products.keys.map do |key|
 	product = Product.find_by(name: key)
-	property = Property.create(name: products[key][0], amount: products[key][1] )
+	property = Property.find_or_create_by(name: products[key][0], amount: products[key][1] )
 	product.update_attributes(property: property)
+	puts product.errors.full_messages if product.errors
 end
