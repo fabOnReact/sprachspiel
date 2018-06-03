@@ -4,6 +4,11 @@ FactoryBot.define do
 	password { Faker::Internet.password }
 	username { Faker::Internet.user_name }
 	association :role
+	money 100
+	health 100
+	defence 100
+	attack 100
+	energy 100
 
 		factory :user_with_purchases  do 
 			transient do

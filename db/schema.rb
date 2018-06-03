@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20180603092143) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "alliance_id"
-    t.index ["alliance_id"], name: "index_categories_on_alliance_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_categories_on_event_id", using: :btree
   end
 
   create_table "chatrooms", force: :cascade do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20180603092143) do
     t.integer  "purchase_id"
     t.boolean  "selfmade"
     t.integer  "user_id"
-    t.integer  "alliance_id"
-    t.index ["alliance_id"], name: "index_items_on_alliance_id", using: :btree
+    t.integer  "events_id"
+    t.index ["events_id"], name: "index_items_on_events_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -211,9 +211,9 @@ ActiveRecord::Schema.define(version: 20180603092143) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "categories", "alliances"
+  add_foreign_key "categories", "events"
   add_foreign_key "descriptions", "products"
-  add_foreign_key "items", "alliances"
+  add_foreign_key "items", "events", column: "events_id"
   add_foreign_key "items", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "properties"

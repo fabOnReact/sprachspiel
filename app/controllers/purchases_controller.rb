@@ -24,7 +24,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase.assign_attributes user: current_user
     if @purchase.save
-      render json: { location: chatroom_path(Chatroom.first), responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
+      render json: { location: events_path, responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
     else
       render json: { responseJSON: { error: @purchase.errors.full_messages }, status: 500 }
     end

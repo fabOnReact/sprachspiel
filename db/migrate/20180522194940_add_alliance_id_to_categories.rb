@@ -1,5 +1,5 @@
 class AddAllianceIdToCategories < ActiveRecord::Migration[5.0]
   def change
-    add_reference :categories, :alliance, foreign_key: true
+    add_reference :categories, :event, foreign_key: true
   end
 end
