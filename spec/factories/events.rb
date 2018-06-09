@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :event do
-    action_id 1
-    action_type "MyString"
+    type "Alliance"
+    name "my alliance"    
+    description "my alliance description"    
   end
 end
