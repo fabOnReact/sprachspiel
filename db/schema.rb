@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180603092143) do
+ActiveRecord::Schema.define(version: 20180606195731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,7 +87,9 @@ ActiveRecord::Schema.define(version: 20180603092143) do
     t.boolean  "selfmade"
     t.integer  "user_id"
     t.integer  "events_id"
+    t.integer  "property_id"
     t.index ["events_id"], name: "index_items_on_events_id", using: :btree
+    t.index ["property_id"], name: "index_items_on_property_id", using: :btree
     t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
@@ -136,13 +138,9 @@ ActiveRecord::Schema.define(version: 20180603092143) do
   create_table "purchases", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "invoice_id"
     t.integer  "room_id"
-    t.integer  "price_id"
     t.integer  "user_id"
-    t.integer  "sale_id"
     t.boolean  "selfmade"
-    t.integer  "amount"
     t.datetime "end_date"
     t.integer  "price"
   end
@@ -214,6 +212,7 @@ ActiveRecord::Schema.define(version: 20180603092143) do
   add_foreign_key "categories", "events"
   add_foreign_key "descriptions", "products"
   add_foreign_key "items", "events", column: "events_id"
+  add_foreign_key "items", "properties"
   add_foreign_key "items", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "properties"

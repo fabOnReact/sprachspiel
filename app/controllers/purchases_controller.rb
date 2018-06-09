@@ -23,6 +23,7 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase.assign_attributes user: current_user
+    @purchase.items.map {|item| item.assign_attributes user: current_user }
     if @purchase.save
       render json: { location: events_path, responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
     else

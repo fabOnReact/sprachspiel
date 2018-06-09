@@ -14,10 +14,10 @@ class AlliancesController < ApplicationController
   #   end
   # end
 
-  def edit; end
+  # def edit; end
 
-  private
-  def alliance_params
-    params.require(:alliance).permit(:name, :description, user_ids: [])
-  end  
+  # private
+  # def alliance_params
+  #   params.require(:alliance).permit(:name, :description, user_ids: [])
+  # end  
 end

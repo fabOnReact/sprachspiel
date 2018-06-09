@@ -1,9 +1,6 @@
 class Purchase < ApplicationRecord
 	has_many :items, inverse_of: :purchase
-	# belongs_to :room
-	# belongs_to :price
 	belongs_to :user
-	# has_one :sale
 	
 	accepts_nested_attributes_for :items
 	validates :price, presence: true
@@ -13,15 +10,10 @@ class Purchase < ApplicationRecord
 
 	scope :price_sum, ->(resource) { joins(:price).sum(resource) }
 
-	# def balance
-	# 	self.user.money
-	# end
-
 	def update_balance
 		user.money -= self.price
     user.update_attribute(:money, user.money)
   end
-
 
 	def user_has_money
 	  errors.add(:price, "Price is too high!") if user.money < price
