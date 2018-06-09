@@ -1,28 +1,27 @@
-FactoryBot.define do
-   factory :product do
+  FactoryBot.define do
+    factory :product do
       name { Faker::Zelda.item }
       property
-      # price
-      # building
-      # category
-      # bonus { Faker::Boolean.boolean}
+      price { Faker::Number.number(2) }
 
-	   factory :hammer do 
-	   	name 'hammer'
-	   	# price
-	   	# building
-	   	# category
-	   	# bonus { Faker::Boolean.boolean }
-	   end
+    factory :sword do 
+      name 'sword'
+      price 50
+      association :property, name: 'Angriff'
+    end
 
-      # factory :product_with_items do 
-      #    transient do 
-      #       items_count 5
-      #    end
+    factory :hammer do 
+      name 'hammer'
+    end
 
-      #    after(:create) do |product, evaluator|
-      #       create_list(:item, evaluator.items_count, product: product)
-      #    end
-      # end
-   end
-end
+    # factory :product_with_items do 
+    #    transient do 
+    #       items_count 5
+    #    end
+
+    #    after(:create) do |product, evaluator|
+    #       create_list(:item, evaluator.items_count, product: product)
+    #    end
+    # end
+    end
+  end

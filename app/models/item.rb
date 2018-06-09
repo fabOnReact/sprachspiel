@@ -10,9 +10,9 @@ class Item < ApplicationRecord
   #   self.amount.to_i
   # end
 
-  def self.where_limit(product_id, room_id, nitems)
-  	Item.where(product_id: product_id, sold: false, room_id: room_id).limit(nitems)
-  end
+  # def self.where_limit(product_id, room_id, nitems)
+  # 	Item.where(product_id: product_id, sold: false, room_id: room_id).limit(nitems)
+  # end
 
   def prop_amount
     product.property.amount
@@ -23,11 +23,11 @@ class Item < ApplicationRecord
   end
 
   def update_user
-    purchase.user[prop_name] += prop_amount
+    user[prop_name] += prop_amount
     user.save
   end
 
-  def used!
-  	self.update_attributes(used: true)
-  end
+  # def used!
+  # 	self.update_attributes(used: true)
+  # end
 end
