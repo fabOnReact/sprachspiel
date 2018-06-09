@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :property do
-    name "MyString"
-    amount 1
+    name { Property::NAMES[Random.rand(4)] }
+    amount {Faker::Number.number(3)}
   end
 end

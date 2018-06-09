@@ -1,10 +1,11 @@
 FactoryBot.define do
    factory :product do
-      name { Faker::Zelda.item}
+      name { Faker::Zelda.item }
+      property
       # price
-   #    building
-   #    category
-   #    bonus { Faker::Boolean.boolean}
+      # building
+      # category
+      # bonus { Faker::Boolean.boolean}
 
 	   factory :hammer do 
 	   	name 'hammer'
