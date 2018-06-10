@@ -56,6 +56,13 @@ RSpec.describe PurchasesController, type: :controller do
         errors = json_response[:responseJSON][:error]
         expect(errors).to eql(["Price can't be blank"])
       end
+
+      it 'returns returns the correct error when price is 0' do
+        params = { "purchase" => { "price" => 0, "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} 
+        post :create, params: params
+        errors = json_response[:responseJSON][:error]
+        expect(errors).to eql(["Price must be greater than 0"])        
+      end
     end
 
     context 'user not authenticated' do

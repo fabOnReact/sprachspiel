@@ -18,9 +18,11 @@
 //= require bootstrap
 //= require cable
 //= require main
+//= require messages
 //= require chatrooms
 //= require cookieconsent
 //= require purchases
 //= require products
+//= require items
 //= require buildings
 //= require turbolinks

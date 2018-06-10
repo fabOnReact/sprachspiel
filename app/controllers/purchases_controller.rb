@@ -27,8 +27,7 @@ class PurchasesController < ApplicationController
     if @purchase.save
       render json: { location: events_path, responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
     else
-      # some problems here if price = 0
-      render json: { responseJSON: { error: @purchase.errors.full_messages }, status: 500 }
+      render json: { location: new_purchase_path, responseJSON: { error: @purchase.errors.full_messages }, status: 500 }
     end
   end
 
