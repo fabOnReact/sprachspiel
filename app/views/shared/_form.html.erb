@@ -1,5 +1,5 @@
-<%= form_for @event, html: {class:"form-horizontal"} do |f| %>
-  <%= render 'shared/error_messages', object: @event %>
+<%= form_for object, html: {class:"form-horizontal"} do |f| %>
+  <%= render partial: 'shared/error_messages', locals: {object: object} %>
   <div class="form-group">
     <%= f.label :name, class:"col-sm-2 control-label" %>
     <div class="col-sm-10">
@@ -14,9 +14,9 @@
     </div>  
   </div>
   <div class="form-group">
-    <%= f.label "select multiple members", class:"col-sm-2" %>
+    <%= f.label "invite members", class:"col-sm-2" %>
     <div class="col-sm-10">
-      <%= f.select :user_ids, User.all.collect {|u| [u.username, u.id]}, {}, {:multiple => true,class:'form-control' } %>
+      <%= f.select :user_ids, User.not_guest.collect {|u| [u.username, u.id]}, {}, {:multiple => true,class:'form-control' } %>
     </div>  
   </div>    
   <div class="col-sm-offset-2 links"> 

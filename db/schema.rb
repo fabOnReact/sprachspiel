@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180606195731) do
+ActiveRecord::Schema.define(version: 20180611184819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 20180606195731) do
   create_table "fights", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "alliance_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["alliance_id"], name: "index_invites_on_alliance_id", using: :btree
+    t.index ["user_id"], name: "index_invites_on_user_id", using: :btree
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -204,6 +213,8 @@ ActiveRecord::Schema.define(version: 20180606195731) do
     t.integer  "defence",                default: 100
     t.integer  "attack",                 default: 100
     t.integer  "energy",                 default: 100
+    t.integer  "alliance_id"
+    t.index ["alliance_id"], name: "index_users_on_alliance_id", using: :btree
     t.index ["chatrooms_id"], name: "index_users_on_chatrooms_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -211,11 +222,14 @@ ActiveRecord::Schema.define(version: 20180606195731) do
 
   add_foreign_key "categories", "events"
   add_foreign_key "descriptions", "products"
+  add_foreign_key "invites", "alliances"
+  add_foreign_key "invites", "users"
   add_foreign_key "items", "events", column: "events_id"
   add_foreign_key "items", "properties"
   add_foreign_key "items", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "properties"
   add_foreign_key "properties", "events"
+  add_foreign_key "users", "alliances"
   add_foreign_key "users", "chatrooms", column: "chatrooms_id"
 end
