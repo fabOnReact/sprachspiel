@@ -6,10 +6,11 @@ class Event < ApplicationRecord
   EVENTS_HEADERS = %w[Bonus Options]
   INVENTORIES_HEADERS = %w[Product N Bonus]   
   # IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
-  # has_and_belongs_to_many :users
+  has_and_belongs_to_many :users
   has_many :items
   has_many :properties
   has_one :category
+  # has_many :users, class_name: "User", primary_key: "id", foreign_key: "alliance_id"
   validates :name, :description, presence: true
 
   TYPES.each do |type, path|

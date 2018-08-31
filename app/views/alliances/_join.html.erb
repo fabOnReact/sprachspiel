@@ -1,0 +1,4 @@
+<div id="join_alliance"> 
+	<% content_for "alliance" do %><h1>Join an Alliance</h1><% end %>
+	<%= render partial:'events/table_layout', locals: {objects: @alliances, constants: Alliance::HEADERS, partial: 'alliance', h1: "alliance" }  %>  
+</div>

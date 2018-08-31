@@ -4,6 +4,9 @@ class AlliancesController < ApplicationController
     @alliance = Alliance.new
   end
 
+  def show; end
+
+	def new; @alliance = Alliance.new; end
   # private
   # def alliance_params
   #   params.require(:alliance).permit(:name, :description, user_ids: [])

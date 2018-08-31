@@ -1,5 +1,6 @@
 class Alliance < Event
-  HEADERS = %w[name description participants options]
+  self.table_name = "events"
+  HEADERS = %w[name description participants join]
   has_many :invites
-  has_many :users
+  # has_many :users, class_name: "User", primary_key: "id", foreign_key: "alliance_id"
 end

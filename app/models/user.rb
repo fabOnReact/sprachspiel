@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :messages, :dependent => :destroy
   has_many :purchases, :dependent => :destroy, inverse_of: :purchase
   has_many :items, through: :purchases, inverse_of: :user
-  has_many :alliances
+  # belongs_to :event, class_name: "Event", foreign_key: "id", foreign_type: 'Alliance',  optional: true
   has_many :invites
   # has_and_belongs_to_many :events
   belongs_to :role

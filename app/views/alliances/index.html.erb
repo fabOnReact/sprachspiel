@@ -1,9 +1,5 @@
-<% content_for "alliance" do %><h1>Join an Alliance</h1><% end %>
 <%= render partial: "shared/resources" if user_signed_in? %> 
 
-<%= render partial:'events/table_layout', locals: {objects: @alliances, constants: Alliance::HEADERS, partial: 'alliance', h1: "alliance" }  %>  
-
-<!-- <h2>Create a new Alliance</h2> -->
-
-<%= render partial: 'shared/form', locals: {object: @alliance} %>
-<%= render partial: 'shared/links' %>
+<%#= link_to "Create Alliance", new_alliance_path, class: "btn btn-azure btn-f-large"%>
+<%= render "join" %>
+<%= render template: "alliances/new" %> 
