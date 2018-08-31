@@ -54,7 +54,7 @@ RSpec.describe PurchasesController, type: :controller do
         params = { "purchase" => { "items_attributes" => { "0" => { product_id: product.id }, "1" => { product_id: product.id }, "3" => { product_id: product.id }}}} 
         post :create, params: params
         errors = json_response[:responseJSON][:error]
-        expect(errors).to eql(["Price can't be blank"])
+        expect(errors).to eql(["Price can't be blank", "Price is not a number"])
       end
 
       it 'returns returns the correct error when price is 0' do
