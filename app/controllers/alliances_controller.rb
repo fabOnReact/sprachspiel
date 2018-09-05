@@ -4,7 +4,10 @@ class AlliancesController < ApplicationController
     @alliance = Alliance.new
   end
 
-  def show; end
+  def show 
+		@alliance = Alliance.find params[:id] 
+		@message = Message.new
+	end
 
 	def new; @alliance = Alliance.new; end
 	
