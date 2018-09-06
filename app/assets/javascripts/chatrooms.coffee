@@ -5,7 +5,7 @@ class Message
   constructor: -> 
     @submit = $('[data-id="chatroom-input"]')
     @scrollbar = $('[data-id="scroll-bar"]')
-    if @controllerCheck()
+    unless @submit.length == 0 #  @controllerCheck()
       @sendMessage()
       @scrollDownChat() if @scrollbar? 
   sendMessage: -> 
@@ -17,5 +17,5 @@ class Message
   scrollDownChat: -> 
     height = @scrollbar[0].scrollHeight
     @scrollbar.scrollTop(height)
-  controllerCheck: ->
-    window.location.pathname == "/purchases/new"
+	# controllerCheck: ->
+		# window.location.pathname == "/purchases/new" 

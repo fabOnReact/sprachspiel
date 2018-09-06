@@ -1,1 +1,2 @@
-<%= render partial: 'shared/message_form', locals: {message: @message, chatroom: @chatroom} %>
+<%= render partial: "shared/chatroom", locals: {chatroom: @alliance.chatroom, messages: @messages} %>
+<%= render partial: 'shared/message_form', locals: {message: @message, chatroom: @alliance.chatroom} %>
