@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action :set_message, only: :create
 
   def create
-		binding.pry
   	if @message.save
   		ActionCable.server.broadcast 'messages',
         alignment: @message.alignment,

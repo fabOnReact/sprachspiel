@@ -1,7 +1,8 @@
 class Alliance < Event
+	after_create :add_chatroom
+  before_save :add_user
   self.table_name = "events"
   HEADERS = %w[name description participants join]
   has_many :invites
-	belongs_to :chatroom
-  # has_many :users, class_name: "User", primary_key: "id", foreign_key: "alliance_id"
+	def add_chatroom; Chatroom.create(alliance: self); end
 end
