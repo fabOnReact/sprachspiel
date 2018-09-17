@@ -14,8 +14,4 @@ module EventsHelper
   def span(object)
     content_tag :span, object.property.amount, class: 'blue-highlight'
   end
-  
-  def url_path(method, object)
-    url_for(only_path: true, action: method, id: object.id)  
-  end
 end

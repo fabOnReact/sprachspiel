@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
-  before_filter :find_event, only: [:edit, :update, :show, :destroy]
+  before_action :find_event, only: [:edit, :update, :show, :destroy]
+	before_action :create_event, only: [:create]
+	before_action :add_user, only: [:create, :update]
+
   def index
     @events = current_user.reload.events
     @count = current_user.count_items
@@ -12,19 +15,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new event_params
-		@event.users << current_user
-    if @event.save
-      redirect_to events_path, notice: 'Post was successfully created.'
-    else
-      flash.now[:alert] = 'An error occurred. The alliance was not saved'
-      render :new
-    end
+		save_and_redirect
   end
   
   def edit; end
 
-  def update; @event.update_attribute(accept, true); end
+  def update 
+		# @event.update_attribute(accept, true)
+		save_and_redirect
+	end
 
   def show; end
 
@@ -34,6 +33,10 @@ class EventsController < ApplicationController
   end
   
   private
+	def create_event
+	 	@event = Event.new event_params
+	end
+
   def event_params
     params.require(:event).permit(:type, :name, :description, user_ids: [])
   end  
@@ -45,4 +48,17 @@ class EventsController < ApplicationController
   def find_event
     @event = Event.find params[:id]
   end
+
+	def add_user; binding.pry;
+		@event.users << current_user; 
+	end
+
+  def save_and_redirect
+		if @event.save 
+			redirect_to events_path
+	 	else 
+			flash[:alert] = "Impossible to save event"
+			render :index
+		end
+	end
 end
