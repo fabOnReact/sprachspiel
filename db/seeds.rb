@@ -15,12 +15,12 @@ Category.create(name: "Lebensmittel")
 
 requirements = [[:sichel, :hammer], [:hammer, :brot], [:schwert, :hammer], [:brot, :sichel], [:achse, :hammer], [:messer, :brot], [:fisch, :messer], [:bank, :hammer], [:ofen, :bank], [:hähnchen, :ofen], [:schild, :hähnchen]]
 
-requirements.each do |requirement|
-	product = Product.find_by(name: requirement[0])
-	object = Product.find_by(name: requirement[1])
-	product.requirement_id = object.id
-	product.save 
-end
+#requirements.each do |requirement|
+#	product = Product.find_by(name: requirement[0])
+#	object = Product.find_by(name: requirement[1])
+#	product.requirement_id = object.id
+#	product.save 
+#end
 
 # Descriptions
 
@@ -32,7 +32,7 @@ Description.create(name: "room-description", content: "Hier können sie Schwerte
 Description.create(name: "room-description", content: "In der Armee können Spieler Soldaten anwerben, die für eine Faktion kämpfen können oder die Sicherheit einem Geschäft gegen die Diebstähle gewährleisten können.. Im SprachSpiel können Spieler   stehlen, deshalb ist die Organisation der Bürgersicherheit notwendig.", building_id: 3)
 
 # Set prices for Products
-PRODUCTS = {'sichel' => 10,'schwert' => 50,'achse' => 20,'bank' => 5,"hammer" => 10,'brot' => 5,'messer' => 10,'fisch' => 10,'ofen' => 25,'hähnchen' => 10,'schild' => 100, 'fisch' => 20, 'steak' => 25}
+PRODUCTS = {'sichel' => 10,'schwert' => 50,'achse' => 20,'bank' => 5,"hammer" => 10,'brot' => 5,'messer' => 10,'ofen' => 25,'hähnchen' => 10,'schild' => 100, 'fisch' => 20, 'steak' => 25}
 
 Product.all.each do |product|
 	product.price = PRODUCTS[product.name]
@@ -70,20 +70,16 @@ trade = Trade.new(name: 'the Asia route', description: 'exchange resources and m
 trade.users << [current_user, other_user]
 trade.save
 
-building = Building.new(name: 'Baracke', description: 'Infanterie')
-building.users << [current_user, other_user]
-buidling.save
-
 fight = Fight.new(name: 'War: Conquer Aristotele', description: 'trying to conquer the next village')
 fight.users << [current_user, other_user]
 fight.save
 
 # health = Property.new(name: 'Gesundheit', amount: 10)
 
-products = {"sichel" => [:Energie, 10],"hammer" => [:Energie, 20],"achse" => [:Angriff, 20],"messer" => [:Angriff, 10],"fisch" => [:Gesundheit, 20],"bank" => [:Energie, 30],"ofen" => [:Energie, 10],"hähnchen" => [:Energie, 20],"schwert" => [:Angriff, 35],"schild" => [:Verteidigung, 20],"brot"=> [:Energie, 30]}
-products.keys.map do |key|
-	product = Product.find_by(name: key)
-	property = Property.find_or_create_by(name: products[key][0], amount: products[key][1] )
-	product.update_attributes(property: property)
-	puts product.errors.full_messages if product.errors
-end
+#products = {"sichel" => [:Energie, 10],"hammer" => [:Energie, 20],"achse" => [:Angriff, 20],"messer" => [:Angriff, 10],"fisch" => [:Gesundheit, 20],"bank" => [:Energie, 30],"ofen" => [:Energie, 10],"hähnchen" => [:Energie, 20],"schwert" => [:Angriff, 35],"schild" => [:Verteidigung, 20],"brot"=> [:Energie, 30]}
+#products.keys.map do |key|
+#	product = Product.find_by(name: key)
+#	property = Property.find_or_create_by(name: products[key][0], amount: products[key][1] )
+#	product.update_attributes(property: property)
+#	puts product.errors.full_messages if product.errors
+#end
