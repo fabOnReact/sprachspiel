@@ -85,11 +85,18 @@ RSpec.describe EventsController, type: :controller do
 			end
 		end
 
-		describe "add_user" do 
+		describe "update_user" do 
 			it "should add the current user" do
 				controller.instance_variable_set(:@event, event) 
-				expect { controller.send(:add_user) }.to change(event.users, :count).by(1)
+				expect { controller.send(:update_user) }.to change(event.users, :count).by(1)
 			end
 		end 
+
+	#	describe 'user_included?' do 
+	#		it 'should return true if user is present' do
+	#			event = double("event", :id => 1, :users => [current_user])
+	#			expect 
+
+
 	end
 end

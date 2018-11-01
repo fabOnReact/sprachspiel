@@ -1,5 +1,4 @@
 <% if object.errors.any? %>
-  <%# binding.pry %>
   <div class="alert alert-block alert-danger fade in">
     <p><strong>This form contains <%= pluralize(object.errors.count, 'error') %>.</strong></p>
     <ul>

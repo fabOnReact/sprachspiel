@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   before_action :find_event, only: [:edit, :update, :show, :destroy]
 	before_action :create_event, only: [:create]
-	before_action :add_user, only: [:create, :update]
+	before_action :update_user, only: [:create, :update]
 
   def index
-    @events = current_user.reload.events
+		@events = Event.all
     @count = current_user.count_items
     @products = @count.keys()
   end
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 		save_and_redirect
   end
   
-  def edit; end
+	def edit; @event = Event.find params[:id]; end
 
   def update 
 		# @event.update_attribute(accept, true)
@@ -49,8 +49,12 @@ class EventsController < ApplicationController
     @event = Event.find params[:id]
   end
 
-	def add_user; binding.pry;
-		@event.users << current_user; 
+	def update_user 
+		if @event.users.include? current_user 
+			@event.users.delete(current_user)
+		else
+			@event.users << current_user 
+		end
 	end
 
   def save_and_redirect

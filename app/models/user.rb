@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # has_and_belongs_to_many :trades, join_table: "events_users", association_foreign_key: "event_id"
   # has_and_belongs_to_many :buildings, join_table: "events_users", association_foreign_key: "event_id"
   # has_and_belongs_to_many :fights, join_table: "events_users", association_foreign_key: "event_id"
-  has_and_belongs_to_many :events
+  has_and_belongs_to_many :events, validate: true
   has_many :messages, :dependent => :destroy
   has_many :purchases, :dependent => :destroy, inverse_of: :purchase
   has_many :items, through: :purchases, inverse_of: :user
