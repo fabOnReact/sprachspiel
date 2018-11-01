@@ -31,6 +31,9 @@ module ApplicationHelper
 		flash.return_message
 	end
 
+  def url_path(method, object)
+    url_for(only_path: true, action: method, id: object.id)  
+  end
 	# def room 
 	# 	current_user.rooms.first
 	# end

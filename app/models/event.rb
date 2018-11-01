@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   TYPES = [["Alliance", :alliances],["Trade", :new_event],["Building", :new_event]]
   CATEGORIES = {Alliance: :Waffen, Trade: [:Werkzeuge, :Lebensmittel]}
   BONUS = {Alliance: [[:Angriff, 20],[:Verteidigung, 10]], Trade: [[:Geld, 30],[:Energie, 20]], Fight: [], Building:[]}  
-  ICONS = {edit: ['pencil', :get], destroy: ['garbage', :delete], update: ['check', :put], show: ['arrow', :get], join: ['add', :put]}
+  ICONS = {edit: ['pencil', :get], destroy: ['garbage', :delete], update: ['check', :put], show: ['arrow', :get]}
   EVENTS_HEADERS = %w[Bonus Options]
   INVENTORIES_HEADERS = %w[Product N Bonus]   
   # IMAGES = { "Alliance" => "manuscript", "Fight" => "helmet", "Building" => "castle", "Trade" => "money-bag" }
@@ -33,4 +33,7 @@ class Event < ApplicationRecord
     end
     super
   end  
+	def icon(user)
+		users.include? user ? "add" : "minus"
+	end
 end

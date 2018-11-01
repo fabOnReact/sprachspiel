@@ -4,7 +4,6 @@ class PricesController < ApplicationController
 	before_action :set_room, only: [:create, :plus, :minus]
 	#before_action :set_variables, only: [:create]
 
-   accepts_nested_attributes_for :purchase
 
 	def create
    	@price = Price.new(price_params)
