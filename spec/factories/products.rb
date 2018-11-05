@@ -1,6 +1,6 @@
   FactoryBot.define do
     factory :product do
-      name { Faker::Zelda.item }
+      name { Product::PRODUCTS.keys.sample }
       property
       price { Faker::Number.number(2) }
 
