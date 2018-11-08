@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       flash[:error] = "The message was not saved"
     end
   end
-
+  
   private
   def set_message
     @message = Message.new(message_params)

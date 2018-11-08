@@ -2,7 +2,7 @@ $(document).on 'turbolinks:load', ->
   new Message()
 
 class Message
-  constructor: -> 
+ constructor: -> 
     @submit = $('[data-id="chatroom-input"]')
     @scrollbar = $('[data-id="scroll-bar"]')
     unless @submit.length == 0 #  @controllerCheck()

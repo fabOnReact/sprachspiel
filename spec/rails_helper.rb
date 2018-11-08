@@ -6,8 +6,9 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'capybara/rails'
+require 'capybara/rspec'
 require 'devise'
-require_relative 'support/controller_macros' 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -36,22 +37,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, :type => :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
@@ -59,7 +45,8 @@ RSpec.configure do |config|
 
   # Setting up Devise
   config.include Devise::Test::ControllerHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
+  config.extend Request::Authentication, :type => :controller
+  config.include Warden::Test::Helpers, :type => :feature
 
   # including module for json helpers
   config.include Request::JsonHelpers, :type => :controller
@@ -67,17 +54,7 @@ end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    # Choose a test framework:
     with.test_framework :rspec
-    # with.test_framework :minitest
-    # with.test_framework :minitest_4
-    # with.test_framework :test_unit
-
-    # Choose one or more libraries:
-    # with.library :active_record
-    # with.library :active_model
-    # with.library :action_controller
-    # Or, choose the following (which implies all of the above):
     with.library :rails
   end
 end

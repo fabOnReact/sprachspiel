@@ -56,6 +56,7 @@ group :test do
   #gem 'guard-rspec'
   gem 'launchy'
   gem 'rspec-console'
+  gem 'selenium-webdriver'
   #gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
 end
 
