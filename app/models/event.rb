@@ -33,7 +33,8 @@ class Event < ApplicationRecord
     end
     super
   end  
-	def icon(user)
-		users.include? user ? "add" : "minus"
-	end
+
+  def icon(user)
+    users.include?(user) ? "minus" : "add"
+  end
 end

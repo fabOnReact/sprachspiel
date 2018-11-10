@@ -4,10 +4,10 @@
     <%= bonus[0] %><span class="blue-highlight"> <%= bonus[1] %></span>
   <% end %>
   </td>
-	<td>
-		<%= render partial:'icons', locals: {variable: event} %>
-		<%= link_to url_path(:update, event), class: 'icon-link' do %>
-			<% image_tag event.icon(current_user), class:"icon-s1" %>
-		<% end %>
-</td>
+  <td>
+    <%= render partial:'icons', locals: {variable: event} %>
+    <%= link_to url_path(:update, event), class: 'icon-link' do %>
+      <% image_tag event.icon(current_user), class:"icon-s1" %>
+    <% end %>
+  </td>
 </tr>

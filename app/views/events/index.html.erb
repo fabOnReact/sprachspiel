@@ -6,7 +6,7 @@
 
 <% Event::TYPES.each do |type, path| %>
   <% content_for type do %><h1><%= type %></h1><% end %>
-	<%= render partial:'table_layout', locals: {objects: filter(type), constants: Event::EVENTS_HEADERS, partial: 'event', h1: type, link: "new#{type}" } if filter(type).size > 0 %>  
+  <%= render partial:'table_layout', locals: {objects: filter(type), constants: Event::EVENTS_HEADERS, partial: 'event', h1: type, link: "new#{type}" } if filter(type).size > 0 %>  
 <% end %>
 
 <%= render partial: 'shared/links' %>
