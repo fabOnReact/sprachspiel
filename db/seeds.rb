@@ -42,3 +42,20 @@ contents.each_with_index do |content, index|
 end
 
 puts "6 ----- creating purchases" 
+products = Product.where("id < ?", 3)
+User.all.each_with_index do |user, index|
+  purchase = Purchase.create(user: user, price: products.sum(:price))
+  products.each_with_index do |product, index| 
+    item = Item.create(product: product, purchase: purchase, user: user)
+    LogMessage.new item, index 
+  end
+  LogMessage.new purchase, 1
+end
+  
+puts "7 ----- creating events" 
+alliance = Alliance.create(name: "King of the North", description: "Defensive alliance against attackers", users: User.all)
+LogMessage.new alliance, 1
+trade = Trade.create(name: "Route on the North", description: "exchanging wood for gold", users: User.all)
+LogMessage.new trade, 2
+
+

@@ -29,6 +29,8 @@ class LogMessage
     case @object.class.name
     when "Chatroom" then "chatroom"
     when "Message" then "message"
+    when "Purchase" then "purchase"
+    when "Item" then "item"
     else @object.name; end
   end
 end
