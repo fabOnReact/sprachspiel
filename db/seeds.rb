@@ -40,3 +40,5 @@ contents.each_with_index do |content, index|
   message = Message.create(user: user, chatroom: chatroom, content: content)
   LogMessage.new message, index
 end
+
+puts "6 ----- creating purchases" 
