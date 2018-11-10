@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -37,7 +38,6 @@ gem 'redis', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'rails-controller-testing'
@@ -57,6 +57,7 @@ group :test do
   gem 'launchy'
   gem 'rspec-console'
   gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
   #gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
 end
 
