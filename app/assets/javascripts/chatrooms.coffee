@@ -9,8 +9,8 @@ class Message
       @sendMessage()
       @scrollDownChat() if @scrollbar? 
   sendMessage: -> 
-    @submit.keydown event, ->
-      if event.keyCode == 13
+    @submit.keydown (event) ->
+      if event.key == "Enter" #.keyCode == 13
         $('[data-send="message"]').click()
         $('[data-textarea="message"]').val(" ")        
         return false   
