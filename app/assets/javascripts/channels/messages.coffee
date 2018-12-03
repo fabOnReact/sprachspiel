@@ -1,5 +1,3 @@
-# app/assets/javascripts/cable/subscriptions/chat.coffee
-# Assumes you've already requested the right to send web notifications
 App.cable.subscriptions.create { channel: "MessagesChannel" },
   received: (data) ->
     messages = $('#chatroom_id')

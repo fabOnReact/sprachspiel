@@ -27,7 +27,7 @@
         <span class="price-amount" data-id="price-amount">0</span>
       </div>
       <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
-      <a href="" class="col-xs-12 btn btn-orange btn-round btn-f-large" id="submit"><span class="visible-xs price-amount" data-id="price-amount">0</span>Purchase</a>
+      <div class="col-xs-12 btn btn-orange btn-round btn-f-large" id="submit"><span class="visible-xs price-amount" data-id="price-amount">0</span>Purchase</div>
     </div>      
     <div class="col-sm-4 hidden-xs">
       <%= render partial: 'shared/message_form', locals: {message: @message, chatroom: @chatroom} %>
