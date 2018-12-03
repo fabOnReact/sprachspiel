@@ -4,9 +4,9 @@
 //= require jquery-ui
 //= require bootstrap
 //= require cable
+//= require chatrooms
 //= require messages
 //= require alerts
-//= require chatrooms
 //= require cookieconsent
 //= require purchases
 //= require products
