@@ -5,8 +5,6 @@ module ApplicationHelper
   end
 
   def android_request
-    puts '---------------------- USER AGENT ----------------------'
-    puts request.env["HTTP_USER_AGENT"]
     request.env["HTTP_USER_AGENT"].match(/turbolinks-app, sprachspiel, official, android/).present?
   end
 
