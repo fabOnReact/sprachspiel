@@ -7,8 +7,8 @@ RSpec.describe Event, type: :model do
 
   describe "#icon" do 
     it "return the minus or add icon correctly" do
-      expect(event.icon(user1)).to eql("add")
-      expect(event.icon(user2)).to eql("minus")
+      expect(event.icon(user1)).to eql("minus")
+      expect(event.icon(user2)).to eql("add")
     end
 
     it 'verify the user is included' do 

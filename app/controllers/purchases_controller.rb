@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :find_purchase, only: [:show, :delete, :destroy]
   before_action :set_purchase, only: [:create]
   before_action :set_products, only: [:new, :create]
-  skip_before_filter :verify_authenticity_token, only: [:new]
+  skip_before_action :verify_authenticity_token, only: [:new]
   
   # def index
   #   @products_count = current_user.items.group(:product).count #products_count
