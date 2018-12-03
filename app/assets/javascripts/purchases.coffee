@@ -11,8 +11,6 @@ class Purchase
     @onAction()
   onSubmit: -> 
     @submit.click =>
-      console.log Product.serialize()["purchase"]["price"]
-      console.log Product.serialize()
       $.ajax
         url: "/purchases"
         method: "POST"
@@ -21,11 +19,11 @@ class Purchase
         error: (data, textStatus, errorThrown) ->
           messages = Purchase.convertString(data.responseJSON)
           css = data.responseJSON.css_class
-          new Message messages, css, false
+          new Alert messages, css, false
         success: (data, textStatus, jqXHR) ->
           messages = Purchase.convertString(data.responseJSON)
           css = data.responseJSON.css_class
-          new Message messages, css, true
+          new Alert messages, css, true
           window.location.href = data.location     
   onAction: -> 
     $('[data-name=show-actions]').click => 
