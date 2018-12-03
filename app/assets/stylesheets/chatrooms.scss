@@ -4,7 +4,7 @@
 
 .panel-default {
   border-color: transparent;
-  height: 96%;
+  // height: 96%;
 }
 
 .new_message {
@@ -12,5 +12,12 @@
     height: 100%; 
     background-color: white;
     color: black;
+  }
+}
+
+@media (max-width: 750px) { 
+  .panel-default { height: initial;}
+  form#new_message { position: fixed; right: 0; left: 0; bottom: 0; 
+    textarea { border-radius: 0px; height: initial; line-height: 1rem;}
   }
 }

@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
         chatroom_id: @message.chatroom_id        
       head :ok
   	else
+      binding.pry
       flash[:error] = "The message was not saved"
     end
   end

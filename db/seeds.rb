@@ -30,6 +30,8 @@ user1 = User.create(email: 'fabrizio@email.com', password: 'fabrizio', username:
 LogMessage.new user1, 1 
 user2 = User.create(email: 'ezio@email.com', password: 'fabrizio', username: 'ezio', role: farmer)
 LogMessage.new user2, 2
+user3 = User.create(email: 'guest@email.com', password: 'guestuser', username: 'guest')
+LogMessage.new user3, 3
 
 puts "5 ----- creating chatroom messages"
 contents = ["Hello, welcome to our new application", "Here you can exercise your german speaking skills with other students", "The game is fun!", "Many new feature will come out soon!"]
@@ -57,5 +59,3 @@ alliance = Alliance.create(name: "King of the North", description: "Defensive al
 LogMessage.new alliance, 1
 trade = Trade.create(name: "Route on the North", description: "exchanging wood for gold", users: User.all)
 LogMessage.new trade, 2
-
-
