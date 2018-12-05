@@ -1,6 +1,5 @@
 module ApplicationHelper
   def css_class(action_name)
-    puts controller_name
     return "center" if controller_name == "subscriptions"
   end
 
