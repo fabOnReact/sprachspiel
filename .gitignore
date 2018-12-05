@@ -23,5 +23,5 @@
 # Added from developer
 config/environments/development.rb
 # public/assets
-app/assets/images
+# app/assets/images
 my_notes/
