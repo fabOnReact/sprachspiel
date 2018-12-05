@@ -1,5 +1,5 @@
 <% Event::ICONS.each do |key, parameters| %>
 	<%= link_to url_path(key, variable), method: parameters.last, class: 'icon-link' do %>
-    <%= image_tag parameters.first, class:"icon-s1" %>
+    <image class="img-<%= parameters.first %> icon-s1" src="<%=src%>"/>
   <% end %>
 <% end %>

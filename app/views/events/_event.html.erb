@@ -7,7 +7,7 @@
   <td>
     <%= render partial:'icons', locals: {variable: event} %>
     <%= link_to url_path(:update, event), class: 'icon-link' do %>
-      <% image_tag event.icon(current_user), class:"icon-s1" %>
+      <image class="img-<%= event.icon(current_user) %> icon-s1" src="<%=src%>"/>
     <% end %>
   </td>
 </tr>

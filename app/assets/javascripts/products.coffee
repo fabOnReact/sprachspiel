@@ -1,7 +1,7 @@
 class Product
   @items: []
-  @host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
-  @numbers: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+  # @host: "https://s3.eu-central-1.amazonaws.com/sprachspiel/"
+  @numbers: ["022-one", "023-two", "024-three", "025-four", "026-five", "027-six", "028-seven", "029-eight", "030-nine", "031-ten"]
   constructor: (product) ->
     @product = $(product)
     @id = @product.data("id")
@@ -21,8 +21,10 @@ class Product
     @amount += 1
   setHash: (index) -> @sequence[index + 1] = Product.numbers[index]
   changeIcon: ->
-    newlink = Product.host + @sequence[@amount] + ".svg"
-    @icon.attr("src", newlink)
+    # newlink = Product.host + @sequence[@amount] + ".svg"
+    # @icon.attr("src", newlink)
+    @icon.removeClass("img-#{@sequence[@amount-1]}")
+    @icon.addClass("img-#{@sequence[@amount]}")
     @icon.removeClass('hidden')
   @getPrice: ->
     priceButton = $('[data-id=price-amount]')

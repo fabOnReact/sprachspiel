@@ -1,6 +1,5 @@
 <tr>
-  <td><%= image_tag product.picture, class:'icon-s1' %></td>
+  <td><image class="img-<%= product.picture %> icon-s1" src="<%=src%>"/></td>
   <td><%= count[product] %></td>
   <td><%= product.property.name + " "%> <%= span(product) %></td>
-  <!-- <td><%#= product.options %></td> -->
 </tr>
