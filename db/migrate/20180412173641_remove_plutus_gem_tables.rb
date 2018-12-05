@@ -10,6 +10,7 @@ class RemovePlutusGemTables < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :type
       t.boolean :contra
+      t.integer :tenant_id
 
       t.timestamps
     end
