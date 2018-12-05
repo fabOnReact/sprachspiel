@@ -1,6 +1,6 @@
 <div class="col-md-3 col-sm-4 col-xs-4 product-partial" data-id="<%= product.id %>" data-name="product">
   <%= link_to add_item_path(product), method: :post, class: "", remote: true do %>
-    <image class="img-022-one icon-s2 hidden img-transparent icon-overflow", id="icon-<%=product.name%>", data-name='icon' src="<%= src %>"/> 
+    <image class="img-022-one hidden img-transparent icon-overflow", id="icon-<%=product.name%>", data-name='icon' src="<%= src %>"/> 
     <image class="img-<%= product.picture %> icon-large" src="<%=src%>"/>
   <% end %>
 </div>
