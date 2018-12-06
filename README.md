@@ -6,7 +6,7 @@ An android application is available, this is the [github repository of the andro
 # Environment
 
 ```
-Ruby 2.3.3
+Ruby 2.5.0
 Rails 5.1 
 ```
 
@@ -16,7 +16,7 @@ Rails 5.1
 git clone git@github.com:fabriziobertoglio1987/sprachspiel.git
 cd sprachspiel
 git checkout staging
-rbenv local 2.3.3
+rbenv local 2.5.0
 bundle install
 rails s
 rails db:setup
