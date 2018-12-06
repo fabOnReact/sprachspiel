@@ -1,20 +1,6 @@
 class @Message
-  constructor: (@data, @chatroom)->
+  constructor: (@data)->
     $('#messages').append(@message)
-    # @submit = $('[data-id="chatroom-input"]')
-    # @scrollbar = $('[data-id="scroll-bar"]')
-    if @chatroom.hasMessage
-      @sendMessage()
-      @scrollDownChat() if @scrollbar?
-  sendMessage: ->
-    @submit.keydown (event) ->
-      if event.key == "Enter"
-        $('[data-send="message"]').click()
-        $('[data-textarea="message"]').val(" ")
-        return false
-  scrollDownChat: ->
-    height = @scrollbar[0].scrollHeight
-    @scrollbar.scrollTop(height)
   message: =>
     """
     <div class='sc-message'>

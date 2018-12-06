@@ -1,17 +1,24 @@
 $(document).on 'turbolinks:load', ->
-  @chatroom = new Chatroom
+  new Chatroom().scrollDownChat()
   $('[data-id="chatroom-input"]').keydown (event) ->
-    if event.key == "Enter"
-      $('[data-send="message"]').click()
-      $('[data-textarea="message"]').val(" ")
-      
+    @chatroom = new Chatroom
+    if event.key == "Enter" && @chatroom.hasMessage()
+      @chatroom.sendMessage()
+
 class @Chatroom
-  constructor: ->
-    @submit = $('[data-id="chatroom-input"]')
+  constructor: (@data) ->
+    @submit= $('[data-send="message"]')
+    @textarea = $('[data-textarea="message"]')
+    @input = $('[data-id="chatroom-input"]')
     @scrollbar = $('[data-id="scroll-bar"]')
-    @scrollDownChat()
+    new Message(@data) if @data?
+  sendMessage: ->
+    @submit.click()
+    @textarea.val("")
+    return false
   scrollDownChat: ->
-    height = @scrollbar[0].scrollHeight
-    @scrollbar.scrollTop(height)
+    if @scrollbar?
+      height = @scrollbar[0].scrollHeight
+      @scrollbar.scrollTop(height)
   hasMessage: ->
-    @submit.length != 0
+    @input.val().trim() != ""

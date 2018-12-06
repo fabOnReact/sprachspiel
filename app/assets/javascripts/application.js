@@ -11,6 +11,5 @@
 //= require purchases
 //= require products
 //= require items
-//= require buildings
 //= require main
 //= require turbolinks
