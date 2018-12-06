@@ -5,7 +5,6 @@ An android application is available, this is the [github repository of the andro
 
 # Environment
 
-
 ```
 Ruby 2.5.0
 Rails 5.1 
