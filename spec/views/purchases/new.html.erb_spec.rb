@@ -8,6 +8,6 @@ RSpec.describe "purchases/new.html.erb", type: :view do
     assign(:chatroom, FactoryBot.build_stubbed(:chatroom))
     assign(:message, FactoryBot.build_stubbed(:message))
     render
-    expect(rendered).to match "assets/coins"
+    expect(rendered).to match "img-010-coins-1 icon-s1 hidden-xs"
   end
 end
