@@ -5,7 +5,7 @@ FactoryBot.define do
 
     factory :purchase_with_items do
       transient do 
-        items_count 5
+        items_count { 5 }
       end
 
       after(:create) do |purchase, evaluator| 

@@ -3,8 +3,8 @@ FactoryBot.define do
     product
     purchase
     user
-    sold false
-    used false
+    sold { false }
+    used { false }
 
     factory :ironsword do 
       association :product, factory: :sword
