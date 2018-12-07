@@ -30,7 +30,7 @@ user1 = User.create(email: 'fabrizio@email.com', password: 'fabrizio', username:
 LogMessage.new user1, 1 
 user2 = User.create(email: 'ezio@email.com', password: 'fabrizio', username: 'ezio', role: farmer)
 LogMessage.new user2, 2
-user3 = User.create(email: 'guest@email.com', password: 'guestuser', username: 'guest')
+user3 = User.create(email: 'guest@email.com', password: 'guestuser', username: 'guest', role: farmer)
 LogMessage.new user3, 3
 
 puts "5 ----- creating chatroom messages"

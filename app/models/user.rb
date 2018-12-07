@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }
   scope :not_guest, -> { where.not(username: "guest") }
-  scope :guest, -> { where(email: "guest@email.com").first }
+  scope :guest, -> { find_by!(email: "guest@email.com") }
   scope :exclude, -> (user) { where.not(id: user) }
 
   validates :username, uniqueness: true

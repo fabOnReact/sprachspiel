@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
   def set_message
     @message = Message.new(message_params)
     @message.chatroom = Chatroom.first
-    @message.user = current_user ? current_user : User.guest
+    @message.user = user_signed_in? ? current_user : User.guest
   end
 
   def message_params
