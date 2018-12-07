@@ -1,39 +1,28 @@
 class MessagesController < ApplicationController
-  #before_action :authenticate_user!, :except => [:show]
-  def new
-  end
+  before_action :set_message, only: :create
 
   def create
-  	message = Message.new(message_params)
-  	message.user = current_user
-    chatroom = message.chatroom
-  	if message.save
-      #binding.pry
+  	if @message.save
   		ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.user.name,
-        chatroom_id: message.chatroom_id,        
-        lastuser: chatroom.messages.last(2)[0].user.name
+        alignment: @message.alignment,
+        message: @message.content,
+        user: @message.user.name,
+        chatroom_id: @message.chatroom_id        
       head :ok
   	else
-      #flash[:error] = "You need to signup or login to play"
-      #render "rooms/show"
+      binding.pry
+      flash[:error] = "The message was not saved"
     end
   end
-
-  def edit
-  end
-
-  def show
-  end
-
-  def delete
-  end
-
+  
   private
+  def set_message
+    @message = Message.new(message_params)
+    @message.chatroom = Chatroom.first
+    @message.user = user_signed_in? ? current_user : User.guest
+  end
 
   def message_params
-  	params.require(:message).permit(:content, :chatroom_id)
+  	params.require(:message).permit(:content)
   end
-
 end

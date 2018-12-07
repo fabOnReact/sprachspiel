@@ -1,3 +1,26 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'turbolinks:load', ->
+  new Chatroom().scrollDownChat().recordKeyDown()
+
+class @Chatroom
+  constructor: (@data) ->
+    @submit= $('[data-send="message"]')
+    @textarea = $('[data-textarea="message"]')
+    @input = $('[data-id="chatroom-input"]')
+    @scrollbar = $('[data-id="scroll-bar"]')
+    new Message(@data) if @data?
+  recordKeyDown: ->
+    @input.keydown (event) =>
+      if event.key == "Enter" && @hasMessage()
+        @sendMessage()
+    return this
+  sendMessage: ->
+    @submit.click()
+    @textarea.val("")
+    return false
+  scrollDownChat: ->
+    if @scrollbar?
+      height = @scrollbar[0].scrollHeight
+      @scrollbar.scrollTop(height)
+    return this
+  hasMessage: ->
+    @input.val().trim() != ""

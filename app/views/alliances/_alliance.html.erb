@@ -1,0 +1,10 @@
+<tr>
+  <td><%= alliance.name %></td>
+  <td><%= alliance.description %></td>
+  <td><%= alliance.users.participants(current_user) %></td>
+	<td>
+	<%= link_to alliance_path(alliance), class: 'icon-link' do %>
+		<%= image_tag "add", class:"icon-s1" %>
+	<% end %>
+  </td>
+</tr>

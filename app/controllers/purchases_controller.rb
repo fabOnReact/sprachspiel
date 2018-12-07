@@ -1,67 +1,50 @@
 class PurchasesController < ApplicationController
-  before_action :set_variables, only: [:create]
+  before_action :authenticate_user!, only: [:create]
   before_action :find_purchase, only: [:show, :delete, :destroy]
-
-  def index
-  end
+  before_action :set_purchase, only: [:create]
+  before_action :set_products, only: [:new, :create]
+  skip_before_action :verify_authenticity_token, only: [:new]
+  
+  # def index
+  #   @products_count = current_user.items.group(:product).count #products_count
+  #   @products = @products_count.keys()
+  # end
 
   def new
+    @product = Product.find params[:product_id] if params[:product_id].present?
+    @purchase = Purchase.new
+    @chatroom = Chatroom.first
+    @message = Message.new
+    @messages = @chatroom.messages.order(:created_at)
+    respond_to do |format| 
+      format.js
+      format.html
+    end       
   end
 
-  def price
-    @price = Price.new
+  def create
+    @purchase.assign_attributes user: current_user
+    @purchase.items.map {|item| item.assign_attributes user: current_user }
+    if @purchase.save
+      render json: { location: events_path, responseJSON: { notice: ["Your purchase was saved"], css_class: "success" }, status: 201 }
+    else
+      render json: { location: new_purchase_path, responseJSON: { error: @purchase.errors.full_messages }, status: 500 }
+    end
   end
 
   def edit
   end
 
-  def show 
-    @items_number = @purchase.items.group(:product_id).count
-    @room = Room.find(params[:room_id])
-  end 
-
-  def delete
-    @items_number = @purchase.items.group(:product_id).count
-    @room = Room.find(params[:room_id])    
-  end
-
-  def destroy
-    @room = @purchase.room
-    if @purchase.destroy 
-      flash[:notice] = "Ihr Kaufangebot wurde gelöscht!"
-      redirect_to room_path(@room)
-    else
-      flash[:error] = "Ein Fehler ist aufgetreten, der Kauf wurde nicht gelöscht"
-      redirect_to room_path(@room)
-    end        
-  end
-
-  def sold
-    @room = Room.find(params[:room_id])
-    @purchase = Purchase.find(params[:id])
-    @sale = Sale.new(room_id: params[:room_id], price_id: @purchase.price_id, user_id: current_user.id )
-    if @sale.saving(@purchase)
-      price = @sale.price
-      if @purchase.update_attributes(sale_id: @sale.id, room_id: @purchase.user.rooms.first.id)
-        @purchase.items_change_room
-        flash[:notice] = "Ihr Verkauf wurde gespeichert! Sie haben #{price.gold} Gold, #{price.wood} Wood, #{price.wood}, Food #{price.food}, #{price.stone} Stone, #{price.metal} Metal verdient"
-        redirect_to room_path(@room)
-      end
-    else
-      flash[:error] = "Ein Fehler ist aufgetreten, der Verkauf wurde nicht gespeichert"
-      redirect_to room_path(@room)
-    end  
-  end
-
   private
-  def find_purchase 
-    @purchase = Purchase.find(params[:id])
+  def set_purchase
+    @purchase = Purchase.new purchase_params
   end
 
-  def set_variables
-    @room = Room.find(params[:room_id])    
-    #@price = Price.new(price_params)
-    @items = @room.items.where(sold: false, used: false).order(:product_id)
-    @items_number = @items.group(:product_id).count          
-  end    
+  def set_products
+    @products = Product.all
+  end
+
+  def purchase_params
+    params.require(:purchase).permit(:price, items_attributes:[:product_id])
+  end
 end

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SpracheSpiel</title>
-    <%= csrf_meta_tags %>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+   <head>
+      <title>SpracheSpiel</title>
+      <%= csrf_meta_tags %>
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <!--meta name="viewport" content="width=device-width" -->
+      <%= tag :meta, name: "current-user", data: { id: current_user.id, email: current_user.email} if user_signed_in?%>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  	<%= render partial: "partials/navbar" %>
-    <%= render partial: "partials/flash" %>
-    <div class="container <%= css_class(action_name) %>">   
-      <%= yield %>
-    </div>
-
-  </body>
+   <body>
+      <div class="container <%= css_class(action_name) %>">   
+         <%= render partial: "shared/navbar" unless android_request %>
+         <%= render partial: "shared/flash" %>
+         <%= yield %>  
+      </div>
+   </body>
 </html>

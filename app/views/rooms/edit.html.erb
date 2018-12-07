@@ -2,7 +2,7 @@
 	<% if @room.errors['base'].present? %>
 	<span class="help-block error"><%= @room.errors['base'][0] %></span>
 	<% end %>            
-	<%= render 'partials/error_messages', object: @room %> 
+	<%= render 'shared/error_messages', object: @room %> 
 	<%= f.input :title %>
 	<span class="countdown"></span>	
 	<%= f.input :description, :input_html => { :cols => 100, :rows => 20 } %>

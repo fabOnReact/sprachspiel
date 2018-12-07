@@ -1,0 +1,17 @@
+// new Purchase()
+
+// class Purchase
+//   constructor: ->
+//     @price: parseInt($('#price-amount').html()) + <%= @product["price"] %>,
+//     @setPrice()
+//   setPrice: ->
+//     $("#price-amount").html(@price)    
+
+var Purchase = {
+  price: parseInt($('[data-id=price-amount]').html()) + <%= @product["price"] %>,
+  setPrice: function() {
+    $('[data-id=price-amount]').html(Purchase.price)    
+  }
+}
+
+Purchase.setPrice();

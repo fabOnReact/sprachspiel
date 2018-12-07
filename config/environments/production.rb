@@ -88,4 +88,5 @@ Rails.application.configure do
   config.web_socket_server_url = "wss://sprachspiel.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://sprachspiel.herokuapp.com', 'http://sprachspiel.herokuapp.com']
 
+  config.eager_loader = true
 end

@@ -1,0 +1,6 @@
+label {font-size: 1.5rem; text-align: right;}
+.links .btn { margin: 3px 3px;}
+.alliances {
+	height: 70%; @include flex($justify: space-around); 
+	.btn { height: 30%; flex-basis: initial; }
+} 

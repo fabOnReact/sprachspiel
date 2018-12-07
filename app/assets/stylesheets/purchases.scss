@@ -1,3 +1,38 @@
-// Place all the styles related to the purchases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.product-partial.col-md-3 {
+  padding-right: 0px;
+  padding-left: 0px;
+  a { @include flexRow; }
+  p.justify { display: none; }
+}
+
+.row.purchase { 
+  height: 70%; 
+  .col-sm-8 img.color { width: 60%;}
+  .col-sm-8 { @include flex($justify: flex-start); } // height: 100%;
+  .prices { 
+    @include flexRow;
+    .btn {
+      span { background-color: inherit; margin-right: 5px;}
+      img {background-color:inherit;}
+      &:hover span { color: blue; }
+    }
+    .btn-orange:hover span { color: white;}
+    .col-xs-12.col-sm-8  { @include flexRow($justify: space-between); }
+    .col-xs-12.col-sm-8 { height: 45px; }
+  }
+  .chatroom {height: 90%;}
+  // .col-sm-12.actions { a {width:100%;} }
+}
+
+ul.alert.fade {
+  list-style-type: none;
+  text-align: center;
+  &.alert-success li { color: #468847; text-shadow: 0px 1px #468847; }
+  &.alert-danger li { color: #ff0000; text-shadow: 0px 1px #ff0000; }
+}
+
+@media (max-width: 368px) {
+  .row.main { height: 70%; }
+  .btn-round { border-radius: initial; }
+  .col-xs-12 { @include noPadding;}
+}

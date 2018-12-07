@@ -1,9 +1,37 @@
-<%= form_for [@room, @price] do |price| %>
-<table class="room table table-hover">
-	<%= render partial: "purchases/partials/item" %>
-</table>
-<%# unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
-<div class="" id="price">
-	<%= render template: "prices/new", locals: {price: price} %>
+<h1>Spiel Karte</h1>
+<p id="description">Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
+<p id="second-description">Klicken Sie auf das Symbol, um das Produkt zu kaufen!</p> 
+
+<%#= render partial: "shared/product_description", collection:
+@products %>
+<%= render partial: "shared/resources" if user_signed_in? %> 
+
+<ul class='alert fade out hidden' id='errors'></ul>
+
+<div class="row purchase">
+  <div class="col-xs-12 col-sm-8 no-padding">
+    <div>
+      <%= render @products %>
+    </div>
+  </div>
+  <div class="col-sm-4 hidden-xs chatroom">
+    <%= render partial: "shared/chatroom", locals: {chatroom: @chatroom, messages: @messages} %>
+  </div>
+  <div class="col-xs-12 prices mtb-small">
+    <div class="col-xs-12 col-sm-8">
+      <% if user_signed_in? %>
+      <%= link_to "Inventory", events_path, class: "col-xs-12 btn btn-green btn-round btn-f-large", data: {name:"show-actions"} %>
+      <% end %>    
+      <div class="btn hidden-xs btn-azure btn-round btn-f-small">
+        <img class="img-010-coins-1 icon-s1 hidden-xs" src="<%=src%>"/>
+        <%#= image_tag "coins.svg", class:"icon-s1 hidden-xs" %>
+        <span class="price-amount" data-id="price-amount">0</span>
+      </div>
+      <%#= link_to "join chat", chatroom_path(@chatroom), class: "price" %>
+      <div class="col-xs-12 btn btn-orange btn-round btn-f-large" id="submit"><span class="visible-xs price-amount" data-id="price-amount">0</span>Purchase</div>
+    </div>      
+    <div class="col-sm-4 hidden-xs">
+      <%= render partial: 'shared/message_form', locals: {message: @message, chatroom: @chatroom} %>
+    </div>  
+  </div>
 </div>
-<% end %>

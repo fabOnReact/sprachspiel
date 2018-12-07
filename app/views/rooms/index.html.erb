@@ -1,7 +1,7 @@
 <h1>Spiel Karte</h1>
 <p>Im SprachSpiel gibt es Standorte, wo man kann verschiede Tätigkeiten machen. Jeder Spieler hat eine Rolle und wird Ihren eigenen Raum bauen, so dass jedes einen teil des Spieles verwalten kann..</p>
 
-<%= render partial: "partials/resources" if user_signed_in? %>
+<%= render partial: "shared/resources" if user_signed_in? %>
 
 <% @buildings.each do |building| %>
 
@@ -9,7 +9,7 @@
 <div class="row roomsIndex">
 	<div class="col-sm-3 hidden-xs">
 		<%= link_to building_path(building) do %>
-			<%= image_tag @images[building.id.pred], class: "roomsImages pull-left" %>
+			<%= image_tag IMAGES[building.id.pred], class: "roomsImages pull-left" %>
 		<% end %>
 	</div>
 	<div class="col-sm-3 col-xs-12">
@@ -70,7 +70,7 @@
 	</div>
 	<div class="col-sm-3 hidden-xs">
 		<%= link_to building_path(building) do %>
-			<%= image_tag @images[building.id.pred], class: "roomsImages pull-right" %>
+			<%= image_tag IMAGES[building.id.pred], class: "roomsImages pull-right" %>
 		<% end %>
 	</div>
 </div>

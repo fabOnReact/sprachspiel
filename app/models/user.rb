@@ -2,87 +2,40 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  has_many :rooms, :dependent => :destroy
+       :recoverable, :rememberable, :trackable, :validatable
+  # belongs_to :chatroom 
+  # has_and_belongs_to_many :trades, join_table: "events_users", association_foreign_key: "event_id"
+  # has_and_belongs_to_many :buildings, join_table: "events_users", association_foreign_key: "event_id"
+  # has_and_belongs_to_many :fights, join_table: "events_users", association_foreign_key: "event_id"
+  has_and_belongs_to_many :events, validate: true
   has_many :messages, :dependent => :destroy
-  has_many :chatrooms, through: :messages 
-  has_many :purchases, :dependent => :destroy
-  has_many :sales, :dependent => :destroy
+  has_many :purchases, :dependent => :destroy, inverse_of: :purchase
+  has_many :items, through: :purchases, inverse_of: :user
+  # belongs_to :event, class_name: "Event", foreign_key: "id", foreign_type: 'Alliance',  optional: true
+  has_many :invites
+  # has_and_belongs_to_many :events
   belongs_to :role
+  belongs_to :alliance, optional: true
 
-  accepts_nested_attributes_for :rooms
-
-  scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
+  # scope :online, -> { where("updated_at > ?", 10.minutes.ago) }
+  scope :not_guest, -> { where.not(username: "guest") }
+  scope :guest, -> { find_by!(email: "guest@email.com") }
+  scope :exclude, -> (user) { where.not(id: user) }
 
   validates :username, uniqueness: true
   validates :username, :role, presence: true
 
+  def self.participants(user)
+    self.exclude(user).map {|user| user.username }.join(', ')
+  end
+
+  def count_items(filter = :id)
+    items.group(:product).count(filter)
+  end
+
+  # splits the email and uses the part before the @ for the name
   def name 
-  	email.split('@')[0]
-  end
-
-  # calculates the ending balance after all purchases/sales
-  def ending_balance
-    starting_balance = [100, 100, 100, 100, 100]
-    ending_balance = []
-
-    # Subtract current_balance to starting_balance = ending_balance
-    self.current_balance.each do |partial|
-      i = 0
-      ending_balance << ( starting_balance[i] + partial )
-      i += 1
-    end
-    return ending_balance
-  end
- 
-  # perform a validation to check if the user has money for the purchase/sale
-  def validation_balance(price)
-    balance = self.ending_balance
-    resources = [:gold, :wood, :food, :stone, :metal]
-    i = 0
-    resources.each do |resource|
-      if price[resource] > balance[i]
-        return false if balance[i] - price[resource]
-      end
-      i += 1
-    end
-    return true
-  end
-
-  # gets the total amounts of purchases and sales
-  def current_balance
-    # Query all invoices from purchases/sales for that user in a nested array
-    purchases = Purchase.where(user_id: self.id).joins(:price)
-    sales = Sale.where(user_id: self.id).joins(:price)
-    partials = []    
-    resources = ["gold", "wood", "food", "stone", "metal"]
-    resources.each do |resource| 
-      partials << [purchases.sum(resource), sales.sum(resource)]
-    end
-    # Calculation of Balance
-    totals = []
-    partials.each do |partial|
-      totals << ( partial[1] - partial[0] )
-    end
-    return totals
-  end
-
-  def user_has_room(building)
-    if self.admin 
-      return false
-    elsif building.id == 4 
-      return true
-    else
-      return self.present? && self.rooms.present? 
-    end
-  end
-
-  def clear_purchases(room_id)
-    self.purchases.where(room_id: room_id, sale_id: nil, selfmade: nil).destroy_all
-  end
-
-  def room_owner(room)
-    self == room.user
+    email.split('@')[0][0,8]
   end
 
   def admin?

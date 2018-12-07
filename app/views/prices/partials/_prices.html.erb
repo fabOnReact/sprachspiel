@@ -1,59 +1,45 @@
-<% if current_user == @room.user %>
-	<% boolean = true %>
-	<% empty = true %>
-<% end %>
-
-<div class="row price no-margin">
-	<%= render partial: "partials/error_messages", locals: {object: @price} %>
-		<div class="col-sm-4 col-xs-6">
-			<div class="col-sm-4 col-xs-12 no-padding">
-			<%= price.label :gold, {class: "price_field"} %>
-			</div>
-			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :gold, {value: 0, id: "price_field", class: "price_field", id: "gold", min: 0, max: 100000, readonly: boolean} %>
-			</div>
+<div class="row price mlr-no">
+	<div class="col-sm-4 col-xs-6">
+		<div class="col-sm-4 col-xs-12 no-padding">
+		<%= price.label :gold, {class: "price_field"} %>
 		</div>
-		<div class="col-sm-4 col-xs-6">
-			<div class="col-sm-4 col-xs-12 no-padding">		
-			<%= price.label :wood, {class: "price_field"} %>
-			</div>
-			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :wood, {value: 0, id: "price_field", class: "price_field", id: "wood", min: 0, max: 100000, readonly: empty} %>		
-			</div>
+		<div class="col-sm-8 col-xs-12 no-padding">
+		<%= price.number_field :gold, {value: 0, id: "price_field", class: "price_field", id: "gold", min: 0, max: 100000} %>
 		</div>
-		<div class="col-sm-4 col-xs-6">
-			<div class="col-sm-4 col-xs-12 no-padding">
-			<%= price.label :food, {class: "price_field"} %>
+	</div>
+	<div class="col-sm-4 col-xs-6">
+		<div class="col-sm-4 col-xs-12 no-padding">		
+		<%= price.label :wood, {class: "price_field"} %>
 		</div>
-			<div class="col-sm-8 col-xs-12 no-padding">
-			<%= price.number_field :food, {value: 0, id: "price_field", class: "price_field", id: "food", min: 0, max: 100000, readonly: empty} %>
-			</div>
+		<div class="col-sm-8 col-xs-12 no-padding">
+		<%= price.number_field :wood, {value: 0, id: "price_field", class: "price_field", id: "wood", min: 0, max: 100000} %>		
 		</div>
-		<div class="col-sm-4 col-xs-6">
-			<div class="col-sm-4 col-xs-12 no-padding">		
-			<%= price.label :stone, {class: "price_field"} %>
-			</div>
-			<div class="col-sm-8 col-xs-12 no-padding">		
-			<%= price.number_field :stone, {value: 0, id: "price_field", class: "price_field", id: "stone", min: 0, max: 100000, readonly: empty} %>	
-			</div>
+	</div>
+	<div class="col-sm-4 col-xs-6">
+		<div class="col-sm-4 col-xs-12 no-padding">
+		<%= price.label :food, {class: "price_field"} %>
+	</div>
+		<div class="col-sm-8 col-xs-12 no-padding">
+		<%= price.number_field :food, {value: 0, id: "price_field", class: "price_field", id: "food", min: 0, max: 100000} %>
 		</div>
-		<div class="col-sm-4 col-xs-6">
-			<div class="col-sm-4 col-xs-12 no-padding">	
-			<%= price.label :metal, {class: "price_field"} %>
-			</div>
-			<div class="col-sm-8 col-xs-12 no-padding">			
-			<%= price.number_field :metal, {value: 0, id: "price_field", class: "price_field", id: "metal", min: 0, max: 100000, readonly: empty} %>		
-			</div>	
+	</div>
+	<div class="col-sm-4 col-xs-6">
+		<div class="col-sm-4 col-xs-12 no-padding">		
+		<%= price.label :stone, {class: "price_field"} %>
 		</div>
-		<% if user_signed_in? %>		
-			<div class="col-sm-12 no-padding">
-				<%#= hidden_field_tag :authenticity_token, price_authenticity_token %>
-				<%= price.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
-			</div>
-		<% else %>											
-			<div class="col-xs-12 col-sm-12 no-padding">
-				<%#= hidden_field_tag :authenticity_token, price_authenticity_token %>
-				<%= link_to "Sign in", new_user_session_path, {class: "btn-primary btn-centered-medium btn-mobile full-width-mobile full-width margin-top"} %>
-			</div>
-		<% end %>
+		<div class="col-sm-8 col-xs-12 no-padding">		
+		<%= price.number_field :stone, {value: 0, id: "price_field", class: "price_field", id: "stone", min: 0, max: 100000} %>	
+		</div>
+	</div>
+	<div class="col-sm-4 col-xs-6">
+		<div class="col-sm-4 col-xs-12 no-padding">	
+		<%= price.label :metal, {class: "price_field"} %>
+		</div>
+		<div class="col-sm-8 col-xs-12 no-padding">			
+		<%= price.number_field :metal, {value: 0, id: "price_field", class: "price_field", id: "metal", min: 0, max: 100000} %>		
+		</div>	
+	</div>
+		<div class="col-sm-12 no-padding">
+			<%= price.submit :kaufen, {class: "full-width-mobile full-width margin-top"} %>
+		</div>
 </div>

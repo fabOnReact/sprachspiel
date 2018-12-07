@@ -1,0 +1,24 @@
+@import 'partials/mixins';
+@import 'partials/margins';
+@import 'partials/buttons';
+@import 'partials/images';
+@import 'partials/navbar';
+@import 'partials/links';
+@import 'partials/widgets';
+
+// Tags and Main Classes
+.container { height: 100vh; }
+// Fonts
+p {font-size: 17px;}
+strong {background-color: initial;color: black;}
+h3 {font-size: 20px;}
+i:hover {	color: red;} 
+label { font-size: 20px;padding-right: 18px;}
+a { font-size: 17px;}
+a p:hover {color: red;}
+table th { color: white;}
+// Margins
+.info {margin-top: 30px;}
+// Alerts
+.alert {background-color: white;background-image: initial;}
+.alert p, .alert ul, .alert li {background-color: white;color: red;}

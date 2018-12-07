@@ -1,0 +1,4 @@
+<%= form_for message, remote: true, authenticity_token: true do |f| %>
+  <%= f.text_area :content, class: "form-control", data: {textarea: "message", id: "chatroom-input"} %>
+  <%= f.submit "send", class: "btn btn-green btn-lg hidden", id: "messageSubmit", data: {send: "message"} %>
+<% end %>

@@ -1,17 +1,5 @@
-<% variable = Message.first.user %>
-<% i = 0 %>
-<% @chatroom.messages.order(created_at: :asc).each do |message| %>
-	<% if message.user == variable && i > 0 %>
-		<p>	
-	<% else %>
-		<% if i > 0 %><br><% end %><p>
-			<strong>
-				<%= message.user.name %>:
-			</strong> 	
-	<% end %>
-	<%=message.content %>
-
-	<% variable = message.user %>
-	</p>	
-	<% i += 1 %>
-<% end %>
+<div class="sc-message">
+  <div class="sc-message--content <%= message.alignment %>">
+    <div class="sc-message--text speech-bubble"><%= message.content %> <span>from <%= message.user.name %></span></div>
+  </div>
+</div>

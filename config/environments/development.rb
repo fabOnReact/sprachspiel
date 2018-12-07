@@ -57,4 +57,6 @@ Rails.application.configure do
 
   # Action Cable
   #config.action_cable.url = "ws://localhost:3000/cable"
+
+  config.eager_loader = false
 end

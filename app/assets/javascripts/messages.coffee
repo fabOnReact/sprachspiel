@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class @Message
+  constructor: (@data)->
+    $('#messages').append(@message)
+  message: =>
+    """
+    <div class='sc-message'>
+      <div class='sc-message--content #{@data.alignment}'>
+       <div class='sc-message--text speech-bubble'>#{@data.message} <span>from #{@data.user}</span></div>
+      </div>
+    </div>
+    """
+
+

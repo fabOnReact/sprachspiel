@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -23,7 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -37,11 +38,11 @@ gem 'redis', '~> 3.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
-  #gem 'shoulda-matchers', '~> 3.1'
-  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'factory_bot_rails'
   gem "binding_of_caller"
   gem "pry-rails"
   gem "pry-byebug"
@@ -55,6 +56,8 @@ group :test do
   #gem 'guard-rspec'
   gem 'launchy'
   gem 'rspec-console'
+  gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
   #gem 'rails-controller-testing', '~> 1.0', '>= 1.0.1'
 end
 
@@ -75,3 +78,12 @@ gem 'devise', '~> 4.3'
 gem 'devise-bootstrapped', '~> 0.1.1'
 gem 'simple_form'
 gem 'jquery-turbolinks', '~> 2.1'
+gem 'high_voltage'
+gem "sprockets", ">= 3.7.2"
+gem "activejob", ">= 5.0.7.1"
+gem "rack", ">= 2.0.6"
+gem "ffi", ">= 1.9.24"
+gem "nokogiri", ">= 1.8.2"
+gem "rails-html-sanitizer", ">= 1.0.4"
+gem "loofah", ">= 2.2.3"
+gem 'sassc-rails'

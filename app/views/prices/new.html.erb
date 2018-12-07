@@ -1,10 +1,20 @@
-<%= form_for [@room, @price] do |price| %>
-<%= render partial: "partials/error_messages", locals: {object: @price} %>
-<table class="room table table-hover">
-	<%= render partial: "purchases/partials/item" %>
-</table>
-<%# unless current_user == @room.user || @purchase.items.empty? || !user_signed_in? %>
-<div class="" id="price">
-	<%= render partial: "prices/partials/prices", locals: {price: price} %>
-</div>
+<%= form_for @price do |price| %>
+	<%= render partial: "shared/error_messages", locals: {object: @price} %>
+	<div class="" id="price">
+		<%= render partial: "prices/shared/prices", locals: {price: price} %>
+	</div>
+<% end %>
+
+<%= form_for @price, class: "form-inline" do |price|
+
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon"><%= image_tag price.resources %></div>
+      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+      <div class="input-group-addon">.00</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Transfer cash</button>
 <% end %>

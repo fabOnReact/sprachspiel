@@ -1,0 +1,44 @@
+@mixin flex($direction: column, $justify: initial, $align: initial) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flexRow($justify: center, $align: center) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin imageColor($background-color: initial, $filter: initial) {
+  background-color: $background-color;
+  webkit-filter: $filter;
+  filter: $filter;
+}
+
+@mixin noMargin() {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+@mixin noPadding() {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+@mixin btn($background-color: initial, $border-color: initial) {
+  background-color: $background-color;
+  border-color: $border-color;
+}
+
+// @mixin fontStyle($background-color: #4e8cff, $color: #ffffff, $text-shadow: 2px 2px 2px #ffffff){
+//   background-color: $background-color; 
+//   color: $color; 
+//   text-shadow: $text-shadow; 
+// }
+
+// @mixin marginReset() {
+//   margin
+// }

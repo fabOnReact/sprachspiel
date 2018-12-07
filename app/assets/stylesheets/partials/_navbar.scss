@@ -1,0 +1,27 @@
+// Navbar
+.form-control, body, *, h1, h2, h3, h4, p, a {
+  background-color: black;color: white;font-family: courier;
+}
+.navbar-inverse { border-color: white;color: white; background-image: initial;
+  background-color: black;}
+.navbar-inverse .navbar-toggle {border-color: white;}
+.navbar-inverse .navbar-brand {color: white;}
+.navbar-inverse .navbar-nav > li > a {color: white;font-family: courier;}
+.navbar-inverse .navbar-nav > li > a, .dropdown-menu, .dropdown {
+  color: white;font-family: courier;}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {border-color: white;}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {background-color: initial;}
+// Links in the navbar
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  text-decoration: underline; color: red;}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: red;text-decoration: underline;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+  text-decoration: underline;color: red;}
+// Dropdown Menu
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-image: initial;
+}
+
+@media (min-width: 780px) { .dropdown-menu a {background-color: white;}}

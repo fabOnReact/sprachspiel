@@ -1,42 +1,16 @@
 Rails.application.routes.draw do
+
+  devise_for :users, controllers: {registrations: 'users/registrations'}
 	
-	devise_for :users, controllers: {
-		registrations: 'users/registrations'
-	}
-
-	resources :messages, :items
-
-	resources :buildings do 
-		resources :rooms
-		resources :chatrooms
-	end
-
-	resources :rooms do
-		resources :prices do
-			resources :purchases
-		end			
-		resources :purchases
-		resources :sales
-		resources :chatrooms
-	end
-
-	# landing page
-	post "subscription", to: 'buildings#createSubscription'
-
-	# rooms
-	get "/buildings/:building_id/rooms/:id/delete", to: 'rooms#delete', as: 'delete_room'
-	# purchase
-	get "/rooms/:room_id/purchases/:id/delete", to: 'purchases#delete', as: 'delete_room_purchase'
-	post "/rooms/:room_id/purchases/:id", to: 'purchases#sold', as: 'sold_room_purchase'
-	# sale
-	post "/rooms/:room_id/sales/:purchase_id", to: 'sales#create', as: 'create_room_sale'
-	# price create_purchase
-	
-	# building room product price calculation
-	post "rooms/:room_id/prices/:id/plus", to: 'prices#plus', as: 'room_price_plus'
-	post "rooms/:room_id/prices/:id/minus", to: 'prices#minus', as: 'room_price_minus'
-
-	mount ActionCable.server => '/cable'
-
-	root to: "buildings#welcome"
+  resources :messages, :items, :products, :purchases, :chatrooms, :events, :invites
+  resources :alliances #, :controller => "events", :type => "Alliance"
+  resources :trades, :controller => "events", :type => "Trade"
+  resources :fights, :controller => "events", :type => "Fight"
+  resources :buildings, :controller => "events", :type => "Building"  
+  # get "alliances", to: "alliances#index"
+  resource :subscriptions, only: [:new, :create]
+  # ajax action to add items to form
+  post "purchases/:product_id", to: "purchases#new", as: "add_item"
+  mount ActionCable.server => '/cable'
+  root to: "subscriptions#new"
 end
