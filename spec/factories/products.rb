@@ -5,13 +5,13 @@
       price { Faker::Number.number(2) }
 
     factory :sword do 
-      name 'sword'
-      price 50
+      name { 'sword' }
+      price { 50 }
       association :property, name: 'Angriff'
     end
 
     factory :hammer do 
-      name 'hammer'
+      name { 'hammer' }
     end
 
     # factory :product_with_items do 

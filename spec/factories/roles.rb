@@ -1,6 +1,6 @@
 FactoryBot.define do
    factory :role do
-      name "MyString"
+      name { "MyString" }
       
       # factory :role_with_descriptions do 
       #    name 'My custom role'
