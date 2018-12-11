@@ -1,0 +1,10 @@
+{
+  "application.css": "/packs/application-8fb544d9e9dc1dcb2599422cbe790860.css",
+  "application.css.map": "/packs/application-8fb544d9e9dc1dcb2599422cbe790860.css.map",
+  "application.js": "/packs/application-7d67b3ab7a7b5c439b40.js",
+  "application.js.map": "/packs/application-7d67b3ab7a7b5c439b40.js.map",
+  "hello_coffee.js": "/packs/hello_coffee-d94621e8033224ba693c.js",
+  "hello_coffee.js.map": "/packs/hello_coffee-d94621e8033224ba693c.js.map",
+  "hello_erb.js": "/packs/hello_erb-df5fc0521a70f3c506de.js",
+  "hello_erb.js.map": "/packs/hello_erb-df5fc0521a70f3c506de.js.map"
+}
