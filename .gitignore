@@ -27,7 +27,6 @@ config/environments/development.rb
 my_notes/
 icons/
 cutout
-/public/packs
 /public/packs-test
 /node_modules
 yarn-debug.log*
