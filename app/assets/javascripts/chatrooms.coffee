@@ -7,7 +7,6 @@ class @Chatroom
     @textarea = $('[data-textarea="message"]')
     @input = $('[data-id="chatroom-input"]')
     @scrollbar = $('[data-id="scroll-bar"]')
-    console.log "hello bro!"
     new Message(@data) if @data?
   recordKeyDown: ->
     @input.keydown (event) =>
