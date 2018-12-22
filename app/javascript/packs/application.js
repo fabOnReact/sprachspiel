@@ -9,4 +9,3 @@
 
 require('javascripts/chatrooms.coffee')
 import 'stylesheets/main'
-// import 'subscriptions/new.html.erb'
