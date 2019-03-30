@@ -1,4 +1,4 @@
-SprachSpiel 2.0 is [available here](https://sprachspiel.herokuapp.com), but still under active development.
+SprachSpiel 2.0 is [available here](https://sprachspiel.xyz/), but still under active development.
 
 SprachSpiel Android Application can be [downloaded here](https://s3.eu-central-1.amazonaws.com/sprachspiel/app-release.apk), while this is the [android Application github repository](https://github.com/fabriziobertoglio1987/sprachspiel-android)
 
