@@ -4,7 +4,8 @@
       <title>SpracheSpiel</title>
       <%= csrf_meta_tags %>
       <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' charset="utf-8"/>
+      <meta name="description" content="a language game set in the Medieval age where you can practise your German skills while having fun with your friends. Users can choose between different roles (farmers, fighters, king) and collaborate each other while talking German"/>
       <%= tag :meta, name: "current-user", data: { id: current_user.id, email: current_user.email} if user_signed_in?%>
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
