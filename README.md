@@ -1,6 +1,8 @@
-SprachSpiel 2.0 is [available here](https://sprachspiel.xyz/), but still under active development.
+<p align="center">
+ <img src="https://portfoliofabrizio.s3.eu-central-1.amazonaws.com/sprachspiel.gif" /> 
+</p>
 
-SprachSpiel Android Application can be [downloaded here](https://s3.eu-central-1.amazonaws.com/sprachspiel/app-release.apk), while this is the [android Application github repository](https://github.com/fabriziobertoglio1987/sprachspiel-android)
+The package of the android application is [available for download](https://s3.eu-central-1.amazonaws.com/sprachspiel/app-release.apk) and the [repository is open source](https://github.com/fabriziobertoglio1987/sprachspiel-android)
 
 # Environment
 
